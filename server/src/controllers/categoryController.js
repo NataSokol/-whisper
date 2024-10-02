@@ -17,4 +17,50 @@ exports.getCategoryById = async (req, res) => {
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
-}
+};
+
+exports.createCategory = async (req, res) => {
+  try {
+    const { title, image } = req.body;
+    const category = await CategoryServices.createCategory(title, image);
+    res.status(201).json({ message: 'success', category });
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+};
+
+exports.updateCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, image } = req.body;
+
+    const category = await CategoryServices.getCategoryById(id);
+
+    if (category) {
+      const updatedCategory = await CategoryServices.updateCategory(id, {
+        title,
+        image,
+      });
+      res.status(200).json({ message: 'success', updatedCategory });
+    } else {
+      res.status(404).json({ message: 'Category not found' });
+    }
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+};
+
+exports.deleteCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const category = await CategoryServices.getCategoryById(id);
+    if (!category) {
+      res.status(404).json({ message: 'Category not found' });
+    }
+    await CategoryServices.deleteCategory(id);
+    res.status(200).json({ message: 'success' });
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+};
