@@ -7,8 +7,20 @@ module.exports = {
       "Favorites",
       [
         {
-          userId: 1,
+          userId: 2,
           productId: 1,
+        },
+        {
+          userId: 2,
+          productId: 2,
+        },
+        {
+          userId: 2,
+          productId: 3,
+        },
+        {
+          userId: 2,
+          productId: 4,
         },
       ],
       {}

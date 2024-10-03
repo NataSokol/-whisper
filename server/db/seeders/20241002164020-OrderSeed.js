@@ -8,9 +8,9 @@ module.exports = {
       [
         {
           total: 34567,
-          comment: "test",
-          adress: "test",
-          status: "test",
+          comment: "доставьте до двери",
+          adress: "курсы Эльбрус",
+          status: "отправлен",
           userId: 1,
         },
       ],

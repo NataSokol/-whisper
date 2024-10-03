@@ -7,7 +7,7 @@ module.exports = {
       "UserVouchers",
       [
         {
-          userId: 1,
+          userId: 2,
           voucherId: 1,
         },
       ],

@@ -7,7 +7,16 @@ module.exports = {
       "Vouchers",
       [
         {
-          title: "test",
+          title: "cupon1",
+        },
+        {
+          title: "cupon2",
+        },
+        {
+          title: "cupon3",
+        },
+        {
+          title: "cupon4",
         },
       ],
       {}

@@ -24,39 +24,33 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       length: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       width: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       chestGirth: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       waistGirth: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       hipGirth: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       chestUnderGirth: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       frontLength: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       externalSeamLength: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       innerSeamLength: {
-        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      sleeveLength: {
         type: Sequelize.INTEGER,
       },
       quantity: {

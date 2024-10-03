@@ -7,8 +7,39 @@ module.exports = {
       "Images",
       [
         {
-          url: "test",
+          url: "http://placehold.it/120x100/",
           productId: 1,
+        },
+        {
+          url: "http://placehold.it/120x100/",
+          productId:1,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 1,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 2,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 2,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 3,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 3,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 4,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 4,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 5,
+        },        {
+          url: "http://placehold.it/120x100/",
+          productId: 5,
         },
       ],
       {}

@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       OrderItem,
       ProductSize,
       Category,
+      Subcategory,
       Collection,
       CartItem,
       User,
@@ -19,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(ProductSize, { foreignKey: 'productId' });
       this.belongsTo(Collection, { foreignKey: 'collectionId' });
       this.belongsTo(Category, { foreignKey: 'categoryId' });
+      this.belongsTo(Subcategory, { foreignKey: 'subcategoryId' });
       this.hasMany(OrderItem, { foreignKey: 'productId' });
       this.belongsToMany(User, { through: Favorite, foreignKey: 'productId' });
       this.hasMany(Image, { foreignKey: 'productId' });
@@ -43,7 +45,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       salePrice: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       description: {
@@ -73,6 +74,16 @@ module.exports = (sequelize, DataTypes) => {
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
+      },
+      subcategoryId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Subcategories",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
     },
     {

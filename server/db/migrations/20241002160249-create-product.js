@@ -18,7 +18,6 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       salePrice: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       description: {
@@ -44,6 +43,16 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: "Categories",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      subcategoryId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Subcategories",
           key: "id",
         },
         onUpdate: "CASCADE",
