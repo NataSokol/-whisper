@@ -1,3 +1,12 @@
 body {
-    background-color: rgba(0, 0, 0, 0.514);
+  background-color: rgb(0 0 0 / 51.4%);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  color: white;
 }
