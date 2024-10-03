@@ -1,0 +1,39 @@
+.footer {
+  width: 100%;
+}
+
+.footerContainer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+
+.containerLinks {
+  border-bottom: 1px solid rgb(0 0 0);
+}
+
+.containerPolicy,
+.containerLinks {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+.footerMenuLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerTitleLinks {
+  margin-bottom: 16px;
+  font-weight: bolder;
+}
+
+.footerLinkPolicy {
+  margin-right: 25px;
+}
+
+.footerLink {
+  margin-bottom: 8px;
+}

@@ -1,3 +1,15 @@
+@import url("fonts.css");
+
 body {
-    background-color: rgba(0, 0, 0, 0.514);
+  background-color: white;
+  font-family: "Lucida Grande", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0 0 0);
+}
+
+a:visited {
+  color: rgb(0 0 0);
 }

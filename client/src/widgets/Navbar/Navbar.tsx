@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
         setSearchValue("");
         setTimeout(() => {
           setIsSearchActive(false);
-        }, 300); 
+        }, 300);
       }
     };
 
@@ -58,11 +58,11 @@ export const Navbar: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.navbarButton}>
         <button className={styles.button}>
-          <img src="../../public/menu.svg" alt="" />
+          <img src="../../public/img/menu.svg" alt="" />
         </button>
       </div>
       <div className={styles.navbarLogo}>
-        <img src="../../public/logo.svg" alt="" />
+        <img src="../../public/img/logo.svg" alt="" />
       </div>
       <div
         className={`${styles.navbarLinks} ${
@@ -77,7 +77,7 @@ export const Navbar: React.FC = () => {
         >
           <div className={styles.searchContent}>
             <img
-              src="../../public/search.svg"
+              src="../../public/img/search.svg"
               alt=""
               className={styles.searchIcon}
               onClick={handleSearchClick}
@@ -98,19 +98,19 @@ export const Navbar: React.FC = () => {
           <>
             <button className={styles.button}>
               <Link to={ROUTES.FAVORITES}>
-                <img src="../../public/favorites.svg" alt="" />
+                <img src="../../public/img/favorites.svg" alt="" />
               </Link>
             </button>
             <button className={styles.button}>
               <Link to={ROUTES.PROFILE}>
-                <img src="../../public/user.svg" alt="" />
+                <img src="../../public/img/user.svg" alt="" />
               </Link>
             </button>
           </>
         )}
         <button className={styles.button}>
           <Link to={ROUTES.CART}>
-            <img src="../../public/cart.svg" alt="" />
+            <img src="../../public/img/cart.svg" alt="" />
           </Link>
         </button>
       </div>
