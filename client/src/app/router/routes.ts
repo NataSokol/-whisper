@@ -7,3 +7,7 @@ export enum ROUTES {
   CART = "/cart",
   ERROR = "*",
 }
+
+export function getCollectionRoute(id: number): string {
+  return `/collection/${id}`;
+}

@@ -1,3 +1,4 @@
+import { axiosInstance } from "@/shared/lib/axiosInstance";
 import { CollectionListResponse } from "../model";
 
 export class CollectionService {
@@ -12,3 +13,5 @@ export class CollectionService {
     }
   }
 }
+
+

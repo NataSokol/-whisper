@@ -1,5 +1,5 @@
 import userCategoryReducer from "./model/UserCategorySlice";
-import adminCategoryReducer from "./model/AdminCategorySlice";
+import adminCategoryReducer from "./model/UserCategorySlice";
 
 export { CategoryItem } from "./ui/CategoryItem";
 export { CategoryServices } from "./api";

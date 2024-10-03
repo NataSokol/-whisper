@@ -1,5 +1,6 @@
 //? способ создания хранилища в Redux, который автоматически включает ряд полезных настроек
 import { adminCategoryReducer, userCategoryReducer } from "@/entities/category";
+import { collectionReducer } from "@/entities/collection";
 import { configureStore } from "@reduxjs/toolkit";
 
 //? редуктор пользователя из файла userSlice.ts. Редуктор отвечает за управление состоянием пользователя в приложении.
@@ -8,6 +9,7 @@ const store = configureStore({
   reducer: {
     adminCategory: adminCategoryReducer,
     userCategory: userCategoryReducer,
+    collection: collectionReducer,
   },
 });
 

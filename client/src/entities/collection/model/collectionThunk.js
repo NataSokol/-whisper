@@ -1,7 +1,0 @@
-
-
-type RejectValue = {
-    message: string;
-  };
-
-  
