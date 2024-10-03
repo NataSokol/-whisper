@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # my fileData
-.privateData.js
+privateData.js
