@@ -15,5 +15,7 @@ export enum ROUTES {
   FEEDBACK = "/feedback",
   POLICY = "/policy",
   OFERTA = "/oferta",
+  TG = 'https://t.me/shepothome',
+  VK = 'https://vk.com/shepot.home',
   ERROR = "*",
 }
