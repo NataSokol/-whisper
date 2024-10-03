@@ -12,6 +12,7 @@ exports.getAllCollections = async (req, res) => {
 exports.getCollectionById = async (req, res) => {
   try {
     const { id } = req.params;
+
     const collection = await CollectionServices.getCollectionById(id);
     res.status(200).json({ message: 'success', collection });
   } catch ({ message }) {
@@ -22,6 +23,7 @@ exports.getCollectionById = async (req, res) => {
 exports.createCollection = async (req, res) => {
   try {
     const { title, image } = req.body;
+    
     const collection = await CollectionServices.createCollection(title, image);
     res.status(201).json({ message: 'success', collection });
   } catch ({ message }) {
@@ -33,6 +35,7 @@ exports.updateCollection = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, image } = req.body;
+
     const collection = await CollectionServices.updateCollection(id, {
       title,
       image,
@@ -46,6 +49,7 @@ exports.updateCollection = async (req, res) => {
 exports.deleteCollection = async (req, res) => {
   try {
     const { id } = req.params;
+    
     const collection = await CollectionServices.getCollectionById(id);
     if (!collection) {
       res.status(404).json({ message: 'Collection not found' });

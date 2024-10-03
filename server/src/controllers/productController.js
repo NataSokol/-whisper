@@ -12,6 +12,7 @@ exports.getAllProducts = async (req, res) => {
 exports.getProductById = async (req, res) => {
   try {
     const { id } = req.params;
+
     const product = await ProductServices.getProductById(id);
     res.status(200).json({ message: 'success', product });
   } catch ({ message }) {
@@ -22,6 +23,7 @@ exports.getProductById = async (req, res) => {
 exports.createProduct = async (req, res) => {
   try {
     const { title, price, salePrice, description, composition } = req.body;
+
     const product = await ProductServices.createProduct(
       title,
       price,
@@ -43,6 +45,7 @@ exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, price, salePrice, description, composition } = req.body;
+
     const product = await ProductServices.updateProduct(
       id,
       title,
@@ -60,6 +63,7 @@ exports.updateProduct = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
+    
     const product = await ProductServices.getProductById(id);
     if (!product) {
       res.status(404).json({ message: 'Product not found' });

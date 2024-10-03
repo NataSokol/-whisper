@@ -1,4 +1,4 @@
-const { Category } = require('../db/models');
+const { Category } = require('../../db/models');
 
 class CategoryServices {
   // получить все категории

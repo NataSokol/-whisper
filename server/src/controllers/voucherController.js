@@ -12,6 +12,7 @@ exports.getAllVouchers = async (req, res) => {
 exports.getVoucherById = async (req, res) => {
   try {
     const { id } = req.params;
+
     const voucher = await VoucherServices.getVoucherById(id);
     res.status(200).json({ message: 'success', voucher });
   } catch ({ message }) {
@@ -22,6 +23,7 @@ exports.getVoucherById = async (req, res) => {
 exports.createVoucher = async (req, res) => {
   try {
     const { title } = req.body;
+
     const voucher = await VoucherServices.createVoucher(title);
     res.status(201).json({ message: 'success', voucher });
   } catch ({ message }) {
@@ -33,6 +35,7 @@ exports.updateVoucher = async (req, res) => {
   try {
     const { id } = req.params;
     const { title } = req.body;
+
     const voucher = await VoucherServices.updateVoucher(id, { title });
     res.status(200).json({ message: 'success', voucher });
   } catch ({ message }) {
@@ -43,6 +46,7 @@ exports.updateVoucher = async (req, res) => {
 exports.deleteVoucher = async (req, res) => {
   try {
     const { id } = req.params;
+    
     const voucher = await VoucherServices.getVoucherById(id);
     if (!voucher) {
       res.status(404).json({ message: 'Voucher not found' });

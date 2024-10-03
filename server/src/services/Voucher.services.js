@@ -1,4 +1,4 @@
-const { Voucher } = require('../db/models');
+const { Voucher } = require('../../db/models');
 
 class VoucherServices {
   static getAllVouchers = async () => {
@@ -11,6 +11,8 @@ class VoucherServices {
     return voucher ? voucher.get() : null;
   };
 
+  // АДМИНКА
+  // создать сертификат
   static createVoucher = async (title) => {
     const voucher = await Voucher.create({ title });
     return voucher.get();

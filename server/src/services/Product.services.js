@@ -1,4 +1,4 @@
-const { Product } = require('../db/models');
+const { Product } = require('../../db/models');
 
 class ProductServices {
   // получить все продукты

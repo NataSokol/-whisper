@@ -1,4 +1,4 @@
-const { Collection } = require('../db/models');
+const { Collection } = require('../../db/models');
 
 class CollectionServices {
   // получить все коллекции
