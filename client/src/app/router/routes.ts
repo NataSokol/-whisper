@@ -19,3 +19,7 @@ export enum ROUTES {
   VK = 'https://vk.com/shepot.home',
   ERROR = "*",
 }
+
+export function getCollectionRoute(id: number): string {
+  return `/collection/${id}`;
+}

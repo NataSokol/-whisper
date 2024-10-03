@@ -46,11 +46,11 @@ exports.updateCategory = async (req, res) => {
 
     const category = await CategoryServices.getCategoryById(id);
     if (category) {
-      const updatedCategory = await CategoryServices.updateCategory(id, {
+      const category = await CategoryServices.updateCategory(id, {
         title,
         image,
       });
-      res.status(200).json({ message: 'success', updatedCategory });
+      res.status(200).json({ message: 'success', category });
     } else {
       res.status(404).json({ message: 'Category not found' });
     }
