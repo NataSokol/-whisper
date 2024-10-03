@@ -7,9 +7,24 @@ module.exports = {
       "Colors",
       [
         {
-          title: "test",
-          image: "test",
-          colorCode: "test",
+          title: "черный",
+          colorCode: "#000000",
+        },
+        {
+          title: "слоновая кость",
+          colorCode: "#FAEBD7",
+        },
+        {
+          title: "серый",
+          colorCode: "#A9A9A9",
+        },
+        {
+          title: "белый",
+          colorCode: "#FFFFFF",
+        },
+        {
+          title: "розовый",
+          colorCode: "#DB7093",
         },
       ],
       {}

@@ -7,8 +7,16 @@ module.exports = {
       "Collections",
       [
         {
-          title: "test",
-          image: "test",
+          title: "Летящий шепот",
+          image: "http://placehold.it/120x100/",
+        },
+        {
+          title: "Мягкий шепот",
+          image: "http://placehold.it/120x100/",
+        },
+        {
+          title: "Свободный шепот",
+          image: "http://placehold.it/120x100/",
         },
       ],
       {}

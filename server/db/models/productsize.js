@@ -25,39 +25,33 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       length: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       width: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       chestGirth: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       waistGirth: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       hipGirth: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       chestUnderGirth: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       frontLength: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       externalSeamLength: {
-        allowNull: false,
         type: DataTypes.INTEGER,
       },
       innerSeamLength: {
-        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      sleeveLength: {
         type: DataTypes.INTEGER,
       },
       quantity: {

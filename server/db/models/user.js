@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
   User.init(
     {
       phone: {
-        allowNull: false,
         unique: true,
         type: DataTypes.TEXT,
       },
@@ -26,22 +25,19 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       name: {
-        allowNull: false,
         type: DataTypes.TEXT,
       },
       surname: {
-        allowNull: false,
         type: DataTypes.TEXT,
       },
       birthday: {
-        allowNull: false,
         type: DataTypes.DATE,
       },
       address: {
-        allowNull: false,
         type: DataTypes.TEXT,
       },
       isAdmin: {
+        defaultValue: false,
         allowNull: false,
         type: DataTypes.BOOLEAN,
       },
