@@ -5,7 +5,7 @@ import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 type Props = {
   category: Category;
   onCategoryDelete?: (id: number) => void;
-  onCategoryUpdate: (id: number, title: string) => void;
+  onCategoryUpdate?: (id: number, title: string) => void;
 };
 
 export const CategoryItem: React.FC<Props> = ({
@@ -26,7 +26,7 @@ export const CategoryItem: React.FC<Props> = ({
   };
 
   const handleUpdate = async () => {
-    onCategoryUpdate(category.id, title);
+    onCategoryUpdate?.(category.id, title);
     setIsEditing(false);
   };
 

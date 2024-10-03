@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ROUTES } from "./routes";
 import Layout from "./Layout/Layout";
- import {MainPage} from "@/pages/MainPage/MainPage";
+//  import {MainPage} from "@/pages/MainPage/MainPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,10 +23,10 @@ export const router = createBrowserRouter([
       //         <CartPage />
       //     ),
       //   },
-      {
-        path: ROUTES.HOME,
-        element: <MainPage />,
-      },
+      // {
+      //   path: ROUTES.HOME,
+      //   element: <MainPage />,
+      // },
     //   {
     //     path: ROUTES.FAVORITES,
     //     element: <FavoritesPage />,
