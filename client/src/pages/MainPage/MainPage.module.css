@@ -1,0 +1,32 @@
+.container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoContainer {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoContainer button {
+    position: absolute;
+    left: auto;
+    bottom: 160px;
+    width: 150px;
+    height: 40px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
