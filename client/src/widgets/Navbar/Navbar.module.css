@@ -1,3 +1,4 @@
+/* Container styles */
 .container {
   position: fixed;
   top: 0;
@@ -6,14 +7,116 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.374);
+  background-color: transparent;
   padding: 0 30px;
+  transition: background-color 0.3s ease;
 }
 
+.container:hover {
+  background-color: white;
+}
+
+/* Logo */
+.navbarLogo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Menu button */
+.navbarButton {
+  position: relative;
+  z-index: 1;
+}
+
+/* Navbar links */
 .navbarLinks {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.navbarLinks .button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.navbarLinks .button:not(:first-child) {
+  margin-left: 25px;
+}
+
+/* Search container */
+.searchContainer {
+  position: relative;
+  width: 0;
+  transition: width 0.3s ease;
+  margin-right: 25px;
+  margin-bottom: 3px;
+}
+
+.searchContainer.active {
+  width: 289px;
+  margin-right: 0;
+}
+
+.searchContainer.focused .searchContent::after {
+  transform: translateY(11px);
+}
+
+/* Search content */
+.searchContent {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchContent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: black;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+}
+
+/* Search icon */
+.searchIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Search input */
+.searchInput {
+  flex: 1;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  margin-left: 11px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.searchContainer.active .searchInput {
+  opacity: 1;
+}
+
+.searchInput::placeholder {
+  color: #00000096;
+}
+
+/* Hide input when not active */
+.searchContainer:not(.active) .searchInput {
+  pointer-events: none;
 }
 
 .button {
