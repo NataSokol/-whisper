@@ -1,10 +1,10 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class UserVoucher extends Model {
     static associate({ User, Voucher }) {
-this.hasMany(User, { foreignKey: "userId" });
-this.hasMany(Voucher, { foreignKey: "voucherId" });
+      this.belongsTo(User, { foreignKey: 'userId' });
+      this.belongsTo(Voucher, { foreignKey: 'voucherId' });
     }
   }
   UserVoucher.init(
@@ -13,25 +13,25 @@ this.hasMany(Voucher, { foreignKey: "voucherId" });
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: "Users",
-          key: "id",
+          model: 'Users',
+          key: 'id',
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       voucherId: {
         allowNull: false,
         type: DataTypes.INTEGER,
 
         references: {
-          model: "Vouchers",
-          key: "id",
+          model: 'Vouchers',
+          key: 'id',
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
     },
-    { sequelize, modelName: "UserVoucher" }
+    { sequelize, modelName: 'UserVoucher' }
   );
   return UserVoucher;
 };

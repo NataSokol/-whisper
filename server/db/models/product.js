@@ -1,6 +1,6 @@
-"use strict";
-const { Model } = require("sequelize");
-const productquantity = require("./productquantity");
+'use strict';
+const { Model } = require('sequelize');
+// const productquantity = require("./productquantity");
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate({
@@ -12,21 +12,23 @@ module.exports = (sequelize, DataTypes) => {
       Category,
       Collection,
       CartItem,
-
+      User,
+      Color,
+      Cart,
     }) {
-      this.hasMany(ProductSize, { foreignKey: "productId" });
-      this.belongsTo(Collection, { foreignKey: "collectionId" });
-      this.belongsTo(Category, { foreignKey: "categoryId" });
-      this.hasMany(OrderItem, { foreignKey: "productId" });
-      this.belongsToMany(User, { through: Favorite, foreignKey: "productId" });
-      this.hasMany(Image, { foreignKey: "productId" });
+      this.hasMany(ProductSize, { foreignKey: 'productId' });
+      this.belongsTo(Collection, { foreignKey: 'collectionId' });
+      this.belongsTo(Category, { foreignKey: 'categoryId' });
+      this.hasMany(OrderItem, { foreignKey: 'productId' });
+      this.belongsToMany(User, { through: Favorite, foreignKey: 'productId' });
+      this.hasMany(Image, { foreignKey: 'productId' });
       this.belongsToMany(Color, {
         through: ColorProduct,
-        foreignKey: "productId",
+        foreignKey: 'productId',
       });
       this.belongsToMany(Cart, {
         through: CartItem,
-        foreignKey: "productId",
+        foreignKey: 'productId',
       });
     }
   }
@@ -56,26 +58,26 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: "Collections",
-          key: "id",
+          model: 'Collections',
+          key: 'id',
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       categoryId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         references: {
-          model: "Categories",
-          key: "id",
+          model: 'Categories',
+          key: 'id',
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
     },
     {
       sequelize,
-      modelName: "Product",
+      modelName: 'Product',
     }
   );
   return Product;
