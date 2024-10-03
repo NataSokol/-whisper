@@ -1,42 +1,119 @@
-// Navbar.tsx
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
 
 export const Navbar: React.FC = () => {
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleSearchClick = () => {
+    setIsSearchActive(true);
+    setTimeout(() => {
+      const input = searchContainerRef.current?.querySelector("input");
+      input?.focus();
+    }, 0);
+  };
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchInputFocus = () => {
+    setIsInputFocused(true);
+  };
+
+  const handleSearchInputBlur = () => {
+    setIsInputFocused(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target as Node)
+      ) {
+        setIsInputFocused(false);
+        setSearchValue("");
+        setTimeout(() => {
+          setIsSearchActive(false);
+        }, 300); 
+      }
+    };
+
+    if (isSearchActive) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSearchActive]);
+
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.navbarButton}>
-          <button className={styles.button}>
-            <img src="../../public/menu.svg" alt="" />
-          </button>
-        </div>
-        <div className={styles.navbarLogo}>
-          <img src="../../public/logo.svg" alt="" />
-        </div>
-        <div className={styles.navbarLinks}>
-          <button className={styles.button}>
-            <img src="../../public/search.svg" alt="" />
-          </button>
-          <button className={styles.button}>
-            <Link to={ROUTES.FAVORITES}>
-              <img src="../../public/favorites.svg" alt="" />
-            </Link>
-          </button>
-          <button className={styles.button}>
-            <Link to={ROUTES.PROFILE}>
-              <img src="../../public/user.svg" alt="" />
-            </Link>
-          </button>
-          <button className={styles.button}>
-            <Link to={ROUTES.CART}>
-              <img src="../../public/cart.svg" alt="" />
-            </Link>
-          </button>
-        </div>
+    <div className={styles.container}>
+      <div className={styles.navbarButton}>
+        <button className={styles.button}>
+          <img src="../../public/menu.svg" alt="" />
+        </button>
       </div>
-    </>
+      <div className={styles.navbarLogo}>
+        <img src="../../public/logo.svg" alt="" />
+      </div>
+      <div
+        className={`${styles.navbarLinks} ${
+          isSearchActive ? styles.hideButtons : ""
+        }`}
+      >
+        <div
+          className={`${styles.searchContainer} ${
+            isSearchActive ? styles.active : ""
+          } ${isInputFocused ? styles.focused : ""}`}
+          ref={searchContainerRef}
+        >
+          <div className={styles.searchContent}>
+            <img
+              src="../../public/search.svg"
+              alt=""
+              className={styles.searchIcon}
+              onClick={handleSearchClick}
+            />
+            <input
+              type="text"
+              className={styles.searchInput}
+              placeholder="Что вы хотите найти?"
+              value={searchValue}
+              onChange={handleSearchInputChange}
+              onFocus={handleSearchInputFocus}
+              onBlur={handleSearchInputBlur}
+              maxLength={30}
+            />
+          </div>
+        </div>
+        {!isSearchActive && (
+          <>
+            <button className={styles.button}>
+              <Link to={ROUTES.FAVORITES}>
+                <img src="../../public/favorites.svg" alt="" />
+              </Link>
+            </button>
+            <button className={styles.button}>
+              <Link to={ROUTES.PROFILE}>
+                <img src="../../public/user.svg" alt="" />
+              </Link>
+            </button>
+          </>
+        )}
+        <button className={styles.button}>
+          <Link to={ROUTES.CART}>
+            <img src="../../public/cart.svg" alt="" />
+          </Link>
+        </button>
+      </div>
+    </div>
   );
 };
