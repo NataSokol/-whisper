@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./MainPage.module.css";
 import { ROUTES } from "@/app/router/routes";
 import { Link } from "react-router-dom";
+import { CollectionList } from "@/widgets/CollectionList";
 
 export const MainPage: React.FC = () => {
   return (
@@ -9,20 +10,23 @@ export const MainPage: React.FC = () => {
     <div className={styles.videoContainer}>
         <img src="http://placehold.it/1480x780/" alt="к покупкам" />
         {/* <video src=""></video> */}
-        <button><Link className={styles.link} to={ROUTES.CATALOG}>к покупкам</Link></button>
+        <Link className={styles.linkOnVideo} to={ROUTES.CATALOG}><button className={styles.button}>к покупкам</button></Link>
         
     </div>
     <div className={styles.collections}>
         <div className={styles.headers}>
-            <div>коллекции</div>
-            {/* <link>смотреть все</link> */}
+            <div>КОЛЛЕКЦИИ</div>
+            <Link to={ROUTES.CATALOG}>Cмотреть все</Link>
         </div>
-        {/* collections.map */}
+        <CollectionList/>
     </div>
-    <div className={styles.catalogLink}>
+    <div className={styles.discountLink}>
         <img src="http://placehold.it/1344x500/" alt="к покупкам" />
-        <button><Link className={styles.link} to={ROUTES.CATALOG}>к покупкам</Link></button>
-    
+        <div className={styles.discount}>
+<p>ПОЛУЧИТЕ СКИДКУ</p>
+<p>от 3-х позиций в корзине</p>
+        <Link className={styles.link} to={ROUTES.CATALOG}><button>к покупкам</button></Link>
+        </div>
     </div>
   </div>
   )
