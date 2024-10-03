@@ -35,6 +35,12 @@
   z-index: 1;
 }
 
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .navbarLinks .button {
   background: none;
   border: none;
@@ -109,10 +115,4 @@
 
 .searchContainer:not(.active) .searchInput {
   pointer-events: none;
-}
-
-.button {
-  background: none;
-  border: none;
-  cursor: pointer;
 }

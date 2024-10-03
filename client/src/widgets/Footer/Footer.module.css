@@ -1,18 +1,15 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  z-index: 999;
 }
 
 .footerContainer {
-  max-width: 1819px; 
-  margin: 0 30px; 
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
 }
 
 .containerLinks {
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(0 0 0);
 }
 
 .containerPolicy,
