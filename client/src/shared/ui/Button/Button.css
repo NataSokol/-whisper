@@ -1,0 +1,20 @@
+.Button {
+  cursor: pointer;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.primary {
+  background-color: #24b050;
+}
+
+.secondary {
+  background-color: #6c757d;
+}
+
+.danger {
+  background-color: #dc3545;
+}
