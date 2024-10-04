@@ -1,0 +1,1 @@
+export { AdminFromCategory } from "./AdminFromCategory";
