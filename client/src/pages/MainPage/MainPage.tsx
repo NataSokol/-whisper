@@ -23,7 +23,7 @@ export const MainPage: React.FC = () => {
         <CollectionList />
       </div>
       <div className={styles.discountLink}>
-        <img src="http://placehold.it/1344x500/" alt="к покупкам" />
+        <img src="../../public/img/whisper2.jpg" alt="к покупкам" />
         <div className={styles.discount}>
           <p>ПОЛУЧИТЕ СКИДКУ</p>
           <p>от 3-х позиций в корзине</p>
