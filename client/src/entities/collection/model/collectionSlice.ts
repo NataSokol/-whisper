@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CollectionList } from ".";
-import { getAllCollections } from "./collectionThunk";
+import { createCollection, deleteCollection, getAllCollections, updateCollection } from "./collectionThunk";
 
 
 type CollectionState = {
@@ -21,6 +21,7 @@ type CollectionState = {
     reducers: {},
     extraReducers: (builder) => {
       builder
+      //! ------------------- get
         .addCase(getAllCollections.pending, (state) => {
           state.loading = true;
         })
@@ -31,7 +32,49 @@ type CollectionState = {
         .addCase(getAllCollections.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message || "Something went wrong";
-        });
+        })
+        //! ------------------- create 
+        .addCase(createCollection.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(createCollection.fulfilled, (state, action) => {
+          state.loading = false;
+          state.collections.push(action.payload.collection);
+        })
+        .addCase(createCollection.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message || "Something went wrong";
+        })
+        //! ------------------- update
+        .addCase(updateCollection.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(updateCollection.fulfilled, (state, action) => {
+          state.loading = false;
+          state.collections = state.collections.map((collection) =>
+            collection.id === action.payload.collection.id
+              ? action.payload.collection
+              : collection
+          );
+        })
+        .addCase(updateCollection.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message || "Something went wrong";
+        })
+        //! ------------------- delete
+        .addCase(deleteCollection.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(deleteCollection.fulfilled, (state, action) => {
+          state.loading = false;
+          state.collections = state.collections.filter(
+            (collection) => collection.id !== action.meta.arg.id
+          );
+        })
+        .addCase(deleteCollection.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message || "Something went wrong";
+        })
     },
   });   
 

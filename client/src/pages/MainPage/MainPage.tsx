@@ -1,4 +1,3 @@
-// MainPage.tsx
 import React from "react";
 import styles from "./MainPage.module.css";
 import { ROUTES } from "@/app/router/routes";
@@ -42,3 +41,4 @@ export const MainPage: React.FC = () => {
     </div>
   );
 };
+

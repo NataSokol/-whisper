@@ -28,8 +28,12 @@ export class CategoryServices {
     }
   }
 
-  static async deleteCategory(id: number) {
+  static async deleteCategory(id: number): Promise<void> {
     const response = await axiosInstance.delete(`/categories/${id}`);
-    return response.data;
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error("Failed to delete category");
+    }
   }
 }
