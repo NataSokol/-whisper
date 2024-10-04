@@ -1,15 +1,28 @@
+import React, { useEffect } from "react";
 import { Footer } from "@/widgets/Footer";
 import { Navbar } from "@/widgets/Navbar";
-import React from "react";
 import { Outlet } from "react-router-dom";
-import styles from "./Layout.module.css";
+import { useAppDispatch } from "@/shared/hooks/reduxHooks";
 import { SocialMediaButton } from "@/shared/ui/SocialMediaButton";
+import { refreshAccessToken } from "@/entities/user";
+import { NavbarAdmin } from "@/widgets/NavbarAdmin";
+import styles from "./Layout.module.css";
 
+interface LayoutProps {
+  isAdmin?: boolean;
+}
+      
+const Layout: React.FC<LayoutProps> = ({ isAdmin = true }) => {
+  const dispatch = useAppDispatch();
 
-const Layout: React.FC = () => {
+  useEffect(() => {
+    dispatch(refreshAccessToken());
+  }, [dispatch]);
+    
   return (
     <>
       <Navbar />
+      {isAdmin && <NavbarAdmin />}
       <main className={styles.root}>
         <Outlet />
       </main>

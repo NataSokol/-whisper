@@ -1,0 +1,23 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; 
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.input {
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  width: 300px; 
+  font-size: 16px; 
+}
+
+.button {
+  padding: 10px 20px; 
+}

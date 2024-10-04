@@ -15,7 +15,7 @@ export const CategoryList: React.FC = () => {
     <div>
       {categories.map((category) => (
         <div key={category.id}>
-          <CategoryItem category={category}  />
+          <CategoryItem category={category} />
         </div>
       ))}
     </div>
