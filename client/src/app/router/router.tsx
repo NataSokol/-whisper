@@ -65,7 +65,10 @@ export const router = createBrowserRouter([
         path: ROUTES.SIGNUP,
         element: <SignUpPage />,
       },
-
+      {
+        path: `${ROUTES.CATALOG}/:productId`,
+        element: < />,
+      },
 
     //   {
     //     path: ROUTES.FAVORITES,
