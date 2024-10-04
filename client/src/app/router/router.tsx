@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { MainPage, SignInPage, SignUpPage, TaskPage } from "@/pages";
+import { MainPage, SignInPage, SignUpPage} from "@/pages";
 import { ROUTES } from "./routes";
 import Layout from "./Layout/Layout";
 import AdminPage from '@/pages/AdminPage/ui/AdminPage';
