@@ -1,0 +1,18 @@
+.categoryListContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 20px;
+  padding-top: 30px;
+  border-radius: 17px;
+  background-color: #9c9c9c; 
+}
+
+.categoryContainer {
+  margin-bottom: 17px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 17px; 
+  background-color: white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}

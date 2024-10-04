@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
+import React from 'react';
 import './Button.css';
 
 export enum ThemeButton {

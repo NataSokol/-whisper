@@ -9,7 +9,6 @@ const store = configureStore({
     adminCategory: adminCategoryReducer,
     userCategory: userCategoryReducer,
     collection: collectionReducer,
-
   },
 });
 

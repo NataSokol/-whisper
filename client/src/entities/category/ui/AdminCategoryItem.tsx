@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { Category } from "@/entities/category";
+import { Category } from "../model";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+// import styles from "./AdminCategoryItem.module.css";
 
 type Props = {
   category: Category;
-  onCategoryDelete?: (id: number) => void;
+  onCategoryDelete: (id: number) => void;
   onCategoryUpdate: (id: number, title: string) => void;
 };
 
-export const CategoryItem: React.FC<Props> = ({
+export const AdminCategoryItem: React.FC<Props> = ({
   category,
-  onCategoryUpdate,
   onCategoryDelete,
+  onCategoryUpdate,
 }) => {
   const [title, setTitle] = useState(category.title);
   const [isEditing, setIsEditing] = useState(false);
@@ -31,9 +32,7 @@ export const CategoryItem: React.FC<Props> = ({
   };
 
   const handleDelete = () => {
-    if (onCategoryDelete) {
-      onCategoryDelete(category.id);
-    }
+    onCategoryDelete(category.id);
   };
 
   return (
@@ -58,13 +57,13 @@ export const CategoryItem: React.FC<Props> = ({
           <Button theme={ThemeButton.SECONDARY} onClick={handleEdit}>
             Изменить
           </Button>
-          {onCategoryDelete && (
-            <Button theme={ThemeButton.DANGER} onClick={handleDelete}>
-              Удалить
-            </Button>
-          )}
+          <Button theme={ThemeButton.DANGER} onClick={handleDelete}>
+            Удалить
+          </Button>
         </>
       )}
     </div>
   );
 };
+
+export default AdminCategoryItem;
