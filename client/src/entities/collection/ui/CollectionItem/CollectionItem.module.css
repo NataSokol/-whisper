@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.collectionImage {
+    width: 435px;
+    height: 700px;
+    object-fit: cover;
+}
+
+.collectionInfo {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 195px; */
+}
+
+.collectionTitle {
+    width: 180px;
+    font-size: 26px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.collectionLink {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 25px;
+}

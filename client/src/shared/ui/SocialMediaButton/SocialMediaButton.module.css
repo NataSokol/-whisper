@@ -1,0 +1,35 @@
+.container {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.image {
+  width: 40px;
+  transition: 0.5s;
+}
+
+.image:hover {
+  transition: 0.5s;
+  scale: 1.1;
+}

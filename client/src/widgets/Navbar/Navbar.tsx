@@ -1,55 +1,121 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css';
-import { ROUTES } from '@/app/router/routes';
-import { logout, UserCard } from '@/entities/user';
-import Button, { ThemeButton } from '@/shared/ui/Button/Button';
-import Loader from '@/shared/ui/Loader/Loader';
-import { useAppDispatch, useAppSelector } from '@/shared/hooks/reduxHooks';
+
+
+import React, { useState, useRef, useEffect } from "react";
+import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/app/router/routes";
 
 export const Navbar: React.FC = () => {
-  const { user, loading } = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleSearchClick = () => {
+    setIsSearchActive(true);
+    setTimeout(() => {
+      const input = searchContainerRef.current?.querySelector("input");
+      input?.focus();
+    }, 0);
   };
 
-  if (loading) {
-    return (
-      <div className={styles.container}>
-        <Loader />
-      </div>
-    );
-  }
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchInputFocus = () => {
+    setIsInputFocused(true);
+  };
+
+  const handleSearchInputBlur = () => {
+    setIsInputFocused(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target as Node)
+      ) {
+        setIsInputFocused(false);
+        setSearchValue("");
+        setTimeout(() => {
+          setIsSearchActive(false);
+        }, 300);
+      }
+    };
+
+    if (isSearchActive) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSearchActive]);
 
   return (
     <div className={styles.container}>
-      <Button theme={ThemeButton.PRIMARY}>
-        <Link to={ROUTES.HOME}>Home</Link>
-      </Button>
-      <Button theme={ThemeButton.PRIMARY}>
-        <Link to={ROUTES.TASKS}>Tasks</Link>
-      </Button>
-
-      {user ? (
-        <>
-          <UserCard user={user} />
-          <Button theme={ThemeButton.DANGER} onClick={handleLogout}>
-            Logout
-          </Button>
-        </>
-      ) : (
-        <>
-          <Button theme={ThemeButton.PRIMARY}>
-            <Link to={ROUTES.SIGNIN}>Sign In</Link>
-          </Button>
-
-          <Button theme={ThemeButton.PRIMARY}>
-            <Link to={ROUTES.SIGNUP}>Sign Up</Link>
-          </Button>
-        </>
-      )}
+      <div className={styles.navbarButton}>
+        <button className={styles.button}>
+          <img src="../../public/img/menu.svg" alt="" />
+        </button>
+      </div>
+      <div className={styles.navbarLogo}>
+        <img src="../../public/img/logo.svg" alt="" />
+      </div>
+      <div
+        className={`${styles.navbarLinks} ${
+          isSearchActive ? styles.hideButtons : ""
+        }`}
+      >
+        <div
+          className={`${styles.searchContainer} ${
+            isSearchActive ? styles.active : ""
+          } ${isInputFocused ? styles.focused : ""}`}
+          ref={searchContainerRef}
+        >
+          <div className={styles.searchContent}>
+            <img
+              src="../../public/img/search.svg"
+              alt=""
+              className={styles.searchIcon}
+              onClick={handleSearchClick}
+            />
+            <input
+              type="text"
+              className={styles.searchInput}
+              placeholder="Что вы хотите найти?"
+              value={searchValue}
+              onChange={handleSearchInputChange}
+              onFocus={handleSearchInputFocus}
+              onBlur={handleSearchInputBlur}
+              maxLength={30}
+            />
+          </div>
+        </div>
+        {!isSearchActive && (
+          <>
+            <button className={styles.button}>
+              <Link to={ROUTES.FAVORITES}>
+                <img src="../../public/img/favorites.svg" alt="" />
+              </Link>
+            </button>
+            <button className={styles.button}>
+              <Link to={ROUTES.PROFILE}>
+                <img src="../../public/img/user.svg" alt="" />
+              </Link>
+            </button>
+          </>
+        )}
+        <button className={styles.button}>
+          <Link to={ROUTES.CART}>
+            <img src="../../public/img/cart.svg" alt="" />
+          </Link>
+        </button>
+      </div>
     </div>
   );
 };
