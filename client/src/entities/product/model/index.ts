@@ -1,11 +1,28 @@
+import { Category } from "@/entities/category";
+import { Collection } from "@/entities/collection";
+import { ColorList } from "@/entities/color/model";
+import { ImageList } from "@/entities/image";
+import { ProductSizeList } from "@/entities/productsize";
+import { Subcategory } from "@/entities/subcategory/model";
+
 export type Product = {
   id: number;
   title: string;
   description: string;
   price: number;
   image: string;
-//   categoryId: number;
-//   collectionId: number;
+  
+  categoryId: number;
+  collectionId: number;
+  subcategoryId: number;
+
+  Collection: Collection
+  Category: Category;
+  Subcategory: Subcategory;
+  Colors: ColorList;
+  Images: ImageList;
+  ProductSizes: ProductSizeList
+
   createdAt: Date;
   updatedAt: Date;
 };
