@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import { Sidebar } from "../Sidebar";
 
 export const Navbar: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const handleSearchClick = () => {
@@ -54,13 +56,27 @@ export const Navbar: React.FC = () => {
     };
   }, [isSearchActive]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Добавляем обработчик события scroll
+    window.addEventListener("scroll", handleScroll);
+
+    // Очищаем обработчик при размонтировании компонента
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <div className={styles.navbarButton}>
-        <button className={styles.button}>
-          <img src="../../public/img/menu.svg" alt="" />
-        </button>
-      </div>
+    <div className={`${styles.container} ${isScrolled ? styles.scrolled : ""}`}>
+      <Sidebar />
       <div className={styles.navbarLogo}>
         <img src="../../public/img/logo.svg" alt="" />
       </div>

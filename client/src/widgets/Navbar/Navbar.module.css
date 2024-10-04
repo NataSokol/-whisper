@@ -16,6 +16,10 @@
   background-color: white;
 }
 
+.scrolled {
+  background-color: white;
+}
+
 .navbarLogo {
   position: absolute;
   left: 50%;
@@ -65,18 +69,8 @@
   margin-right: 0;
 }
 
-.searchContainer.focused .searchContent::after {
-  transform: translateY(11px);
-}
-
-.searchContent {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
 .searchContent::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -85,6 +79,16 @@
   background-color: black;
   transition: transform 0.3s ease;
   transform: translateY(0);
+}
+
+.searchContainer.focused .searchContent::after {
+  transform: translateY(11px);
+}
+
+.searchContent {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .searchIcon {
