@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
+import { MainPage, SignInPage, SignUpPage, TaskPage } from "@/pages";
 import { ROUTES } from "./routes";
 import Layout from "./Layout/Layout";
 import AdminPage from '@/pages/AdminPage/ui/AdminPage';
 import AdminCategoryPage from '@/pages/AdminPage/ui/AdminCategoryPage';
 import AdminCollections from '@/pages/AdminPage/ui/AdminCollectionPage';
+import { PublicRoute } from "@/shared/ui/PublicRoute";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -28,9 +32,6 @@ export const router = createBrowserRouter([
           // },
         ],
       },
-
-      // ------
-
       //   {
       //     path: ROUTES.AUTH,
       //     element: (
@@ -46,21 +47,41 @@ export const router = createBrowserRouter([
       //         <CartPage />
       //     ),
       //   },
+      
+      {
+        path: ROUTES.HOME,
+        element: <MainPage />,
+      },
 
-      //   {
-      //     path: ROUTES.FAVORITES,
-      //     element: <FavoritesPage />,
-      //   },
+      {
+        path: ROUTES.SIGNIN,
+        element: (
+          <PublicRoute>
+            <SignInPage />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: ROUTES.SIGNUP,
+        element: <SignUpPage />,
+      },
 
-      //   {
-      //     path: ROUTES.PROFILE,
-      //     element: <ProfilePage />,
-      //   },
 
-      //   {
-      //     path: ROUTES.ERROR,
-      //     element: <ErrorPage />,
-      //   },
+    //   {
+    //     path: ROUTES.FAVORITES,
+    //     element: <FavoritesPage />,
+    //   },
+
+    //   {
+    //     path: ROUTES.PROFILE,
+    //     element: <ProfilePage />,
+    //   },
+
+    //   {
+    //     path: ROUTES.ERROR,
+    //     element: <ErrorPage />,
+    //   },
+
     ],
   },
 ]);

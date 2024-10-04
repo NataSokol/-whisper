@@ -1,0 +1,41 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px 40px;
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 60px;
+  position: relative;
+}
+
+.label {
+  font-size: 15px;
+  color: rgb(1, 169, 1);
+}
+
+.input {
+  height: 30px;
+  padding: 0 20px;
+}
+
+.error {
+  font-size: 15px;
+  color: rgb(200, 0, 0);
+}
+
+.button {
+  background-color: rgb(15, 179, 0);
+}
+
+.icon {
+  position: absolute;
+  right: 40px;
+  top: 25px;
+}

@@ -40,24 +40,23 @@
 }
 
 .collections {
-    width: 100%;
+    width: 1344px;
     display: flex;
     flex-direction: column;
-
 }
 
 .headers {
     display: flex;
-    /* width: 50%;   */
+    width: 100%;  
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    margin: 40px
+    justify-content: flex-end;
+    margin: 40px 0px
 }
 
 .headers div {
     margin: 0 auto;
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .discountLink {
@@ -91,4 +90,3 @@
     border-radius: 4px;
     cursor: pointer;
 }
-
