@@ -3,10 +3,12 @@ import styles from "./Sidebar.module.css";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { getAllCategory } from "@/entities/category";
 import { getAllCollections } from "@/entities/collection";
+import { getAllSubcategories } from "@/entities/subcategory";
 
 export const Sidebar: React.FC = () => {
   const { categories } = useAppSelector((state) => state.userCategory);
   const { collections } = useAppSelector((state) => state.collection);
+  const { subcategories } = useAppSelector((state) => state.subcategory);
   const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
@@ -24,6 +26,7 @@ export const Sidebar: React.FC = () => {
   useEffect(() => {
     dispatch(getAllCategory());
     dispatch(getAllCollections());
+    dispatch(getAllSubcategories());
     const handleClickOutside = (event: MouseEvent) => {
       if (
         sidebarRef.current &&
@@ -110,9 +113,11 @@ export const Sidebar: React.FC = () => {
       >
         {activeSubMenu === "homeWear" && (
           <ul className={styles.sidebarList}>
-            <li className={styles.sidebarItem}>ПИЖАМЫ</li>
-            <li className={styles.sidebarItem}>ХАЛАТЫ</li>
-            <li className={styles.sidebarItem}>ТАПОЧКИ</li>
+            {subcategories.map((subcategory) => (
+              <li className={styles.sidebarItem} key={subcategory.id}>
+                {subcategory.title.toUpperCase()}
+              </li>
+            ))}
           </ul>
         )}
         {activeSubMenu === "sportsWear" && (
