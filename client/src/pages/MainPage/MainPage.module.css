@@ -1,93 +1,102 @@
 .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 100px
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-bottom: 100px;
 }
 
 .videoContainer {
-    width: 100%;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
-.catalogLink{
-    width: 100%;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
+.video {
+  width: 100%;
+}
+
+.catalogLink {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 .linkOnVideo {
-    position: absolute;
-    bottom: 160px;
+  position: absolute;
+  bottom: 160px;
 }
 
-.button  {
-    width: 150px;
-    height: 40px;
-    background: none;
-    border: 1px solid black;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
+.button {
+  width: 150px;
+  height: 40px;
+  background: none;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 .collections {
-    width: 1344px;
-    display: flex;
-    flex-direction: column;
+  width: 1344px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .headers {
-    display: flex;
-    width: 100%;  
-    flex-direction: row;
-    justify-content: flex-end;
-    margin: 40px 0px
+  position: relative;
+  width: 100%;
+  margin: 40px 0;
 }
 
-.headers div {
-    margin: 0 auto;
-    font-weight: 400;
-    font-size: 24px;
+.headerTitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.headerLink {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
 }
 
 .discountLink {
-    width: 100%;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.discount {
-    position: absolute;
-    bottom: 80px;
-
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 .discount {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 80px;
 }
 
-.discount button{
-    width: 150px;
-    height: 40px;
-    background: none;
-    border: 1px solid black;
-    border-radius: 4px;
-    cursor: pointer;
+.discount button {
+  width: 150px;
+  height: 40px;
+  background: none;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
 }
-
