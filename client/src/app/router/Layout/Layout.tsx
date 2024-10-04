@@ -1,12 +1,20 @@
+
 import { Footer } from "@/widgets/Footer";
 import { Navbar } from "@/widgets/Navbar";
-import React from "react";
 import { Outlet } from "react-router-dom";
 import styles from "./Layout.module.css";
 import { SocialMediaButton } from "@/shared/ui/SocialMediaButton";
+    import React, { useEffect } from "react";
+import { useAppDispatch } from "@/shared/hooks/reduxHooks";
+import { refreshAccessToken } from "@/entities/user";
 
 
 const Layout: React.FC = () => {
+    const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(refreshAccessToken());
+  }, [dispatch]);
   return (
     <>
       <Navbar />
@@ -17,6 +25,7 @@ const Layout: React.FC = () => {
       <SocialMediaButton />
     </>
   );
+
 };
 
 export default Layout;

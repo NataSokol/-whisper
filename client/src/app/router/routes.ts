@@ -1,5 +1,9 @@
 export enum ROUTES {
   HOME = "/",
+
+  SIGNIN = "/signin",
+  SIGNUP = "/signup",
+  CHECKEMAIL = "/checkemail",
   FAVORITES = "/favorites",
   PROFILE = "/profile",
   CATALOG = "/catalog",
@@ -22,4 +26,5 @@ export enum ROUTES {
 
 export function getCollectionRoute(id: number): string {
   return `/collection/${id}`;
+
 }
