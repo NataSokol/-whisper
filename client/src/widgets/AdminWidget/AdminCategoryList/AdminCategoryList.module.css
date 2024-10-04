@@ -1,11 +1,13 @@
 .categoryListContainer {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 150vh;
+  max-width: none;
   padding: 20px;
   padding-top: 30px;
   border-radius: 17px;
   background-color: #9c9c9c; 
+  box-sizing: border-box;
 }
 
 .categoryContainer {

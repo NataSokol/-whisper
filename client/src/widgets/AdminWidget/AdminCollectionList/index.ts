@@ -1,0 +1,1 @@
+export { AdminCollectionList } from "./AdminCollectionList";

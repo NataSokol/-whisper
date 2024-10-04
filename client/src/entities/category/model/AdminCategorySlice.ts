@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Category } from ".";
+import { CategoryList } from ".";
 import {
   createCategory,
   deleteCategory,
@@ -8,7 +8,7 @@ import {
 } from "./categoryThunk";
 
 type AdminCategoryState = {
-  categories: Category[];
+  categories: CategoryList;
   loading: boolean;
   error: string | null;
 };
@@ -30,7 +30,7 @@ const adminCategorySlice = createSlice({
       })
       .addCase(getAllCategory.fulfilled, (state, action) => {
         state.loading = false;
-        state.categories = action.payload;
+        state.categories = action.payload.categories;
         state.error = null;
       })
       .addCase(getAllCategory.rejected, (state, action) => {

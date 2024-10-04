@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-import styles from "./AdminFromCategory.module.css";
+import styles from "./AdminFormCategory.module.css";
 
-export const AdminFromCategory: React.FC = () => {
+export const AdminFormCategory: React.FC = () => {
   const { handleCreate } = useCategoryActions(); 
   const [title, setTitle] = useState("");
 
@@ -31,4 +31,4 @@ export const AdminFromCategory: React.FC = () => {
   );
 };
 
-export default AdminFromCategory;
+export default AdminFormCategory;

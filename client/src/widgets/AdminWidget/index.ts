@@ -1,2 +1,4 @@
 export { AdminCategoryList } from "./AdminCategoryList";
-export { AdminFromCategory } from "./AdminFromCategory";
+export { AdminFormCategory } from "./AdminFormCategory";
+export { AdminCollectionList } from "./AdminCollectionList";
+export { AdminFormCollection } from "./AdminFormCollection";
