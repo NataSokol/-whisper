@@ -5,12 +5,12 @@ import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 type Props = {
   category: Category;
   onCategoryDelete?: (id: number) => void;
-  onCategoryUpdate: (id: number, title: string) => void;
+  onCategoryUpdate?: (id: number, title: string) => void;
 };
 
 export const CategoryItem: React.FC<Props> = ({
   category,
-  onCategoryUpdate,
+  // onCategoryUpdate,
   onCategoryDelete,
 }) => {
   const [title, setTitle] = useState(category.title);
@@ -25,10 +25,10 @@ export const CategoryItem: React.FC<Props> = ({
     setTitle(category.title);
   };
 
-  const handleUpdate = async () => {
-    onCategoryUpdate(category.id, title);
-    setIsEditing(false);
-  };
+  // const handleUpdate = async () => {
+  //   onCategoryUpdate(category.id, title);
+  //   setIsEditing(false);
+  // };
 
   const handleDelete = () => {
     if (onCategoryDelete) {
@@ -45,9 +45,9 @@ export const CategoryItem: React.FC<Props> = ({
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Button theme={ThemeButton.SECONDARY} onClick={handleUpdate}>
+          {/* <Button theme={ThemeButton.SECONDARY} onClick={handleUpdate}>
             Сохранить
-          </Button>
+          </Button> */}
           <Button theme={ThemeButton.SECONDARY} onClick={handleCancel}>
             Закрыть
           </Button>

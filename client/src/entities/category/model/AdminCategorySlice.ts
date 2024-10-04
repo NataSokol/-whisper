@@ -30,7 +30,7 @@ const adminCategorySlice = createSlice({
       })
       .addCase(getAllCategory.fulfilled, (state, action) => {
         state.loading = false;
-        state.categories = action.payload;
+        state.categories = action.payload.categories;
         state.error = null;
       })
       .addCase(getAllCategory.rejected, (state, action) => {
