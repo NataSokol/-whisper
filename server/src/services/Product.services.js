@@ -1,4 +1,4 @@
-const { Product, Collection, Category, Subcategory } = require('../../db/models');
+const { Product, Collection, Category, Subcategory, Color , Image, ProductSize} = require('../../db/models');
 
 class ProductServices {
   // получить все продукты
@@ -6,7 +6,10 @@ class ProductServices {
     const products = await Product.findAll({include: [
       { model: Collection }, 
       { model: Category }, 
-      { model: Subcategory }
+      { model: Subcategory },
+      { model: Color },
+      { model: Image },
+      { model: ProductSize }
     ] });
     return products.map((product) => product.get());
   };
@@ -16,7 +19,10 @@ class ProductServices {
     const product = await Product.findByPk(id, {include: [
       { model: Collection }, 
       { model: Category }, 
-      { model: Subcategory }
+      { model: Subcategory },
+      { model: Color },
+      { model: Image },
+      { model: ProductSize }
     ]});
     return product ? product.get() : null;
   };
