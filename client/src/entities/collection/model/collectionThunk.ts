@@ -1,16 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {  CollectionListResponse, CollectionResponse } from ".";
+
 import { CollectionService } from "../api";
 import { AxiosError } from "axios";
 
-
-
 type RejectValue = {
-    message: string;
-  };
+  message: string;
+};
 
 export const getAllCollections = createAsyncThunk<
-CollectionListResponse,
+  CollectionListResponse,
   void,
   { rejectValue: RejectValue }
 >("/getAllCollection", async (_, { rejectWithValue }) => {
@@ -25,14 +24,12 @@ CollectionListResponse,
 });
 
 export const createCollection = createAsyncThunk<
-CollectionResponse,
-  {  title: string,
-    image: string,
-  },
+  CollectionResponse,
+  { title: string; image: string },
   { rejectValue: RejectValue }
->("/createCollection", async ({title, image}, { rejectWithValue }) => {
+>("/createCollection", async ({ title, image }, { rejectWithValue }) => {
   try {
-   return await CollectionService.createCollection({title, image});
+    return await CollectionService.createCollection({ title, image });
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -40,18 +37,14 @@ CollectionResponse,
     });
   }
 });
-  
 
 export const updateCollection = createAsyncThunk<
-CollectionResponse,
-  {  id: number,
-    title: string,
-    image: string,
-  },
+  CollectionResponse,
+  { id: number; title: string; image: string },
   { rejectValue: RejectValue }
->("/updateCollection", async ({id, title, image}, { rejectWithValue }) => {
+>("/updateCollection", async ({ id, title, image }, { rejectWithValue }) => {
   try {
-   return await CollectionService.updateCollection(id, {title, image});
+    return await CollectionService.updateCollection(id, { title, image });
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -61,7 +54,7 @@ CollectionResponse,
 });
 
 export const deleteCollection = createAsyncThunk<
-void,
+  void,
   { id: number },
   { rejectValue: RejectValue }
 >("/deleteCollection", async ({ id }, { rejectWithValue }) => {

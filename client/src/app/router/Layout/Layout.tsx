@@ -18,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
   useEffect(() => {
     dispatch(refreshAccessToken());
   }, [dispatch]);
-    
+
   return (
     <>
       <Navbar />
