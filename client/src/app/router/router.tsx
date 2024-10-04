@@ -4,7 +4,7 @@ import { ROUTES } from "./routes";
 import Layout from "./Layout/Layout";
 import AdminPage from '@/pages/AdminPage/AdminPage/AdminPage';
 import { PublicRoute } from "@/shared/ui/PublicRoute";
-
+import ProductPage from "@/pages/ProductPage/ProductPage";
 export const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
@@ -61,10 +61,10 @@ export const router = createBrowserRouter([
         path: ROUTES.SIGNUP,
         element: <SignUpPage />,
       },
-      // {
-      //   path: `${ROUTES.CATALOG}/:productId`,
-      //   element: < />,
-      // },
+      {
+        path: `${ROUTES.CATALOG}/:productId`,
+        element: < ProductPage/>,
+      },
 
     //   {
     //     path: ROUTES.FAVORITES,
