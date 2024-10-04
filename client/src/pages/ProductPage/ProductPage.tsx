@@ -1,31 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './ProductPage.module.css'
+import { useParams } from 'react-router-dom'
+import { useAppDispatch } from '@/shared/hooks/useReduxHooks'
+import { getProduct } from '@/entities/product/model/productThunk'
+import { ProductPageWidget } from '@/widgets/ProductPageWidget'
 
-type ProductPageProps = {
-  
-}
+export const ProductPage: React.FC = () => {
 
-export const ProductPage: React.FC<ProductPageProps> = ({}) => {
+    const {productId} = useParams()
+    const dispatch = useAppDispatch()
 
+    useEffect(() => {
+        if (productId) {
+            dispatch(getProduct(+productId))
+        }
+    }, [dispatch, productId])
   return( 
-  <div className={styles.container}>
-    <div className={styles.imagesContainer}>
-        <img src="" alt="" />
-        <div className={styles.imgCarousel}></div>
-    </div>
-    <div className={styles.infoContainer}>
-        <div className={styles.mainInfo}></div>
-
-
-        <div className={styles.colorPicker}></div>
-
-
-        <button className={styles.button}></button>
-
-        
-        <div className={styles.otherInfo}></div>
-    </div>
-  </div>
+<ProductPageWidget/>
   )
 }
 

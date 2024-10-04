@@ -6,6 +6,7 @@ import AdminPage from '@/pages/AdminPage/ui/AdminPage';
 import AdminCategoryPage from '@/pages/AdminPage/ui/AdminCategoryPage';
 import AdminCollections from '@/pages/AdminPage/ui/AdminCollectionPage';
 import { PublicRoute } from "@/shared/ui/PublicRoute";
+import ProductPage from "@/pages/ProductPage/ProductPage";
 
 
 
@@ -67,7 +68,7 @@ export const router = createBrowserRouter([
       },
       {
         path: `${ROUTES.CATALOG}/:productId`,
-        element: < />,
+        element: < ProductPage/>,
       },
 
     //   {

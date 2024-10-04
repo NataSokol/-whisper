@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductList } from ".";
-import { getAllProducts } from "./productThunk";
+import { Product, ProductList } from ".";
+import { getAllProducts, getProduct } from "./productThunk";
 
 type ProductState = {
-    collections: ProductList;
+    products: ProductList;
+    currProduct: Product | null;
     loading: boolean;
     error: string | null;
   };
 
   const initialState: ProductState = {
-    collections: [],
+    products: [],
+    currProduct: null,
     loading: false,
     error: null,
   };
@@ -26,12 +28,25 @@ type ProductState = {
         })
         .addCase(getAllProducts.fulfilled, (state, action) => {
           state.loading = false;
-          state.collections = action.payload.products;
+          state.products = action.payload.products;
         })
         .addCase(getAllProducts.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message || "Something went wrong";
         })
+    //! ------------------- getOne
+        .addCase(getProduct.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(getProduct.fulfilled, (state, action) => {
+            state.loading = false;
+            state.currProduct = action.payload.product;
+        })
+        .addCase(getProduct.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message || "Something went wrong";
+        })
+
     }
 }) 
 
