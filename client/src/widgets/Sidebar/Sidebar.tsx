@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Sidebar.module.css";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
+import { getAllCategory } from "@/entities/category";
+import { getAllCollections } from "@/entities/collection";
 
 export const Sidebar: React.FC = () => {
+  const { categories } = useAppSelector((state) => state.userCategory);
+  const { collections } = useAppSelector((state) => state.collection);
+  const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -16,6 +22,8 @@ export const Sidebar: React.FC = () => {
   };
 
   useEffect(() => {
+    dispatch(getAllCategory());
+    dispatch(getAllCollections());
     const handleClickOutside = (event: MouseEvent) => {
       if (
         sidebarRef.current &&
@@ -37,7 +45,7 @@ export const Sidebar: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, dispatch]);
 
   return (
     <div className={styles.container}>
@@ -63,7 +71,7 @@ export const Sidebar: React.FC = () => {
             className={styles.sidebarItem}
             onMouseEnter={() => setActiveSubMenu(null)}
           >
-            НОВИНКИ
+            {categories[0]?.title.toUpperCase()}
           </li>
           <li
             className={`${styles.sidebarItem} ${
@@ -71,7 +79,8 @@ export const Sidebar: React.FC = () => {
             }`}
             onMouseEnter={() => setActiveSubMenu("homeWear")}
           >
-            ДОМАШНЯЯ ОДЕЖДА <span className={styles.arrow}>&gt;</span>
+            {categories[1]?.title.toUpperCase()}{" "}
+            <span className={styles.arrow}>&gt;</span>
           </li>
           <li
             className={`${styles.sidebarItem} ${
@@ -79,7 +88,8 @@ export const Sidebar: React.FC = () => {
             }`}
             onMouseEnter={() => setActiveSubMenu("sportsWear")}
           >
-            ДЛЯ СПОРТА <span className={styles.arrow}>&gt;</span>
+            {categories[2]?.title.toUpperCase()}{" "}
+            <span className={styles.arrow}>&gt;</span>
           </li>
           <li
             className={`${styles.sidebarItem} ${
@@ -114,9 +124,11 @@ export const Sidebar: React.FC = () => {
         )}
         {activeSubMenu === "collections" && (
           <ul className={styles.sidebarList}>
-            <li className={styles.sidebarItem}>ВЕСНА 2024</li>
-            <li className={styles.sidebarItem}>ЛЕТО 2024</li>
-            <li className={styles.sidebarItem}>ОСЕНЬ 2024</li>
+            {collections.map((collection) => (
+              <li className={styles.sidebarItem} key={collection.id}>
+                {collection.title.toUpperCase()}
+              </li>
+            ))}
           </ul>
         )}
       </div>

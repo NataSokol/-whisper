@@ -1,15 +1,23 @@
-const { Product } = require('../../db/models');
+const { Product, Collection, Category, Subcategory } = require('../../db/models');
 
 class ProductServices {
   // получить все продукты
   static getAllProducts = async () => {
-    const products = await Product.findAll();
+    const products = await Product.findAll({include: [
+      { model: Collection }, 
+      { model: Category }, 
+      { model: Subcategory }
+    ] });
     return products.map((product) => product.get());
   };
 
   // получить один продукт
   static getProductById = async (id) => {
-    const product = await Product.findByPk(id);
+    const product = await Product.findByPk(id, {include: [
+      { model: Collection }, 
+      { model: Category }, 
+      { model: Subcategory }
+    ]});
     return product ? product.get() : null;
   };
 
