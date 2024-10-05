@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { getAllCategory } from "@/entities/category";
 import { getAllCollections } from "@/entities/collection";
 import { getAllSubcategories } from "@/entities/subcategory";
+import { ROUTES } from "@/app/router/routes";
+import { Link } from "react-router-dom";
 
 export const Sidebar: React.FC = () => {
   const { categories } = useAppSelector((state) => state.userCategory);
@@ -102,6 +104,14 @@ export const Sidebar: React.FC = () => {
           >
             КОЛЛЕКЦИИ <span className={styles.arrow}>&gt;</span>
           </li>
+          <li
+            className={`${styles.sidebarItem} ${styles.sidebarItemSale}`}
+            onMouseEnter={() => setActiveSubMenu(null)}
+          >
+            <Link to={ROUTES.CATALOG} className={styles.sidebarItemSale}>
+              SALE
+            </Link>
+          </li>
         </ul>
       </div>
       <div
@@ -113,15 +123,23 @@ export const Sidebar: React.FC = () => {
       >
         {activeSubMenu === "homeWear" && (
           <ul className={styles.sidebarList}>
+            <li className={styles.sidebarItem}>
+              <Link to={ROUTES.CATALOG}>СМОТРЕТЬ ВСЁ</Link>
+            </li>
             {subcategories.map((subcategory) => (
               <li className={styles.sidebarItem} key={subcategory.id}>
-                {subcategory.title.toUpperCase()}
+                <Link to={ROUTES.CATALOG}>
+                  {subcategory.title.toUpperCase()}
+                </Link>
               </li>
             ))}
           </ul>
         )}
         {activeSubMenu === "sportsWear" && (
           <ul className={styles.sidebarList}>
+            <li className={styles.sidebarItem}>
+              <Link to={ROUTES.CATALOG}>СМОТРЕТЬ ВСЁ</Link>
+            </li>
             <li className={styles.sidebarItem}>ЛЕГГИНСЫ</li>
             <li className={styles.sidebarItem}>ФУТБОЛКИ</li>
             <li className={styles.sidebarItem}>КРОССОВКИ</li>
@@ -129,9 +147,14 @@ export const Sidebar: React.FC = () => {
         )}
         {activeSubMenu === "collections" && (
           <ul className={styles.sidebarList}>
+            <li className={styles.sidebarItem}>
+              <Link to={ROUTES.CATALOG}>СМОТРЕТЬ ВСЁ</Link>
+            </li>
             {collections.map((collection) => (
               <li className={styles.sidebarItem} key={collection.id}>
-                {collection.title.toUpperCase()}
+                <Link to={ROUTES.CATALOG}>
+                  {collection.title.toUpperCase()}
+                </Link>
               </li>
             ))}
           </ul>

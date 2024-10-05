@@ -1,5 +1,3 @@
-
-
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
@@ -11,6 +9,8 @@ export const Navbar: React.FC = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [favorites, setFavorites] = useState<number>(1);
+  const [cartCount, setCartCount] = useState<number>(9);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const handleSearchClick = () => {
@@ -76,6 +76,14 @@ export const Navbar: React.FC = () => {
     };
   }, []);
 
+  const toggleFavorite = () => {
+    setFavorites((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
+  };
+
+  const toggleCart = () => {
+    setCartCount((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
+  };
+
   return (
     <div className={`${styles.container} ${isScrolled ? styles.scrolled : ""}`}>
       <Sidebar />
@@ -114,9 +122,12 @@ export const Navbar: React.FC = () => {
         </div>
         {!isSearchActive && (
           <>
-            <button className={styles.button}>
-              <Link to={ROUTES.FAVORITES}>
+            <button className={styles.button} onClick={toggleFavorite}>
+              <Link to={ROUTES.FAVORITES} className={styles.favoritesLink}>
                 <img src="../../public/img/favorites.svg" alt="" />
+                {favorites > 0 && (
+                  <span className={styles.notificationDot}></span>
+                )}
               </Link>
             </button>
             <button className={styles.button}>
@@ -126,9 +137,12 @@ export const Navbar: React.FC = () => {
             </button>
           </>
         )}
-        <button className={styles.button}>
-          <Link to={ROUTES.CART}>
+        <button className={styles.button} onClick={toggleCart}>
+          <Link to={ROUTES.CART} className={styles.cartLink}>
             <img src="../../public/img/cart.svg" alt="" />
+            {cartCount > 0 && (
+              <span className={styles.cartCount}>{cartCount}</span>
+            )}
           </Link>
         </button>
       </div>

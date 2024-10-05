@@ -21,7 +21,7 @@
 }
 
 .sidebarList {
-  padding: 50px 35px;
+  padding: 50px 16px;
 }
 
 .sidebarList:first-child {
@@ -52,8 +52,9 @@ li {
 
 .sidebarItem {
   color: rgb(0 0 0 / 50%);
-  margin-bottom: 28px;
+  margin-bottom: 14px;
   transition: color 0.3s;
+  padding: 14px 16px;
   cursor: pointer;
 }
 
@@ -130,7 +131,7 @@ li {
   height: 100vh;
   background-color: #fff;
   border-left: 1px solid rgb(0 0 0);
-  padding: 50px 35px;
+  padding: 50px 16px;
   opacity: 0;
   transform: translateX(-360px);
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -151,4 +152,14 @@ li {
 
 .subSidebar li {
   color: rgb(0 0 0);
+}
+
+.sidebarItemSale {
+  background-color: #dd6060;
+  color: white;
+}
+
+.sidebarItemSale:hover,
+.sidebarItemSale:visited {
+  color: white;
 }
