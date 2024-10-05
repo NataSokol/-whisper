@@ -1,6 +1,5 @@
 import { axiosInstance } from "@/shared/lib/axiosInstance";
 import {
-  CollectionCreate,
   CollectionListResponse,
   CollectionResponse,
 } from "../model";
