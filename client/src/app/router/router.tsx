@@ -1,9 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import { AdminCategoryPage, AdminCollectionPage, MainPage, SignInPage, SignUpPage } from "@/pages";
+import {
+  AdminCategoryPage,
+  AdminCollectionPage,
+  AdminPage,
+  AdminProductPage,
+  MainPage,
+  SignInPage,
+  SignUpPage,
+} from "@/pages";
 import { ROUTES } from "./routes";
-import Layout from "./Layout/Layout";
-import AdminPage from '@/pages/AdminPage/AdminPage/AdminPage';
 import { PublicRoute } from "@/shared/ui/PublicRoute";
+import Layout from "./Layout/Layout";
 
 export const router = createBrowserRouter([
   {
@@ -22,10 +29,10 @@ export const router = createBrowserRouter([
             path: ROUTES.ADMIN_COLLECTIONS,
             element: <AdminCollectionPage />,
           },
-          // {
-          //   path: ROUTES.ADMIN_PRODUCTS,
-          //   element: <AdminProductsPage />,
-          // },
+          {
+            path: ROUTES.ADMIN_PRODUCTS,
+            element: <AdminProductPage />,
+          },
         ],
       },
       //   {
@@ -43,7 +50,7 @@ export const router = createBrowserRouter([
       //         <CartPage />
       //     ),
       //   },
-      
+
       {
         path: ROUTES.HOME,
         element: <MainPage />,
@@ -62,22 +69,20 @@ export const router = createBrowserRouter([
         element: <SignUpPage />,
       },
 
+      //   {
+      //     path: ROUTES.FAVORITES,
+      //     element: <FavoritesPage />,
+      //   },
 
-    //   {
-    //     path: ROUTES.FAVORITES,
-    //     element: <FavoritesPage />,
-    //   },
+      //   {
+      //     path: ROUTES.PROFILE,
+      //     element: <ProfilePage />,
+      //   },
 
-    //   {
-    //     path: ROUTES.PROFILE,
-    //     element: <ProfilePage />,
-    //   },
-
-    //   {
-    //     path: ROUTES.ERROR,
-    //     element: <ErrorPage />,
-    //   },
-
+      //   {
+      //     path: ROUTES.ERROR,
+      //     element: <ErrorPage />,
+      //   },
     ],
   },
 ]);

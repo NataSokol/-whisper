@@ -1,7 +1,8 @@
+import productReducer from "./model/productSlice";
+
 export { ProductServices } from "./api";
+export type { Product, ProductList } from "./model";
 export { getAllProducts } from "./model/productThunk";
-import productReduser from './model/productSlice'
+export { AdminProductItem } from "./ui/AdminProductItem";
 
-export type {Product, ProductList} from './model'
-
-export { productReduser }
+export { productReducer };

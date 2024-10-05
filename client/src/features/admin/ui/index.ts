@@ -1,2 +1,3 @@
-export { AdminCollectionFeature } from "./AdminCollectionFeature.tsx";
-export { AdminCategoryFeature } from "./AdminCategoryFeature.tsx";
+export { AdminCollectionFeature } from "./AdminCollectionFeature";
+export { AdminCategoryFeature } from "./AdminCategoryFeature";
+export { AdminProductFeature } from "./AdminProductFeature";
