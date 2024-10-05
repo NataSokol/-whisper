@@ -1,4 +1,4 @@
-const { Collection } = require('../../db/models');
+const { Collection } = require("../../db/models");
 
 class CollectionServices {
   // получить все коллекции
@@ -12,15 +12,15 @@ class CollectionServices {
 
   // Админка
   // создать коллекцию
-  static createCollection = async (title, image) => {
-    const collection = await Collection.create({ title, image });
-    return collection.get();
+  static createCollection = async (title, imagePath) => {
+    const collection = await Collection.create({ title, image: imagePath });
+    return collection;
   };
 
-  static updateCollection = async (id, { title, image }) => {
+  static updateCollection = async (id, { title, imagePath }) => {
     const collection = await Collection.findByPk(id);
     if (collection) {
-      await collection.update({ title, image });
+      await collection.update({ title, image: imagePath });
       return collection.get();
     }
     return null;
@@ -31,7 +31,7 @@ class CollectionServices {
     if (collection) {
       return collection.destroy();
     }
-    return 'Collection not found';
+    return "Collection not found";
   };
 }
 

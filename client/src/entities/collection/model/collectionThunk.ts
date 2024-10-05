@@ -24,11 +24,11 @@ export const getAllCollections = createAsyncThunk<
 
 export const createCollection = createAsyncThunk<
   CollectionResponse,
-  { title: string; image: string },
+  { title: string; image: File },
   { rejectValue: RejectValue }
 >("/createCollection", async ({ title, image }, { rejectWithValue }) => {
   try {
-    return await CollectionService.createCollection({ title, image });
+    return await CollectionService.createCollection(title, image);
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -39,11 +39,11 @@ export const createCollection = createAsyncThunk<
 
 export const updateCollection = createAsyncThunk<
   CollectionResponse,
-  { id: number; title: string; image: string },
+  { id: number; title: string; image?: File  },
   { rejectValue: RejectValue }
 >("/updateCollection", async ({ id, title, image }, { rejectWithValue }) => {
   try {
-    return await CollectionService.updateCollection(id, { title, image });
+    return await CollectionService.updateCollection(id, title, image);
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({

@@ -22,9 +22,13 @@ exports.getCollectionById = async (req, res) => {
 
 exports.createCollection = async (req, res) => {
   try {
-    const { title, image } = req.body;
+    const { title } = req.body;
+    const imagePath = `/img/${req.file.filename}`;
 
-    const collection = await CollectionServices.createCollection(title, image);
+    const collection = await CollectionServices.createCollection(
+      title,
+      imagePath
+    );
     res.status(201).json({ message: "success", collection });
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -34,11 +38,16 @@ exports.createCollection = async (req, res) => {
 exports.updateCollection = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, image } = req.body;
+    const { title } = req.body; 
+    let imagePath = null; 
+
+    if (req.file) {
+      imagePath = `/img/${req.file.filename}`;
+    }
 
     const collection = await CollectionServices.updateCollection(id, {
       title,
-      image,
+      imagePath,
     });
     res.status(200).json({ message: "success", collection });
   } catch ({ message }) {

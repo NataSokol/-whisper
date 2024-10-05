@@ -25,10 +25,17 @@ export class CollectionService {
     }
   }
 
-  static async createCollection(data: CollectionCreate) {
+  static async createCollection(title: string, image: File) {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("image", image);
+
     const response = await axiosInstance.post<CollectionResponse>(
       `/collections/`,
-      data
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
     );
     if (response.status === 201) {
       return response.data;
@@ -37,10 +44,22 @@ export class CollectionService {
     }
   }
 
-  static async updateCollection(id: number, data: CollectionCreate) {
+  static async updateCollection(id: number, title: string, image?: File) {
+    const formData = new FormData();
+    if (title) {
+      formData.append("title", title);
+    }
+    if (image) {
+      formData.append("image", image);
+    }
+
+    console.log(formData);
     const response = await axiosInstance.put<CollectionResponse>(
       `/collections/${id}`,
-      data
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
     );
     if (response.status === 200) {
       return response.data;

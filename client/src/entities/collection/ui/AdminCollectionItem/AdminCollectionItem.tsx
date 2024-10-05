@@ -14,11 +14,18 @@ export const AdminCollectionItem: React.FC<Props> = ({
   onCollectionDelete,
   onCollectionUpdate,
 }) => {
+
+  
+  // const imagePath = `http://localhost:3000${collection.image}`
+  const imagePath = `${window.location.origin}${collection.image}`;
+  // console.log(imagePath);
+
+
   return (
     <div className={styles.container}>
       <span className={styles.collectionTitle}>{collection.title}</span>
       <img
-        src={collection.image}
+        src={imagePath}
         alt={collection.title}
         className={styles.collectionImage}
       />

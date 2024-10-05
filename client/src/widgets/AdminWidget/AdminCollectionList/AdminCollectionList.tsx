@@ -13,6 +13,7 @@ export const AdminCollectionList: React.FC<Props> = ({
   onCollectionDelete,
   onCollectionUpdate,
 }) => {
+
   return (
     <div className={styles.collectionListContainer}>
       {collections.map((collection) => (

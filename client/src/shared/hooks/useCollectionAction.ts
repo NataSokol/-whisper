@@ -1,7 +1,6 @@
 import { getAllCollections } from "@/entities/collection";
 import { useAppDispatch } from "./useReduxHooks";
 import { useCallback } from "react";
-import { CollectionCreate } from "@/entities/collection/model";
 import {
   createCollection,
   deleteCollection,
@@ -17,7 +16,7 @@ export const useCollectionAction = () => {
   }, [dispatch]);
 
   const handleCreateCollection = useCallback(
-    async ({ title, image }: CollectionCreate) => {
+    async ({ title, image }: { title: string; image: File }) => {
       try {
         const result = await dispatch(createCollection({ title, image }));
         unwrapResult(result);
@@ -30,8 +29,18 @@ export const useCollectionAction = () => {
   );
 
   const handleUpdateCollection = useCallback(
-    async (id: number, title: string, image: string) => {
-      const result = await dispatch(updateCollection({ id, title, image }));
+    async ({
+      id,
+      title,
+      image,
+    }: {
+      id: number;
+      title: string;
+      image?: File | null;
+    }) => {
+      const result = await dispatch(
+        updateCollection({ id, title, image: image || undefined })
+      );
       unwrapResult(result);
       dispatch(getAllCollections());
     },

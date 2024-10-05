@@ -14,8 +14,8 @@ export const AdminCollectionFeature: React.FC = () => {
   const [editingCollectionId, setEditingCollectionId] = useState<number | null>(
     null
   );
-  const [newTitle, setNewTitle] = useState<string>("");
-  const [newImage, setNewImage] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [image, setImage] = useState<File | null>(null);
   const [modalActive, setModalActive] = useState<boolean>(false);
 
   useEffect(() => {
@@ -24,10 +24,14 @@ export const AdminCollectionFeature: React.FC = () => {
 
   const handleUpdate = (collectionId: number) => {
     if (editingCollectionId !== null) {
-      handleUpdateCollection(collectionId, newTitle, newImage);
+      handleUpdateCollection({
+        id: collectionId,
+        title: title,
+        image: image,
+      });
       setEditingCollectionId(null);
-      setNewTitle("");
-      setNewImage("");
+      setTitle("");
+      setImage(null);
       setModalActive(false);
     }
   };
@@ -44,8 +48,8 @@ export const AdminCollectionFeature: React.FC = () => {
           );
           if (collectionToEdit) {
             setEditingCollectionId(collectionId);
-            setNewTitle(collectionToEdit.title);
-            setNewImage(collectionToEdit.image);
+            setTitle(collectionToEdit.title);
+            setImage(null);
             setModalActive(true);
           }
         }}
@@ -56,13 +60,16 @@ export const AdminCollectionFeature: React.FC = () => {
           <h2>Редактировать коллекцию</h2>
           <input
             type="text"
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <input
-            type="text"
-            value={newImage}
-            onChange={(e) => setNewImage(e.target.value)}
+            type="file"
+            onChange={(e) => {
+              if (e.target.files) {
+                setImage(e.target.files[0]);
+              }
+            }}
           />
           <button onClick={() => handleUpdate(editingCollectionId!)}>
             Сохранить
