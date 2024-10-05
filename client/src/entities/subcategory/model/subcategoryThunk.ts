@@ -1,19 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {  CollectionListResponse, CollectionResponse } from ".";
-import { CollectionService } from "../api";
+import { SubcategoryListResponce, SubcategoryResponce } from ".";
+import { SubcategoryService } from "../api";
 import { AxiosError } from "axios";
-
 type RejectValue = {
-  message: string;
-};
+    message: string;
+  };
 
-export const getAllCollections = createAsyncThunk<
-  CollectionListResponse,
+export const getAllSubcategories = createAsyncThunk<
+SubcategoryListResponce,
   void,
   { rejectValue: RejectValue }
->("/getAllCollection", async (_, { rejectWithValue }) => {
+>("/getAllSubcategories", async (_, { rejectWithValue }) => {
   try {
-    return await CollectionService.getAllCollections();
+    return await SubcategoryService.getAllSubcategories();
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -22,13 +21,15 @@ export const getAllCollections = createAsyncThunk<
   }
 });
 
-export const createCollection = createAsyncThunk<
-  CollectionResponse,
-  { title: string; image: File },
+export const createSubcategory = createAsyncThunk<
+SubcategoryResponce,
+  {  title: string,
+    image: string,
+  },
   { rejectValue: RejectValue }
->("/createCollection", async ({ title, image }, { rejectWithValue }) => {
+>("/createSubcategory", async ({title}, { rejectWithValue }) => {
   try {
-    return await CollectionService.createCollection(title, image);
+   return await SubcategoryService.createSubcategory({title});
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -36,14 +37,17 @@ export const createCollection = createAsyncThunk<
     });
   }
 });
+  
 
-export const updateCollection = createAsyncThunk<
-  CollectionResponse,
-  { id: number; title: string; image?: File  },
+export const updateSubcategory = createAsyncThunk<
+SubcategoryResponce,
+  {  id: number,
+    title: string,
+  },
   { rejectValue: RejectValue }
->("/updateCollection", async ({ id, title, image }, { rejectWithValue }) => {
+>("/updateSubcategory", async ({id, title}, { rejectWithValue }) => {
   try {
-    return await CollectionService.updateCollection(id, title, image);
+   return await SubcategoryService.updateSubcategory(id, {title});
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -52,13 +56,13 @@ export const updateCollection = createAsyncThunk<
   }
 });
 
-export const deleteCollection = createAsyncThunk<
-  void,
+export const deleteSubcategory = createAsyncThunk<
+void,
   { id: number },
   { rejectValue: RejectValue }
->("/deleteCollection", async ({ id }, { rejectWithValue }) => {
+>("/deleteSubcategory", async ({ id }, { rejectWithValue }) => {
   try {
-    await CollectionService.deleteCollection(id);
+    await SubcategoryService.deleteSubcategory(id);
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({

@@ -9,9 +9,11 @@ export type Product = {
   id: number;
   title: string;
   description: string;
+  composition: string;
   price: number;
+  salePrice: number;
   image: string;
-  
+
   categoryId: number;
   collectionId: number;
   subcategoryId: number;
@@ -19,6 +21,7 @@ export type Product = {
   Collection: Collection
   Category: Category;
   Subcategory: Subcategory;
+
   Colors: ColorList;
   Images: ImageList;
   ProductSizes: ProductSizeList

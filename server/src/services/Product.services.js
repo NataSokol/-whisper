@@ -71,7 +71,7 @@ class ProductServices {
     if (product) {
       return product.destroy();
     }
-    return 'Product not found';
+    return "Product not found";
   };
 }
 
