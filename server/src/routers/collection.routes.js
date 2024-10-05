@@ -1,15 +1,16 @@
-const router = require('express').Router();
-const collectionController = require('../controllers/collectionController');
+const router = require("express").Router();
+const collectionController = require("../controllers/collectionController");
+const upload = require("../utils/uploadUtils");
 
 router
-  .route('/')
+  .route("/")
   .get(collectionController.getAllCollections)
-  .post(collectionController.createCollection);
+  .post(upload, collectionController.createCollection);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(collectionController.getCollectionById)
-  .put(collectionController.updateCollection)
+  .put(upload, collectionController.updateCollection)
   .delete(collectionController.deleteCollection);
 
 module.exports = router;

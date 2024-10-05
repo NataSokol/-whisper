@@ -1,23 +1,30 @@
-import React from 'react';
+import React from "react";
 import './Modal.css';
 
-type ModalWindowProps = {
+interface ModalWindowProps {
   active: boolean;
-  setActive: (value: boolean) => void;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
-};
+}
 
-function ModalWindow({ active, setActive, children }: ModalWindowProps): JSX.Element {
+const ModalWindow: React.FC<ModalWindowProps> = ({
+  active,
+  setActive,
+  children,
+}) => {
   return (
-    <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
+    <div
+      className={active ? "modal active" : "modal"}
+      onClick={() => setActive(false)}
+    >
       <div
-        className={active ? 'modal__content active' : 'modal__conten'}
+        className={active ? "modal__content active" : "modal__content"}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
       </div>
     </div>
   );
-}
+};
 
 export default ModalWindow;

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Category } from ".";
+import { CategoryList } from ".";
 import {
   createCategory,
   deleteCategory,
@@ -8,7 +8,7 @@ import {
 } from "./categoryThunk";
 
 type AdminCategoryState = {
-  categories: Category[];
+  categories: CategoryList;
   loading: boolean;
   error: string | null;
 };
