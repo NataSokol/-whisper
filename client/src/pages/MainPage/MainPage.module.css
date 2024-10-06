@@ -23,6 +23,7 @@
     align-items: center;
 }
 
+
 .linkOnVideo {
     position: absolute;
     bottom: 160px;
@@ -90,4 +91,5 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
 
