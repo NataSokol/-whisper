@@ -128,7 +128,7 @@
 }
 
 .favoritesLink {
-  position: relative; /* Для позиционирования точки */
+  position: relative; 
   display: inline-block;
 }
 
@@ -146,7 +146,7 @@
 }
 
 .cartLink {
-  position: relative; /* Для позиционирования счетчика */
+  position: relative; 
   display: inline-block;
 }
 
@@ -168,4 +168,53 @@
   transform: translateX(-16px);
   opacity: 0;
   animation: fadeIn 0.3s forwards;
+}
+
+.searchContainer {
+  position: relative; 
+  width: 0;
+  transition: width 0.3s ease;
+  margin-right: 25px;
+  margin-bottom: 3px;
+}
+
+.searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  list-style: none;
+  padding: 12px;
+  margin: 5px 0 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  transform: translateY(11px);
+}
+
+.searchResultItem {
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.searchResultItem:hover {
+  background-color: #e6e6e6;
+  border-radius: 4px;
+}
+
+.noResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 10px 15px;
+  background-color: white;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #555;
+  border-radius: 4px;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './ProductPageWidget.module.css'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import { useAppSelector } from '@/shared/hooks/useReduxHooks'
 
 
