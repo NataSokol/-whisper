@@ -35,3 +35,7 @@
     font-weight: 500;
     margin-top: 25px;
 }
+
+.collectionLink:visited {
+    color: (--primary-basic-white)
+}
