@@ -5,6 +5,7 @@ export enum ROUTES {
   ADMIN_CATEGORIES = "/admin/categories",
   ADMIN_COLLECTIONS = "/admin/collections",
   ADMIN_PRODUCTS = "/admin/products",
+  ADMIN_PRODUCT = '/admin/products/:id',
   SIGNIN = "/signin",
   SIGNUP = "/signup",
   CHECKEMAIL = "/checkemail",

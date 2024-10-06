@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import {
   AdminCategoryPage,
   AdminCollectionPage,
+  AdminOneProductPage,
   AdminPage,
   AdminProductPage,
   MainPage,
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.ADMIN_PRODUCTS,
             element: <AdminProductPage />,
+          },
+          {
+            path: ROUTES.ADMIN_PRODUCT,
+            element: <AdminOneProductPage />,
           },
         ],
       },
@@ -68,15 +73,16 @@ export const router = createBrowserRouter([
         path: ROUTES.SIGNUP,
         element: <SignUpPage />,
       },
-      {
-        path: `${ROUTES.CATALOG}/:productId`,
-        element: < />,
-      },
 
-    //   {
-    //     path: ROUTES.FAVORITES,
-    //     element: <FavoritesPage />,
-    //   },
+      // {
+      //   path: `${ROUTES.CATALOG}/:productId`,
+      //   element: < />,
+      // },
+
+      //   {
+      //     path: ROUTES.FAVORITES,
+      //     element: <FavoritesPage />,
+      //   },
 
       //   {
       //     path: ROUTES.PROFILE,

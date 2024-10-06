@@ -7,6 +7,7 @@ type Props = {
 };
 
 export const AdminProductItem: React.FC<Props> = ({ product }) => {
+    
   return (
     <div className={styles.container}>
       <span className={styles.productTitle}>{product.title}</span>
