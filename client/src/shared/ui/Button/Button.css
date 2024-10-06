@@ -1,20 +1,33 @@
 .Button {
   cursor: pointer;
-  color: white;
   border: none;
-  padding: 10px 20px;
+  /* padding: 12px 28px; */
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: var(--border-radius-small);
+  transition: 0.3s ease-in-out
 }
 
-.primary {
-  background-color: #24b050;
+.Button:hover {
+  background-color: var(--secondary-dark-gray);
 }
 
-.secondary {
-  background-color: #6c757d;
+.Button:active {
+  background-color: var(--secondary-black);
 }
 
-.danger {
-  background-color: #dc3545;
+.dark {
+  background-color: var(--primary-basic-gray);
+}
+
+.light {
+  background-color: var(--primary-basic-white);
+  border: 1px solid var(--primary-basic-white);
+}
+
+.disabled {
+  background-color: var(--secondary-gray-20);
+  border: 1px solid var(--primary-light-gray);
 }

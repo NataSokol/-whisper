@@ -49,11 +49,26 @@
   width: 100%;
 }
 
+.color{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;  
+}
+
 /* .sizePicker {
     display: flex;
     width: 100%;
 
 } */
+
+input[type="radio"] {
+  display: none;
+}
+
+.size{
+  border-radius: var();
+}
 
 .cartButton {
   width: 100%;

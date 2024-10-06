@@ -40,3 +40,7 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.collectionLink:visited {
+    color: (--primary-basic-white)
+}

@@ -1,12 +1,30 @@
 import React, { useState } from "react";
 import styles from "./ProductPageWidget.module.css";
-import { useAppSelector } from "@/shared/hooks/useReduxHooks";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
+import { Color } from "@/entities/color";
+import { ProductSize } from "@/entities/productsize";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
+  // const dispatch = useAppDispatch()
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
-  // console.log(currProduct);
+
+  const [selectedColor, setSelectedColor] = useState<Color["id"]>();
+  const [selectedSize, setSelectedSize] = useState<ProductSize["id"]>();
+
+  const onHandleCrateCartItem = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault();
+
+    // if (selectedColor && selectedSize) {
+    console.log(selectedColor, selectedSize);
+    // await dispatch()
+    // } else {
+    //   alert("Выберите цвет и размер");
+    // }
+  };
 
   return (
     <div className={styles.container}>
@@ -28,28 +46,69 @@ export const ProductPageWidget: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.colorPicker}>
-          {currProduct?.Colors?.map((color) => (
-            <div
-              className={styles.color}
-              style={{
-                backgroundColor: color.colorCode,
-                width: "40px",
-                height: "40px",
-              }}
-            ></div>
-          ))}
-        </div>
+        <form onSubmit={onHandleCrateCartItem}>
+          <div className={styles.colorPicker}>
+            {currProduct?.Colors?.map((color) => (
+              <label key={color.id}>
+                <input
+                  type="radio"
+                  value={color.id}
+                  checked={selectedColor === color.id}
+                  onChange={() => setSelectedColor(color.id)}
+                />
+                <div
+                  className={styles.color}
+                  style={{
+                    backgroundColor: color.colorCode,
+                    padding: "2px",
+                    border:
+                      selectedColor === color.id ? "2px solid black" : "none",
+                  }}
+                ></div>
+                {color.title}
+              </label>
+              // <div
+              //   className={styles.color}
+              //   style={{
+              //     backgroundColor: color.colorCode,
+              //   }}
+              // ></div>
+            ))}
+          </div>
 
-        <div className={styles.sizePicker}>
+          <div className={styles.sizePicker}>
+            {currProduct?.ProductSizes?.map((size) => (
+              <label key={size.id}>
+                <input
+                  type="radio"
+                  value={size.id}
+                  checked={selectedColor === size.id}
+                  onChange={() => setSelectedSize(size.id)}
+                />
+                <div
+                  className={styles.size}
+                  style={{
+                    border:
+                    selectedSize === size.id ? "2px solid black" : "none",
+                  }}
+                >{size.sizeTitle}</div>
+              </label>
+            ))}
+          </div>
+
+          <button type="submit" className={styles.cartButton}>
+            добавить в корзину
+          </button>
+        </form>
+
+        {/* <div className={styles.sizePicker}>
           {currProduct?.ProductSizes?.map((size) => (
             <div className={styles.size}>{size.sizeTitle}</div>
           ))}
-        </div>
+        </div> */}
 
-        <button className={styles.cartButton}>добавить в корзину</button>
         <div className={styles.otherInfo}>
-        <div className={styles.accordionItem}>
+          <div className={styles.accordionItem}>
             <div
               className={styles.accordionTitle}
               onClick={() => setDescriptionActive((prev) => !prev)}
@@ -59,7 +118,7 @@ export const ProductPageWidget: React.FC = () => {
                 className={`${styles.icon} ${
                   descriptionActive ? styles.rotate : ""
                 }`}
-                src="../../public/img/plus.svg" 
+                src="../../public/img/plus.svg"
                 alt={descriptionActive ? "Свернуть" : "Развернуть"}
               />
             </div>
@@ -82,7 +141,7 @@ export const ProductPageWidget: React.FC = () => {
                 className={`${styles.icon} ${
                   compositionActive ? styles.rotate : ""
                 }`}
-                src="../../public/img/plus.svg" 
+                src="../../public/img/plus.svg"
                 alt={compositionActive ? "Свернуть" : "Развернуть"}
               />
             </div>
