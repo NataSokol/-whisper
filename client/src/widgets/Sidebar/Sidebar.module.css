@@ -1,0 +1,166 @@
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 100vh;
+  background-color: #fff;
+  overflow-x: hidden;
+  transform: translateX(-360px);
+  transition: transform 0.3s;
+  z-index: 1000;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.sidebarList {
+  padding: 50px 16px;
+}
+
+.sidebarList:first-child {
+  margin-top: 30px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0006;
+  z-index: 999;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 8px 16px;
+  color: rgb(0 0 0);
+  position: relative;
+}
+
+.sidebarItem {
+  color: rgb(0 0 0 / 50%);
+  margin-bottom: 14px;
+  transition: color 0.3s;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sidebarItem:hover {
+  color: black;
+}
+
+.active {
+  color: black;
+}
+
+.arrow {
+  float: right;
+}
+
+.sidebarButton {
+  position: relative;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.sidebarButton:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+.sidebarButton span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: black;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebarButton .barTop {
+  top: 0;
+}
+
+.sidebarButton .barMid {
+  top: 10px;
+}
+
+.sidebarButton .barBot {
+  top: 20px;
+}
+
+.opened .barTop {
+  transform: rotate(45deg);
+  top: 10px;
+  transform-origin: center;
+}
+
+.opened .barMid {
+  opacity: 0;
+}
+
+.opened .barBot {
+  transform: rotate(-45deg);
+  top: 10px;
+  transform-origin: center;
+}
+
+.subSidebar {
+  position: fixed;
+  top: 0;
+  left: 360px;
+  width: 360px;
+  height: 100vh;
+  background-color: #fff;
+  border-left: 1px solid rgb(0 0 0);
+  padding: 50px 16px;
+  opacity: 0;
+  transform: translateX(-360px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.subSidebarVisible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.subSidebar ul {
+  padding: 0;
+  margin: 0;
+}
+
+.subSidebar li {
+  color: rgb(0 0 0);
+}
+
+.sidebarItemSale {
+  background-color: #dd6060;
+  color: white;
+}
+
+.sidebarItemSale:hover,
+.sidebarItemSale:visited {
+  color: white;
+}

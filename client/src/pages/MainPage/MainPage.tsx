@@ -1,4 +1,3 @@
-
 import React from "react";
 import styles from "./MainPage.module.css";
 import { ROUTES } from "@/app/router/routes";
@@ -9,16 +8,23 @@ export const MainPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.videoContainer}>
-        <img src="http://placehold.it/1480x780/" alt="к покупкам" />
-        {/* <video src=""></video> */}
+        <video autoPlay loop muted className={styles.video}>
+          <source
+            src="https://www.2moodstore.com/upload/iblock/58a/pqlllcbhfbi958uir31db1rkd3fzj2ii.mp4"
+            type="video/mp4"
+          />
+          Ваш браузер не поддерживает тег видео.
+        </video>
         <Link className={styles.linkOnVideo} to={ROUTES.CATALOG}>
           <button className={styles.button}>к покупкам</button>
         </Link>
       </div>
       <div className={styles.collections}>
         <div className={styles.headers}>
-          <div>КОЛЛЕКЦИИ</div>
-          <Link to={ROUTES.CATALOG}>Cмотреть все</Link>
+          <div className={styles.headerTitle}>КОЛЛЕКЦИИ</div>
+          <Link to={ROUTES.CATALOG} className={styles.headerLink}>
+            Смотреть все
+          </Link>
         </div>
         <CollectionList />
       </div>

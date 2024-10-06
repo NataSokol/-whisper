@@ -1,14 +1,16 @@
-
-
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import { Sidebar } from "../Sidebar";
 
 export const Navbar: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [favorites, setFavorites] = useState<number>(1);
+  const [cartCount, setCartCount] = useState<number>(9);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const handleSearchClick = () => {
@@ -56,13 +58,35 @@ export const Navbar: React.FC = () => {
     };
   }, [isSearchActive]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Добавляем обработчик события scroll
+    window.addEventListener("scroll", handleScroll);
+
+    // Очищаем обработчик при размонтировании компонента
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const toggleFavorite = () => {
+    setFavorites((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
+  };
+
+  const toggleCart = () => {
+    setCartCount((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
+  };
+
   return (
-    <div className={styles.container}>
-      <div className={styles.navbarButton}>
-        <button className={styles.button}>
-          <img src="../../public/img/menu.svg" alt="" />
-        </button>
-      </div>
+    <div className={`${styles.container} ${isScrolled ? styles.scrolled : ""}`}>
+      <Sidebar />
       <div className={styles.navbarLogo}>
         <img src="../../public/img/logo.svg" alt="" />
       </div>
@@ -98,9 +122,12 @@ export const Navbar: React.FC = () => {
         </div>
         {!isSearchActive && (
           <>
-            <button className={styles.button}>
-              <Link to={ROUTES.FAVORITES}>
+            <button className={styles.button} onClick={toggleFavorite}>
+              <Link to={ROUTES.FAVORITES} className={styles.favoritesLink}>
                 <img src="../../public/img/favorites.svg" alt="" />
+                {favorites > 0 && (
+                  <span className={styles.notificationDot}></span>
+                )}
               </Link>
             </button>
             <button className={styles.button}>
@@ -110,9 +137,12 @@ export const Navbar: React.FC = () => {
             </button>
           </>
         )}
-        <button className={styles.button}>
-          <Link to={ROUTES.CART}>
+        <button className={styles.button} onClick={toggleCart}>
+          <Link to={ROUTES.CART} className={styles.cartLink}>
             <img src="../../public/img/cart.svg" alt="" />
+            {cartCount > 0 && (
+              <span className={styles.cartCount}>{cartCount}</span>
+            )}
           </Link>
         </button>
       </div>
