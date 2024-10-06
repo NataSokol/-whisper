@@ -38,9 +38,8 @@
   text-transform: uppercase;
 }
 
-.price{
+.price {
   padding-top: 20px;
-
 }
 
 .colorPicker {
@@ -67,20 +66,58 @@
   text-transform: uppercase;
 }
 
-.otherInfo{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    font-size: 18px;
-    font-weight: lighter;
-    text-transform: uppercase;
+.otherInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+.accordionItem {
+  border-bottom: 0.5px solid black;
+  border-top: 0.5px solid black;
+  padding: 10px 0px;
 }
 
 .accordionTitle {
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   cursor: pointer;
+  font-size: 16px;
+  user-select: none; 
 }
+
+.accordionTitle img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.icon {
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(45deg);
+}
+
+.accordionBody {
+  font-size: 14px;
+  font-weight: lighter;
+  padding: 0 20px; 
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.accordionBody.active {
+  max-height: 500px;
+  opacity: 1;
+  padding: 10px 20px;
+}
+

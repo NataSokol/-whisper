@@ -49,34 +49,50 @@ export const ProductPageWidget: React.FC = () => {
 
         <button className={styles.cartButton}>добавить в корзину</button>
         <div className={styles.otherInfo}>
-          <div className={styles.descriptionItem}>
+        <div className={styles.accordionItem}>
             <div
               className={styles.accordionTitle}
               onClick={() => setDescriptionActive((prev) => !prev)}
             >
               <div>о товаре</div>
-              <div>{descriptionActive ? "-" : "+"}</div>
+              <img
+                className={`${styles.icon} ${
+                  descriptionActive ? styles.rotate : ""
+                }`}
+                src="../../public/img/plus.svg" 
+                alt={descriptionActive ? "Свернуть" : "Развернуть"}
+              />
             </div>
-            {descriptionActive && (
-              <div className={styles.description}>
-                {currProduct?.description}
-              </div>
-            )}
+            <div
+              className={`${styles.accordionBody} ${
+                descriptionActive ? styles.active : ""
+              }`}
+            >
+              {currProduct?.description}
+            </div>
           </div>
 
-          <div className={styles.compositionItem}>
+          <div className={styles.accordionItem}>
             <div
               className={styles.accordionTitle}
               onClick={() => setCompositionActive((prev) => !prev)}
             >
               <div>состав и уход</div>
-              <div>{compositionActive ? "-" : "+"}</div>
+              <img
+                className={`${styles.icon} ${
+                  compositionActive ? styles.rotate : ""
+                }`}
+                src="../../public/img/plus.svg" 
+                alt={compositionActive ? "Свернуть" : "Развернуть"}
+              />
             </div>
-            {compositionActive && (
-              <div className={styles.composition}>
-                {currProduct?.composition}
-              </div>
-            )}
+            <div
+              className={`${styles.accordionBody} ${
+                compositionActive ? styles.active : ""
+              }`}
+            >
+              {currProduct?.composition}
+            </div>
           </div>
         </div>
       </div>
