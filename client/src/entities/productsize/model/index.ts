@@ -13,13 +13,23 @@ export type ProductSize = {
   innerSeamLength: number;
   sleeveLength: number;
   quantity: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date; 
+  updatedAt: Date; 
 };
 
 export type ProductSizeList = ProductSize[];
 
 export type ProductSizeResponse = {
+  productSize: ProductSize;
   message: string;
-  product: ProductSize;
+};
+
+export type ProductSizeListResponse = {
+  productSizes: ProductSizeList;
+  message: string;
+};
+
+export type BaseResponse<T> = {
+  data: T;
+  message: string;
 };

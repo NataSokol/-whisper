@@ -5,6 +5,7 @@ import {
   AdminOneProductPage,
   AdminPage,
   AdminProductPage,
+  AdminSubCategoryPage,
   MainPage,
   SignInPage,
   SignUpPage,
@@ -30,6 +31,12 @@ export const router = createBrowserRouter([
             path: ROUTES.ADMIN_COLLECTIONS,
             element: <AdminCollectionPage />,
           },
+
+          {
+            path: ROUTES.ADMIN_SUBCATEGORY,
+            element: <AdminSubCategoryPage />,
+          },
+
           {
             path: ROUTES.ADMIN_PRODUCTS,
             element: <AdminProductPage />,

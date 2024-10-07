@@ -14,6 +14,11 @@ export const NavbarAdmin: React.FC = () => {
         <Button theme={ThemeButton.PRIMARY}>
           <Link to={ROUTES.ADMIN_COLLECTIONS}>Коллекции</Link>
         </Button>
+
+        <Button theme={ThemeButton.PRIMARY}>
+          <Link to={ROUTES.ADMIN_SUBCATEGORY}>Подкатегории</Link>
+        </Button>
+
         <Button theme={ThemeButton.PRIMARY}>
           <Link to={ROUTES.ADMIN_PRODUCTS}>Продукты</Link>
         </Button>
