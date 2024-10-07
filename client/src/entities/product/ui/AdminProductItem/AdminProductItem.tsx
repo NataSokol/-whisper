@@ -10,7 +10,7 @@ export const AdminProductItem: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.container}>
       <span className={styles.productTitle}>{product.title}</span>
-      {product.Images && product.Images.length > 0 ? ( // проверка на наличие изображения!!!
+      {product.Images?.length ? ( // Упрощенная проверка
         <img
           src={product.Images[0].url}
           alt={product.title}

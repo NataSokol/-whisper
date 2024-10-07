@@ -8,13 +8,18 @@ import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import { useAppSelector } from "@/shared/hooks/reduxHooks";
 import { useCollectionAction } from "@/shared/hooks/useCollectionAction";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
 
 export const AdminOneProductFeature: React.FC = () => {
   const categories = useAppSelector((state) => state.adminCategory.categories);
   const collection = useAppSelector((state) => state.collection.collections);
+  const subcategories = useAppSelector(
+    (state) => state.subcategory.subcategories
+  );
   const { handleUpdateProduct, getProduct } = useProductAction();
   const { allCategories } = useCategoryActions();
   const { getCollectionList } = useCollectionAction();
+  const { getAllSubcategoryList } = useSubCategoryAction();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [composition, setComposition] = useState("");
@@ -28,11 +33,16 @@ export const AdminOneProductFeature: React.FC = () => {
   const [selectedCollectionId, setSelectedCollectionId] = useState<
     number | undefined
   >();
+  const [selectedSubcategoryId, setSelectedSubcategoryId] = useState<
+    number | undefined
+  >();
 
+  //!!! ДОСТАЮ КАТЕГОРИИ И КОЛЛЕКЦИИ
   useEffect(() => {
     allCategories();
     getCollectionList();
-  }, [allCategories, getCollectionList]);
+    getAllSubcategoryList();
+  }, [allCategories, getCollectionList, getAllSubcategoryList]);
 
   // обновление продукта(его описание)
   const handleUpdate = async () => {
@@ -45,6 +55,7 @@ export const AdminOneProductFeature: React.FC = () => {
         salePrice,
         categoryId: selectedCategoryId,
         collectionId: selectedCollectionId,
+        subcategoryId: selectedSubcategoryId,
       };
       await handleUpdateProduct(selectedProduct.id, productData);
       setModalActive(false);
@@ -63,6 +74,7 @@ export const AdminOneProductFeature: React.FC = () => {
     setSalePrice(product.salePrice | 0);
     setSelectedCategoryId(product.Category.id);
     setSelectedCollectionId(product.Collection.id);
+    setSelectedSubcategoryId(product.Subcategory.id);
     setModalActive(true);
   };
 
@@ -141,6 +153,20 @@ export const AdminOneProductFeature: React.FC = () => {
                     collection.map((collection) => (
                       <option key={collection.id} value={collection.id}>
                         {collection.title}
+                      </option>
+                    ))}
+                </select>
+              </label>
+              <label>
+                Подкатегория:
+                <select
+                  value={selectedSubcategoryId || ""}
+                  onChange={(e) => setSelectedSubcategoryId(+e.target.value)}
+                >
+                  {subcategories &&
+                    subcategories.map((subcategory) => (
+                      <option key={subcategory.id} value={subcategory.id}>
+                        {subcategory.title}
                       </option>
                     ))}
                 </select>

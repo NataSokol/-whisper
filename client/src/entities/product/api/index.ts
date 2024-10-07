@@ -11,6 +11,17 @@ export class ProductServices {
     }
   }
 
+  static async createProduct(productData: FormData): Promise<Product> {
+    const response = await axiosInstance.post("/products", productData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    if (response.status === 201) {
+      return response.data;
+    } else {
+      throw new Error("Failed to create product");
+    }
+  }
+
   static async getProduct(id: number) {
     const response = await axiosInstance.get(`/products/${id}`);
     if (response.status === 200) {

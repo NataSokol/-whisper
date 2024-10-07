@@ -1,4 +1,5 @@
 const ProductServices = require("../services/Product.services");
+const { Image } = require("../../db/models");
 
 exports.getAllProducts = async (req, res) => {
   try {
@@ -22,22 +23,56 @@ exports.getProductById = async (req, res) => {
 
 exports.createProduct = async (req, res) => {
   try {
-    const { title, price, salePrice, description, composition } = req.body;
+    const {
+      title,
+      price,
+      salePrice,
+      description,
+      composition,
+      collectionId,
+      categoryId,
+      subcategoryId,
+    } = req.body;
+
+    // Создаем массив путей к изображениям
+    const imagePaths = req.files.map((file) => `/img/${file.filename}`);
+    console.log(imagePaths, "photos");
 
     const product = await ProductServices.createProduct(
       title,
       price,
       salePrice,
       description,
-      composition
+      composition,
+      imagePaths,
+      collectionId,
+      categoryId,
+      subcategoryId
     );
-    if (product) {
-      res.status(201).json({ message: "success", product });
-      return;
+
+    if (product && req.files) {
+      const imagePaths = req.files.map((file) => `/img/${file.filename}`);
+
+      // Запись изображений в таблице Image
+      const images = imagePaths.map((path) => ({
+        productId: product.id, 
+        url: path,
+      }));
+
+      // Сохраняем все изображения через bulkCreate
+      await Image.bulkCreate(images);
+
+      return res
+        .status(201)
+        .json({ message: "Product and images created successfully", product });
     }
-    res.status(404).json({ message: "There was an error" });
-  } catch ({ message }) {
-    res.status(500).json({ error: message });
+
+    return res
+      .status(404)
+      .json({ message: "There was an error creating the product" });
+  } catch (error) {
+    console.error("Error creating product:", error);
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -49,7 +84,6 @@ exports.updateProduct = async (req, res) => {
     const product = await ProductServices.updateProduct(id, productData, {
       new: true,
     });
-    
     res.status(200).json({ message: "success", product });
   } catch ({ message }) {
     res.status(500).json({ error: message });

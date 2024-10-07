@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useAppSelector } from "@/shared/hooks/reduxHooks";
 import { useProductAction } from "@/shared/hooks/useProductAction";
-import { AdminProductList } from "@/widgets/AdminWidget";
+import { AdminFormProduct, AdminProductList } from "@/widgets/AdminWidget";
 
 export const AdminProductFeature: React.FC = () => {
   const { getProductList } = useProductAction();
@@ -13,6 +13,7 @@ export const AdminProductFeature: React.FC = () => {
 
   return (
     <div>
+      <AdminFormProduct />
       <AdminProductList products={products} />
     </div>
   );

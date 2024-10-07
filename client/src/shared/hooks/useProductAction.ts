@@ -1,12 +1,15 @@
 import { useCallback } from "react";
 import { useAppDispatch } from "./useReduxHooks";
 import {
+  createProduct,
   deleteProduct,
   getAllProducts,
   getOneProduct,
   Product,
   updateProduct,
 } from "@/entities/product";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { CreateProductRequest } from "@/entities/product/model";
 
 export const useProductAction = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +21,39 @@ export const useProductAction = () => {
   const getProduct = useCallback(
     (id: number) => {
       dispatch(getOneProduct({ id }));
+    },
+    [dispatch]
+  );
+
+  const handleCreateProduct = useCallback(
+    async ({
+      title,
+      images,
+      description,
+      composition,
+      price,
+      collectionId,
+      categoryId,
+      subcategoryId,
+    }: CreateProductRequest) => {
+      try {
+        const result = await dispatch(
+          createProduct({
+            title,
+            images,
+            description,
+            composition,
+            price,
+            collectionId,
+            categoryId,
+            subcategoryId,
+          })
+        );
+        unwrapResult(result);
+        dispatch(getAllProducts());
+      } catch (error) {
+        console.log("Error creating product", error);
+      }
     },
     [dispatch]
   );
@@ -43,5 +79,6 @@ export const useProductAction = () => {
     getProduct,
     handleDeleteProduct,
     handleUpdateProduct,
+    handleCreateProduct,
   };
 };

@@ -41,6 +41,7 @@ export const AdminOneProductList: React.FC<Props> = ({ openModal }) => {
             <p className={styles.salePrice}>{product.salePrice}</p>
             <p>{product.Collection?.title}</p>
             <p>{product.Category?.title}</p>
+            <p>{product.Subcategory?.title}</p>
           </>
         ) : (
           <p>Ошибка</p>

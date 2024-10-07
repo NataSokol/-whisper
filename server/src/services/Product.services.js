@@ -46,7 +46,11 @@ class ProductServices {
     price,
     salePrice,
     description,
-    composition
+    composition,
+    images,
+    collectionId,
+    categoryId,
+    subcategoryId
   ) => {
     const product = await Product.create({
       title,
@@ -54,7 +58,12 @@ class ProductServices {
       salePrice,
       description,
       composition,
+      images,
+      collectionId,
+      categoryId,
+      subcategoryId,
     });
+
     return product.get();
   };
 
@@ -69,6 +78,7 @@ class ProductServices {
       composition,
       categoryId,
       collectionId,
+      subcategoryId,
     }
   ) => {
     const product = await Product.findByPk(id);
@@ -81,6 +91,7 @@ class ProductServices {
         composition,
         categoryId,
         collectionId,
+        subcategoryId,
       });
       return product.get();
     }

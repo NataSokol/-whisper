@@ -1,6 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import { OneProductResponse, Product, ProductResponse } from ".";
+import {
+  CreateProductRequest,
+  OneProductResponse,
+  Product,
+  ProductResponse,
+} from ".";
 import { ProductServices } from "../api";
 
 type RejectValue = {
@@ -36,6 +41,48 @@ export const getOneProduct = createAsyncThunk<
     });
   }
 });
+
+export const createProduct = createAsyncThunk<
+  Product,
+  CreateProductRequest,
+  { rejectValue: RejectValue }
+>(
+  "/createProduct",
+  async (
+    {
+      title,
+      images,
+      description,
+      composition,
+      price,
+      collectionId,
+      categoryId,
+      subcategoryId,
+    },
+    { rejectWithValue }
+  ) => {
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("composition", composition);
+      formData.append("price", String(price));
+      formData.append("collectionId", String(collectionId));
+      formData.append("categoryId", String(categoryId));
+      formData.append("subcategoryId", String(subcategoryId));
+
+      images.forEach((image) => {
+        formData.append("images", image);
+      });
+      return await ProductServices.createProduct(formData);
+    } catch (error) {
+      const err = error as AxiosError<{ message: string }>;
+      return rejectWithValue({
+        message: err.response?.data.message || err.message,
+      });
+    }
+  }
+);
 
 export const updateProduct = createAsyncThunk<
   OneProductResponse,

@@ -21,7 +21,10 @@ export const AdminProductList: React.FC<Props> = ({ products }) => {
     <div className={styles.productListContainer}>
       {products.map((product) => (
         <div key={product.id} className={styles.productContainer}>
-          <AdminProductItem product={product} />
+          <AdminProductItem
+            key={`product-item-${product.id}`}
+            product={product}
+          />
           <Link to={`${ROUTES.ADMIN_PRODUCTS}/${product.id}`}>
             <Button
               type="submit"
