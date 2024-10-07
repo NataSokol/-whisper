@@ -47,28 +47,81 @@
   flex-direction: row;
   gap: 10px;
   width: 100%;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid lightgray;
 }
 
-.color{
+.colorBorder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  cursor: pointer;  
+  cursor: pointer;
+  border: 0.1px solid gray;
 }
 
-/* .sizePicker {
-    display: flex;
-    width: 100%;
+.pickedColor {
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
 
-} */
+.sizePickerHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.sizePickerHeader {
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.sizePicker {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 10px;
+  padding-bottom: 20px;
+}
 
 input[type="radio"] {
   display: none;
 }
 
-.size{
-  border-radius: var();
+.size {
+  width: 84px;
+  height: 56px;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: lighter;
+  transition: background-color 0.6s;
 }
+
+/* input[type="radio"]:checked + label {
+  background-color: #0056b3;
+} */
 
 .cartButton {
   width: 100%;
@@ -103,7 +156,7 @@ input[type="radio"] {
   width: 100%;
   cursor: pointer;
   font-size: 16px;
-  user-select: none; 
+  user-select: none;
 }
 
 .accordionTitle img {
@@ -123,7 +176,7 @@ input[type="radio"] {
 .accordionBody {
   font-size: 14px;
   font-weight: lighter;
-  padding: 0 20px; 
+  padding: 0 20px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -135,4 +188,3 @@ input[type="radio"] {
   opacity: 1;
   padding: 10px 20px;
 }
-

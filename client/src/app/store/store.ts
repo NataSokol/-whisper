@@ -15,7 +15,7 @@ const store = configureStore({
     subcategory: subcategoryReducer,
     product: productReducer,
     cartItem: cartItemReducer,
-
+    // cart: cartReducer
   },
 });
 

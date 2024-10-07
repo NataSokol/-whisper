@@ -3,27 +3,34 @@ import styles from "./ProductPageWidget.module.css";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { Color } from "@/entities/color";
 import { ProductSize } from "@/entities/productsize";
+import { createCartItem } from "@/entities/cartitem";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  // const {cart} = useAppSelector((state) => state.cart);
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
 
   const [selectedColor, setSelectedColor] = useState<Color["id"]>();
   const [selectedSize, setSelectedSize] = useState<ProductSize["id"]>();
 
+
   const onHandleCrateCartItem = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
 
-    // if (selectedColor && selectedSize) {
+    if (selectedColor && selectedSize) {
     console.log(selectedColor, selectedSize);
-    // await dispatch()
-    // } else {
-    //   alert("Выберите цвет и размер");
-    // }
+      // if (cart.CartItems?.find((cartItem) => cartItem.productColorId === selectedColor && cartItem.productSizeId === selectedSize)) {
+      //   const resultAction = await dispatch(createCartItem({cartId: 1, productId: currProduct?.id, quantity: 1, productColorId: selectedColor, productSizeId: selectedSize }));
+
+      // }
+      const resultAction = await dispatch(createCartItem({cartId: 1, productId: currProduct?.id, quantity: 1, productColorId: selectedColor, productSizeId: selectedSize }));
+    } else {
+      alert("Выберите цвет и размер");
+    }
   };
 
   return (
@@ -47,6 +54,11 @@ export const ProductPageWidget: React.FC = () => {
         </div>
 
         <form onSubmit={onHandleCrateCartItem}>
+          <div className={styles.pickedColor}>
+            цвет:{" "}
+            {currProduct?.Colors?.find((c) => c.id === selectedColor)?.title ||
+              "не выбран"}
+          </div>
           <div className={styles.colorPicker}>
             {currProduct?.Colors?.map((color) => (
               <label key={color.id}>
@@ -57,35 +69,47 @@ export const ProductPageWidget: React.FC = () => {
                   onChange={() => setSelectedColor(color.id)}
                 />
                 <div
-                  className={styles.color}
+                  className={styles.colorBorder}
                   style={{
-                    backgroundColor: color.colorCode,
-                    padding: "2px",
                     border:
                       selectedColor === color.id ? "2px solid black" : "none",
                   }}
-                ></div>
-                {color.title}
+                >
+                  <div
+                    className={styles.color}
+                    style={{
+                      backgroundColor: color.colorCode,
+                    }}
+                  ></div>
+                </div>
               </label>
             ))}
           </div>
 
+          <div className={styles.sizePickerHeaderContainer}>
+            <div className={styles.sizePickerHeader}>размер</div>
+            <div>Подобрать размер</div>
+          </div>
           <div className={styles.sizePicker}>
             {currProduct?.ProductSizes?.map((size) => (
               <label key={size.id}>
                 <input
                   type="radio"
                   value={size.id}
-                  checked={selectedColor === size.id}
+                  checked={selectedSize === size.id}
                   onChange={() => setSelectedSize(size.id)}
                 />
                 <div
                   className={styles.size}
                   style={{
-                    border:
-                    selectedSize === size.id ? "2px solid black" : "none",
+                    backgroundColor:
+                    selectedSize === size.id ? "black" : "white",
+                    color:
+                    selectedSize === size.id ? "white" : "black",
                   }}
-                >{size.sizeTitle}</div>
+                >
+                  {size.sizeTitle}
+                </div>
               </label>
             ))}
           </div>
@@ -146,4 +170,3 @@ export const ProductPageWidget: React.FC = () => {
     </div>
   );
 };
-
