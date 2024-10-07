@@ -25,6 +25,7 @@ export const useProductAction = () => {
   const handleUpdateProduct = useCallback(
     async (id: number, productData: Partial<Product>) => {
       await dispatch(updateProduct([id, productData as Product]));
+      dispatch(getOneProduct({ id }));
     },
     [dispatch]
   );

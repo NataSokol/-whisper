@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./AdminProductList.module.css";
 import { AdminProductItem, ProductList } from "@/entities/product";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { useProductAction } from "@/shared/hooks/useProductAction";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import styles from "./AdminProductList.module.css";
 
 type Props = {
   products: ProductList;

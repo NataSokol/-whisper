@@ -1,8 +1,8 @@
-.productImage {
-  max-width: 150px;
-  max-height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .productTitle {
@@ -11,9 +11,9 @@
   margin-right: 20px;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.productImage {
+  max-width: 150px; 
+  max-height: 150px; 
+  object-fit: cover; 
+  border-radius: 10px;  
 }

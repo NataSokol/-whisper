@@ -4,3 +4,4 @@ export { AdminCollectionList } from "./AdminCollectionList";
 export { AdminFormCollection } from "./AdminFormCollection";
 export { AdminProductList } from "./AdminProductList";
 export { AdminOneProductList } from "./AdminOneProductList";
+export { AdminProductSizeList } from "./AdminProductSizeList";

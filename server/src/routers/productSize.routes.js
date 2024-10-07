@@ -8,6 +8,7 @@ router
 
 router
   .route("/:id")
+  .get(productSizeController.getOneProductSize)
   .put(productSizeController.updateProductSize)
   .delete(productSizeController.deleteProductSize);
 

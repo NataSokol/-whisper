@@ -4,6 +4,11 @@ class ProductSizeServices {
   static getAllProductSizes = async () =>
     (await ProductSize.findAll()).map((productSize) => productSize.get());
 
+  static getOneProductSize = async (id) => {
+    const productSize = await ProductSize.findByPk(id);
+    return productSize ? productSize.get() : null;
+  };
+
   static createProductSize = async (data) => {
     const productSize = await ProductSize.create(data);
     return productSize.get();

@@ -9,6 +9,16 @@ exports.getAllProductSizes = async (req, res) => {
   }
 };
 
+exports.getOneProductSize = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const productSize = await ProductSizeServices.getOneProductSize(id);
+    res.status(200).json({ message: "success", productSize });
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+};
+
 exports.createProductSize = async (req, res) => {
   try {
     const {

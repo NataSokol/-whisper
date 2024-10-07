@@ -31,9 +31,10 @@ export const AdminOneProductFeature: React.FC = () => {
 
   useEffect(() => {
     allCategories();
-    getCollectionList();  
+    getCollectionList();
   }, [allCategories, getCollectionList]);
 
+  // обновление продукта(его описание)
   const handleUpdate = async () => {
     if (selectedProduct) {
       const productData = {
@@ -148,7 +149,12 @@ export const AdminOneProductFeature: React.FC = () => {
           <Button theme={ThemeButton.PRIMARY} onClick={handleUpdate}>
             Сохранить
           </Button>
-          <Button theme={ThemeButton.SECONDARY} onClick={() => setModalActive(false)}>Закрыть</Button>
+          <Button
+            theme={ThemeButton.SECONDARY}
+            onClick={() => setModalActive(false)}
+          >
+            Закрыть
+          </Button>
         </div>
       </ModalWindow>
     </div>
