@@ -5,3 +5,4 @@ import productReducer from './model/productSlice'
 export type {Product, ProductList} from './model'
 
 export { productReducer }
+

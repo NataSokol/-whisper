@@ -1,5 +1,9 @@
 import { Category } from "@/entities/category";
 import { Collection } from "@/entities/collection";
+import { ColorList } from "@/entities/color/model";
+import { ImageList } from "@/entities/image";
+import { ProductSizeList } from "@/entities/productsize";
+
 import { Subcategory } from "@/entities/subcategory/model";
 
 export type Product = {
@@ -18,6 +22,10 @@ export type Product = {
   Collection: Collection
   Category: Category;
   Subcategory: Subcategory;
+  Colors: ColorList;
+  Images: ImageList;
+  ProductSizes: ProductSizeList
+
 
   createdAt: Date;
   updatedAt: Date;
