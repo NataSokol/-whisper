@@ -13,6 +13,7 @@ export const Navbar: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [favorites, setFavorites] = useState<number>(1);
   const [cartCount, setCartCount] = useState<number>(9);
@@ -44,10 +45,11 @@ export const Navbar: React.FC = () => {
       debounce((value: string) => {
         setSearchValue(value);
       }, 300),
-    [setSearchValue]
+    []
   );
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
     debouncedSetSearchValue(e.target.value);
   };
 
@@ -107,6 +109,7 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     setIsInputFocused(false);
     setIsSearchActive(false);
+    setInputValue("");
     setSearchValue("");
   }, [location]);
 
@@ -114,7 +117,9 @@ export const Navbar: React.FC = () => {
     <div className={`${styles.container} ${isScrolled ? styles.scrolled : ""}`}>
       <Sidebar />
       <div className={styles.navbarLogo}>
-        <img src="../../public/img/logo.svg" alt="Logo" />
+        <Link to={ROUTES.HOME}>
+          <img src="../../public/img/logo.svg" alt="Logo" />
+        </Link>
       </div>
       <div
         className={`${styles.navbarLinks} ${
@@ -140,6 +145,7 @@ export const Navbar: React.FC = () => {
               placeholder="Что вы хотите найти?"
               onChange={handleSearchInputChange}
               onFocus={handleSearchInputFocus}
+              value={inputValue}
               maxLength={30}
             />
           </div>
