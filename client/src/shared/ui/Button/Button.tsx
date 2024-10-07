@@ -2,9 +2,9 @@ import type { ButtonHTMLAttributes } from 'react';
 import './Button.css';
 
 export enum ThemeButton {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  DANGER = 'danger',
+  DARK='dark',
+  LIGHT='light',
+  DISABLED='disabled',
 }
 
 type ButtonProps = {

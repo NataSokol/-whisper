@@ -5,6 +5,7 @@ import Layout from "./Layout/Layout";
 import AdminPage from '@/pages/AdminPage/AdminPage/AdminPage';
 import { PublicRoute } from "@/shared/ui/PublicRoute";
 import ProductPage from "@/pages/ProductPage/ProductPage";
+
 export const router = createBrowserRouter([
   {
     path: ROUTES.HOME,

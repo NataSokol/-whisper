@@ -1,7 +1,10 @@
 .Button {
   cursor: pointer;
   border: none;
-  padding: 12px 28px;
+  /* padding: 12px 28px; */
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
   margin: 5px;
   border-radius: var(--border-radius-small);
   transition: 0.3s ease-in-out
@@ -20,7 +23,8 @@
 }
 
 .light {
-  background-color: var(--text-white);
+  background-color: var(--primary-basic-white);
+  border: 1px solid var(--primary-basic-white);
 }
 
 .disabled {
