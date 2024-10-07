@@ -5,7 +5,7 @@ import { getAllCategory } from "@/entities/category";
 import { getAllCollections } from "@/entities/collection";
 import { getAllSubcategories } from "@/entities/subcategory";
 import { ROUTES } from "@/app/router/routes";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const Sidebar: React.FC = () => {
   const { categories } = useAppSelector((state) => state.userCategory);
@@ -17,6 +17,7 @@ export const Sidebar: React.FC = () => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const subSidebarRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -51,6 +52,10 @@ export const Sidebar: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, dispatch]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   return (
     <div className={styles.container}>
