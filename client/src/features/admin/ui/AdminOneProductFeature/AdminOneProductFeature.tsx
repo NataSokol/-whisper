@@ -12,7 +12,7 @@ import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 export const AdminOneProductFeature: React.FC = () => {
   const categories = useAppSelector((state) => state.adminCategory.categories);
   const collection = useAppSelector((state) => state.collection.collections);
-  const { handleUpdateProduct } = useProductAction();
+  const { handleUpdateProduct, getProduct } = useProductAction();
   const { allCategories } = useCategoryActions();
   const { getCollectionList } = useCollectionAction();
   const [title, setTitle] = useState("");
@@ -46,9 +46,10 @@ export const AdminOneProductFeature: React.FC = () => {
         categoryId: selectedCategoryId,
         collectionId: selectedCollectionId,
       };
-
       await handleUpdateProduct(selectedProduct.id, productData);
       setModalActive(false);
+      // Обновляю продукт в состоянии
+      getProduct(Number(selectedProduct.id));
     }
   };
 
