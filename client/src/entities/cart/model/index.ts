@@ -10,11 +10,7 @@ export type Cart = {
     updatedAt: Date;
 }
 
-
-
 // RESPONSE
-
-
 export type CartResponse = {
   message: string;
   cart: Cart;

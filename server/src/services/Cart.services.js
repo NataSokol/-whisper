@@ -76,7 +76,7 @@ class CartServices {
       return null;
     };
 
-    static deleteCart = async (id,userId) => {
+    static deleteCart = async (id, userId) => {
       const cart = await Cart.findOne({ where: { id, userId } });
       if (cart) {
         return cart.destroy();

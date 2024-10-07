@@ -11,18 +11,31 @@ export type CartItem = {
     productColorId: number;
     Product: Product;
     ProductSize: ProductSize;
-    Color: Color;
+    // Color: Color;
+//! потом переписать, но пока работаем с костылем на бд поэтому тут тип описан так 
+    colorProduct: {
+        colorId: number;
+        productId: number;
+        createdAt: Date;
+        updatedAt: Date;
+        Color: Color
+    }
     quantity: number;
     createdAt: Date;
     updatedAt: Date;
 };
 
+export type CreateCartItem = Omit<CartItem, 'id' | 'createdAt' | 'updatedAt'>
 
+export type CartItemList = CartItem[]
 
 // RESPONSE
-
-
 export type CartItemResponse = {
     message: string;
     cartItem: CartItem;
+  }
+
+  export type CartItemListResponse = {
+    message: string;
+    cartItemList: CartItemList;
   }

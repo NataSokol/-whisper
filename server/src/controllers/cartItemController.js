@@ -10,6 +10,16 @@ exports.getCartItemById = async (req, res) => {
   }
 };
 
+exports.getCartItemsByCartId = async (req, res) => {
+  try {
+    const { cartId } = req.params;
+    const cartItems = await CartItemServices.getCartItemsByCartId(cartId);
+    res.status(200).json({ message: 'success', cartItems });
+  } catch ({message}) {
+    res.status(500).json({ error: message });
+  }
+};
+
 exports.createCartItem = async (req, res) => {
     try {
     const { cartId, productId, quantity, productSizeId, productColorId } =

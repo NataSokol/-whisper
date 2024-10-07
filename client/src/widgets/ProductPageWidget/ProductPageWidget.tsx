@@ -6,7 +6,7 @@ import { ProductSize } from "@/entities/productsize";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
 

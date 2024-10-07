@@ -2,10 +2,11 @@ const router = require("express").Router();
 const cartController = require("../controllers/cartController");
 const { verifyAccessToken } = require("../middlewares/verifyToken");
 
-//////////// проверить с логой регой, если что изменить логику 
+// TODO проверить с логой регой, если что изменить логику 
+
 router
     .route("/")
-    .get(verifyAccessToken, cartController.getCartByUserId)
+    .get( cartController.getCartByUserId)
     .post(verifyAccessToken, cartController.createCart);
 
 router   
