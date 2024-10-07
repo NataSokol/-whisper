@@ -1,0 +1,2 @@
+export {ProductPageWidget} from "./ProductPageWidget";
+

@@ -27,12 +27,12 @@ export type ProductList = Product[];
 
 // RESPONSE
 
-export type ProductResponse = {
+export type ProductListResponse = {
   products: ProductList;
   message: string;
 };
 
-export type OneProductResponse = {
+export type ProductResponse = {
   product: Product;
   message: string;
 };
