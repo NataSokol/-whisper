@@ -1,9 +1,8 @@
-// NavbarAdmin.tsx
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./NavbarAdmin.module.css";
 import { ROUTES } from "@/app/router/routes";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import styles from "./NavbarAdmin.module.css";
 
 export const NavbarAdmin: React.FC = () => {
   return (

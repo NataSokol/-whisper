@@ -67,12 +67,6 @@ export const ProductPageWidget: React.FC = () => {
                 ></div>
                 {color.title}
               </label>
-              // <div
-              //   className={styles.color}
-              //   style={{
-              //     backgroundColor: color.colorCode,
-              //   }}
-              // ></div>
             ))}
           </div>
 
@@ -100,12 +94,6 @@ export const ProductPageWidget: React.FC = () => {
             добавить в корзину
           </button>
         </form>
-
-        {/* <div className={styles.sizePicker}>
-          {currProduct?.ProductSizes?.map((size) => (
-            <div className={styles.size}>{size.sizeTitle}</div>
-          ))}
-        </div> */}
 
         <div className={styles.otherInfo}>
           <div className={styles.accordionItem}>
@@ -158,3 +146,4 @@ export const ProductPageWidget: React.FC = () => {
     </div>
   );
 };
+

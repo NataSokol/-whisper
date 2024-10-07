@@ -36,6 +36,7 @@
     text-align: center;
     font-weight: 500;
     margin-top: 25px;
+
     color: white;
     text-decoration: underline;
     cursor: pointer;
@@ -44,3 +45,4 @@
 .collectionLink:visited {
     color: (--primary-basic-white)
 }
+

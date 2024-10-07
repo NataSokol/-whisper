@@ -1,14 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import { MainPage, SignInPage, SignUpPage } from "@/pages";
+import { AdminCategoryPage, AdminCollectionPage, MainPage, SignInPage, SignUpPage } from "@/pages";
 import { ROUTES } from "./routes";
 import Layout from "./Layout/Layout";
-import AdminPage from '@/pages/AdminPage/ui/AdminPage';
-import AdminCategoryPage from '@/pages/AdminPage/ui/AdminCategoryPage';
-import AdminCollections from '@/pages/AdminPage/ui/AdminCollectionPage';
+import AdminPage from '@/pages/AdminPage/AdminPage/AdminPage';
 import { PublicRoute } from "@/shared/ui/PublicRoute";
 import ProductPage from "@/pages/ProductPage/ProductPage";
-
-
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +21,7 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTES.ADMIN_COLLECTIONS,
-            element: <AdminCollections />,
+            element: <AdminCollectionPage />,
           },
           // {
           //   path: ROUTES.ADMIN_PRODUCTS,
