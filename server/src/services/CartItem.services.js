@@ -4,21 +4,31 @@ const {
   ProductSize,
   Color,
   ColorProduct,
-} = require("../db/models");
+} = require("../../db/models");
+
+
+
+//! написать ручку для чтения элемента корзины как ручку для самой корзины, через костыль, в таком варианте будет только один элемент в корзине крашится
 
 class CartItemService {
-  static async getCartItemById(cartItemId) {
-    const cartItems = await CartItem.findAll(
-      { where: { id: cartItemId } },
-      {
-        include: [
-          { model: Product },
-          { model: ProductSize },
-          { model: Color, through: ColorProduct },
-        ],
-      }
-    );
-    return cartItems;
+  static async getCartItemById(id) {
+    const cartItems = await CartItem.findOne({
+      where: { id },
+      include: [
+        { model: Product },
+        { model: ProductSize },
+        // {
+        //   model: ColorProduct,
+        //   include: [
+        //     {
+        //       model: Color,
+        //       attributes: ["title", "colorCode"], 
+        //     },
+        //   ],
+        // },
+      ],
+    });
+    return cartItems.get({ plain: true });
   }
 
   static async createCartItem(
@@ -35,29 +45,31 @@ class CartItemService {
       productSizeId,
       productColorId,
     });
-    cartItem = await CartItem.findOne(
-      { where: { id: cartItem.id} },
-      {
-        include: [
-          { model: Product },
-          { model: ProductSize },
-          { model: Color, through: ColorProduct },
-        ],
-      }
-    );
+    cartItem = await CartItem.findOne({
+      where: { id: cartItem.id },
+      include: [
+        { model: Product },
+        { model: ProductSize },
+        // { model: Color, through: ColorProduct },
+      ],
+    });
     return cartItem ? cartItem.get() : null;
   }
 
-  static async updateCartItem(
-    id,
-    quantity,
-  ) {
-    const cartItem = await CartItem.findOne({ where: { id} }, {include: { model: CartItem}});
+  static async updateCartItem(id, quantity) {
+    const cartItem = await CartItem.findOne({
+      where: { id },
+      include: [
+        { model: Product },
+        { model: ProductSize },
+        // { model: Color, through: ColorProduct },
+      ],
+    });
     if (cartItem) {
-        await cartItem.update({ quantity });
-        return cartItem.get();
-      }
-      return null;
+      await cartItem.update({ quantity });
+      return cartItem.get();
+    }
+    return null;
   }
 
   static async deleteCartItem(id) {

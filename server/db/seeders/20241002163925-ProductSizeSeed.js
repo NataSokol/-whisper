@@ -15,6 +15,22 @@ module.exports = {
           quantity: 20,
         },
         {
+          productId: 1,
+          sizeTitle: "s",
+          width: 5555,
+          frontLength: 56,
+          sleeveLength: 73,
+          quantity: 20,
+        },
+        {
+          productId: 1,
+          sizeTitle: "m",
+          width: 11111,
+          frontLength: 56,
+          sleeveLength: 73,
+          quantity: 20,
+        },
+        {
           productId: 2,
           sizeTitle: "one size",
           chestGirth: 102,
