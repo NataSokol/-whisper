@@ -28,6 +28,7 @@
   margin-top: 30px;
 }
 
+
 .overlay {
   position: fixed;
   top: 0;
@@ -39,6 +40,7 @@
 }
 
 ul {
+  color: var(--primary-light-gray);
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -46,21 +48,21 @@ ul {
 
 li {
   padding: 8px 16px;
-  color: var(--secondary-black);
+  color: var(--primary-light-gray);
   position: relative;
 }
 
 .sidebarItem {
-  color: var(--secondary-gray-56);
+  color: var(--primary-light-gray);
   margin-bottom: 14px;
   transition: color 0.3s;
   padding: 14px 16px;
   cursor: pointer;
-  font-size: var( --font-size-base);
+  font-size: var(--font-size-base);
 }
 
 .sidebarItem:hover {
-  color: var(--secondary-black);
+  color: var(--secondary-black) ;
 }
 
 .active {
@@ -147,11 +149,16 @@ li {
 }
 
 .subSidebar ul {
+  color: var(--primary-light-gray);
   padding: 0;
   margin: 0;
 }
 
-.subSidebar li {
+.subSidebar li  {
+  color: var(--primary-light-gray);
+}
+
+.subSidebar li:hover {
   color: var(--secondary-black);
 }
 

@@ -4,7 +4,7 @@
   /* padding: 12px 28px; */
   width: 150px;
   height: 40px;
-  font-size: 18px;
+  font-size: var(--font-size-heading);
   margin: 5px;
   border-radius: var(--border-radius-small);
   transition: 0.3s ease-in-out
