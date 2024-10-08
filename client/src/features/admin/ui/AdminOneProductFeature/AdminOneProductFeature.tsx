@@ -173,11 +173,11 @@ export const AdminOneProductFeature: React.FC = () => {
               </label>
             </>
           )}
-          <Button theme={ThemeButton.PRIMARY} onClick={handleUpdate}>
+          <Button theme={ThemeButton.LIGHT} onClick={handleUpdate}>
             Сохранить
           </Button>
           <Button
-            theme={ThemeButton.SECONDARY}
+            theme={ThemeButton.LIGHT}
             onClick={() => setModalActive(false)}
           >
             Закрыть

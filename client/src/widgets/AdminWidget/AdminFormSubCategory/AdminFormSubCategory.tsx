@@ -22,7 +22,7 @@ export const AdminFormSubCategory: React.FC = () => {
           className={styles.input}
           placeholder="Введите название подкатегории"
         />
-        <Button type="submit" theme={ThemeButton.PRIMARY}>
+        <Button type="submit" theme={ThemeButton.LIGHT}>
           Добавить
         </Button>
       </form>

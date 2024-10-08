@@ -28,7 +28,7 @@ export const AdminProductList: React.FC<Props> = ({ products }) => {
           <Link to={`${ROUTES.ADMIN_PRODUCTS}/${product.id}`}>
             <Button
               type="submit"
-              theme={ThemeButton.SECONDARY}
+              theme={ThemeButton.LIGHT}
               onClick={() => onProductClick(product.id)}
             >
               Подробнее

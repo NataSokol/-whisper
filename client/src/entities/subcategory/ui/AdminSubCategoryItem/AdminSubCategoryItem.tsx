@@ -25,13 +25,13 @@ export const AdminSubCategoryItem: React.FC<Props> = ({
     >
       <span>{subcategory.title}</span>
       <Button
-        theme={ThemeButton.PRIMARY}
+        theme={ThemeButton.LIGHT}
         onClick={() => onSubcategoryUpdate(subcategory.id)}
       >
         Изменить
       </Button>
       <Button
-        theme={ThemeButton.DANGER}
+        theme={ThemeButton.LIGHT}
         onClick={() => onSubcategoryDelete(subcategory.id)}
       >
         Удалить

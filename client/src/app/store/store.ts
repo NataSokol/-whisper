@@ -14,7 +14,7 @@ const store = configureStore({
     adminCategory: adminCategoryReducer,
     userCategory: userCategoryReducer,
     collection: collectionReducer,
-    subcategory: subcategoryReducer,
+    subcategory: subCategoryReducer,
     product: productReducer,
     cartItem: cartItemReducer,
     cart: cartReducer,

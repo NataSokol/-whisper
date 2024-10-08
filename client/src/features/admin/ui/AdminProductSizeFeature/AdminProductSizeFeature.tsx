@@ -177,10 +177,10 @@ export const AdminProductSizeFeature: React.FC = () => {
                   onChange={(e) => setQuantity(+e.target.value)}
                 />
               </label>
-              <Button theme={ThemeButton.PRIMARY} onClick={handleUpdate}>
+              <Button theme={ThemeButton.LIGHT} onClick={handleUpdate}>
                 Сохранить
               </Button>
-              <Button theme={ThemeButton.SECONDARY} onClick={handleCloseModal}>
+              <Button theme={ThemeButton.LIGHT} onClick={handleCloseModal}>
                 Закрыть
               </Button>
             </>
