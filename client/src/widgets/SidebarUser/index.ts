@@ -1,0 +1,1 @@
+export { SidebarUser } from './SidebarUser';

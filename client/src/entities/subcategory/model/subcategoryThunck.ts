@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { SubcategoryListResponce, SubcategoryResponce } from ".";
+import { SubcategoryListResponse, SubcategoryResponse } from ".";
 import { SubcategoryService } from "../api";
 import { AxiosError } from "axios";
 type RejectValue = {
-    message: string;
-  };
+  message: string;
+};
 
 export const getAllSubcategories = createAsyncThunk<
-SubcategoryListResponce,
+  SubcategoryListResponse,
   void,
   { rejectValue: RejectValue }
 >("/getAllSubcategories", async (_, { rejectWithValue }) => {
@@ -22,14 +22,12 @@ SubcategoryListResponce,
 });
 
 export const createSubcategory = createAsyncThunk<
-SubcategoryResponce,
-  {  title: string,
-    image: string,
-  },
+  SubcategoryResponse,
+  { title: string; image: string },
   { rejectValue: RejectValue }
->("/createSubcategory", async ({title}, { rejectWithValue }) => {
+>("/createSubcategory", async ({ title }, { rejectWithValue }) => {
   try {
-   return await SubcategoryService.createSubcategory({title});
+    return await SubcategoryService.createSubcategory({ title });
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -37,17 +35,14 @@ SubcategoryResponce,
     });
   }
 });
-  
 
 export const updateSubcategory = createAsyncThunk<
-SubcategoryResponce,
-  {  id: number,
-    title: string,
-  },
+  SubcategoryResponse,
+  { id: number; title: string },
   { rejectValue: RejectValue }
->("/updateSubcategory", async ({id, title}, { rejectWithValue }) => {
+>("/updateSubcategory", async ({ id, title }, { rejectWithValue }) => {
   try {
-   return await SubcategoryService.updateSubcategory(id, {title});
+    return await SubcategoryService.updateSubcategory(id, { title });
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
@@ -57,7 +52,7 @@ SubcategoryResponce,
 });
 
 export const deleteSubcategory = createAsyncThunk<
-void,
+  void,
   { id: number },
   { rejectValue: RejectValue }
 >("/deleteSubcategory", async ({ id }, { rejectWithValue }) => {

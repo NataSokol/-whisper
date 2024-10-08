@@ -43,7 +43,7 @@ export const AdminFormCollection: React.FC = () => {
           onChange={handleFileChange}
           placeholder="Добавьте фото коллекции"
         />
-        <Button type="submit" theme={ThemeButton.PRIMARY}>
+        <Button type="submit" theme={ThemeButton.LIGHT}>
           Добавить
         </Button>
       </form>

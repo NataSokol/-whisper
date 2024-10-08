@@ -2,10 +2,12 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import styles from "./Navbar.module.css";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import { SidebarUser } from "../SidebarUser";
 import { Sidebar } from "../Sidebar";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { getAllProducts } from "@/entities/product";
 import debounce from "lodash.debounce";
+
 
 export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
@@ -18,7 +20,11 @@ export const Navbar: React.FC = () => {
   const [favorites, setFavorites] = useState<number>(1);
   const [cartCount, setCartCount] = useState<number>(9);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  const { user } = useAppSelector((state) => state.user);
+
   const location = useLocation();
+
 
   const handleSearchClick = () => {
     setIsSearchActive(true);
@@ -174,10 +180,17 @@ export const Navbar: React.FC = () => {
                 )}
               </Link>
             </button>
+
             <button className={styles.button}>
-              <Link to={ROUTES.PROFILE}>
-                <img src="../../public/img/user.svg" alt="User" />
-              </Link>
+
+              {user ? (
+                <Link to={ROUTES.PROFILE}>
+                  <img src="../../public/img/user.svg" alt="" />
+                </Link>
+              ) : (
+                <SidebarUser />
+              )}
+
             </button>
           </>
         )}

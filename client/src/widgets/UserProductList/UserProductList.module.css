@@ -1,0 +1,18 @@
+.container {
+  margin-top: 150px;
+  width: 100%; 
+  max-width: 1040px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-bottom: 28px;
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

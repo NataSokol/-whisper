@@ -13,4 +13,5 @@ module.exports = (payload) => ({
     process.env.REFRESH_TOKEN_SECRET,
     jwtConfig.refresh
   ),
+  
 });
