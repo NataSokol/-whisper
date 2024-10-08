@@ -48,7 +48,7 @@ axiosInstance.interceptors.response.use(
       try {
         //? Делаем запрос на обновление токенов.
 
-        const response = await axios.get('/api/tokens/refresh');
+        const response = await axios.get(`${import.meta.env.VITE_API}/tokens/refresh`, {withCredentials: true});
 
         //? Достаём новый токен из ответа.
         accessToken = response.data.accessToken;

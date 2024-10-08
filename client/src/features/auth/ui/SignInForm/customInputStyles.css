@@ -1,0 +1,74 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Увеличиваем отступ между элементами формы */
+}
+
+.input-group {
+  width: 100%;
+  height: 6vh;
+  position: relative;
+  /* margin: 20px 0; */
+}
+
+.custom-input {
+  
+  width: 100%;
+  height: 100%;
+  /* padding: 10px; */
+  border: none;
+  border-bottom: 2px solid #ccc; 
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #363636; 
+}
+
+.floating-label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0 4px;
+  transition: all 0.2s ease;
+  
+}
+
+.custom-input:focus + .floating-label,
+.custom-input:not(:placeholder-shown) + .floating-label {
+  top: 0;
+  left: 10px;
+  font-size: 12px; 
+  color: #363636; 
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Добавляем отступ сверху */
+  margin-bottom: 20px;
+}
+
+.submit-button:hover {
+  background-color: #8a8a8a; 
+
+}
+
+.forgot-password {
+  text-decoration: underline; 
+  color: #060606; 
+  margin-top: 10px; 
+  cursor: pointer; 
+}
+.last-input-group {
+  margin-bottom: 20px; /* Отступ между последним полем и кнопкой */
+}

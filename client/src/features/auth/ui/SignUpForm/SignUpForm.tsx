@@ -1,64 +1,37 @@
-import styles from './SignUpForm.module.css';
-import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { ROUTES } from '@/app/router/routes';
-import { useNavigate } from 'react-router-dom';
+// import styles from "./SignUpForm.module.css";
+import React, { useState } from "react";
+import "../SignInForm/customInputStyles.css";
+
+import { ROUTES } from "@/app/router/routes";
+import { useNavigate } from "react-router-dom";
 import {
   selectUserLoading,
   useAppDispatch,
   useAppSelector,
-} from '@/shared/hooks/reduxHooks';
-import { signUp } from '@/entities/user';
-import { unwrapResult } from '@reduxjs/toolkit';
+} from "@/shared/hooks/reduxHooks";
+import { signUp } from "@/entities/user";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { message } from "antd";
+import { checkEmailExists } from "@/shared/utils/checkEmailExists";
 
 // /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
-
-interface IFormInputs {
-  username: string;
-  email: string;
-  password: string;
-}
-
-const schema = yup
-  .object({
-    username: yup.string().required('Username is required'),
-    email: yup
-      .string()
-      .email('Invalid email format')
-      .required('Email is required'),
-    password: yup
-      .string()
-      .min(6, 'Password must be at least 6 characters')
-      .required('Password is required'),
-  })
-  .required();
 
 export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectUserLoading);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    getValues,
-  } = useForm<IFormInputs>({
-    resolver: yupResolver(schema),
-    mode: 'onChange',
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {}
+  );
 
-  const onSubmit: SubmitHandler<IFormInputs> = async ({
-    username,
-    email,
-    password,
-  }) => {
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
     try {
-      const resultAction = await dispatch(
-        signUp({ username, email, password })
-      );
+      const resultAction = await dispatch(signUp({ email, password }));
       unwrapResult(resultAction);
       navigate(ROUTES.HOME);
     } catch (error) {
@@ -66,69 +39,36 @@ export const SignUpForm: React.FC = () => {
     }
   };
 
-  const getStatusIcon = (fieldName: keyof IFormInputs) => {
-    if (errors[fieldName]) {
-      return <span className={styles.icon}>🔴</span>;
-    }
-    if (getValues()[fieldName] && !errors[fieldName]) {
-      return <span className={styles.icon}>✅</span>;
-    }
-    return null;
-  };
-
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.inputContainer}>
-        <label className={styles.label}>* username</label>
-        <div className={styles.inputWithIcon}>
+    <form onSubmit={handleSubmit}>
+      <div className="form-container">
+        <div className="input-group">
           <input
-            className={styles.input}
-            placeholder='Enter your username'
-            {...register('username')}
+            className="input-group2"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder=" "
+            className="custom-input"
           />
-          {getStatusIcon('username')}
+          <label className="floating-label">Email:</label>
         </div>
-        {errors.username && (
-          <p className={styles.error}>{errors.username.message}</p>
-        )}
-      </div>
 
-      <div className={styles.inputContainer}>
-        <label className={styles.label}>* email</label>
-        <div className={styles.inputWithIcon}>
+        <div className="input-group">
           <input
-            className={styles.input}
-            placeholder='Enter your email'
-            {...register('email')}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder=" "
+            className="custom-input"
           />
-          {getStatusIcon('email')}
+          <label className="floating-label">Password:</label>
         </div>
-        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
-      </div>
 
-      <div className={styles.inputContainer}>
-        <label className={styles.label}>* password</label>
-        <div className={styles.inputWithIcon}>
-          <input
-            className={styles.input}
-            placeholder='Enter your password'
-            type='password'
-            {...register('password')}
-          />
-          {getStatusIcon('password')}
-        </div>
-        {errors.password && (
-          <p className={styles.error}>{errors.password.message}</p>
-        )}
+        <button type="submit" disabled={loading} className="submit-button">
+          {loading ? "ЗАРЕГИСТРИРОВАТЬСЯ..." : "ЗАРЕГИСТРИРОВАТЬСЯ"}
+        </button>
       </div>
-
-      <button
-        className={styles.button}
-        type='submit'
-        disabled={!isValid || loading}
-      >
-        {loading ? 'Signing Up...' : 'Sign up'}
-      </button>
     </form>
   );
 };

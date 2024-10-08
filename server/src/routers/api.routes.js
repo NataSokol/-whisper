@@ -1,3 +1,6 @@
+
+const userInfoRouter = require('./user.routes');
+router.use('/user', userInfoRouter);
 const router = require("express").Router();
 const authRouter = require("./auth.api.routes");
 const tokenRouter = require("./token.api.routes");
@@ -19,3 +22,4 @@ router.use("/subcategories", subcategoryRouter);
 router.use("/productsizes", productSizeRouter);
 
 module.exports = router;
+

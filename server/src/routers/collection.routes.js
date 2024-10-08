@@ -5,7 +5,9 @@ const upload = require("../utils/uploadUtils");
 router
   .route("/")
   .get(collectionController.getAllCollections)
+
   .post(upload.single("image"), collectionController.createCollection);
+
 
 router
   .route("/:id")

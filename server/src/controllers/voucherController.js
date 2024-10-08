@@ -11,6 +11,7 @@ exports.getAllVouchers = async (req, res) => {
 
 exports.getVoucherById = async (req, res) => {
   try {
+    
     const { id } = req.params;
 
     const voucher = await VoucherServices.getVoucherById(id);

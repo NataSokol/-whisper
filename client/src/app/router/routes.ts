@@ -8,6 +8,12 @@ export enum ROUTES {
   ADMIN_PRODUCTS = "/admin/products",
   ADMIN_PRODUCT = "/admin/products/:id",
   SIGNIN = "/signin",
+  FOG = "/request-reset",
+  HISTORY = "/profile/history",
+  ADRESS = "/profile/adress",
+  CARD = "/profile/card",
+  INFO = "/profile/info",
+  CHANGE = "/reset-password/:token",
   SIGNUP = "/signup",
   CHECKEMAIL = "/checkemail",
   FAVORITES = "/favorites",
@@ -30,3 +36,4 @@ export enum ROUTES {
   VK = "https://vk.com/shepot.home",
   ERROR = "*",
 }
+
