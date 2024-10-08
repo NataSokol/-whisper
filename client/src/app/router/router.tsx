@@ -21,13 +21,13 @@ import { CardPage } from "@/pages/CardPage/CardPage";
 import Layout from "./Layout/Layout";
 import ProductPage from "@/pages/ProductPage/ProductPage";
 import { AllProductsPage } from "@/pages/AllProductsPage";
+import { FavoritePage } from "@/pages/FavoritePage";
 
 export const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
     element: <Layout />,
     children: [
-
       {
         path: ROUTES.ADMIN,
         element: <AdminPage />,
@@ -94,11 +94,10 @@ export const router = createBrowserRouter([
         element: <SignInPage />,
       },
 
-
-      //   {
-      //     path: ROUTES.FAVORITES,
-      //     element: <FavoritesPage />,
-      //   },
+      // {
+      //   path: ROUTES.FAVORITES,
+      //   element: <FavoritePage />,
+      // },
 
       {
         path: ROUTES.PROFILE,
@@ -135,7 +134,7 @@ export const router = createBrowserRouter([
       //   path: `${ROUTES.CATALOG}/:productId`,
       //   element: < />,
       // },
-      
+
       {
         path: `${ROUTES.CATALOG}/:productId`,
         element: <ProductPage />,

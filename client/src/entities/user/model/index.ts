@@ -1,3 +1,5 @@
+import { ProductList } from "@/entities/product";
+
 export type User = {
   id: number ;
   phone: string;
@@ -9,6 +11,7 @@ export type User = {
   isAdmin: boolean;
   createdAt: Date;
   updatedAt: Date;
+  Products: ProductList;
 };
 
 export type AuthResponse = {

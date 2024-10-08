@@ -1,5 +1,5 @@
-const { User } = require('../../db/models');
-const bcrypt = require('bcrypt');
+const { User, Product } = require("../../db/models");
+const bcrypt = require("bcrypt");
 
 class UserService {
   async signUp(email, password) {
@@ -9,25 +9,30 @@ class UserService {
     });
 
     if (!isCreated) {
-      throw new Error('User already exists');
+      throw new Error("User already exists");
     }
+    const plainUser = (
+      await User.findOne({
+        where: { email },
+        include: [{ model: Product }],
+      })
+    ).get();
 
-    const plainUser = user.get();
     delete plainUser.password;
 
     return { user: plainUser };
   }
 
   async signIn(email, password) {
+    const user = await User.findOne({
+      where: { email },
+      include: [{ model: Product }],
+    });
 
-
-    const user = await User.findOne({ where: { email } });
-   
-
-    if (!user) throw new Error('User not found');
+    if (!user) throw new Error("User not found");
 
     const isCorrectPassword = await bcrypt.compare(password, user.password);
-    if (!isCorrectPassword) throw new Error('Incorrect email or password');
+    if (!isCorrectPassword) throw new Error("Incorrect email or password");
 
     const plainUser = user.get();
     delete plainUser.password;
@@ -37,34 +42,35 @@ class UserService {
 
   async check(email) {
     const user = await User.findOne({
-      where: { email }
+      where: { email },
+      include: [{ model: Product }],
     });
-    if (!user) throw new Error('User not');
+    if (!user) throw new Error("User not");
 
     return user;
   }
 
-
-
-
   async check1(email, password) {
     const user = await User.findOne({
-      where: { email }
+      where: { email },
+      include: [{ model: Product }],
     });
-    if (user) throw new Error('User already exists');
+    if (user) throw new Error("User already exists");
 
-    const hashPassword = await bcrypt.hash(password, 10)
+    const hashPassword = await bcrypt.hash(password, 10);
 
     return hashPassword;
   }
 
   async updateUserPassword(password, email) {
     try {
-      const user = await User.findOne({ where: { email } });
-
+      const user = await User.findOne({
+        where: { email },
+        include: [{ model: Product }],
+      });
 
       if (user) {
-        user.password = await bcrypt.hash(password, 10)
+        user.password = await bcrypt.hash(password, 10);
         //user.password = password;
         await user.save();
         return user;
@@ -75,8 +81,6 @@ class UserService {
       console.error(error);
     }
   }
-
-
 }
 
 module.exports = new UserService();
