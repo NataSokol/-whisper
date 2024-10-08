@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { User } from ".";
-import { getAllProducts, getProduct } from "./productThunk";
 import { getUserInfo } from "./UserInfoThunk";
 
 type UserInfoState = {

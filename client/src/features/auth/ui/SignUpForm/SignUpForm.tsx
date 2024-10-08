@@ -11,8 +11,6 @@ import {
 } from "@/shared/hooks/reduxHooks";
 import { signUp } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { message } from "antd";
-import { checkEmailExists } from "@/shared/utils/checkEmailExists";
 
 // /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
 
@@ -23,9 +21,9 @@ export const SignUpForm: React.FC = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-    {}
-  );
+  // const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+  //   {}
+  // );
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();

@@ -1,6 +1,5 @@
 import { axiosInstance, setAccessToken } from "@/shared/lib/axiosInstance";
-import { AuthResponse, User, UserInfoResponse } from "../model";
-import axios from "axios";
+import { AuthResponse, User } from "../model";
 
 interface ApiResponse<T> {
   data: T;
