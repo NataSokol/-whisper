@@ -26,13 +26,13 @@ export const AdminCategoryItem: React.FC<Props> = ({
       <span>{category.title}</span>
       <div>
         <Button
-          theme={ThemeButton.PRIMARY}
+          theme={ThemeButton.LIGHT}
           onClick={() => onCategoryUpdate(category.id)}
         >
           Изменить
         </Button>
         <Button
-          theme={ThemeButton.DANGER}
+          theme={ThemeButton.LIGHT}
           onClick={() => onCategoryDelete(category.id)}
         >
           Удалить
