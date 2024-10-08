@@ -8,3 +8,4 @@ app.use("/api", apiRouter);
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);
 });
+

@@ -1,4 +1,4 @@
-import { SignInForm } from '@/features/auth/ui/SignInForm';
+import { SignInForm } from "@/features/auth/ui/SignInForm";
 
 export function SignInPage() {
   return (

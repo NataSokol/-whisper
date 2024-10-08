@@ -1,7 +1,7 @@
 import React from "react";
 import { Collection } from "../../model";
-import styles from "./AdminCollectionItem.module.css";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import styles from "./AdminCollectionItem.module.css";
 
 type Props = {
   collection: Collection;
@@ -14,12 +14,10 @@ export const AdminCollectionItem: React.FC<Props> = ({
   onCollectionDelete,
   onCollectionUpdate,
 }) => {
-
   
   // const imagePath = `http://localhost:3000${collection.image}`
   const imagePath = `${window.location.origin}${collection.image}`;
   // console.log(imagePath);
-
 
   return (
     <div className={styles.container}>

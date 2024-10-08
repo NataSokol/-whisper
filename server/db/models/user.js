@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   User.init(
     {
       phone: {
-        unique: true,
+        
         type: DataTypes.TEXT,
       },
       email: {
