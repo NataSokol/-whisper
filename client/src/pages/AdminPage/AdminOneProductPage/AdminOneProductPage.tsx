@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./AdminOneProductPage.module.css";
-import { AdminOneProductFeature, AdminProductSizeFeature } from '@/features/admin/ui';
+import {
+  AdminOneProductFeature,
+  AdminProductSizeFeature,
+} from "@/features/admin/ui";
+import { AdminFormProductSize } from "@/widgets/AdminWidget";
 
 export const AdminOneProductPage: React.FC = () => {
   return (
@@ -8,6 +12,7 @@ export const AdminOneProductPage: React.FC = () => {
       <h1 className={styles.title}>Управление продуктом</h1>
       <AdminOneProductFeature />
       <AdminProductSizeFeature />
+      <AdminFormProductSize />
     </div>
   );
 };
