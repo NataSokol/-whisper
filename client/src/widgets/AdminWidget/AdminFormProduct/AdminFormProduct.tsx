@@ -70,7 +70,7 @@ export const AdminFormProduct: React.FC = () => {
   return (
     <div className={styles.container}>
       <Button
-        theme={ThemeButton.PRIMARY}
+        theme={ThemeButton.LIGHT}
         onClick={() => setIsModalActive(true)}
       >
         Добавить продукт
