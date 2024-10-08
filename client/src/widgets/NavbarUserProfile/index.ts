@@ -1,0 +1,2 @@
+export { NavbarUserProfile } from "./NavbarUserProfile";
+

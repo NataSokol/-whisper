@@ -10,8 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       phone: {
-        allowNull: false,
-        unique: true,
+        
         type: Sequelize.TEXT,
       },
       email: {
@@ -24,23 +23,23 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       name: {
-        allowNull: false,
+       
         type: Sequelize.TEXT,
       },
       surname: {
-        allowNull: false,
+        
         type: Sequelize.TEXT,
       }  ,
       birthday: {
-        allowNull: false,
+       
         type: Sequelize.DATE,
       },
       address: {
-        allowNull: false,
+       
         type: Sequelize.TEXT,
       },
       isAdmin: {
-        allowNull: false,
+        
         type: Sequelize.BOOLEAN,
       },
       createdAt: {

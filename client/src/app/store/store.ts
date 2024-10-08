@@ -2,14 +2,15 @@ import { userReducer } from "@/entities/user";
 import { adminCategoryReducer, userCategoryReducer } from "@/entities/category";
 import { collectionReducer } from "@/entities/collection";
 import { configureStore } from "@reduxjs/toolkit";
-import { subcategoryReducer } from "@/entities/subcategory";
+import { subCategoryReducer } from "@/entities/subcategory";
 import { productReducer } from "@/entities/product";
 import { cartItemReducer } from "@/entities/cartitem";
 import { cartReducer } from "@/entities/cart";
+import { productSizeReducer } from "@/entities/productsize";
 
 const store = configureStore({
   reducer: {
-    user: userReducer, 
+    user: userReducer,
     adminCategory: adminCategoryReducer,
     userCategory: userCategoryReducer,
     collection: collectionReducer,
@@ -17,6 +18,8 @@ const store = configureStore({
     product: productReducer,
     cartItem: cartItemReducer,
     cart: cartReducer,
+    productSize: productSizeReducer,
+
   },
 });
 

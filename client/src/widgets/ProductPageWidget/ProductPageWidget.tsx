@@ -9,6 +9,7 @@ export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cart);
+
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
 

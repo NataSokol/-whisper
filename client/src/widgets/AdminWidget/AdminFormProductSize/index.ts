@@ -1,0 +1,1 @@
+export { AdminFormProductSize } from "./AdminFormProductSize";

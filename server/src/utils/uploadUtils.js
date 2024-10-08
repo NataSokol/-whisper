@@ -1,25 +1,28 @@
 const multer = require("multer");
 const path = require("path");
-// const fs = require("fs");
-
-// const dir = path.join(__dirname, "public", "img");
-// if (!fs.existsSync(dir)) {
-//   fs.mkdirSync(dir, { recursive: true }); // Создаем директорию, если не существует
-// }
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../public/img')); // путь
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../public/img"));
   },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(
-      null,
-      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname)
-    );
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
-const upload = multer({ storage }).single("image");
+// Ограничения по размеру файла
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image/")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only image files are allowed!"), false);
+  }
+};
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 1024 * 1024 * 5 },
+  fileFilter,
+});
 
 module.exports = upload;

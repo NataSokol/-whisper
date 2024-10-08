@@ -1,0 +1,1 @@
+export { UserProductItem } from "./UserProductItem";

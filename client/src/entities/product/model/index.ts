@@ -3,10 +3,9 @@ import { Collection } from "@/entities/collection";
 import { ColorList } from "@/entities/color/model";
 import { ImageList } from "@/entities/image";
 import { ProductSizeList } from "@/entities/productsize";
-
 import { Subcategory } from "@/entities/subcategory/model";
 
-export type Product = {
+export type ProductDetails = {
   id: number;
   title: string;
   description: string;
@@ -18,14 +17,16 @@ export type Product = {
   categoryId: number;
   collectionId: number;
   subcategoryId: number;
+};
 
-  Collection: Collection
+export type Product = ProductDetails & {
+  Collection: Collection;
   Category: Category;
   Subcategory: Subcategory;
+
   Colors: ColorList;
   Images: ImageList;
-  ProductSizes: ProductSizeList
-
+  ProductSizes: ProductSizeList;
 
   createdAt: Date;
   updatedAt: Date;
@@ -33,14 +34,24 @@ export type Product = {
 
 export type ProductList = Product[];
 
-// RESPONSE
+export type CreateProductRequest = {
+  title: string;
+  images: File[];
+  description: string;
+  composition: string;
+  price: number;
+  collectionId: number;
+  categoryId: number;
+  subcategoryId: number;
+};
 
-export type ProductListResponse = {
+//! RESPONSE
+export type ProductResponse = {
   products: ProductList;
   message: string;
 };
 
-export type ProductResponse = {
+export type OneProductResponse = {
   product: Product;
   message: string;
 };

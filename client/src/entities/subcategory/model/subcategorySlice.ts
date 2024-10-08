@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { SubcategoryList } from ".";
-import { createSubcategory, deleteSubcategory, getAllSubcategories, updateSubcategory } from "./subcategoryThunck";
-
+import { createSubcategory, deleteSubcategory, getAllSubcategories, updateSubcategory } from "./subcategoryThunk"
 
 type SubcategoryState = {
     subcategories: SubcategoryList;

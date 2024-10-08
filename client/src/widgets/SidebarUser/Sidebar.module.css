@@ -1,0 +1,187 @@
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar {
+  text-align: center;
+  vertical-align: middle;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 360px;
+  height: 100vh;
+  background-color: #fff;
+  overflow-x: hidden;
+  transform: translateX(360px);
+  transition: transform 0.3s;
+  z-index: 1002;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.sidebarList {
+  padding: 50px 35px;
+}
+
+.sidebarList:first-child {
+  margin-top: 30px;
+}
+
+.conteinerRegist {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
+  width: 80%;
+  height: 50%;
+}
+
+.conteinerRegistSenter {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  width: 100%; 
+}
+/* .formStyle{
+  width: "100%"
+} */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0006;
+  z-index: 999;
+  right: 0
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 8px 16px;
+  color: rgb(0 0 0);
+  position: relative;
+}
+
+.sidebarItem {
+  color: rgb(0 0 0 / 50%);
+  margin-bottom: 28px;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.sidebarItem:hover {
+  color: black;
+}
+
+.active {
+  color: black;
+}
+
+.arrow {
+  float: right;
+}
+
+.sidebarButtonUser {
+  
+  position: relative;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.sidebarButton:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+.sidebarButton span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: black;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebarButton .barTop {
+  top: 0;
+}
+
+.sidebarButton .barMid {
+  top: 10px;
+}
+
+.sidebarButton .barBot {
+  top: 20px;
+}
+
+.opened .barTop {
+  transform: rotate(45deg);
+  top: 10px;
+  transform-origin: center;
+}
+
+.opened .barMid {
+  opacity: 0;
+}
+
+.opened .barBot {
+  transform: rotate(-45deg);
+  top: 10px;
+  transform-origin: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+
+}
+
+.tab {
+  
+  padding: 3%;
+  cursor: pointer;
+  
+  
+}
+
+.activeTab {
+  border-bottom: 2px solid black;
+  font-weight: bold;
+}
+
+.fogPassword {
+  text-decoration: underline;
+  color: gray;
+ 
+}
+
+.fogPassword:hover {
+  cursor: pointer;
+  
+  color: darkgray;
+
+}
