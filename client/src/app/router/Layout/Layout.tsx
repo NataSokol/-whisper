@@ -12,7 +12,7 @@ interface LayoutProps {
   isAdmin?: boolean;
 }
       
-const Layout: React.FC<LayoutProps> = ({ isAdmin = true }) => {
+const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
