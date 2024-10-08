@@ -1,5 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ProductSize, ProductSizeListResponse, ProductSizeResponse } from ".";
+import {
+  CreateProductSizeRequest,
+  ProductSize,
+  ProductSizeListResponse,
+  ProductSizeResponse,
+} from ".";
 import { ProductSizeService } from "../api";
 import { AxiosError } from "axios";
 
@@ -29,6 +34,21 @@ export const getOneProductSize = createAsyncThunk<
 >("/getOneProduct", async ({ id }, { rejectWithValue }) => {
   try {
     return await ProductSizeService.getProductSize(id);
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+    return rejectWithValue({
+      message: err.response?.data.message || err.message,
+    });
+  }
+});
+
+export const createProductSize = createAsyncThunk<
+  ProductSizeResponse,
+  CreateProductSizeRequest,
+  { rejectValue: RejectValue }
+>("/createProductSize", async (data, { rejectWithValue }) => {
+  try {
+    return await ProductSizeService.createProductSize(data);
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({

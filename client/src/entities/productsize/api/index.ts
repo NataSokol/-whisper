@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/shared/lib/axiosInstance";
-import { ProductSize } from "../model";
+import { CreateProductSizeRequest, ProductSize } from "../model";
 
 export class ProductSizeService {
   static async getAllProductSize() {
@@ -17,6 +17,15 @@ export class ProductSizeService {
       return response.data;
     } else {
       throw new Error("Failed to get product");
+    }
+  }
+
+  static async createProductSize(data: CreateProductSizeRequest) {
+    const response = await axiosInstance.post("/productsizes", data);
+    if (response.status === 201) {
+      return response.data;
+    } else {
+      throw new Error("Failed to create productsize");
     }
   }
 

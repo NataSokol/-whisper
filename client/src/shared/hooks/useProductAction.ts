@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useAppDispatch } from "./useReduxHooks";
 import {
   createProduct,
+  CreateProductRequest,
   deleteProduct,
   getAllProducts,
   getOneProduct,
@@ -9,7 +10,6 @@ import {
   updateProduct,
 } from "@/entities/product";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { CreateProductRequest } from "@/entities/product/model";
 
 export const useProductAction = () => {
   const dispatch = useAppDispatch();
