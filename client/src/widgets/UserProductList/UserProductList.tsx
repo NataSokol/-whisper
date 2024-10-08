@@ -7,7 +7,7 @@ import { CustomSelect } from "@/shared/ui/Select";
 
 export const UserProductList: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector((state) => state.product);
+  const { products, filter } = useAppSelector((state) => state.product);
   const [sortOption, setSortOption] = useState("");
 
   const handleSortChange = (value: string) => {
@@ -23,15 +23,21 @@ export const UserProductList: React.FC = () => {
     return 0;
   });
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
-
   const sortOptions = [
     { value: "", label: "ПО УМОЛЧАНИЮ" },
     { value: "cheapFirst", label: "СНАЧАЛА ДЕШЕВЛЕ" },
     { value: "expensiveFirst", label: "СНАЧАЛА ДОРОЖЕ" },
   ];
+
+  const filteredProducts = filter.categoryId
+    ? sortedProducts.filter(
+        (product) => product.categoryId === filter.categoryId
+      )
+    : sortedProducts;
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>
@@ -45,7 +51,7 @@ export const UserProductList: React.FC = () => {
         />
       </div>
       <div className={styles.productList}>
-        {sortedProducts.map((product) => (
+        {filteredProducts.map((product) => (
           <UserProductItem key={product.id} product={product} />
         ))}
       </div>

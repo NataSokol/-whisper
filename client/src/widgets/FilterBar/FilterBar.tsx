@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./FilterBar.module.css";
 import { InlineDropdown } from "@/shared/ui/Dropdown";
-import { ROUTES } from "@/app/router/routes";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useAppDispatch } from "@/shared/hooks/useReduxHooks";
+import { getAllProducts } from "@/entities/product";
+import { setCategoryFilter } from "@/entities/product/model/productSlice";
 
 export const FilterBar: React.FC = () => {
   const [size, setSize] = useState<string[]>([]);
   const [color, setColor] = useState<string[]>([]);
   const [material, setMaterial] = useState<string[]>([]);
   const [inStock, setInStock] = useState<boolean>(false);
+  const location = useLocation();
+  const dispatch = useAppDispatch();
 
   const sizeOptions = [
     { value: "oneSize", label: "ONE SIZE" },
@@ -31,30 +35,75 @@ export const FilterBar: React.FC = () => {
     setColor([]);
     setMaterial([]);
     setInStock(false);
+    dispatch(setCategoryFilter(null));
   };
+
+  const handleCategoryClick = (categoryId: number | null) => {
+    dispatch(setCategoryFilter(categoryId));
+  };
+
+  useEffect(() => {
+    setSize([]);
+    setColor([]);
+    setMaterial([]);
+    setInStock(false);
+    dispatch(setCategoryFilter(null));
+  }, [location, dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   return (
     <div className={styles.filterContainer}>
       <ul className={styles.categoryList}>
         <li className={styles.categoryItem}>
-          <Link to={ROUTES.CATALOG}>ВСЕ ТОВАРЫ</Link>
+          <button
+            onClick={() => handleCategoryClick(null)}
+            className={styles.categoryButton}
+          >
+            ВСЕ ТОВАРЫ
+          </button>
         </li>
         <li className={styles.categoryItem}>
-          <Link to={ROUTES.CATALOG}>КОСТЮМЫ</Link>
+          <button
+            onClick={() => handleCategoryClick(1)}
+            className={styles.categoryButton}
+          >
+            КОСТЮМЫ
+          </button>
         </li>
         <li className={styles.categoryItem}>
-          <Link to={ROUTES.CATALOG}>ФУТБОЛКИ</Link>
+          <button
+            onClick={() => handleCategoryClick(2)}
+            className={styles.categoryButton}
+          >
+            ФУТБОЛКИ
+          </button>
         </li>
         <li className={styles.categoryItem}>
-          <Link to={ROUTES.CATALOG}>ПИЖАМЫ</Link>
+          <button
+            onClick={() => handleCategoryClick(4)}
+            className={styles.categoryButton}
+          >
+            ПИЖАМЫ
+          </button>
         </li>
         <li className={styles.categoryItem}>
-          <Link to={ROUTES.CATALOG}>ДЛЯ СПОРТА</Link>
+          <button
+            onClick={() => handleCategoryClick(3)}
+            className={styles.categoryButton}
+          >
+            ДЛЯ СПОРТА
+          </button>
         </li>
         <li className={`${styles.categoryItem} `}>
-          <Link to={ROUTES.CATALOG} className={styles.sale}>
+          <button
+            onClick={() => handleCategoryClick(null)}
+            className={`${styles.categoryButton} ${styles.saleButton}`}
+          >
             SALE
-          </Link>
+          </button>
         </li>
       </ul>
 

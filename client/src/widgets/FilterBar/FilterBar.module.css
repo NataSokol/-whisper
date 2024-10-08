@@ -10,40 +10,7 @@
 }
 
 .categoryItem {
-  margin-bottom: 28px;
-}
-
-.categoryItem a {
-  text-decoration: none;
-  color: #000;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 3px;
-}
-
-.categoryItem a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1.5px;
-  background-color: #000;
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.categoryItem a:hover::after,
-.categoryItem a:focus::after {
-  width: 100%;
-  left: 0;
-}
-
-a.sale {
-    color: red;
-  }
-
-a.sale:visited {
-  color: red;
+  margin-bottom: 12px;
 }
 
 .filterSectionContainer .filterSection {
@@ -125,4 +92,38 @@ input:checked + .slider:before {
 
 .resetButton:hover {
   color: rgba(100, 100, 100, 1);
+}
+
+.categoryButton {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 0;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.categoryButton::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: rgba(44, 42, 41, 1);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.categoryButton:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.saleButton {
+  color: rgb(255, 0, 0);
+}
+
+.saleButton::after {
+  background-color: rgb(255, 0, 0);
 }
