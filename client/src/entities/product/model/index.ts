@@ -13,7 +13,7 @@ export type ProductDetails = {
   price: number;
   salePrice: number;
   image: string;
-  
+
   categoryId: number;
   collectionId: number;
   subcategoryId: number;
@@ -51,7 +51,7 @@ export type ProductResponse = {
   message: string;
 };
 
-export type ProductResponse = {
+export type OneProductResponse = {
   product: Product;
   message: string;
 };
