@@ -1,8 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-
-
-
-
 import {
   AdminCategoryPage,
   AdminCollectionPage,
@@ -16,17 +12,15 @@ import {
 } from "@/pages";
 import { ROUTES } from "./routes";
 import { PublicRoute } from "@/shared/ui/PublicRoute";
-
 import { FogForm } from "@/features/auth/ui/FogetPas/FogForm";
 import ResetPassword from "@/pages/ResetPasswordPage/ResetPassword";
 import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
 import { AddressPage } from "@/pages/AddressPage/AddressPage";
 import { CardPage } from "@/pages/CardPage/CardPage";
-
 import Layout from "./Layout/Layout";
 import ProductPage from "@/pages/ProductPage/ProductPage";
-
+import { AllProductsPage } from "@/pages/AllProductsPage";
 
 export const router = createBrowserRouter([
   {
@@ -77,8 +71,6 @@ export const router = createBrowserRouter([
       //         <CartPage />
       //     ),
       //   },
-
-
       {
         path: ROUTES.HOME,
         element: <MainPage />,
@@ -146,7 +138,7 @@ export const router = createBrowserRouter([
       
       {
         path: `${ROUTES.CATALOG}/:productId`,
-        element: < ProductPage/>,
+        element: <ProductPage />,
       },
 
       //   {
@@ -158,7 +150,10 @@ export const router = createBrowserRouter([
       //     path: ROUTES.PROFILE,
       //     element: <ProfilePage />,
       //   },
-
+      {
+        path: ROUTES.CATALOG,
+        element: <AllProductsPage />,
+      },
 
       //   {
       //     path: ROUTES.ERROR,

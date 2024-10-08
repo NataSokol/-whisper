@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product, ProductList } from ".";
 import {
   createProduct,
@@ -13,6 +13,9 @@ type ProductState = {
   currProduct: Product | null;
   loading: boolean;
   error: string | null;
+  filter: {
+    categoryId: number | null;
+  };
 };
 
 const initialState: ProductState = {
@@ -20,12 +23,19 @@ const initialState: ProductState = {
   currProduct: null,
   loading: false,
   error: null,
+  filter: {
+    categoryId: null,
+  },
 };
 
 const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+    setCategoryFilter(state, action: PayloadAction<number | null>) {
+      state.filter.categoryId = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       //! ------------------- get
@@ -102,4 +112,5 @@ const productSlice = createSlice({
   },
 });
 
+export const { setCategoryFilter } = productSlice.actions;
 export default productSlice.reducer;

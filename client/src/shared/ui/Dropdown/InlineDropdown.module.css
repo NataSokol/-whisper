@@ -1,0 +1,103 @@
+/* src/shared/ui/InlineDropdown/InlineDropdown.module.css */
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterLabel {
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdownToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.up {
+  transform: rotate(180deg);
+}
+
+.arrow {
+  width: 12px;
+  transition: transform 0.3s ease;
+}
+
+.dropdownMenu {
+  list-style: none;
+  margin: 8px 0 0 0;
+  padding: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.open {
+  max-height: 500px;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.closed {
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.dropdownItem {
+  padding: 12px 0px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.hiddenCheckbox {
+  display: none;
+}
+
+.customCheckbox {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(44, 42, 41, 1);
+  margin-right: 8px;
+  position: relative;
+  border-radius: 4px;
+  background-color: transparent; 
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.hiddenCheckbox:checked + .customCheckbox {
+  background-color: rgba(0, 0, 0, 1); 
+  border-color: rgba(0, 0, 0, 1); 
+}
+
+.hiddenCheckbox:checked + .customCheckbox::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border: solid rgba(255, 255, 255, 1); 
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

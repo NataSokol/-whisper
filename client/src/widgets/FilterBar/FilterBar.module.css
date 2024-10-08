@@ -1,0 +1,129 @@
+.filterContainer {
+  margin-top: 200px;
+  width: 333px;
+}
+
+.categoryList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.categoryItem {
+  margin-bottom: 12px;
+}
+
+.filterSectionContainer .filterSection {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+.filterSection {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.filterLabel {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 28px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgba(44, 42, 41, 1);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.switchLabel {
+  font-weight: bold;
+  color: #000;
+}
+
+.resetButton {
+  padding: 10px 10px 10px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  color: rgba(145, 145, 145, 1);
+  text-align: left;
+}
+
+.resetButton:hover {
+  color: rgba(100, 100, 100, 1);
+}
+
+.categoryButton {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 0;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.categoryButton::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: rgba(44, 42, 41, 1);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.categoryButton:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.saleButton {
+  color: rgb(255, 0, 0);
+}
+
+.saleButton::after {
+  background-color: rgb(255, 0, 0);
+}
