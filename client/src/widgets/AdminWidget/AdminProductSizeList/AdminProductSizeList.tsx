@@ -28,7 +28,7 @@ export const AdminProductSizeList: React.FC<AdminProductSizeListProps> = ({
       ))}
       {productSize && (
         <Button
-          theme={ThemeButton.PRIMARY}
+          theme={ThemeButton.LIGHT}
           onClick={() => onEditSize(productSize)}
         >
           Изменить размер

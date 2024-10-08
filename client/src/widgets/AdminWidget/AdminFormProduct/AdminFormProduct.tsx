@@ -164,7 +164,7 @@ export const AdminFormProduct: React.FC = () => {
               </select>
             </label>
           </label>
-          <Button type="submit" theme={ThemeButton.PRIMARY}>
+          <Button type="submit" theme={ThemeButton.LIGHT}>
             Добавить
           </Button>
         </form>

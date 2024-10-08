@@ -48,12 +48,12 @@ export const AdminOneProductList: React.FC<Props> = ({ openModal }) => {
         )}
 
         <Button
-          theme={ThemeButton.PRIMARY}
+          theme={ThemeButton.LIGHT}
           onClick={() => product && openModal(product)}
         >
           Изменить
         </Button>
-        <Button theme={ThemeButton.DANGER} onClick={onDeleteProduct}>
+        <Button theme={ThemeButton.LIGHT} onClick={onDeleteProduct}>
           Удалить
         </Button>
       </div>

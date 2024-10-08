@@ -4,7 +4,7 @@ import { useAppDispatch } from "@/shared/hooks/useReduxHooks";
 import { getOneProduct } from "@/entities/product/model/productThunk";
 import { ProductPageWidget } from "@/widgets/ProductPageWidget";
 
-import styles from "./ProductPage.module.css";
+// import styles from "./ProductPage.module.css";
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams();
