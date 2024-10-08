@@ -31,13 +31,6 @@ const UserCategorySlice = createSlice({
         state.loading = false;
         state.error = action.error.message || "Something went wrong";
       });
-
-
-
-
-
-
-      
   },
 });
 

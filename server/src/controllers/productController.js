@@ -1,9 +1,10 @@
-const ProductServices = require('../services/Product.services');
+const ProductServices = require("../services/Product.services");
+const { Image } = require("../../db/models");
 
 exports.getAllProducts = async (req, res) => {
   try {
     const products = await ProductServices.getAllProducts();
-    res.status(200).json({ message: 'success', products });
+    res.status(200).json({ message: "success", products });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
@@ -14,7 +15,7 @@ exports.getProductById = async (req, res) => {
     const { id } = req.params;
 
     const product = await ProductServices.getProductById(id);
-    res.status(200).json({ message: 'success', product });
+    res.status(200).json({ message: "success", product });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
@@ -22,39 +23,68 @@ exports.getProductById = async (req, res) => {
 
 exports.createProduct = async (req, res) => {
   try {
-    const { title, price, salePrice, description, composition } = req.body;
+    const {
+      title,
+      price,
+      salePrice,
+      description,
+      composition,
+      collectionId,
+      categoryId,
+      subcategoryId,
+    } = req.body;
+
+    // Создаем массив путей к изображениям
+    const imagePaths = req.files.map((file) => `/img/${file.filename}`);
+    console.log(imagePaths, "photos");
 
     const product = await ProductServices.createProduct(
       title,
       price,
       salePrice,
       description,
-      composition
+      composition,
+      imagePaths,
+      collectionId,
+      categoryId,
+      subcategoryId
     );
-    if (product) {
-      res.status(201).json({ message: 'success', product });
-      return;
+
+    if (product && req.files) {
+      const imagePaths = req.files.map((file) => `/img/${file.filename}`);
+
+      // Запись изображений в таблице Image
+      const images = imagePaths.map((path) => ({
+        productId: product.id, 
+        url: path,
+      }));
+
+      // Сохраняем все изображения через bulkCreate
+      await Image.bulkCreate(images);
+
+      return res
+        .status(201)
+        .json({ message: "Product and images created successfully", product });
     }
-    res.status(404).json({ message: 'There was an error' });
-  } catch ({ message }) {
-    res.status(500).json({ error: message });
+
+    return res
+      .status(404)
+      .json({ message: "There was an error creating the product" });
+  } catch (error) {
+    console.error("Error creating product:", error);
+    res.status(500).json({ error: error.message });
   }
 };
 
 exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, price, salePrice, description, composition } = req.body;
+    const productData = req.body;
 
-    const product = await ProductServices.updateProduct(
-      id,
-      title,
-      price,
-      salePrice,
-      description,
-      composition
-    );
-    res.status(200).json({ message: 'success', product });
+    const product = await ProductServices.updateProduct(id, productData, {
+      new: true,
+    });
+    res.status(200).json({ message: "success", product });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
@@ -63,13 +93,13 @@ exports.updateProduct = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     const product = await ProductServices.getProductById(id);
     if (!product) {
-      res.status(404).json({ message: 'Product not found' });
+      res.status(404).json({ message: "Product not found" });
     }
     await ProductServices.deleteProduct(id);
-    res.status(200).json({ message: 'success' });
+    res.status(200).json({ message: "success" });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }

@@ -1,0 +1,1 @@
+export { AdminProductSizeList } from "./AdminProductSizeList";

@@ -6,7 +6,6 @@ import axios, {
 
 } from "axios";
 
-
 //FIX - 1) Расширяем InternalAxiosRequestConfig для добавления свойства sent
 interface ExtendedAxiosRequestConfig extends InternalAxiosRequestConfig {
   sent?: boolean;
@@ -21,7 +20,6 @@ export const axiosInstance: AxiosInstance = axios.create({
 //* Глобальная переменная для хранения токена доступа.
 
 let accessToken: string = "";
-
 
 //* Функция для установки токена доступа.
 export function setAccessToken(token: string): void {
@@ -52,7 +50,6 @@ axiosInstance.interceptors.response.use(
 
         const response = await axios.get(`${import.meta.env.VITE_API}/tokens/refresh`, {withCredentials: true});
 
-
         //? Достаём новый токен из ответа.
         accessToken = response.data.accessToken;
 
@@ -70,9 +67,6 @@ axiosInstance.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
-
     return Promise.reject(error);
   }
-
 );
-

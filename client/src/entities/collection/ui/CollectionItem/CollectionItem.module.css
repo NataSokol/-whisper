@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    color: white;
 }
 
 .collectionImage {
@@ -18,6 +19,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     /* width: 195px; */
 }
 
@@ -25,7 +27,8 @@
     width: 180px;
     font-size: 26px;
     text-align: center;
-    font-weight: 500;
+    /* font-weight: lighter; */
+    letter-spacing: 2px;
 }
 
 .collectionLink {
@@ -33,4 +36,13 @@
     text-align: center;
     font-weight: 500;
     margin-top: 25px;
+
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
 }
+
+.collectionLink:visited {
+    color: (--primary-basic-white)
+}
+

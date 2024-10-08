@@ -1,6 +1,12 @@
 export enum ROUTES {
   HOME = "/",
 
+  ADMIN = "/admin",
+  ADMIN_CATEGORIES = "/admin/categories",
+  ADMIN_COLLECTIONS = "/admin/collections",
+  ADMIN_SUBCATEGORY = "/admin/subcategories",
+  ADMIN_PRODUCTS = "/admin/products",
+  ADMIN_PRODUCT = "/admin/products/:id",
   SIGNIN = "/signin",
   FOG = "/request-reset",
   HISTORY = "/profile/history",
@@ -13,6 +19,7 @@ export enum ROUTES {
   FAVORITES = "/favorites",
   PROFILE = "/profile",
   CATALOG = "/catalog",
+  COLLECTION = "/collection",
   AUTH = "/auth",
   CART = "/cart",
   DELPAY = "/delivery-pay",
@@ -30,6 +37,3 @@ export enum ROUTES {
   ERROR = "*",
 }
 
-export function getCollectionRoute(id: number): string {
-  return `/collection/${id}`;
-}

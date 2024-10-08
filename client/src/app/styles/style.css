@@ -1,9 +1,14 @@
 @import url("fonts.css");
 
-body {
+html::-webkit-scrollbar {
+  width: 0px; 
+}
 
+body {
   background-color: white;
   font-family: "Lucida Grande", sans-serif;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
 }
 
 a {
@@ -14,4 +19,3 @@ a {
 a:visited {
   color: rgb(0 0 0);
 }
-

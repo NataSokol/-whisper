@@ -1,23 +1,28 @@
-
+import React, { useEffect } from "react";
 import { Footer } from "@/widgets/Footer";
 import { Navbar } from "@/widgets/Navbar";
 import { Outlet } from "react-router-dom";
-import styles from "./Layout.module.css";
-import { SocialMediaButton } from "@/shared/ui/SocialMediaButton";
-    import React, { useEffect } from "react";
 import { useAppDispatch } from "@/shared/hooks/reduxHooks";
+import { SocialMediaButton } from "@/shared/ui/SocialMediaButton";
 import { refreshAccessToken } from "@/entities/user";
+import { NavbarAdmin } from "@/widgets/NavbarAdmin";
+import styles from "./Layout.module.css";
 
-
-const Layout: React.FC = () => {
-    const dispatch = useAppDispatch();
+interface LayoutProps {
+  isAdmin?: boolean;
+}
+      
+const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(refreshAccessToken());
   }, [dispatch]);
+
   return (
     <>
       <Navbar />
+      {isAdmin && <NavbarAdmin />}
       <main className={styles.root}>
         <Outlet />
       </main>
@@ -25,7 +30,6 @@ const Layout: React.FC = () => {
       <SocialMediaButton />
     </>
   );
-
 };
 
 export default Layout;

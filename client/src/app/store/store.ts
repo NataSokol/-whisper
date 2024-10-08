@@ -2,14 +2,19 @@ import { userReducer } from "@/entities/user";
 import { adminCategoryReducer, userCategoryReducer } from "@/entities/category";
 import { collectionReducer } from "@/entities/collection";
 import { configureStore } from "@reduxjs/toolkit";
+import { subCategoryReducer } from "@/entities/subcategory";
+import { productReducer } from "@/entities/product";
+import { productSizeReducer } from "@/entities/productsize";
 
 const store = configureStore({
   reducer: {
-    user: userReducer, 
+    user: userReducer,
     adminCategory: adminCategoryReducer,
     userCategory: userCategoryReducer,
     collection: collectionReducer,
-
+    subcategory: subCategoryReducer,
+    product: productReducer,
+    productSize: productSizeReducer,
   },
 });
 

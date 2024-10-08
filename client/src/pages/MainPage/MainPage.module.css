@@ -1,10 +1,11 @@
 .container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 100px
+  gap: 100px;
+  margin-bottom: 100px;
 }
 
 .videoContainer {
@@ -15,6 +16,10 @@
   align-items: center;
 }
 
+.video {
+  width: 100%;
+}
+
 .catalogLink {
   width: 100%;
   display: flex;
@@ -22,6 +27,7 @@
   justify-content: center;
   align-items: center;
 }
+
 
 .linkOnVideo {
   position: absolute;
@@ -32,7 +38,8 @@
   width: 150px;
   height: 40px;
   background: none;
-  border: 1px solid black;
+  border: 1px solid white;
+  background-color: rgb(255 255 255 );
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
@@ -41,104 +48,47 @@
 
 .collections {
   width: 1344px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
 .headers {
-  display: flex;
+  position: relative;
   width: 100%;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin: 40px 0px
+  margin: 40px 0;
 }
 
-.headers div {
-  margin: 0 auto;
+.headerTitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-weight: 400;
   font-size: 24px;
 }
-
 .discountLink {
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
-
-.discount {
+.discountLink img {
+    width: 1344px;
+    height: 500px;
+    object-fit: cover;
+}
+.headerLink {
   position: absolute;
-  bottom: 80px;
-
-}
-
-.discount {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px
-}
-
-.discount button {
-  width: 150px;
-  height: 40px;
-  background: none;
-  border: 1px solid black;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-
-
-.videoContainer {
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-}
-
-.catalogLink {
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-}
-
-.linkOnVideo {
-  position: absolute;
-  bottom: 160px;
-}
-
-.button {
-  width: 150px;
-  height: 40px;
-  background: none;
-  border: 1px solid black;
-  border-radius: 4px;
-  cursor: pointer;
+  right: 0;
+  top: 0;
+  font-size: 16px;
   text-decoration: none;
   color: black;
 }
 
-.headers {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.discountLink {
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-}
 
 .discount {
   display: flex;
@@ -150,11 +100,15 @@
   bottom: 80px;
 }
 
-.discount button {
-  width: 150px;
-  height: 40px;
-  background: none;
-  border: 1px solid black;
-  border-radius: 4px;
-  cursor: pointer;
+.discount button{
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    color: black;
+    background: none;
+    border: 1px solid white;
+    background-color: rgb(255 255 255 );
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
 }
