@@ -15,7 +15,7 @@
   overflow-x: hidden;
   transform: translateX(360px);
   transition: transform 0.3s;
-  z-index: 1000;
+  z-index: 1002;
 
 
   display: flex;
