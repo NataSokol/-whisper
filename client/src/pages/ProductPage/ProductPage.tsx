@@ -6,7 +6,6 @@ import { getProduct } from '@/entities/product/model/productThunk'
 import { ProductPageWidget } from '@/widgets/ProductPageWidget'
 
 export const ProductPage: React.FC = () => {
-
     const {productId} = useParams()
     const dispatch = useAppDispatch()
 

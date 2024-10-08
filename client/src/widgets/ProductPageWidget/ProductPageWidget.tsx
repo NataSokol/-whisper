@@ -6,7 +6,6 @@ import { ProductSize } from "@/entities/productsize";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
-  // const dispatch = useAppDispatch()
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
 
@@ -17,13 +16,6 @@ export const ProductPageWidget: React.FC = () => {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-
-    // if (selectedColor && selectedSize) {
-    console.log(selectedColor, selectedSize);
-    // await dispatch()
-    // } else {
-    //   alert("Выберите цвет и размер");
-    // }
   };
 
   return (
@@ -146,4 +138,3 @@ export const ProductPageWidget: React.FC = () => {
     </div>
   );
 };
-

@@ -1,8 +1,13 @@
+import subCategoryReducer from "./model/subcategorySlice";
+
 export { SubcategoryService } from "./api";
 export type { Subcategory, SubcategoryList } from "./model";
-import subcategoryReducer from "./model/subcategorySlice";
+export {
+  getAllSubcategories,
+  createSubcategory,
+  deleteSubcategory,
+  updateSubcategory,
+} from "./model/subcategoryThunk";
+export { AdminSubCategoryItem } from "./ui/AdminSubCategoryItem";
 
-export { getAllSubcategories , createSubcategory, updateSubcategory, deleteSubcategory} from "./model/subcategoryThunck";
-
-
-export {subcategoryReducer}
+export { subCategoryReducer };

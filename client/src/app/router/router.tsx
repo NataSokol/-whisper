@@ -1,9 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
-import { AdminCategoryPage, AdminCollectionPage, MainPage, SignInPage, SignUpPage } from "@/pages";
+import {
+  AdminCategoryPage,
+  AdminCollectionPage,
+  AdminOneProductPage,
+  AdminPage,
+  AdminProductPage,
+  AdminSubCategoryPage,
+  MainPage,
+  SignInPage,
+  SignUpPage,
+} from "@/pages";
 import { ROUTES } from "./routes";
-import Layout from "./Layout/Layout";
-import AdminPage from '@/pages/AdminPage/AdminPage/AdminPage';
 import { PublicRoute } from "@/shared/ui/PublicRoute";
+import Layout from "./Layout/Layout";
 import ProductPage from "@/pages/ProductPage/ProductPage";
 
 export const router = createBrowserRouter([
@@ -23,10 +32,20 @@ export const router = createBrowserRouter([
             path: ROUTES.ADMIN_COLLECTIONS,
             element: <AdminCollectionPage />,
           },
-          // {
-          //   path: ROUTES.ADMIN_PRODUCTS,
-          //   element: <AdminProductsPage />,
-          // },
+
+          {
+            path: ROUTES.ADMIN_SUBCATEGORY,
+            element: <AdminSubCategoryPage />,
+          },
+
+          {
+            path: ROUTES.ADMIN_PRODUCTS,
+            element: <AdminProductPage />,
+          },
+          {
+            path: ROUTES.ADMIN_PRODUCT,
+            element: <AdminOneProductPage />,
+          },
         ],
       },
       //   {
@@ -44,7 +63,7 @@ export const router = createBrowserRouter([
       //         <CartPage />
       //     ),
       //   },
-      
+
       {
         path: ROUTES.HOME,
         element: <MainPage />,
@@ -62,26 +81,31 @@ export const router = createBrowserRouter([
         path: ROUTES.SIGNUP,
         element: <SignUpPage />,
       },
+
+      // {
+      //   path: `${ROUTES.CATALOG}/:productId`,
+      //   element: < />,
+      // },
+      
       {
         path: `${ROUTES.CATALOG}/:productId`,
         element: < ProductPage/>,
       },
 
-    //   {
-    //     path: ROUTES.FAVORITES,
-    //     element: <FavoritesPage />,
-    //   },
+      //   {
+      //     path: ROUTES.FAVORITES,
+      //     element: <FavoritesPage />,
+      //   },
 
-    //   {
-    //     path: ROUTES.PROFILE,
-    //     element: <ProfilePage />,
-    //   },
+      //   {
+      //     path: ROUTES.PROFILE,
+      //     element: <ProfilePage />,
+      //   },
 
-    //   {
-    //     path: ROUTES.ERROR,
-    //     element: <ErrorPage />,
-    //   },
-
+      //   {
+      //     path: ROUTES.ERROR,
+      //     element: <ErrorPage />,
+      //   },
     ],
   },
 ]);
