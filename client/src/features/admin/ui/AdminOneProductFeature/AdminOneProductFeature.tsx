@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { AdminOneProductList } from "@/widgets/AdminWidget";
 import { useProductAction } from "@/shared/hooks/useProductAction";
-import { Product } from "@/entities/product";
-import ModalWindow from "@/shared/ui/Modal/Modal";
-import styles from "./AdminOneProductFeature.module.css";
 import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import { useAppSelector } from "@/shared/hooks/reduxHooks";
 import { useCollectionAction } from "@/shared/hooks/useCollectionAction";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
+import { Product } from "@/entities/product";
+import { AdminOneProductImageList, AdminOneProductList } from "@/widgets/AdminWidget";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import ModalWindow from "@/shared/ui/Modal/Modal";
+import styles from "./AdminOneProductFeature.module.css";
 
 export const AdminOneProductFeature: React.FC = () => {
   const categories = useAppSelector((state) => state.adminCategory.categories);
@@ -72,9 +72,9 @@ export const AdminOneProductFeature: React.FC = () => {
     setComposition(product.composition);
     setPrice(product.price);
     setSalePrice(product.salePrice | 0);
-    setSelectedCategoryId(product.Category.id);
-    setSelectedCollectionId(product.Collection.id);
-    setSelectedSubcategoryId(product.Subcategory.id);
+    setSelectedCategoryId(product.Category?.id);
+    setSelectedCollectionId(product.Collection?.id);
+    setSelectedSubcategoryId(product.Subcategory?.id);
     setModalActive(true);
   };
 
@@ -184,6 +184,7 @@ export const AdminOneProductFeature: React.FC = () => {
           </Button>
         </div>
       </ModalWindow>
+      <AdminOneProductImageList />
     </div>
   );
 };
