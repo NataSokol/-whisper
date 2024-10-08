@@ -13,6 +13,7 @@ export enum ROUTES {
   FAVORITES = "/favorites",
   PROFILE = "/profile",
   CATALOG = "/catalog",
+  COLLECTION = "/collection",
   AUTH = "/auth",
   CART = "/cart",
   DELPAY = "/delivery-pay",
@@ -28,8 +29,4 @@ export enum ROUTES {
   TG = "https://t.me/shepothome",
   VK = "https://vk.com/shepot.home",
   ERROR = "*",
-}
-
-export function getCollectionRoute(id: number): string {
-  return `/collection/${id}`;
 }

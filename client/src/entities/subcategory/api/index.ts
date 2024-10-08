@@ -20,7 +20,6 @@ export class SubcategoryService {
     const response = await axiosInstance.delete<SubcategoryResponse>(
       `/subcategories/${id}`
     );
-
     if (response.status === 200) {
       return response.data;
     } else {

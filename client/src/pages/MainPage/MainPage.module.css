@@ -28,6 +28,7 @@
   align-items: center;
 }
 
+
 .linkOnVideo {
   position: absolute;
   bottom: 160px;
@@ -37,7 +38,8 @@
   width: 150px;
   height: 40px;
   background: none;
-  border: 1px solid black;
+  border: 1px solid white;
+  background-color: rgb(255 255 255 );
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
@@ -64,7 +66,20 @@
   font-weight: 400;
   font-size: 24px;
 }
+.discountLink {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
 
+.discountLink img {
+    width: 1344px;
+    height: 500px;
+    object-fit: cover;
+}
 .headerLink {
   position: absolute;
   right: 0;
@@ -74,13 +89,6 @@
   color: black;
 }
 
-.discountLink {
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-}
 
 .discount {
   display: flex;
@@ -92,11 +100,16 @@
   bottom: 80px;
 }
 
-.discount button {
-  width: 150px;
-  height: 40px;
-  background: none;
-  border: 1px solid black;
-  border-radius: 4px;
-  cursor: pointer;
+.discount button{
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    color: black;
+    background: none;
+    border: 1px solid white;
+    background-color: rgb(255 255 255 );
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
 }
+

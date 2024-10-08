@@ -51,7 +51,7 @@ export type ProductResponse = {
   message: string;
 };
 
-export type OneProductResponse = {
+export type ProductResponse = {
   product: Product;
   message: string;
 };

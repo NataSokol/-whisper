@@ -13,7 +13,7 @@ type RejectValue = {
 };
 
 export const getAllProducts = createAsyncThunk<
-  ProductResponse,
+  ProductListResponse,
   void,
   { rejectValue: RejectValue }
 >("/getAllProducts", async (_, { rejectWithValue }) => {
