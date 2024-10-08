@@ -5,6 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { subcategoryReducer } from "@/entities/subcategory";
 import { productReducer } from "@/entities/product";
 import { cartItemReducer } from "@/entities/cartitem";
+import { cartReducer } from "@/entities/cart";
 
 const store = configureStore({
   reducer: {
@@ -15,7 +16,7 @@ const store = configureStore({
     subcategory: subcategoryReducer,
     product: productReducer,
     cartItem: cartItemReducer,
-    // cart: cartReducer
+    cart: cartReducer,
   },
 });
 

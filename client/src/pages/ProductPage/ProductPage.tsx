@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styles from './ProductPage.module.css'
+// import styles from './ProductPage.module.css'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch } from '@/shared/hooks/useReduxHooks'
 import { getProduct } from '@/entities/product/model/productThunk'

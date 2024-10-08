@@ -134,6 +134,8 @@ input[type="radio"] {
   text-transform: uppercase;
 }
 
+
+
 .otherInfo {
   display: flex;
   flex-direction: column;

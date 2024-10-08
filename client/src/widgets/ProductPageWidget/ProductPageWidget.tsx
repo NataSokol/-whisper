@@ -3,31 +3,52 @@ import styles from "./ProductPageWidget.module.css";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { Color } from "@/entities/color";
 import { ProductSize } from "@/entities/productsize";
-import { createCartItem } from "@/entities/cartitem";
+import { createCartItem, updateCartItem } from "@/entities/cartitem";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
-  // const {cart} = useAppSelector((state) => state.cart);
+  const { cart } = useAppSelector((state) => state.cart);
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
 
   const [selectedColor, setSelectedColor] = useState<Color["id"]>();
   const [selectedSize, setSelectedSize] = useState<ProductSize["id"]>();
 
+  const currCartItem = cart?.CartItems?.find(
+    (cartItem) =>
+      cartItem.productColorId === selectedColor &&
+      cartItem.productSizeId === selectedSize
+  );
 
   const onHandleCrateCartItem = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-
+    if (!currProduct || !cart)  {
+      return;
+    }
     if (selectedColor && selectedSize) {
-    console.log(selectedColor, selectedSize);
-      // if (cart.CartItems?.find((cartItem) => cartItem.productColorId === selectedColor && cartItem.productSizeId === selectedSize)) {
-      //   const resultAction = await dispatch(createCartItem({cartId: 1, productId: currProduct?.id, quantity: 1, productColorId: selectedColor, productSizeId: selectedSize }));
-
-      // }
-      const resultAction = await dispatch(createCartItem({cartId: 1, productId: currProduct?.id, quantity: 1, productColorId: selectedColor, productSizeId: selectedSize }));
+      if (currCartItem) {
+        const resultAction = await dispatch(
+          updateCartItem({
+            id: currCartItem.id,
+            quantity: currCartItem.quantity + 1,
+          })
+        );
+        console.log(resultAction);
+      } else {
+        const resultAction = await dispatch(
+          createCartItem({
+            cartId: cart?.id,
+            productId: currProduct?.id,
+            quantity: 1,
+            productColorId: selectedColor,
+            productSizeId: selectedSize,
+          })
+        );
+        console.log(resultAction);
+      }
     } else {
       alert("Выберите цвет и размер");
     }
@@ -103,9 +124,8 @@ export const ProductPageWidget: React.FC = () => {
                   className={styles.size}
                   style={{
                     backgroundColor:
-                    selectedSize === size.id ? "black" : "white",
-                    color:
-                    selectedSize === size.id ? "white" : "black",
+                      selectedSize === size.id ? "black" : "white",
+                    color: selectedSize === size.id ? "white" : "black",
                   }}
                 >
                   {size.sizeTitle}
@@ -114,7 +134,7 @@ export const ProductPageWidget: React.FC = () => {
             ))}
           </div>
 
-          <button type="submit" className={styles.cartButton}>
+          <button type="submit" className={styles.cartButton} disabled={!currProduct || !cart} style={{backgroundColor: !currProduct || !cart? "lightgray" : "black"}}>
             добавить в корзину
           </button>
         </form>
