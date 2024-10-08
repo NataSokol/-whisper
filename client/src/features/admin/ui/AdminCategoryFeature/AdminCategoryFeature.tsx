@@ -3,6 +3,7 @@ import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import { AdminCategoryList, AdminFormCategory } from "@/widgets/AdminWidget";
 import ModalWindow from "@/shared/ui/Modal/Modal";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const AdminCategoryFeature: React.FC = () => {
   const { handleDelete, handleUpdate, allCategories } = useCategoryActions();
@@ -48,9 +49,9 @@ export const AdminCategoryFeature: React.FC = () => {
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
           />
-          <button onClick={() => handleUpdateCategory(editingCategoryId!)}>
+          <Button theme={ThemeButton.LIGHT} onClick={() => handleUpdateCategory(editingCategoryId!)}>
             Сохранить
-          </button>
+          </Button>
           <button onClick={() => setModalActive(false)}>Закрыть</button>
         </div>
       </ModalWindow>

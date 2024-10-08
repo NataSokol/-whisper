@@ -37,12 +37,12 @@
   width: 150px;
   height: 40px;
   background: none;
-  border: 1px solid white;
-  background-color: rgb(255 255 255 );
-  border-radius: 4px;
+  border: 1px solid  var( --primary-basic-white);
+  background-color: var( --primary-basic-white);
+  border-radius: var(--border-radius-small);
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: var(--secondary-black);
 }
 
 .collections {
@@ -63,7 +63,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-weight: 400;
-  font-size: 24px;
+  font-size: var(--font-size-heading-1);
 }
 .discountLink {
     width: 100%;
@@ -71,7 +71,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--primary-basic-white);
 }
 
 .discountLink img {
@@ -83,9 +83,9 @@
   position: absolute;
   right: 0;
   top: 0;
-  font-size: 16px;
+  font-size: var(--font-size-large);
   text-decoration: none;
-  color: black;
+  color: var(--secondary-black);
 }
 
 
@@ -102,11 +102,12 @@
 .discount button{
     width: 150px;
     height: 40px;
-    font-size: 18px;
-    color: black;
+    font-size:var(--font-size-large);
+    line-height: var(--font-size-extra-large);
+    color: var(--secondary-black);
     background: none;
-    border: 1px solid white;
-    background-color: rgb(255 255 255 );
+    border: 1px solid var(--primary-basic-white);
+    background-color: var(--primary-basic-white);
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;

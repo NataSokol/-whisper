@@ -3,7 +3,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 8px (black);
+  box-shadow: 0 4px 8px var(--secondary-black);
 }
 
 .avatarContainer {

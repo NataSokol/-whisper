@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    color: white;
+    color:  var(--primary-basic-white);;
 }
 
 .collectionImage {
@@ -37,12 +37,12 @@
     font-weight: 500;
     margin-top: 25px;
 
-    color: white;
+    color: var(--primary-basic-white);
     text-decoration: underline;
     cursor: pointer;
 }
 
 .collectionLink:visited {
-    color: (--primary-basic-white)
+    color: var(--primary-basic-white)
 }
 

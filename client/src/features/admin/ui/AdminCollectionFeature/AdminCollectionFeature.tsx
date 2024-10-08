@@ -6,6 +6,7 @@ import {
   AdminFormCollection,
 } from "@/widgets/AdminWidget";
 import ModalWindow from "@/shared/ui/Modal/Modal";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const AdminCollectionFeature: React.FC = () => {
   const { getCollectionList, handleDeleteCollection, handleUpdateCollection } =
@@ -71,10 +72,10 @@ export const AdminCollectionFeature: React.FC = () => {
               }
             }}
           />
-          <button onClick={() => handleUpdate(editingCollectionId!)}>
+          <Button theme={ThemeButton.LIGHT} onClick={() => handleUpdate(editingCollectionId!)}>
             Сохранить
-          </button>
-          <button onClick={() => setModalActive(false)}>Закрыть</button>
+          </Button>
+          <Button theme={ThemeButton.DARK}  onClick={() => setModalActive(false)}>Закрыть</Button>
         </div>
       </ModalWindow>
     </div>
