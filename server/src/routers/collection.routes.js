@@ -5,7 +5,8 @@ router
   .route('/')
   .get(collectionController.getAllCollections)
   .post(collectionController.createCollection);
-
+ 
+  
 router
   .route('/:id')
   .get(collectionController.getCollectionById)

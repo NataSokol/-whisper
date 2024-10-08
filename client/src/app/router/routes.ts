@@ -2,6 +2,12 @@ export enum ROUTES {
   HOME = "/",
 
   SIGNIN = "/signin",
+  FOG = "/request-reset",
+  HISTORY = "/profile/history",
+  ADRESS = "/profile/adress",
+  CARD = "/profile/card",
+  INFO = "/profile/info",
+  CHANGE = "/reset-password/:token",
   SIGNUP = "/signup",
   CHECKEMAIL = "/checkemail",
   FAVORITES = "/favorites",
@@ -19,12 +25,11 @@ export enum ROUTES {
   FEEDBACK = "/feedback",
   POLICY = "/policy",
   OFERTA = "/oferta",
-  TG = 'https://t.me/shepothome',
-  VK = 'https://vk.com/shepot.home',
+  TG = "https://t.me/shepothome",
+  VK = "https://vk.com/shepot.home",
   ERROR = "*",
 }
 
 export function getCollectionRoute(id: number): string {
   return `/collection/${id}`;
-
 }

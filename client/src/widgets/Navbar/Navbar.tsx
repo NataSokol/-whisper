@@ -1,15 +1,16 @@
-
-
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import { SidebarUser } from "../SidebarUser";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 
 export const Navbar: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const searchContainerRef = useRef<HTMLDivElement>(null);
+  const { user } = useAppSelector((state) => state.user);
 
   const handleSearchClick = () => {
     setIsSearchActive(true);
@@ -103,10 +104,15 @@ export const Navbar: React.FC = () => {
                 <img src="../../public/img/favorites.svg" alt="" />
               </Link>
             </button>
+
             <button className={styles.button}>
-              <Link to={ROUTES.PROFILE}>
-                <img src="../../public/img/user.svg" alt="" />
-              </Link>
+              {user ? (
+                <Link to={ROUTES.PROFILE}>
+                  <img src="../../public/img/user.svg" alt="" />
+                </Link>
+              ) : (
+                <SidebarUser />
+              )}
             </button>
           </>
         )}
