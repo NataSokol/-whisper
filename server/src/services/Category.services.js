@@ -10,7 +10,11 @@ class CategoryServices {
     const category = await Category.findByPk(id);
     return category ? category.get() : null;
   };
+
+  
   //////////////////////в бд нет изображенийБ если не поломается, тут можно их удалить
+
+
   // Админка
   // создать категорию
   static createCategory = async (title, image) => {
