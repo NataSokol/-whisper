@@ -44,12 +44,11 @@ export const SignUpForm: React.FC = () => {
       <div className="form-container">
         <div className="input-group">
           <input
-            className="input-group2"
+            className="input-group2 custom-input"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder=" "
-            className="custom-input"
           />
           <label className="floating-label">Email:</label>
         </div>
