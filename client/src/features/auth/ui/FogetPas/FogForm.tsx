@@ -18,7 +18,7 @@ export const FogForm: React.FC = () => {
         setIsSuccessMessageVisible(true);
       }
     } catch (error) {
-      alert("Ошибка: " + error.response.data.message);
+      console.log(error);
     }
   };
 

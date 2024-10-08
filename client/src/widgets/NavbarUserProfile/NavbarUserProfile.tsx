@@ -3,10 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./NavbarUserProfile.css";
 //import styles from "./NavbarUserProfile.css";
 import { ROUTES } from "@/app/router/routes";
-import { logout, UserCard } from "@/entities/user";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-import Loader from "@/shared/ui/Loader/Loader";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/reduxHooks";
+import { logout } from "@/entities/user";
+import { useAppDispatch } from "@/shared/hooks/reduxHooks";
 
 export const NavbarUserProfile: React.FC = () => {
   const navigate = useNavigate();

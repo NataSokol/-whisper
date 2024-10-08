@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 // import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
-import { AdminCategoryList, AdminFormCategory } from "@/widgets/AdminWidget";
-import ModalWindow from "@/shared/ui/Modal/Modal";
 import { infoUpdate } from "@/entities/user/model/userThunks";
 import { unwrapResult } from "@reduxjs/toolkit";
 
@@ -19,11 +17,11 @@ export const UserInfoFormUpdate: React.FC = () => {
   const handleUpdateUserInfo = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      if (user) {
+      //!!!!!! ПОПРАВИТЬ
+      if (user && email && phone && name && surname && birthday && address) {
         const resultAction = await dispatch(
           infoUpdate({ email, phone, name, surname, birthday, address })
         );
-
         unwrapResult(resultAction);
       }
     } catch (error) {
