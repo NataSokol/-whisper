@@ -11,7 +11,7 @@ export type User = {
   isAdmin: boolean;
   createdAt: Date;
   updatedAt: Date;
-  Products: ProductList;
+  LikedProducts: ProductList;
 };
 
 export type AuthResponse = {

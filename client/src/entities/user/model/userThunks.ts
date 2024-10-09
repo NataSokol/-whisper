@@ -1,7 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { AuthResponse, UserInfoResponse } from ".";
-import { UserService } from "../api";
+import { FavoriteResponse, UserService } from "../api";
+
+import { ProductList } from "@/entities/product";
 
 type RejectValue = {
   message: string;
@@ -67,7 +69,7 @@ export const foget = createAsyncThunk<
 });
 
 export const infoUpdate = createAsyncThunk<
-UserInfoResponse ,
+  UserInfoResponse,
   {
     email: string;
     phone: string;
@@ -84,9 +86,8 @@ UserInfoResponse ,
     { rejectWithValue }
   ) => {
     try {
-      console.log( { email, phone, name, surname, birthday, address });
-      
-      
+      console.log({ email, phone, name, surname, birthday, address });
+
       return await UserService.updateInfo(
         email,
         phone,
@@ -116,5 +117,46 @@ export const logout = createAsyncThunk<
     return rejectWithValue({
       message: err.response?.data.message || err.message,
     });
+  }
+});
+
+export const likeProduct = createAsyncThunk<
+  FavoriteResponse,
+  { productId: number },
+  { rejectValue: RejectValue }
+>("user/likeProduct", async ({ productId }, { rejectWithValue }) => {
+  try {
+    const result = await UserService.addFavorite(productId);
+    return result;
+  } catch (error: any) {
+    return rejectWithValue(error.message);
+  }
+});
+
+// Анлайк продукта
+export const unlikeProduct = createAsyncThunk<
+  FavoriteResponse,
+  { productId: number },
+  { rejectValue: RejectValue }
+>("user/unlikeProduct", async ({ productId }, { rejectWithValue }) => {
+  try {
+    const result = await UserService.deleteFavorite(productId);
+    return result;
+  } catch (error: any) {
+    return rejectWithValue(error.message);
+  }
+});
+
+// Получение всех лайкнутых продуктов
+export const fetchLikedProducts = createAsyncThunk<
+  { likedProducts: ProductList },
+  void,
+  { rejectValue: RejectValue }
+>("user/fetchLikedProducts", async (_, { rejectWithValue }) => {
+  try {
+    const result = await UserService.getAllFavorites();
+    return result;
+  } catch (error: any) {
+    return rejectWithValue(error.message);
   }
 });

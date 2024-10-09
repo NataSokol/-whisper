@@ -1,29 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./UserProductItem.module.css";
 import { Product } from "../../model";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
 import FavoriteButton from "@/shared/ui/FavoriteButton/FavoriteButton";
-import { useAppDispatch } from "@/shared/hooks/useReduxHooks";
-import { fetchFavorites } from "@/entities/favorites";
 
 type ProductProps = {
   product: Product;
 };
 
 export const UserProductItem: React.FC<ProductProps> = ({ product }) => {
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(fetchFavorites());
-  }, [dispatch]);
+  console.log(product);
+  
 
   return (
     <div className={styles.container}>
       <div>
         <Link to={`${ROUTES.CATALOG}/${product.id}`}>
           <img
-            src={product.Images[0]?.url}
+            src={product?.Images[0]?.url}
             alt="photo"
             className={styles.image}
           />

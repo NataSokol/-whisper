@@ -10,7 +10,6 @@ import debounce from "lodash.debounce";
 
 export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
-  const { favorites } = useAppSelector((state) => state.favorites);
   const dispatch = useAppDispatch();
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
@@ -21,7 +20,8 @@ export const Navbar: React.FC = () => {
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const { user } = useAppSelector((state) => state.user);
-
+  console.log(user?.LikedProducts);
+  
   const location = useLocation();
 
   const handleSearchClick = () => {
@@ -171,7 +171,7 @@ export const Navbar: React.FC = () => {
                 <img src="../../public/img/favorites.svg" alt="Favorites" />
                 <span
                   className={`${styles.notificationDot} ${
-                    favorites.length > 0 ? styles.notificationDotActive : ""
+                    user?.LikedProducts.length > 0 ? styles.notificationDotActive : ""
                   }`}
                 ></span>
               </Link>

@@ -94,10 +94,10 @@ export const router = createBrowserRouter([
         element: <SignInPage />,
       },
 
-      // {
-      //   path: ROUTES.FAVORITES,
-      //   element: <FavoritePage />,
-      // },
+      {
+        path: ROUTES.FAVORITES,
+        element: <FavoritePage />,
+      },
 
       {
         path: ROUTES.PROFILE,
