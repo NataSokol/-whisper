@@ -1,14 +1,15 @@
 import { useCallback } from "react";
 import { useAppDispatch } from "./useReduxHooks";
 import {
+  createProductSize,
+  CreateProductSizeRequest,
   deleteProductSize,
+  getAllProductSizes,
+  getOneProductSize,
   ProductSize,
   updateProductSize,
 } from "@/entities/productsize";
-import {
-  getAllProductSizes,
-  getOneProductSize,
-} from "@/entities/productsize/model/productSizeThunk";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 export const useProductSizeActions = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +22,49 @@ export const useProductSizeActions = () => {
     async (id: number) => {
       await dispatch(getOneProductSize({ id }));
       dispatch(getAllProductSizes());
+    },
+    [dispatch]
+  );
+
+  const handleCreateProductSize = useCallback(
+    async ({
+      productId,
+      sizeTitle,
+      length,
+      width,
+      chestGirth,
+      chestUnderGirth,
+      externalSeamLength,
+      frontLength,
+      hipGirth,
+      innerSeamLength,
+      waistGirth,
+      sleeveLength,
+      quantity,
+    }: CreateProductSizeRequest) => {
+      try {
+        const result = await dispatch(
+          createProductSize({
+            productId: Number(productId),
+            sizeTitle,
+            length,
+            width,
+            chestGirth,
+            chestUnderGirth,
+            externalSeamLength,
+            frontLength,
+            hipGirth,
+            innerSeamLength,
+            waistGirth,
+            sleeveLength,
+            quantity,
+          })
+        );
+        unwrapResult(result);
+        dispatch(getAllProductSizes());
+      } catch (error) {
+        console.error("Failed to create product size:", error);
+      }
     },
     [dispatch]
   );
@@ -45,5 +89,6 @@ export const useProductSizeActions = () => {
     handleDeleteProductSize,
     getProductSizeList,
     getProductSize,
+    handleCreateProductSize,
   };
 };
