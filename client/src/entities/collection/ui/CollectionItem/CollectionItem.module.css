@@ -4,7 +4,11 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    color: white;
+    color: var(--primary-basic-white);
+}
+
+.container:visited {
+    color: var(--primary-basic-white)
 }
 
 .collectionImage {
@@ -19,15 +23,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /* width: 195px; */
 }
 
 .collectionTitle {
     width: 180px;
     font-size: 26px;
     text-align: center;
-    /* font-weight: lighter; */
     letter-spacing: 2px;
 }
 
@@ -36,13 +37,12 @@
     text-align: center;
     font-weight: 500;
     margin-top: 25px;
-
-    color: white;
+    color: var(--primary-basic-white);
     text-decoration: underline;
     cursor: pointer;
 }
 
-.collectionLink:visited {
-    color: (--primary-basic-white)
+.container:hover .collectionLink {
+    color: var(--secondary-black);
 }
 

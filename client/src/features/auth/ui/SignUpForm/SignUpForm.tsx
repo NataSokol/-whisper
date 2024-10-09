@@ -11,6 +11,7 @@ import {
 } from "@/shared/hooks/reduxHooks";
 import { signUp } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 // /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
 
@@ -62,9 +63,9 @@ export const SignUpForm: React.FC = () => {
           <label className="floating-label">Password:</label>
         </div>
 
-        <button type="submit" disabled={loading} className="submit-button">
+        <Button theme={ThemeButton.DARK} type="submit" disabled={loading} className="submit-button">
           {loading ? "ЗАРЕГИСТРИРОВАТЬСЯ..." : "ЗАРЕГИСТРИРОВАТЬСЯ"}
-        </button>
+        </Button>
       </div>
     </form>
   );

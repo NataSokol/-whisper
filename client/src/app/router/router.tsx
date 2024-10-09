@@ -15,7 +15,7 @@ import {
 } from "@/pages";
 import { ROUTES } from "./routes";
 import { PublicRoute } from "@/shared/ui/PublicRoute";
-import { FogForm } from "@/features/auth/ui/FogetPas/FogForm";
+import { FogForm } from "@/features/auth/ui/ForgetPas/FogForm";
 import ResetPassword from "@/pages/ResetPasswordPage/ResetPassword";
 import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";

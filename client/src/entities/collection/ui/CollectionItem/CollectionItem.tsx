@@ -12,7 +12,7 @@ export const CollectionItem: React.FC<CollectionItemProps> = ({
   collection,
 }) => {
   return (
-    <div className={styles.container}>
+    <Link to={`${ROUTES.COLLECTION}/${collection.id}`} className={styles.container}>
       <img
         className={styles.collectionImage}
         src={collection.image}
@@ -20,13 +20,12 @@ export const CollectionItem: React.FC<CollectionItemProps> = ({
       />
       <div className={styles.collectionInfo}>
       <div className={styles.collectionTitle}>{collection.title.toUpperCase()}</div>
-      <Link
+      <div
         className={styles.collectionLink}
-        to={`${ROUTES.COLLECTION}/${collection.id}`}
       >
         Посмотреть
-      </Link>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 };

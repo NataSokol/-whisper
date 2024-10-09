@@ -11,7 +11,7 @@
 .info {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: var(--font-size-base);
 }
 
 .title {
@@ -45,8 +45,8 @@
 }
 
 .svgIcon path {
-  fill: black; 
-  stroke: black; 
+  fill: var(--primary-basic-gray); 
+  stroke: var(--primary-basic-gray); 
   fill-opacity: 0; 
   transition: fill-opacity 0.3s ease; 
 }

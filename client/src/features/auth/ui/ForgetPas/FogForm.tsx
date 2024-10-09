@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../SignInForm/customInputStyles.css";
 import axios from "axios";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const FogForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -47,9 +48,9 @@ export const FogForm: React.FC = () => {
               />
               <div className="floating-label">Введите ваш email</div>
             </div>
-            <button type="submit" className="submit-button">
+            <Button theme={ThemeButton.DARK} type="submit" className="submit-button">
               ВОССТАНОВИТЬ
-            </button>
+            </Button>
           </form>
         </>
       )}

@@ -51,13 +51,13 @@ export const signUp = createAsyncThunk<
     });
   }
 });
-export const foget = createAsyncThunk<
+export const forget = createAsyncThunk<
   AuthResponse,
   { email: string },
   { rejectValue: RejectValue }
 >("user/send-letter", async ({ email }, { rejectWithValue }) => {
   try {
-    return await UserService.foget(email);
+    return await UserService.forget(email);
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
