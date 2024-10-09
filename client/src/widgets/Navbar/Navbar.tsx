@@ -11,7 +11,7 @@ import debounce from "lodash.debounce";
 export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
-  const { cart } = useAppSelector((state) => state.cart);
+  const { cart, cartCount } = useAppSelector((state) => state.cart);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -19,9 +19,6 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [favorites, setFavorites] = useState<number>(1);
   const searchContainerRef = useRef<HTMLDivElement>(null);
-  const [cartCount, setCartCount] = useState(0);
-
-  console.log(cart);
 
   const { user } = useAppSelector((state) => state.user);
 
@@ -89,13 +86,6 @@ export const Navbar: React.FC = () => {
     };
   }, [isSearchActive, dispatch]);
 
-  useEffect(() => {
-    if (cart?.CartItems) {
-      setCartCount(
-        cart?.CartItems?.map((item) => item.quantity).reduce((a, b) => a + b)
-      );
-    }
-  }, [cart]);
 
   useEffect(() => {
     const handleScroll = () => {

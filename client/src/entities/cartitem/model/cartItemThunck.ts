@@ -22,8 +22,6 @@ export const getCartItemById = createAsyncThunk<
   }
 });
 
-
-
 export const createCartItem = createAsyncThunk<
 CartItemResponse,
   { cartId: number, productId: number, quantity: number, productSizeId: number, productColorId: number },
@@ -55,12 +53,12 @@ CartItemResponse,
 });
 
 export const deleteCartItem = createAsyncThunk<
-  void,
+CartItemResponse,
   { id: number },
   { rejectValue: RejectValue }
 >("/deleteCartItem", async ({ id }, { rejectWithValue }) => {
   try {
-    await CartItemService.deleteCartItem(id);
+    return await CartItemService.deleteCartItem(id);
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
