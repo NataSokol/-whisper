@@ -6,7 +6,10 @@ import {
   AdminPage,
   AdminProductPage,
   AdminSubCategoryPage,
+  AllProductsPage,
+  CartPage,
   MainPage,
+  ProductPage,
   SignInPage,
   SignUpPage,
 } from "@/pages";
@@ -17,17 +20,13 @@ import ResetPassword from "@/pages/ResetPasswordPage/ResetPassword";
 import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
 import { AddressPage } from "@/pages/AddressPage/AddressPage";
-import { CardPage } from "@/pages/CardPage/CardPage";
 import Layout from "./Layout/Layout";
-import ProductPage from "@/pages/ProductPage/ProductPage";
-import { AllProductsPage } from "@/pages/AllProductsPage";
 
 export const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
     element: <Layout />,
     children: [
-
       {
         path: ROUTES.ADMIN,
         element: <AdminPage />,
@@ -65,12 +64,10 @@ export const router = createBrowserRouter([
       //     ),
       //   },
 
-      //   {
-      //     path: ROUTES.CART,
-      //     element: (
-      //         <CartPage />
-      //     ),
-      //   },
+      {
+        path: ROUTES.CART,
+        element: <CartPage />,
+      },
       {
         path: ROUTES.HOME,
         element: <MainPage />,
@@ -94,7 +91,6 @@ export const router = createBrowserRouter([
         element: <SignInPage />,
       },
 
-
       //   {
       //     path: ROUTES.FAVORITES,
       //     element: <FavoritesPage />,
@@ -116,10 +112,6 @@ export const router = createBrowserRouter([
             path: ROUTES.ADRESS,
             element: <AddressPage />,
           },
-          {
-            path: ROUTES.CARD,
-            element: <CardPage />,
-          },
         ],
       },
       {
@@ -135,7 +127,7 @@ export const router = createBrowserRouter([
       //   path: `${ROUTES.CATALOG}/:productId`,
       //   element: < />,
       // },
-      
+
       {
         path: `${ROUTES.CATALOG}/:productId`,
         element: <ProductPage />,

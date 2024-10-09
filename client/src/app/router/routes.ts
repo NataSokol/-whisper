@@ -11,7 +11,7 @@ export enum ROUTES {
   FOG = "/request-reset",
   HISTORY = "/profile/history",
   ADRESS = "/profile/adress",
-  CARD = "/profile/card",
+  CARD = "/profile/card", 
   INFO = "/profile/info",
   CHANGE = "/reset-password/:token",
   SIGNUP = "/signup",
