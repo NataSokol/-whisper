@@ -16,7 +16,7 @@ export const CartList: React.FC = () => {
     <div className={styles.container}>
       {cartItems?.map((item) => (
         <div key={item.id} className={styles.cartItem}>
-          <CartOneItem cartItem={item} />
+          <CartOneItem cartItem={item}/>
         </div>
       ))}
     </div>

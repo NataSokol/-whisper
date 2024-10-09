@@ -8,23 +8,24 @@ import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { getAllProducts } from "@/entities/product";
 import debounce from "lodash.debounce";
 
-
 export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
+  const { cart } = useAppSelector((state) => state.cart);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [favorites, setFavorites] = useState<number>(1);
-  const [cartCount, setCartCount] = useState<number>(9);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+  const [cartCount, setCartCount] = useState(0);
+
+  console.log(cart);
 
   const { user } = useAppSelector((state) => state.user);
 
   const location = useLocation();
-
 
   const handleSearchClick = () => {
     setIsSearchActive(true);
@@ -40,10 +41,6 @@ export const Navbar: React.FC = () => {
 
   const toggleFavorite = () => {
     setFavorites((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
-  };
-
-  const toggleCart = () => {
-    setCartCount((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
   };
 
   const debouncedSetSearchValue = useMemo(
@@ -91,6 +88,14 @@ export const Navbar: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isSearchActive, dispatch]);
+
+  useEffect(() => {
+    if (cart?.CartItems) {
+      setCartCount(
+        cart?.CartItems?.map((item) => item.quantity).reduce((a, b) => a + b)
+      );
+    }
+  }, [cart]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -182,7 +187,6 @@ export const Navbar: React.FC = () => {
             </button>
 
             <button className={styles.button}>
-
               {user ? (
                 <Link to={ROUTES.PROFILE}>
                   <img src="../../public/img/user.svg" alt="" />
@@ -190,14 +194,13 @@ export const Navbar: React.FC = () => {
               ) : (
                 <SidebarUser />
               )}
-
             </button>
           </>
         )}
-        <button className={styles.button} onClick={toggleCart}>
+        <button className={styles.button}>
           <Link to={ROUTES.CART} className={styles.cartLink}>
             <img src="../../public/img/cart.svg" alt="Cart" />
-            {cartCount > 0 && (
+            {cart && cart?.CartItems?.length > 0 && (
               <span className={styles.cartCount}>{cartCount}</span>
             )}
           </Link>
