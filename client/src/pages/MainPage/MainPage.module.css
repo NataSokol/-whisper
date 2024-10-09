@@ -27,22 +27,24 @@
   align-items: center;
 }
 
-
 .linkOnVideo {
   position: absolute;
   bottom: 160px;
 }
 
-.button {
-  width: 150px;
-  height: 40px;
-  background: none;
-  border: 1px solid white;
-  background-color: rgb(255 255 255 );
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  color: black;
+.linkOnVideo Button {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid var(--primary-basic-white);
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+  border-radius: var(--border-radius-small);
+}
+
+.linkOnVideo Button:hover {
+  background-color: transparent;
+  color: var(--secondary-black);
 }
 
 .collections {
@@ -63,51 +65,63 @@
   left: 50%;
   transform: translateX(-50%);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
 }
 .discountLink {
-    width: 100%;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    color: white;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-basic-white);
 }
 
 .discountLink img {
-    width: 1344px;
-    height: 500px;
-    object-fit: cover;
+  width: 1344px;
+  height: 500px;
+  object-fit: cover;
 }
+
 .headerLink {
   position: absolute;
   right: 0;
   top: 0;
-  font-size: 16px;
-  text-decoration: none;
-  color: black;
+  font-size: var(--font-size-large);
+  color: var(--secondary-black);
 }
 
+.headerLink:hover {
+  color: var(--secondary-dark-gray);
+  text-decoration: underline;
+}
 
 .discount {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   position: absolute;
-  bottom: 80px;
+  bottom: 100px;
 }
 
-.discount button{
-    width: 150px;
-    height: 40px;
-    font-size: 18px;
-    color: black;
-    background: none;
-    border: 1px solid white;
-    background-color: rgb(255 255 255 );
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 30px;
+.discount p {
+  color: var(--secondary-black);
+  color: var(--primary-basic-white);
+  font-size: var(--font-size-heading-1);
+}
+
+.discount Button {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid var(--primary-basic-white);
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+  border-radius: var(--border-radius-small);
+}
+
+.discount Button:hover {
+  background-color: transparent;
+  color: var(--secondary-black);
 }

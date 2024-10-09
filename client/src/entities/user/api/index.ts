@@ -50,7 +50,7 @@ export class UserService {
     }
   }
 
-  static async foget(email: string): Promise<AuthResponse> {
+  static async forget(email: string): Promise<AuthResponse> {
     const { data, status } = await axiosInstance.post<
       ApiResponse<AuthResponse>
     >("/auth/send-letter", {

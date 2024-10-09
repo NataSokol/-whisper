@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 // import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import { infoUpdate } from "@/entities/user/model/userThunks";
 import { unwrapResult } from "@reduxjs/toolkit";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const UserInfoFormUpdate: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
@@ -63,7 +64,7 @@ export const UserInfoFormUpdate: React.FC = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
-          <button type="submit">Сохранить</button>
+          <Button theme={ThemeButton.DARK} type="submit">Сохранить</Button>
         </form>
       </div>
     </div>

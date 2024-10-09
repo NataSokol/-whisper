@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 const ResetPassword: React.FC = () => {
   const { token } = useParams<string>();
@@ -37,7 +38,7 @@ const ResetPassword: React.FC = () => {
             placeholder="Введите новый пароль"
             required
           />
-          <button type="submit">Изменить пароль</button>
+          <Button theme={ThemeButton.DARK} type="submit">Изменить пароль</Button>
         </form>
       </div>
     </>
