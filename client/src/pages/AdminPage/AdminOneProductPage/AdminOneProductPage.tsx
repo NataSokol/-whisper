@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./AdminOneProductPage.module.css";
 import {
+  AdminColorFeature,
   AdminOneProductFeature,
   AdminProductSizeFeature,
 } from "@/features/admin/ui";
@@ -13,6 +14,7 @@ export const AdminOneProductPage: React.FC = () => {
       <AdminOneProductFeature />
       <AdminProductSizeFeature />
       <AdminFormProductSize />
+      <AdminColorFeature />
     </div>
   );
 };

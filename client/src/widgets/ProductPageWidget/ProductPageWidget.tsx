@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Color } from "@/entities/color";
+import { ProductSize } from "@/entities/productsize";
+import { createCartItem, updateCartItem } from "@/entities/cartitem";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import styles from "./ProductPageWidget.module.css";
-import { useAppSelector } from "@/shared/hooks/useReduxHooks";
-import { useNavigate } from "react-router-dom";
-import CartItemAddFeature from "@/features/cart/CartItemFeature/CartItemAddFeature";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
@@ -10,7 +11,7 @@ export const ProductPageWidget: React.FC = () => {
 
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
-
+  
   return (
     <>
       <div className={styles.linkBack} onClick={() => navigate(-1)}>
@@ -34,9 +35,7 @@ export const ProductPageWidget: React.FC = () => {
               {currProduct?.salePrice && <div className={styles.salePrice}>{currProduct?.salePrice} ₽</div>}
             </div>
           </div>
-
           <CartItemAddFeature />
-
           <div className={styles.otherInfo}>
             <div className={styles.accordionItem}>
               <div

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import styles from "./CollectionList.module.css";
 import { CollectionItem } from "@/entities/collection/ui/CollectionItem/CollectionItem";
 import { useCollectionAction } from "@/shared/hooks/useCollectionAction";
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
+import styles from "./CollectionList.module.css";
 
 export const CollectionList: React.FC = ({}) => {
   const state = useAppSelector((state) => state.collection);
@@ -11,7 +11,7 @@ export const CollectionList: React.FC = ({}) => {
 
   useEffect(() => {
     getCollectionList();
-  }, []);
+  }, [getCollectionList]);
 
   return (
     <div className={styles.container}>

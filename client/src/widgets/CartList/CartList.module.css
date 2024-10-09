@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; 
+  padding: 20px;
+}
+
+.cartItem {
+  width: 40%;
+  margin-bottom: 5px; 
+}
