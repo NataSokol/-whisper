@@ -30,8 +30,8 @@ export const ProductPageWidget: React.FC = () => {
           <div className={styles.mainInfo}>
             <div>{currProduct?.title}</div>
             <div className={styles.price}>
-              <div>{currProduct?.price}</div>
-              <div>{currProduct?.salePrice}</div>
+              <div className={styles.basePrice} style={{ textDecoration: currProduct?.salePrice ? "line-through" : 'none'}}>{currProduct?.price} ₽</div>
+              {currProduct?.salePrice && <div className={styles.salePrice}>{currProduct?.salePrice} ₽</div>}
             </div>
           </div>
 
