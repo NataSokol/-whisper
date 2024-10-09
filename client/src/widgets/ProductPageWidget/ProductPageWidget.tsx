@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import styles from "./ProductPageWidget.module.css";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { Color } from "@/entities/color";
 import { ProductSize } from "@/entities/productsize";
 import { createCartItem, updateCartItem } from "@/entities/cartitem";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
+import styles from "./ProductPageWidget.module.css";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
@@ -26,7 +26,7 @@ export const ProductPageWidget: React.FC = () => {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-    if (!currProduct || !cart)  {
+    if (!currProduct || !cart) {
       return;
     }
     if (selectedColor && selectedSize) {
@@ -135,7 +135,14 @@ export const ProductPageWidget: React.FC = () => {
             ))}
           </div>
 
-          <button type="submit" className={styles.cartButton} disabled={!currProduct || !cart} style={{backgroundColor: !currProduct || !cart? "lightgray" : "black"}}>
+          <button
+            type="submit"
+            className={styles.cartButton}
+            disabled={!currProduct || !cart}
+            style={{
+              backgroundColor: !currProduct || !cart ? "lightgray" : "black",
+            }}
+          >
             добавить в корзину
           </button>
         </form>

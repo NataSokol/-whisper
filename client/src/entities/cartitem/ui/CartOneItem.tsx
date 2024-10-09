@@ -7,8 +7,8 @@ type Props = {
 };
 
 export const CartOneItem: React.FC<Props> = ({ cartItem }) => {
-  const { ProductSize, colorProduct, Product } = cartItem;
-  
+  const { ProductSize, colorProduct } = cartItem;
+
   return (
     <div className={styles.cartItemContainer}>
       <h1 className={styles.cartItemTitle}>{cartItem.Product.title}</h1>

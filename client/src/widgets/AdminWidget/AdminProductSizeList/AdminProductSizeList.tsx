@@ -4,11 +4,11 @@ import { AdminProductSizeItem, ProductSize } from "@/entities/productsize";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import styles from "./AdminProductSizeList.module.css";
 
-interface AdminProductSizeListProps {
+interface Props {
   onEditSize: (size: ProductSize) => void;
 }
 
-export const AdminProductSizeList: React.FC<AdminProductSizeListProps> = ({
+export const AdminProductSizeList: React.FC<Props> = ({
   onEditSize,
 }) => {
   const product = useAppSelector((state) => state.product.currProduct);
