@@ -22,7 +22,6 @@ const store = configureStore({
     cartItem: cartItemReducer,
     cart: cartReducer,
     productSize: productSizeReducer,
-
     order: orderReducer,
 
     color: colorReducer
