@@ -8,8 +8,8 @@
 }
 
 .title {
-  font-size: var(--font-size-heading-1); 
-  font-weight: bold; 
-  color: var(--primary-basic-gray); 
+  font-size: var(--font-size-heading-1);
+  font-weight: bold;
+  color: var(--primary-basic-gray);
   margin-top: 20px;
 }

@@ -1,8 +1,7 @@
 import React from "react";
 import { Category } from "../model";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-
-// import styles from "./AdminCategoryItem.module.css";
+import styles from "./AdminCategoryItem.module.css";
 
 type Props = {
   category: Category;
@@ -16,15 +15,9 @@ export const AdminCategoryItem: React.FC<Props> = ({
   onCategoryUpdate,
 }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <span>{category.title}</span>
-      <div>
+    <div className={styles.categoryContainer}>
+      <span className={styles.categoryTitle}>{category.title}</span>
+      <div className={styles.buttonGroup}>
         <Button
           theme={ThemeButton.LIGHT}
           onClick={() => onCategoryUpdate(category.id)}

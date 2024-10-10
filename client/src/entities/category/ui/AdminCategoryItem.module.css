@@ -1,0 +1,25 @@
+.categoryContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.categoryTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px; 
+}
+
+.button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+}

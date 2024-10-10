@@ -227,16 +227,10 @@ export const AdminProductSizeFeature: React.FC = () => {
                 </div>
 
                 <div className={styles.buttonContainer}>
-                  <Button
-                    theme={ThemeButton.LIGHT}
-                    onClick={handleUpdate}
-                  >
+                  <Button theme={ThemeButton.LIGHT} onClick={handleUpdate}>
                     Сохранить
                   </Button>
-                  <Button
-                    theme={ThemeButton.LIGHT}
-                    onClick={handleCloseModal}
-                  >
+                  <Button theme={ThemeButton.LIGHT} onClick={handleCloseModal}>
                     Закрыть
                   </Button>
                 </div>
