@@ -34,7 +34,7 @@ module.exports = {
           composition: "92% хлопок , 8% лайкра",
           collectionId: 2,
           categoryId: 3,
-          subcategoryId: 4,
+          subcategoryId: 1,
         },
         {
           title: "Игривый шёпот",
@@ -55,7 +55,7 @@ module.exports = {
           composition: "90% хлопок, 10% полиэстер",
           collectionId: 3,
           categoryId: 2,
-          subcategoryId: 4,
+          subcategoryId: 3,
         },
         {
           title: "Воздушный шёпот",
