@@ -23,9 +23,10 @@ import OrderPage from "@/pages/OrderPage/OrderPage";
 import Layout from "./Layout/Layout";
 import { FavoritePage } from "@/pages/FavoritePage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
-
 import DiscountPage from "@/pages/DiscountPage/DiscountPage";
 import { AdminRoute } from "@/shared/ui/AdminRoute";
+import { NotFoundPage } from "@/pages/NotFoundPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -220,10 +221,10 @@ export const router = createBrowserRouter([
         element: <ComingSoonPage />,
       },
 
-      //   {
-      //     path: ROUTES.ERROR,
-      //     element: <ErrorPage />,
-      //   },
+      {
+        path: ROUTES.ERROR,
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);
