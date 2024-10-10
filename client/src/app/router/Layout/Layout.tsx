@@ -11,6 +11,7 @@ import styles from "./Layout.module.css";
 interface LayoutProps {
   isAdmin?: boolean;
 }
+      
 const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
   const dispatch = useAppDispatch();
 

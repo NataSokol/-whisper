@@ -1,53 +1,32 @@
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 500px;
-  background-color: var(--primary-basic-white);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   padding: 20px;
-  z-index: var(--z-index-modal);
 }
 
-.modal h2 {
-  margin-bottom: 20px;
-  text-align: center;
+.title {
+  margin-bottom: 30px;
 }
 
-.modal label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.modal input[type="text"],
-.modal select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid var( --primary-light-gray);
-  border-radius: var( --border-radius-small);
+.formGroup label {
+  flex: 0 0 120px;
+  margin-right: 10px;
 }
 
-.modal input[type="text"]:focus,
-.modal select:focus {
-  border-color: var(--primary-dark-gray);
-  outline: none;
+.formGroup input,
+.formGroup select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.modal button {
-  background-color: var(--primary-dark-gray);
-  color: var(--primary-basic-white);
-  border: none;
-  border-radius: var( --border-radius-small);
-  padding: 10px 15px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.modal button:hover {
-  background-color: var(--primary-dark-gray);
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
