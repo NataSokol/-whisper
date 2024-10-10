@@ -23,7 +23,9 @@ import OrderPage from "@/pages/OrderPage/OrderPage";
 import Layout from "./Layout/Layout";
 import { FavoritePage } from "@/pages/FavoritePage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
+
 import DiscountPage from "@/pages/DiscountPage/DiscountPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -105,10 +107,12 @@ export const router = createBrowserRouter([
             element: <HistoryPage />,
           },
 
+
           {
             path: ROUTES.DISCOUNT,
             element: <DiscountPage />,
           },
+
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
