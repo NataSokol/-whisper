@@ -6,21 +6,27 @@ import {
   AdminPage,
   AdminProductPage,
   AdminSubCategoryPage,
+  AllProductsPage,
+  CartPage,
   MainPage,
+  ProductPage,
   SignInPage,
   SignUpPage,
 } from "@/pages";
 import { ROUTES } from "./routes";
 import { PublicRoute } from "@/shared/ui/PublicRoute";
-import { FogForm } from "@/features/auth/ui/FogetPas/FogForm";
+import { FogForm } from "@/features/auth/ui/ForgetPas/FogForm";
 import ResetPassword from "@/pages/ResetPasswordPage/ResetPassword";
 import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
 import { CardPage } from "@/pages/CardPage/CardPage";
-import Layout from "./Layout/Layout";
 import ProductPage from "@/pages/ProductPage/ProductPage";
 import { AllProductsPage } from "@/pages/AllProductsPage";
 import OrderPage from "@/pages/OrderPage/OrderPage";
+import Layout from "./Layout/Layout";
+import { FavoritePage } from "@/pages/FavoritePage";
+import { ComingSoonPage } from "@/pages/ComingSoonPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +62,12 @@ export const router = createBrowserRouter([
         ],
       },
 
+
+      {
+        path: ROUTES.CART,
+        element: <CartPage />,
+      },
+
       {
         path: ROUTES.HOME,
         element: <MainPage />,
@@ -79,6 +91,13 @@ export const router = createBrowserRouter([
         element: <SignInPage />,
       },
 
+
+
+      {
+        path: ROUTES.FAVORITES,
+        element: <FavoritePage />,
+      },
+
       {
         path: ROUTES.PROFILE,
         element: <UserPage />,
@@ -92,6 +111,7 @@ export const router = createBrowserRouter([
             element: <HistoryPage />,
           },
 
+
           {
             path: ROUTES.CARD,
             element: <CardPage />,
@@ -99,7 +119,7 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
-          },
+             },
         ],
       },
       {
@@ -111,6 +131,13 @@ export const router = createBrowserRouter([
         element: <ResetPassword />,
       },
 
+
+      // {
+      //   path: `${ROUTES.CATALOG}/:productId`,
+      //   element: < />,
+      // },
+
+
       {
         path: `${ROUTES.CATALOG}/:productId`,
         element: <ProductPage />,
@@ -120,6 +147,58 @@ export const router = createBrowserRouter([
         path: ROUTES.CATALOG,
         element: <AllProductsPage />,
       },
+
+
+      {
+        path: ROUTES.DELPAY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.REFUND,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.QUESTANSW,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.GIFTCARD,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.LOYALTY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.ABOUT,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.CONTACTS,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.FEEDBACK,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.POLICY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.OFERTA,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.SIZECHART,
+        element: <ComingSoonPage />,
+      },
+
+      //   {
+      //     path: ROUTES.ERROR,
+      //     element: <ErrorPage />,
+      //   },
+
     ],
   },
 ]);

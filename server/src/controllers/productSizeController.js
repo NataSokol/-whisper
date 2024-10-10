@@ -22,6 +22,7 @@ exports.getOneProductSize = async (req, res) => {
 exports.createProductSize = async (req, res) => {
   try {
     const {
+      productId,
       sizeTitle,
       length,
       width,
@@ -37,6 +38,7 @@ exports.createProductSize = async (req, res) => {
     } = req.body;
 
     const productSize = await ProductSizeServices.createProductSize({
+      productId,
       sizeTitle,
       length,
       width,
@@ -51,7 +53,8 @@ exports.createProductSize = async (req, res) => {
       quantity,
     });
     if (productSize) {
-      res.status(200).json({ message: "success", productSize });
+      res.status(201).json({ message: "success", productSize });
+      return
     }
     res.status(404).json({ message: "There was an error" });
   } catch ({ message }) {

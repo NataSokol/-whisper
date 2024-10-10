@@ -6,6 +6,7 @@ import {
   ProductSizeResponse,
 } from ".";
 import {
+  createProductSize,
   deleteProductSize,
   getAllProductSizes,
   updateProductSize,
@@ -43,6 +44,22 @@ const productSizeSlice = createSlice({
         }
       )
       .addCase(getAllProductSizes.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || "Что-то пошло не так";
+      })
+
+      .addCase(createProductSize.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        createProductSize.fulfilled,
+        (state, action: { payload: ProductSizeResponse }) => {
+          state.loading = false;
+          state.productSizes.push(action.payload.productSize);
+        }
+      )
+      .addCase(createProductSize.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Что-то пошло не так";
       })

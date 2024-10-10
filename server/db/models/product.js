@@ -21,12 +21,19 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(Category, { foreignKey: "categoryId" });
       this.belongsTo(Subcategory, { foreignKey: "subcategoryId" });
       this.hasMany(OrderItem, { foreignKey: "productId" });
-      this.belongsToMany(User, { through: Favorite, foreignKey: "productId" });
+      this.belongsToMany(User, {
+        through: Favorite,
+        as: "LikedByUsers",
+        foreignKey: "productId",
+      });
       this.hasMany(Image, { foreignKey: "productId" });
       // this.hasMany(Color, {
       //   foreignKey: "productId",
       // });
-      this.belongsToMany(Color, {through: ColorProduct, foreignKey: "productId"});
+      this.belongsToMany(Color, {
+        through: ColorProduct,
+        foreignKey: "productId",
+      });
       // this.belongsToMany(Cart, {
       //   through: CartItem,
       //   foreignKey: "productId",

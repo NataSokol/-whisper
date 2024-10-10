@@ -3,10 +3,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  /* align-items: flex-start; */
   gap: 100px;
-  margin: 50px 0px;
-  padding: 74px 48px;
+  padding: 0 48px;
+}
+
+.linkBack {
+  margin: 100px 20px 20px;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-large);
+  color: var(--primary-basic-gray);
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: underline;
+  align-self: flex-start;
+}
+
+.linkBack:hover {
+  color: var(--primary-light-gray);
 }
 
 .imagesContainer {
@@ -32,8 +45,7 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  font-size: 22px;
-  /* margin-bottom: 20px; */
+  font-size: var(--font-size-heading-1);
   font-weight: lighter;
   text-transform: uppercase;
 }
@@ -42,112 +54,20 @@
   padding-top: 20px;
 }
 
-.colorPicker {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  width: 100%;
-  padding-bottom: 20px;
-  border-bottom: 0.5px solid lightgray;
-}
-
-.colorBorder {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.color {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 0.1px solid gray;
-}
-
-.pickedColor {
-  font-size: 16px;
-  line-height: 24px;
-  text-transform: uppercase;
-  padding-bottom: 10px;
-}
-
-.sizePickerHeaderContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 20px;
-  width: 100%;
-  padding-bottom: 20px;
-}
-
-.sizePickerHeader {
-  font-size: 16px;
-  line-height: 24px;
-  text-transform: uppercase;
-}
-
-.sizePicker {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  gap: 10px;
-  padding-bottom: 20px;
-}
-
-input[type="radio"] {
-  display: none;
-}
-
-.size {
-  width: 84px;
-  height: 56px;
-  font-size: 14px;
-  line-height: 24px;
-  text-transform: uppercase;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: white;
-  border: 1px solid black;
-  font-weight: lighter;
-  transition: background-color 0.6s;
-}
-
-/* input[type="radio"]:checked + label {
-  background-color: #0056b3;
-} */
-
-.cartButton {
-  width: 100%;
-  color: white;
-  background-color: black;
-  font-size: 20px;
-  border-radius: 5px;
-  padding: 10px;
-  font-weight: lighter;
-  text-transform: uppercase;
-}
-
 
 
 .otherInfo {
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-size: 18px;
+  font-size: var(--font-size-extra-large);
   font-weight: lighter;
 }
 
 .accordionItem {
-  border-bottom: 0.5px solid black;
-  border-top: 0.5px solid black;
-  padding: 10px 0px;
+  border-bottom: 0.5px solid var(--secondary-black);
+  border-top: 0.5px solid var(--secondary-black);
+  padding: 10px 0;
 }
 
 .accordionTitle {
@@ -157,7 +77,7 @@ input[type="radio"] {
   justify-content: space-between;
   width: 100%;
   cursor: pointer;
-  font-size: 16px;
+  font-size: var(--font-size-large);
   user-select: none;
 }
 
@@ -176,7 +96,7 @@ input[type="radio"] {
 }
 
 .accordionBody {
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: lighter;
   padding: 0 20px;
   max-height: 0;

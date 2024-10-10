@@ -1,38 +1,38 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { AdminProductSizeItem, ProductSize } from "@/entities/productsize";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import styles from "./AdminProductSizeList.module.css";
 
-interface AdminProductSizeListProps {
+interface Props {
   onEditSize: (size: ProductSize) => void;
 }
 
-export const AdminProductSizeList: React.FC<AdminProductSizeListProps> = ({
+export const AdminProductSizeList: React.FC<Props> = ({
   onEditSize,
 }) => {
-  const { id } = useParams<{ id: string }>();
   const product = useAppSelector((state) => state.product.currProduct);
 
   const productSizes =
     product && product.ProductSizes ? product.ProductSizes : [];
 
-  const productSize = productSizes.find((size) => size.id === Number(id));
-
   return (
     <div className={styles.container}>
       <h3>Доступные размеры:</h3>
-      {productSizes.map((size) => (
-        <AdminProductSizeItem key={size.id} productSize={size} />
-      ))}
-      {productSize && (
-        <Button
-          theme={ThemeButton.LIGHT}
-          onClick={() => onEditSize(productSize)}
-        >
-          Изменить размер
-        </Button>
+      {productSizes.length > 0 ? (
+        <>
+          {productSizes.map((size) => (
+            <AdminProductSizeItem key={size.id} productSize={size} />
+          ))}
+          <Button
+            theme={ThemeButton.LIGHT}
+            onClick={() => onEditSize(productSizes[0])}
+          >
+            Изменить размеры
+          </Button>
+        </>
+      ) : (
+        <p>Нет доступных размеров для этого продукта.</p>
       )}
     </div>
   );

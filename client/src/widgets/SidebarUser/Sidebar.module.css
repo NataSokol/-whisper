@@ -50,15 +50,19 @@
   width: 100%; 
 }
 
+/* .formStyle{
+  width: "100%"
+} */
+
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0006;
+  background-color: var(--secondary-gray-56);
   z-index: 999;
-  right: 0;
+  right: 0
 }
 
 ul {
@@ -69,23 +73,23 @@ ul {
 
 li {
   padding: 8px 16px;
-  color: rgb(0 0 0);
+  color: var(--secondary-black);
   position: relative;
 }
 
 .sidebarItem {
-  color: rgb(0 0 0 / 50%);
+  color: var(--primary-basic-gray);
   margin-bottom: 28px;
   transition: color 0.3s;
   cursor: pointer;
 }
 
 .sidebarItem:hover {
-  color: black;
+  color: var(--secondary-black);
 }
 
 .active {
-  color: black;
+  color: var(--secondary-black);
 }
 
 .arrow {
@@ -112,7 +116,7 @@ li {
   position: absolute;
   height: 2px;
   width: 100%;
-  background: black;
+  background: var(--secondary-black);
   left: 0;
   transition: all 0.3s ease-in-out;
 }
@@ -147,36 +151,32 @@ li {
 
 .tabs {
   display: flex;
-  justify-content:space-around; /* Меняем на space-between для увеличения расстояния между табами */
+  justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
+
 }
 
 .tab {
   padding: 3%;
   cursor: pointer;
-  text-decoration: none;
-  font-size: 14px; /* Уменьшаем размер шрифта */
-}
-.activeTab {
-  border-bottom: 2px solid black; /* Подчеркивание выбраного таба */
+  
+  
 }
 
-.header {
-  width: 100%;
-  text-align: center;
-  font-weight: normal; 
+.activeTab {
+  border-bottom: 2px solid var(--secondary-black);
+  font-weight: bold;
 }
 
 .fogPassword {
-  
-  color: gray;
-  font-size: 13px; 
-  cursor: pointer; 
+  text-decoration: underline;
+  color: var(--primary-light-gray);
 }
 
 .fogPassword:hover {
   cursor: pointer;
-  color: darkgray; /* Изменение цвета при наведении */
+  color: var(--primary-basic-gray);
+
 }

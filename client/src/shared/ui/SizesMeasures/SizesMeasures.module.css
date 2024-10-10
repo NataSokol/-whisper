@@ -1,0 +1,54 @@
+.sizesModal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+  }
+  
+  .closeModal {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .closeModal img {
+    rotate: 45deg;
+  }
+  
+  .sizesModalHeader {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    width: 300px;
+  }
+  
+  .sizesHeader {
+    font-size: var(--font-size-extra-large);
+    max-width: 280px;
+    padding-top: 10px;
+  }
+  
+
+/* .sizeModal {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+  } */
+  
+  .measure {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-large);
+    font-weight: lighter;
+    width: 100%;
+  }
+  
+  .measure:first-child {
+    font-size: var(--font-size-extra-large);
+    border-bottom: 0.5px solid var(--secondary-black);
+  }

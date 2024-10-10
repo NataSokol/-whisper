@@ -1,8 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  SubcategoryListResponse,
-  SubcategoryResponse,
-} from ".";
+import type { SubcategoryListResponse, SubcategoryResponse } from ".";
 import { SubcategoryService } from "../api";
 import { AxiosError } from "axios";
 type RejectValue = {

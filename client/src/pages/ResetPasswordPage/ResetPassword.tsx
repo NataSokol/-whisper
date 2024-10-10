@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
 import styles from "./ResetPassword.module.css";
+
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+
 
 const ResetPassword: React.FC = () => {
   const { token } = useParams<{ token: string }>();
@@ -102,7 +106,7 @@ const ResetPassword: React.FC = () => {
               ))}
             </div>
           )}
-          <button type="submit">Изменить</button>
+           <Button theme={ThemeButton.DARK} type="submit">Изменить пароль</Button>
         </form>
       )}
     </div>
@@ -110,3 +114,4 @@ const ResetPassword: React.FC = () => {
 };
 
 export default ResetPassword;
+

@@ -8,23 +8,19 @@ import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { getAllProducts } from "@/entities/product";
 import debounce from "lodash.debounce";
 
-
 export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
+  const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [favorites, setFavorites] = useState<number>(1);
   const [cartCount, setCartCount] = useState<number>(9);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
-  const { user } = useAppSelector((state) => state.user);
-
   const location = useLocation();
-
 
   const handleSearchClick = () => {
     setIsSearchActive(true);
@@ -36,10 +32,6 @@ export const Navbar: React.FC = () => {
 
   const handleSearchInputFocus = () => {
     setIsInputFocused(true);
-  };
-
-  const toggleFavorite = () => {
-    setFavorites((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
   };
 
   const toggleCart = () => {
@@ -172,17 +164,20 @@ export const Navbar: React.FC = () => {
         </div>
         {!isSearchActive && (
           <>
-            <button className={styles.button} onClick={toggleFavorite}>
+            <button className={styles.button}>
               <Link to={ROUTES.FAVORITES} className={styles.favoritesLink}>
                 <img src="../../public/img/favorites.svg" alt="Favorites" />
-                {favorites > 0 && (
-                  <span className={styles.notificationDot}></span>
-                )}
+                <span
+                  className={`${styles.notificationDot} ${
+                    (user?.LikedProducts ?? []).length > 0
+                      ? styles.notificationDotActive
+                      : ""
+                  }`}
+                ></span>
               </Link>
             </button>
 
             <button className={styles.button}>
-
               {user ? (
                 <Link to={ROUTES.INFO}>
                   <img src="../../public/img/user.svg" alt="" />
@@ -190,7 +185,6 @@ export const Navbar: React.FC = () => {
               ) : (
                 <SidebarUser />
               )}
-
             </button>
           </>
         )}

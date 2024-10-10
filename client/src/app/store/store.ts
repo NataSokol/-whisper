@@ -8,6 +8,8 @@ import { cartItemReducer } from "@/entities/cartitem";
 import { cartReducer } from "@/entities/cart";
 import { productSizeReducer } from "@/entities/productsize";
 import { orderReducer } from "@/entities/order";
+import { colorReducer } from '@/entities/color';
+
 
 const store = configureStore({
   reducer: {
@@ -20,7 +22,11 @@ const store = configureStore({
     cartItem: cartItemReducer,
     cart: cartReducer,
     productSize: productSizeReducer,
+
     order: orderReducer,
+
+    color: colorReducer
+
   },
 });
 

@@ -1,33 +1,39 @@
 .Button {
   cursor: pointer;
   border: none;
+
   /* padding: 12px 28px; */
   width: 150px;
   height: 40px;
-  font-size: 18px;
+  font-size: var(--font-size-heading);
   margin: 5px;
   border-radius: var(--border-radius-small);
   transition: 0.3s ease-in-out
 }
 
 .Button:hover {
+  color: var(--primary-basic-white);
   background-color: var(--secondary-dark-gray);
 }
 
 .Button:active {
   background-color: var(--secondary-black);
+  color: var(--primary-basic-white);
 }
 
 .dark {
+  color: var(--primary-basic-white);
   background-color: var(--primary-basic-gray);
 }
 
 .light {
+  color: var(--primary-basic-gray);
   background-color: var(--primary-basic-white);
-  border: 1px solid var(--primary-basic-white);
+  border: 1px solid var(--primary-basic-gray);
 }
 
 .disabled {
+  color: var(--primary-basic-gray);
   background-color: var(--secondary-gray-20);
   border: 1px solid var(--primary-light-gray);
 }

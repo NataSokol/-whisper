@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { infoUpdate } from "@/entities/user/model/userThunks";
+
 import styles from "../../../../pages/UserPage/User.module.css";
+
+import { unwrapResult } from "@reduxjs/toolkit";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+
 
 export const UserInfoFormUpdate: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
@@ -114,9 +119,7 @@ export const UserInfoFormUpdate: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button className={styles.button} type="submit">
-          Сохранить изменения
-        </button>
+        <Button theme={ThemeButton.DARK} type="submit">Сохранить</Button>
       </form>
 
       <div

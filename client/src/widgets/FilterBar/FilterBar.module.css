@@ -6,7 +6,7 @@
 .categoryList {
   list-style-type: none;
   padding: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
 }
 
 .categoryItem {
@@ -46,38 +46,35 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
+  inset: 0;
+  background-color: var(--primary-light-gray);
   transition: 0.4s;
   border-radius: 28px;
 }
 
-.slider:before {
+.slider::before {
   position: absolute;
   content: "";
   height: 22px;
   width: 22px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: var(--primary-basic-white);
   transition: 0.4s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: rgba(44, 42, 41, 1);
+  background-color: var(--primary-basic-gray);
 }
 
-input:checked + .slider:before {
+input:checked + .slider::before {
   transform: translateX(22px);
 }
 
 .switchLabel {
   font-weight: bold;
-  color: #000;
+  color: var(--secondary-black);
 }
 
 .resetButton {
@@ -86,12 +83,12 @@ input:checked + .slider:before {
   border: none;
   cursor: pointer;
   width: 100%;
-  color: rgba(145, 145, 145, 1);
+  color: var(--primary-light-gray);
   text-align: left;
 }
 
 .resetButton:hover {
-  color: rgba(100, 100, 100, 1);
+  color: var(--primary-basic-gray);
 }
 
 .categoryButton {
@@ -111,7 +108,7 @@ input:checked + .slider:before {
   bottom: 0;
   height: 2px;
   width: 0;
-  background-color: rgba(44, 42, 41, 1);
+  background-color: var(--primary-basic-gray);
   transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -121,9 +118,9 @@ input:checked + .slider:before {
 }
 
 .saleButton {
-  color: rgb(255, 0, 0);
+  color: var(--primary-light-red);
 }
 
 .saleButton::after {
-  background-color: rgb(255, 0, 0);
+  background-color: var(--primary-light-red);
 }

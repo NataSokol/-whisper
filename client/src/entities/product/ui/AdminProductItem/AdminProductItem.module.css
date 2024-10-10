@@ -6,12 +6,14 @@
 }
 
 .productTitle {
-  font-size: 18px;
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
   font-weight: 600;
   margin-right: 20px;
 }
 
 .productImage {
+  margin-right: 500px;
   max-width: 150px; 
   max-height: 150px; 
   object-fit: cover; 

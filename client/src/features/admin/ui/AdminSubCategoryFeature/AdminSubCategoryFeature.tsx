@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import ModalWindow from "@/shared/ui/Modal/Modal";
 import {
   AdminFormSubCategory,
@@ -55,10 +56,10 @@ export const AdminSubCategoryFeature: React.FC = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <button onClick={() => handleUpdate(editingSubCategoryId!)}>
+          <Button theme={ThemeButton.LIGHT} onClick={() => handleUpdate(editingSubCategoryId!)}>
             Сохранить
-          </button>
-          <button onClick={() => setModalActive(false)}>Закрыть</button>
+          </Button>
+          <Button theme={ThemeButton.DARK} onClick={() => setModalActive(false)}>Закрыть</Button>
         </div>
       </ModalWindow>
     </div>

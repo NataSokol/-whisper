@@ -8,20 +8,18 @@ export const NavbarAdmin: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.navbarLinks}>
-        <Button theme={ThemeButton.LIGHT}>
-          <Link to={ROUTES.ADMIN_CATEGORIES}>Категории</Link>
-        </Button>
-        <Button theme={ThemeButton.LIGHT}>
-          <Link to={ROUTES.ADMIN_COLLECTIONS}>Коллекции</Link>
-        </Button>
-
-        <Button theme={ThemeButton.LIGHT}>
-          <Link to={ROUTES.ADMIN_SUBCATEGORY}>Подкатегории</Link>
-        </Button>
-
-        <Button theme={ThemeButton.LIGHT}>
-          <Link to={ROUTES.ADMIN_PRODUCTS}>Продукты</Link>
-        </Button>
+        <Link to={ROUTES.ADMIN_CATEGORIES}>
+          <Button theme={ThemeButton.LIGHT}>Категории</Button>
+        </Link>
+        <Link to={ROUTES.ADMIN_COLLECTIONS}>
+          <Button theme={ThemeButton.LIGHT}>Коллекции</Button>
+        </Link>
+        <Link to={ROUTES.ADMIN_SUBCATEGORY}>
+          <Button theme={ThemeButton.LIGHT}>Подкатегории</Button>
+        </Link>
+        <Link to={ROUTES.ADMIN_PRODUCTS}>
+          <Button theme={ThemeButton.LIGHT}>Продукты</Button>
+        </Link>
       </div>
     </div>
   );

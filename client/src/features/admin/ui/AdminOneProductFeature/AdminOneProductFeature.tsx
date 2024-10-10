@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { AdminOneProductList } from "@/widgets/AdminWidget";
 import { useProductAction } from "@/shared/hooks/useProductAction";
-import { Product } from "@/entities/product";
-import ModalWindow from "@/shared/ui/Modal/Modal";
-import styles from "./AdminOneProductFeature.module.css";
 import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import { useAppSelector } from "@/shared/hooks/reduxHooks";
 import { useCollectionAction } from "@/shared/hooks/useCollectionAction";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
+import { Product } from "@/entities/product";
+import {
+  AdminOneProductImageList,
+  AdminOneProductList,
+} from "@/widgets/AdminWidget";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import ModalWindow from "@/shared/ui/Modal/Modal";
+import styles from "./AdminOneProductFeature.module.css";
 
 export const AdminOneProductFeature: React.FC = () => {
   const categories = useAppSelector((state) => state.adminCategory.categories);
@@ -37,14 +40,12 @@ export const AdminOneProductFeature: React.FC = () => {
     number | undefined
   >();
 
-  //!!! ДОСТАЮ КАТЕГОРИИ И КОЛЛЕКЦИИ
   useEffect(() => {
     allCategories();
     getCollectionList();
     getAllSubcategoryList();
   }, [allCategories, getCollectionList, getAllSubcategoryList]);
 
-  // обновление продукта(его описание)
   const handleUpdate = async () => {
     if (selectedProduct) {
       const productData = {
@@ -59,12 +60,10 @@ export const AdminOneProductFeature: React.FC = () => {
       };
       await handleUpdateProduct(selectedProduct.id, productData);
       setModalActive(false);
-      // Обновляю продукт в состоянии
       getProduct(Number(selectedProduct.id));
     }
   };
 
-  // открытие модального окна
   const openModal = (product: Product) => {
     setSelectedProduct(product);
     setTitle(product.title);
@@ -72,9 +71,9 @@ export const AdminOneProductFeature: React.FC = () => {
     setComposition(product.composition);
     setPrice(product.price);
     setSalePrice(product.salePrice | 0);
-    setSelectedCategoryId(product.Category.id);
-    setSelectedCollectionId(product.Collection.id);
-    setSelectedSubcategoryId(product.Subcategory.id);
+    setSelectedCategoryId(product.Category?.id);
+    setSelectedCollectionId(product.Collection?.id);
+    setSelectedSubcategoryId(product.Subcategory?.id);
     setModalActive(true);
   };
 
@@ -88,49 +87,49 @@ export const AdminOneProductFeature: React.FC = () => {
         <div className={styles.modal}>
           {selectedProduct && (
             <>
-              <h2>Редактировать продукт</h2>
-              <label>
-                Название:
+              <h2 className={styles.title}>Редактировать продукт</h2>
+              <div className={styles.formGroup}>
+                <label>Название:</label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
-              </label>
-              <label>
-                Описание:
+              </div>
+              <div className={styles.formGroup}>
+                <label>Описание:</label>
                 <input
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
-              </label>
-              <label>
-                Состав:
+              </div>
+              <div className={styles.formGroup}>
+                <label>Состав:</label>
                 <input
                   type="text"
                   value={composition}
                   onChange={(e) => setComposition(e.target.value)}
                 />
-              </label>
-              <label>
-                Цена:
+              </div>
+              <div className={styles.formGroup}>
+                <label>Цена:</label>
                 <input
-                  type="text"
+                  type="number"
                   value={price}
                   onChange={(e) => setPrice(+e.target.value)}
                 />
-              </label>
-              <label>
-                Скидка:
+              </div>
+              <div className={styles.formGroup}>
+                <label>Скидка:</label>
                 <input
-                  type="text"
+                  type="number"
                   value={salePrice}
                   onChange={(e) => setSalePrice(+e.target.value)}
                 />
-              </label>
-              <label>
-                Категория:
+              </div>
+              <div className={styles.formGroup}>
+                <label>Категория:</label>
                 <select
                   value={selectedCategoryId || ""}
                   onChange={(e) => setSelectedCategoryId(+e.target.value)}
@@ -142,9 +141,9 @@ export const AdminOneProductFeature: React.FC = () => {
                       </option>
                     ))}
                 </select>
-              </label>
-              <label>
-                Коллекция:
+              </div>
+              <div className={styles.formGroup}>
+                <label>Коллекция:</label>
                 <select
                   value={selectedCollectionId || ""}
                   onChange={(e) => setSelectedCollectionId(+e.target.value)}
@@ -156,9 +155,9 @@ export const AdminOneProductFeature: React.FC = () => {
                       </option>
                     ))}
                 </select>
-              </label>
-              <label>
-                Подкатегория:
+              </div>
+              <div className={styles.formGroup}>
+                <label>Подкатегория:</label>
                 <select
                   value={selectedSubcategoryId || ""}
                   onChange={(e) => setSelectedSubcategoryId(+e.target.value)}
@@ -170,20 +169,23 @@ export const AdminOneProductFeature: React.FC = () => {
                       </option>
                     ))}
                 </select>
-              </label>
+              </div>
             </>
           )}
-          <Button theme={ThemeButton.LIGHT} onClick={handleUpdate}>
-            Сохранить
-          </Button>
-          <Button
-            theme={ThemeButton.LIGHT}
-            onClick={() => setModalActive(false)}
-          >
-            Закрыть
-          </Button>
+          <div className={styles.buttons}>
+            <Button theme={ThemeButton.LIGHT} onClick={handleUpdate}>
+              Сохранить
+            </Button>
+            <Button
+              theme={ThemeButton.LIGHT}
+              onClick={() => setModalActive(false)}
+            >
+              Закрыть
+            </Button>
+          </div>
         </div>
       </ModalWindow>
+      <AdminOneProductImageList />
     </div>
   );
 };

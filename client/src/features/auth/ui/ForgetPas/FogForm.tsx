@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../SignInForm/customInputStyles.css";
 import axios from "axios";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 
 export const FogForm: React.FC = () => {
@@ -25,6 +26,7 @@ export const FogForm: React.FC = () => {
   };
 
   return (
+    
     <div className="form-container">
       <h2 className="header">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
       {isSuccessMessageVisible ? (
@@ -52,9 +54,12 @@ export const FogForm: React.FC = () => {
               />
               <div className="floating-label">Введите ваш email</div>
             </div>
-            <button type="submit" className="submit-buttonFog">
+
+
+            <Button theme={ThemeButton.DARK} type="submit" className="submit-button">
+
               ВОССТАНОВИТЬ
-            </button>
+            </Button>
           </form>
         </>
       )}

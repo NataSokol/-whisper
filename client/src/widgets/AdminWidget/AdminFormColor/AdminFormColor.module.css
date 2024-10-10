@@ -1,0 +1,44 @@
+.container {
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalTitle {
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  flex: 0 0 120px;
+  margin-right: 10px;
+}
+
+.formGroup input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.buttons Button {
+  margin-left: 10px;
+}

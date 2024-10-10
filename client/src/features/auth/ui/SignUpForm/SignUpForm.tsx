@@ -10,7 +10,13 @@ import {
 } from "@/shared/hooks/reduxHooks";
 import { signUp } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
+
 import { checkEmailExists } from "@/shared/utils/checkEmailExists";
+
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+
+
+
 
 export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
@@ -115,9 +121,9 @@ export const SignUpForm: React.FC = () => {
         </div>
       </div>
 
-      <button type="submit" disabled={loading} className="submit-button">
-        {loading ? "ЗАРЕГИСТРИРОВАТЬСЯ..." : "ЗАРЕГИСТРИРОВАТЬСЯ"}
-      </button>
+      <Button theme={ThemeButton.DARK} type="submit" disabled={loading} className="submit-button">
+          {loading ? "ЗАРЕГИСТРИРОВАТЬСЯ..." : "ЗАРЕГИСТРИРОВАТЬСЯ"}
+        </Button>
     </div>
   </form>
   );

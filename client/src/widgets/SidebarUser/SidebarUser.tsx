@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import { SignInForm } from "@/features/auth/ui/SignInForm";
 import { SignUpForm } from "@/features/auth/ui/SignUpForm";
-import { FogForm } from "@/features/auth/ui/FogetPas";
+import { FogForm } from "@/features/auth/ui/ForgetPas";
 
 export const SidebarUser: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
