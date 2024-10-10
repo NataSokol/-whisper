@@ -25,7 +25,7 @@ import { FavoritePage } from "@/pages/FavoritePage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
 
 import DiscountPage from "@/pages/DiscountPage/DiscountPage";
-
+import { NotFoundPage } from "@/pages/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -104,7 +104,6 @@ export const router = createBrowserRouter([
             path: ROUTES.HISTORY,
             element: <HistoryPage />,
           },
-          
           {
             path: ROUTES.DISCOUNT,
             element: <DiscountPage />,
@@ -184,10 +183,10 @@ export const router = createBrowserRouter([
         element: <ComingSoonPage />,
       },
 
-      //   {
-      //     path: ROUTES.ERROR,
-      //     element: <ErrorPage />,
-      //   },
+      {
+        path: ROUTES.ERROR,
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);
