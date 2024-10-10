@@ -16,13 +16,17 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
+  const {cartCount} = useAppSelector((state) => state.cart);
+
+  useEffect(() => {
+    if (user?.id){
+      dispatch(getCart());
+    }
+  }, [dispatch, user?.id, cartCount]);
 
   useEffect(() => {
     dispatch(refreshAccessToken());
-    if (user?.id) {
-      dispatch(getCart());
-    }
-  }, [dispatch, user?.id]);
+  }, [dispatch]);  
 
   return (
     <>

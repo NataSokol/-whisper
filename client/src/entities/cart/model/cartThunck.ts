@@ -22,20 +22,20 @@ export const getCart = createAsyncThunk<
   }
 });
 
-export const createCart = createAsyncThunk<
-  CartResponse,
-  void,
-  { rejectValue: RejectValue }
->("/createCart", async (_, { rejectWithValue }) => {
-  try {
-    return await CartService.createCart();
-  } catch (error) {
-    const err = error as AxiosError<{ message: string }>;
-    return rejectWithValue({
-      message: err.response?.data.message || err.message,
-    });
-  }
-});
+// export const createCart = createAsyncThunk<
+//   CartResponse,
+//   void,
+//   { rejectValue: RejectValue }
+// >("/createCart", async (_, { rejectWithValue }) => {
+//   try {
+//     return await CartService.createCart();
+//   } catch (error) {
+//     const err = error as AxiosError<{ message: string }>;
+//     return rejectWithValue({
+//       message: err.response?.data.message || err.message,
+//     });
+//   }
+// });
 
 export const updateCart = createAsyncThunk<
   CartResponse,

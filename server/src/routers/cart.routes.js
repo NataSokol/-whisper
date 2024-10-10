@@ -6,8 +6,8 @@ const { verifyAccessToken } = require("../middlewares/verifyToken");
 
 router
     .route("/")
-    .get( cartController.getCartByUserId)
-    .post(verifyAccessToken, cartController.createCart);
+    .get(verifyAccessToken, cartController.getCartByUserId)
+    // .post(verifyAccessToken, cartController.createCart);
 
 router   
     .route("/:id")

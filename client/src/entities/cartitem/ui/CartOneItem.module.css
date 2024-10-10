@@ -22,3 +22,15 @@
   color: #000;
   font-weight: bold;
 }
+
+.delCartItem {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.delCartItem img {
+  rotate: 45deg;
+}
+

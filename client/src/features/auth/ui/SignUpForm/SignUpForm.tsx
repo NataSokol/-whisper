@@ -12,21 +12,17 @@ import {
 import { signUp } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-import { createCart } from "@/entities/cart";
+// import { createCart } from "@/entities/cart";
 
 // /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
 
 export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const {user} = useAppSelector((state) => state.user);
   const loading = useAppSelector(selectUserLoading);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-  //   {}
-  // );
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -34,10 +30,6 @@ export const SignUpForm: React.FC = () => {
     try {
       const resultAction = await dispatch(signUp({ email, password }));
       unwrapResult(resultAction);
-      if (user) {
-        const userCart = await dispatch(createCart())
-        unwrapResult(userCart)
-      }
       navigate(ROUTES.HOME);
     } catch (error) {
       console.log(error);

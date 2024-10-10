@@ -1,3 +1,5 @@
+import { Cart } from "@/entities/cart";
+
 export type User = {
   id: number ;
   phone: string;
@@ -14,6 +16,7 @@ export type User = {
 export type AuthResponse = {
   accessToken: string;
   user: User;
+  cart: Cart | null
 };
 
 export type UserInfoResponse = {

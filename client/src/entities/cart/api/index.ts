@@ -5,6 +5,8 @@ import { axiosInstance } from "@/shared/lib/axiosInstance";
 export class CartService {
     static async getCart() {
         const response = await axiosInstance.get<CartResponse>("/cart");
+        // console.log(response);
+        
         if (response.status === 200) {
             return response.data;
         } else {
@@ -12,14 +14,14 @@ export class CartService {
         }
     }
 
-    static async createCart() {
-        const response = await axiosInstance.post<CartResponse>("/cart");
-        if (response.status === 201) {
-            return response.data;
-        } else {
-            throw new Error("Failed to create cart");
-        }
-    }
+    // static async createCart() {
+    //     const response = await axiosInstance.post<CartResponse>("/cart");
+    //     if (response.status === 201) {
+    //         return response.data;
+    //     } else {
+    //         throw new Error("Failed to create cart");
+    //     }
+    // }
 
     static async updateCart(cartId: number, total: number, salePrice: number) {
         const response = await axiosInstance.put<CartResponse>(`/cart/${cartId}`, {total, salePrice});
