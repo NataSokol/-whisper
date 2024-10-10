@@ -26,16 +26,10 @@ class UserService {
   }
 
   async signIn(email, password) {
-    const user = await User.findOne({
-      where: { email },
-      include: [
-        { model: Product, as: "LikedProducts", include: [{ model: Image }] },
-      ],
-    });
 
+    
+    const user = await User.findOne({ where: { email } });
 
-
-    // const user = await User.findOne({ where: { email } });
 
 
     if (!user) throw new Error('Неверный email или пароль');

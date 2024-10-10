@@ -14,7 +14,7 @@ interface LayoutProps {
   isAdmin?: boolean;
 }
   
-const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
+const Layout: React.FC<LayoutProps> = ({ isAdmin = true }) => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 

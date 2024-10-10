@@ -19,6 +19,7 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [cartCount, setCartCount] = useState<number>(9);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+
   const location = useLocation();
 
   const handleSearchClick = () => {
