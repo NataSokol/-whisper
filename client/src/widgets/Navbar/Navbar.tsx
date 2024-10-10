@@ -20,7 +20,6 @@ export const Navbar: React.FC = () => {
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const { user } = useAppSelector((state) => state.user);
-  console.log(user?.LikedProducts);
   
   const location = useLocation();
 
