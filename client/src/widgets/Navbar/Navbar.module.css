@@ -216,3 +216,21 @@
   color: #555;
   border-radius: 4px;
 }
+
+.adminButton {
+  text-decoration: none;
+  margin-top: 2.2px;
+}
+
+.toggleButton {
+  background: transparent; 
+  border: none;
+  cursor: pointer; 
+  padding: 0.5rem; 
+  transition: transform 0.3s;
+}
+
+.adminButton img {
+  width: 25px; 
+  height: 40px; 
+}

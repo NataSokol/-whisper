@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import styles from "./Navbar.module.css";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import { getAllProducts } from "@/entities/product";
 import { SidebarUser } from "../SidebarUser";
 import { Sidebar } from "../Sidebar";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
-import { getAllProducts } from "@/entities/product";
 import debounce from "lodash.debounce";
+import styles from "./Navbar.module.css";
 
 export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
@@ -18,9 +18,14 @@ export const Navbar: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [cartCount, setCartCount] = useState<number>(9);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const location = useLocation();
+
+  const handleToggleNavbarVisibility = () => {
+    setIsNavbarVisible((prev) => !prev);
+  };
 
   const handleSearchClick = () => {
     setIsSearchActive(true);
@@ -35,7 +40,7 @@ export const Navbar: React.FC = () => {
   };
 
   const toggleCart = () => {
-    setCartCount((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
+    setCartCount((prev) => (prev > 0 ? prev - 1 : 1));
   };
 
   const debouncedSetSearchValue = useMemo(
@@ -124,6 +129,20 @@ export const Navbar: React.FC = () => {
           isSearchActive ? styles.hideButtons : ""
         }`}
       >
+        {user?.isAdmin && (
+          <Link
+            to={ROUTES.ADMIN}
+            className={`${styles.toggleButton} ${styles.adminButton}`}
+          >
+            <button
+              onClick={handleToggleNavbarVisibility}
+              className={styles.toggleButton}
+            >
+              <img src="../../public/img/admin.svg" alt="admin" />
+            </button>
+          </Link>
+        )}
+        <div className={isNavbarVisible ? "visible" : "hidden"}></div>
         <div
           className={`${styles.searchContainer} ${
             isSearchActive ? styles.active : ""
