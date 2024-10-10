@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./MainPage.module.css";
 import { ROUTES } from "@/app/router/routes";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import { CollectionList } from "@/widgets/CollectionList";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const MainPage: React.FC = () => {
+  
+
   return (
     <div className={styles.container}>
       <div className={styles.videoContainer}>
