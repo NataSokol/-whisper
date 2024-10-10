@@ -11,7 +11,7 @@ export enum ROUTES {
   FOG = "/request-reset",
   HISTORY = "/profile/history",
   ADRESS = "/profile/adress",
-  CARD = "/profile/card", 
+  CARD = "/profile/card",
   INFO = "/profile/info",
   CHANGE = "/reset-password/:token",
   SIGNUP = "/signup",
@@ -32,8 +32,8 @@ export enum ROUTES {
   FEEDBACK = "/feedback",
   POLICY = "/policy",
   OFERTA = "/oferta",
+  SIZECHART = "/size-chart",
   TG = "https://t.me/shepothome",
   VK = "https://vk.com/shepot.home",
   ERROR = "*",
 }
-

@@ -52,7 +52,7 @@ export const UserProductList: React.FC = () => {
       </div>
       <div className={styles.productList}>
         {filteredProducts.map((product) => (
-          <UserProductItem key={product.id} product={product} />
+          <UserProductItem key={product.id} product={product}  />
         ))}
       </div>
     </div>

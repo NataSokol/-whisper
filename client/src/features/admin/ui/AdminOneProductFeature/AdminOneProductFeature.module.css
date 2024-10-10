@@ -1,4 +1,13 @@
 .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  background-color: var(--primary-basic-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 30%);
   padding: 20px;
 }
 

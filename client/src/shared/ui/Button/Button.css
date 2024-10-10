@@ -1,6 +1,7 @@
 .Button {
   cursor: pointer;
   border: none;
+
   /* padding: 12px 28px; */
   width: 150px;
   height: 40px;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import styles from "./ProductPageWidget.module.css";
-import { CartItemAddFeature } from '@/features/cart/CartItemFeature';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { CartItemAddFeature } from "@/features/cart/CartItemFeature";
+
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);

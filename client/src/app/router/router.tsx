@@ -22,6 +22,7 @@ import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
 import { AddressPage } from "@/pages/AddressPage/AddressPage";
 import Layout from "./Layout/Layout";
 import { FavoritePage } from "@/pages/FavoritePage";
+import { ComingSoonPage } from "@/pages/ComingSoonPage";
 
 export const router = createBrowserRouter([
   {
@@ -144,6 +145,51 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.CATALOG,
         element: <AllProductsPage />,
+      },
+
+      {
+        path: ROUTES.DELPAY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.REFUND,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.QUESTANSW,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.GIFTCARD,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.LOYALTY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.ABOUT,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.CONTACTS,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.FEEDBACK,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.POLICY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.OFERTA,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.SIZECHART,
+        element: <ComingSoonPage />,
       },
 
       //   {

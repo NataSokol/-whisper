@@ -1,13 +1,11 @@
 :root {
-  --primary-basic-white: rgb(255, 255, 255);
-  --primary-basic-gray: rgb(44, 42, 41);
-  --primary-light-gray: rgb(146, 144, 143);
-  --primary-light-red: rgb(221, 96, 96);
-
-  --text-primary: rgb(44, 42, 41);
-  --text-secondary: rgb(146, 144, 143);
-  --text-white: rgb(255, 255, 255);
-
+  --primary-basic-white: rgb(255 255 255);
+  --primary-basic-gray: rgb(44 42 41);
+  --primary-light-gray: rgb(146 144 143);
+  --primary-light-red: rgb(221 96 96);
+  --text-primary: rgb(44 42 41);
+  --text-secondary: rgb(146 144 143);
+  --text-white: rgb(255 255 255);
   --font-size-small: 12px;
   --font-size-base: 14px;
   --font-size-large: 16px;
@@ -16,25 +14,21 @@
   --font-size-heading-2: 28px;
   --font-size-heading-3: 16px;
   --heading-letter-spacing: 4%;
-
   --line-height-base: 20px;
   --line-height-large: 24px;
   --line-height-heading-1: 32px;
   --line-height-heading-2: 28px;
   --line-height-heading-3: 24px;
   --font-family-primary: "Lucida Grande", sans-serif;
-
-  --secondary-black: rgb(0, 0, 0);
-  --secondary-dark-gray: rgb(37, 36, 34);
+  --secondary-black: rgb(0 0 0);
+  --secondary-dark-gray: rgb(37 36 34);
   --secondary-gray-80: rgb(44, 42, 41 / 80%);
   --secondary-gray-64: rgb(44, 42, 41 / 64%);
   --secondary-gray-56: rgb(44, 42, 41 / 56%);
   --secondary-gray-32: rgb(44, 42, 41 / 32%);
   --secondary-gray-20: rgb(44, 42, 41 / 20%);
   --secondary-gray-8: rgb(44, 42, 41 / 8%);
-
   --border-radius-small: 5px;
-
   --z-index-auto: auto;
   --z-index-0: 0;
   --z-index-1: 10;

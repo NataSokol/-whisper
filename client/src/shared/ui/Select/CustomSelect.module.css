@@ -41,13 +41,13 @@
   left: 0;
   right: 0;
   max-height: 200px;
-  border: 0.3px solid rgba(37, 37, 37, 0.12);
+  border: 0.3px solid rgb(37 37 37 / 12%);
   border-radius: 4px;
   overflow-y: auto;
   border-top: none;
   background-color: #fff;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
   width: 241px;
   padding: 12px;
   transform: translate(-40px, 12px);
@@ -61,10 +61,10 @@
 }
 
 .option:hover {
-  background-color: rgba(230, 230, 230, 1);
+  background-color: rgb(230 230 230 / 100%);
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .container {
     width: 100%;
   }
