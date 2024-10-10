@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { infoUpdate } from "@/entities/user/model/userThunks";
-
-import styles from "../../../../pages/UserPage/User.module.css";
-
-import { unwrapResult } from "@reduxjs/toolkit";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-
+import styles from "../../../../pages/UserPage/User.module.css";
 
 export const UserInfoFormUpdate: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
 
-  const dateFromDatabase = user?.birthday;
+  const dateFromDatabase = user?.birthday || '';
   const dateObject = new Date(dateFromDatabase);
   const year = dateObject.getFullYear();
   const month = String(dateObject.getMonth() + 1).padStart(2, "0");
@@ -36,21 +32,19 @@ export const UserInfoFormUpdate: React.FC = () => {
     setBirthday(formattedDate);
     setAddress(user?.address);
   }, [user]);
- 
 
   const handleUpdateUserInfo = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-    
-      const isoBirthday = birthday ? birthday : null;
+      // const isoBirthday = birthday ? birthday : null;
       const resultAction = await dispatch(
         infoUpdate({
-          email,
-          phone,
-          name,
-          surname,
-          birthday: isoBirthday,
-          address,
+          email: email as string,
+          phone: phone as string,
+          name: name as string,
+          surname: surname as string,
+          birthday,
+          address: address as string,
         })
       );
 
@@ -119,7 +113,9 @@ export const UserInfoFormUpdate: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Button theme={ThemeButton.DARK} type="submit">Сохранить</Button>
+        <Button theme={ThemeButton.DARK} type="submit">
+          Сохранить
+        </Button>
       </form>
 
       <div

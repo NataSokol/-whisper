@@ -21,49 +21,52 @@ export const SignInForm: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setError(null); 
+    setError(null);
     try {
       const resultAction = await dispatch(signIn({ email, password }));
       unwrapResult(resultAction);
       navigate(ROUTES.HOME);
     } catch (error) {
-      setError(error.message || "Неизвестная ошибка при входе.");
+      setError((error as Error).message || "Неизвестная ошибка при входе.");
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-    <div className="form-container">
-      <div className="input-group">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder=" "
-          className="custom-input"
-        />
-        <label className="floating-label">Email:</label>
-      </div>
-      <div className="input-group">
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder=" "
-          className="custom-input"
-        />
-        <label className="floating-label">Password:</label>
-        <div className="error-messages">
-          {error && (
-            <p className="error-message">{error}</p>
-          )}
+      <div className="form-container">
+        <div className="input-group">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder=" "
+            className="custom-input"
+          />
+          <label className="floating-label">Email:</label>
         </div>
-      </div>
-    
-      <Button theme={ThemeButton.DARK} type="submit" disabled={loading} className="submit-button">
+        <div className="input-group">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder=" "
+            className="custom-input"
+          />
+          <label className="floating-label">Password:</label>
+          <div className="error-messages">
+            {error && <p className="error-message">{error}</p>}
+          </div>
+        </div>
+
+        <Button
+          theme={ThemeButton.DARK}
+          type="submit"
+          disabled={loading}
+          className="submit-button"
+        >
           {loading ? "ВОЙТИ..." : "ВОЙТИ"}
         </Button>
-    </div>
-  </form>
-);
+      </div>
+    </form>
+  );
 };

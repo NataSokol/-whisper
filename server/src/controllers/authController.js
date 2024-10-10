@@ -1,18 +1,18 @@
-const cookiesConfig = require('../configs/cookiesConfig');
-const userService = require('../services/userService');
-const emailExistence = require('email-existence');
-const generateTokens = require('../utils/generateToken');
+const cookiesConfig = require("../configs/cookiesConfig");
+const userService = require("../services/userService");
+const emailExistence = require("email-existence");
+const generateTokens = require("../utils/generateToken");
 const nodemailer = require("nodemailer");
-const { transporter } = require('../utils/mailer');
-const jwt = require('jsonwebtoken');
-const jwtConfig = require('../configs/jwtConfig');
+const { transporter } = require("../utils/mailer");
+const jwt = require("jsonwebtoken");
+const jwtConfig = require("../configs/jwtConfig");
 
 async function checkEmailExistence(req, res) {
   const { email } = req.body;
   if (!email) {
     return res
       .status(400)
-      .json({ exists: false, message: 'Email is required' });
+      .json({ exists: false, message: "Email is required" });
   }
 
   emailExistence.check(email, (error, result) => {
@@ -20,12 +20,11 @@ async function checkEmailExistence(req, res) {
       console.error(error);
       return res
         .status(500)
-        .json({ exists: false, message: 'Internal Server Error' });
+        .json({ exists: false, message: "Internal Server Error" });
     }
     return res.status(200).json({ exists: result });
   });
 }
-
 
 async function signUp(req, res) {
   const { email, password } = req.body;
@@ -33,7 +32,7 @@ async function signUp(req, res) {
   if (!(email && password)) {
     return res.status(400).json({
       data: null,
-      message: 'Заполнитe все пустые поля',
+      message: "Заполнитe все пустые поля",
     });
   }
 
@@ -42,31 +41,27 @@ async function signUp(req, res) {
     const { accessToken, refreshToken } = generateTokens({ user });
 
     res
-      .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
+      .cookie("refreshToken", refreshToken, cookiesConfig.refresh)
       .status(201)
       .json({
         data: { user, accessToken },
-        message: 'User registered successfully',
+        message: "User registered successfully",
       });
   } catch (error) {
     console.error(error);
     res
       .status(400)
-      .json({ status: 'error', data: null, message: error.message });
+      .json({ status: "error", data: null, message: error.message });
   }
 }
 
-
-
 async function signIn(req, res) {
-
   const { email, password } = req.body;
-
 
   if (!(email && password)) {
     return res.status(400).json({
       data: null,
-      message: 'Заполните все пустые поля',
+      message: "Заполните все пустые поля",
     });
   }
 
@@ -75,11 +70,11 @@ async function signIn(req, res) {
     const { accessToken, refreshToken } = generateTokens({ user });
 
     res
-      .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
+      .cookie("refreshToken", refreshToken, cookiesConfig.refresh)
       .status(200)
       .json({
         data: { user, accessToken },
-        message: 'User signed in successfully',
+        message: "User signed in successfully",
       });
   } catch (error) {
     console.error(error);
@@ -89,9 +84,9 @@ async function signIn(req, res) {
 
 async function logout(req, res) {
   try {
-    res.clearCookie('refreshToken').status(200).json({
+    res.clearCookie("refreshToken").status(200).json({
       data: null,
-      message: 'User logged out successfully',
+      message: "User logged out successfully",
     });
   } catch (error) {
     console.error(error);
@@ -101,10 +96,10 @@ async function logout(req, res) {
 
 async function sendLetter(req, res) {
   const { email } = req.body;
-   if (email.trim() === '') {
+  if (email.trim() === "") {
     return res.status(400).json({
       data: null,
-      message: 'All fields are required',
+      message: "All fields are required",
     });
   }
   try {
@@ -120,21 +115,19 @@ async function sendLetter(req, res) {
     });
 
     const generateToken = (email) => {
-      return jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: 1000 * 60 * 15 });
+      return jwt.sign({ email }, process.env.JWT_SECRET, {
+        expiresIn: 1000 * 60 * 15,
+      });
     };
 
     if (existsEmail) {
-
       const token = generateToken(email);
-      const resetLink = `http://localhost:5173/reset-password/${token}`
-
-
-
+      const resetLink = `http://localhost:5173/reset-password/${token}`;
 
       const info = await transporter.sendMail({
         from: process.env.EMAIL,
         to: email,
-        subject: 'Сброс пароля',
+        subject: "Сброс пароля",
         text: "Hello БИЧ",
         html: `
       <p>Благодарим вас за выбор магазина "Шепот"! </p>
@@ -148,29 +141,22 @@ async function sendLetter(req, res) {
       <p>С наилучшими пожеланиями,</p>
       <p>Команда магазина "Шепот"</p>
       <p>[Контактная информация]</p>
-         `
+         `,
       });
 
-
-      res
-        .status(200)
-        .json({
-          message: 'The letter was sent successfully',
-        });
-      return
-    } res
-      .status(400)
-      .json({
-        message: 'The letter was not delivered',
+      res.status(200).json({
+        message: "The letter was sent successfully",
       });
-  }
-  catch (error) {
+      return;
+    }
+    res.status(400).json({
+      message: "The letter was not delivered",
+    });
+  } catch (error) {
     console.error(error);
     res.status(400).json({ data: null, message: error.message });
   }
 }
-
-
 
 async function changePassword(req, res) {
   const { token, newPassword } = req.body;
@@ -178,15 +164,18 @@ async function changePassword(req, res) {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    const changePassword = await userService.updateUserPassword(newPassword, decoded.email);
+    const changePassword = await userService.updateUserPassword(
+      newPassword,
+      decoded.email
+    );
     if (changePassword) {
       res.status(200).json({
-        message: 'Password changed successfully',
+        message: "Password changed successfully",
       });
     } else {
       res.status(404).json({
         data: null,
-        message: 'Not successful',
+        message: "Not successful",
       });
     }
   } catch (error) {
@@ -194,7 +183,6 @@ async function changePassword(req, res) {
     res.status(400).json({ data: null, message: error.message });
   }
 }
-
 
 module.exports = {
   checkEmailExistence,
