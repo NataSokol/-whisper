@@ -187,6 +187,10 @@ export const router = createBrowserRouter([
         path: ROUTES.SIZECHART,
         element: <ComingSoonPage />,
       },
+      {
+        path: ROUTES.SALES,
+        element: <ComingSoonPage />,
+      },
 
       //   {
       //     path: ROUTES.ERROR,
