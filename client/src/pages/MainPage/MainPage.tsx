@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import styles from "./MainPage.module.css";
 import { ROUTES } from "@/app/router/routes";
 import { Link } from "react-router-dom";
-import { CollectionList } from "@/widgets/CollectionList";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import Slider from "@/widgets/Slider/Slider";
+import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 
 export const MainPage: React.FC = () => {
+  const collections = useAppSelector((state) => state.collection.collections);
+  const collectionImages = collections?.map((collection) => collection.image) || [];
+  const collectionTitles = collections?.map((collection) => collection.title) || [];
+  const collectionIds = collections?.map((collection) => collection.id) || [];
   
-
   return (
     <div className={styles.container}>
       <div className={styles.videoContainer}>
@@ -31,7 +35,9 @@ export const MainPage: React.FC = () => {
             Смотреть все
           </Link>
         </div>
-        <CollectionList />
+        <div>
+          <Slider collectionId={collectionIds} collectionTitle={collectionTitles} images={collectionImages} />
+        </div>
       </div>
       <div className={styles.discountLink}>
         <img src="../../public/img/whisper2.jpg" alt="к покупкам" />
@@ -39,7 +45,9 @@ export const MainPage: React.FC = () => {
           <p>ПОЛУЧИТЕ СКИДКУ</p>
           <p>от 3-х позиций в корзине</p>
           <Link className={styles.link} to={ROUTES.CATALOG}>
-            <Button theme={ThemeButton.LIGHT} className={styles.buttonLink}>к покупкам</Button>
+            <Button theme={ThemeButton.LIGHT} className={styles.buttonLink}>
+              к покупкам
+            </Button>
           </Link>
         </div>
       </div>

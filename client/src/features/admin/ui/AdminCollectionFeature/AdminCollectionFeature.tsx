@@ -7,6 +7,7 @@ import {
 } from "@/widgets/AdminWidget";
 import ModalWindow from "@/shared/ui/Modal/Modal";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import styles from "./AdminCollectionFeature.module.css";
 
 export const AdminCollectionFeature: React.FC = () => {
   const { getCollectionList, handleDeleteCollection, handleUpdateCollection } =
@@ -38,7 +39,7 @@ export const AdminCollectionFeature: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <AdminFormCollection />
       <AdminCollectionList
         collections={collections}
@@ -57,25 +58,43 @@ export const AdminCollectionFeature: React.FC = () => {
       />
 
       <ModalWindow active={modalActive} setActive={setModalActive}>
-        <div>
-          <h2>Редактировать коллекцию</h2>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            type="file"
-            onChange={(e) => {
-              if (e.target.files) {
-                setImage(e.target.files[0]);
-              }
-            }}
-          />
-          <Button theme={ThemeButton.LIGHT} onClick={() => handleUpdate(editingCollectionId!)}>
-            Сохранить
-          </Button>
-          <Button theme={ThemeButton.DARK}  onClick={() => setModalActive(false)}>Закрыть</Button>
+        <div className={styles.modalContent}>
+          <h2 className={styles.modalTitle}>Редактировать коллекцию</h2>
+          <div className={styles.formGroup}>
+            <label>Название:</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className={styles.input}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Изображение:</label>
+            <input
+              type="file"
+              onChange={(e) => {
+                if (e.target.files) {
+                  setImage(e.target.files[0]);
+                }
+              }}
+              className={styles.fileInput}
+            />
+          </div>
+          <div className={styles.buttons}>
+            <Button
+              theme={ThemeButton.LIGHT}
+              onClick={() => handleUpdate(editingCollectionId!)}
+            >
+              Сохранить
+            </Button>
+            <Button
+              theme={ThemeButton.LIGHT}
+              onClick={() => setModalActive(false)}
+            >
+              Закрыть
+            </Button>
+          </div>
         </div>
       </ModalWindow>
     </div>
