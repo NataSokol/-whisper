@@ -28,7 +28,6 @@ export const AdminFormProduct: React.FC = () => {
   const [subcategoryId, setSubcategoryId] = useState<number | "">("");
   const [isModalActive, setIsModalActive] = useState(false);
 
-  //!!! ДОСТАЮ КАТЕГОРИИ И КОЛЛЕКЦИИ
   useEffect(() => {
     allCategories();
     getCollectionList();
@@ -73,18 +72,19 @@ export const AdminFormProduct: React.FC = () => {
         Добавить продукт
       </Button>
       <ModalWindow active={isModalActive} setActive={setIsModalActive}>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Название:
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Название:</label>
             <input
               className={styles.input}
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </label>
-          <label>
-            Фото:
+          </div>
+
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Фото:</label>
             <input
               className={styles.input}
               type="file"
@@ -92,36 +92,41 @@ export const AdminFormProduct: React.FC = () => {
               onChange={handleImageChange}
               multiple
             />
-          </label>
-          <label>
-            Описание:
+          </div>
+
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Описание:</label>
             <textarea
-              className={styles.input}
+              className={styles.textarea}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-          </label>
-          <label>
-            Состав:
+          </div>
+
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Состав:</label>
             <input
               className={styles.input}
               type="text"
               value={composition}
               onChange={(e) => setComposition(e.target.value)}
             />
-          </label>
-          <label>
-            Цена:
+          </div>
+
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Цена:</label>
             <input
               className={styles.input}
               type="number"
               value={price}
               onChange={(e) => setPrice(+e.target.value)}
             />
-          </label>
-          <label>
-            Коллекция:
+          </div>
+
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Коллекция:</label>
             <select
+              className={styles.select}
               value={collectionId || ""}
               onChange={(e) => setCollectionId(+e.target.value)}
             >
@@ -132,10 +137,12 @@ export const AdminFormProduct: React.FC = () => {
                   </option>
                 ))}
             </select>
-          </label>
-          <label>
-            Категория:
+          </div>
+
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Категория:</label>
             <select
+              className={styles.select}
               value={categoryId || ""}
               onChange={(e) => setCategoryId(+e.target.value)}
             >
@@ -146,24 +153,26 @@ export const AdminFormProduct: React.FC = () => {
                   </option>
                 ))}
             </select>
-            <label>
-              Подкатегория:
-              <select
-                value={subcategoryId || ""}
-                onChange={(e) => setSubcategoryId(+e.target.value)}
-              >
-                {subcategories &&
-                  subcategories.map((subcategory) => (
-                    <option key={subcategory.id} value={subcategory.id}>
-                      {subcategory.title}
-                    </option>
-                  ))}
-              </select>
-            </label>
-          </label>
-          <Button type="submit" theme={ThemeButton.LIGHT}>
-            Добавить
-          </Button>
+          </div>
+
+          <div className={styles["form-row"]}>
+            <label className={styles.label}>Подкатегория:</label>
+            <select
+              className={styles.select}
+              value={subcategoryId || ""}
+              onChange={(e) => setSubcategoryId(+e.target.value)}
+            >
+              {subcategories &&
+                subcategories.map((subcategory) => (
+                  <option key={subcategory.id} value={subcategory.id}>
+                    {subcategory.title}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <div className={styles["button-container"]}>
+            <Button theme={ThemeButton.LIGHT} type="submit">Добавить</Button>
+          </div>
         </form>
       </ModalWindow>
     </div>

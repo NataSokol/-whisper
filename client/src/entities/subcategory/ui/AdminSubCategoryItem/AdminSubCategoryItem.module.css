@@ -1,0 +1,29 @@
+.subcategoryContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.subcategoryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.subcategoryTitle {
+  flex-grow: 1;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.button {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.button:first-of-type {
+  margin-left: auto;
+}
