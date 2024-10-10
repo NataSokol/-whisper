@@ -24,6 +24,9 @@ import Layout from "./Layout/Layout";
 import { FavoritePage } from "@/pages/FavoritePage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
 
+import DiscountPage from "@/pages/DiscountPage/DiscountPage";
+
+
 export const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
@@ -101,11 +104,12 @@ export const router = createBrowserRouter([
             path: ROUTES.HISTORY,
             element: <HistoryPage />,
           },
-
+          
           {
-            path: ROUTES.CARD,
-            element: <CartPage />,
+            path: ROUTES.DISCOUNT,
+            element: <DiscountPage />,
           },
+          
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
@@ -120,11 +124,6 @@ export const router = createBrowserRouter([
         path: ROUTES.CHANGE,
         element: <ResetPassword />,
       },
-
-      // {
-      //   path: `${ROUTES.CATALOG}/:productId`,
-      //   element: < />,
-      // },
 
       {
         path: `${ROUTES.CATALOG}/:productId`,

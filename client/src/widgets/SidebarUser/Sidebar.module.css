@@ -15,7 +15,7 @@
   overflow-x: hidden;
   transform: translateX(360px);
   transition: transform 0.3s;
-  z-index: 1002;
+  z-index: 1003;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,7 +60,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--secondary-gray-56);
+  background-color: #0006;
   z-index: 999;
   right: 0
 }

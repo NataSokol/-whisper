@@ -8,8 +8,8 @@ import { refreshAccessToken } from "@/entities/user";
 import { fetchLikedProducts } from "@/entities/user/model/userThunks";
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import styles from "./Layout.module.css";
-
-const Layout: React.FC = () => {
+  
+const Layout: React.FC<LayoutProps> = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 

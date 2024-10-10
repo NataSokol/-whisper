@@ -20,6 +20,7 @@ export const Navbar: React.FC = () => {
   const [cartCount, setCartCount] = useState<number>(9);
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
+
   const location = useLocation();
 
   const handleToggleNavbarVisibility = () => {
