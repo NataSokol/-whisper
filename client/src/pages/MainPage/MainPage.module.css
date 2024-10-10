@@ -15,8 +15,15 @@
   align-items: center;
 }
 
+.image {
+  width: 40%;
+  transform: scale(1.25);
+  z-index: 1;
+}
+
 .video {
-  width: 100%;
+  width: 60%;
+  z-index: 2;
 }
 
 .catalogLink {
