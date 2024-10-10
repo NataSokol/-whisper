@@ -1,4 +1,4 @@
-import {  CartItemResponse } from "../model";
+import { CartItemResponse } from "../model";
 import { axiosInstance } from "@/shared/lib/axiosInstance";
 
 export class CartItemService {
@@ -6,6 +6,8 @@ export class CartItemService {
     const response = await axiosInstance.get<CartItemResponse>(
       `/cartItems/${id}`
     );
+    console.log(response);
+
     if (response.status === 200) {
       return response.data;
     } else {
@@ -13,11 +15,20 @@ export class CartItemService {
     }
   }
 
-  static async createCartItem(cartId: number, productId: number, quantity: number, productSizeId: number, productColorId: number) {
-    const response = await axiosInstance.post<CartItemResponse>(
-      "/cartItems",
-      {cartId, productId, quantity, productSizeId, productColorId }
-    );
+  static async createCartItem(
+    cartId: number,
+    productId: number,
+    quantity: number,
+    productSizeId: number,
+    productColorId: number
+  ) {
+    const response = await axiosInstance.post<CartItemResponse>("/cartItems", {
+      cartId,
+      productId,
+      quantity,
+      productSizeId,
+      productColorId,
+    });
     if (response.status === 201) {
       return response.data;
     } else {

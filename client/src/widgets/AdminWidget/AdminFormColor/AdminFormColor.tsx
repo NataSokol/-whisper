@@ -16,9 +16,6 @@ export const AdminFormColor: React.FC = () => {
   const [title, setTitle] = useState("");
   const [colorCode, setColorCode] = useState("");
   const [isModalActive, setIsModalActive] = useState(false);
-//   const product = useAppSelector((state) => state.product.currProduct);
-  //   const colors = useAppSelector((state) => state.product.currProduct?.Colors);
-  //   console.log(colors);
 
   useEffect(() => {
     if (productId) {
@@ -51,34 +48,39 @@ export const AdminFormColor: React.FC = () => {
         Добавить цвета
       </Button>
       <ModalWindow active={isModalActive} setActive={setIsModalActive}>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Название:
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-          <label>
-            Код цвета:
-            <input
-              type="text"
-              value={colorCode}
-              onChange={(e) => setColorCode(e.target.value)}
-            />
-          </label>
-          <Button type="submit" theme={ThemeButton.LIGHT}>
-            Добавить
-          </Button>
-          <Button
-            type="button"
-            onClick={() => setIsModalActive(false)}
-            theme={ThemeButton.DARK}
-          >
-            Закрыть
-          </Button>
-        </form>
+        <div className={styles.modalContent}>
+          <h2 className={styles.modalTitle}>Добавить цвет</h2>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formGroup}>
+              <label>Название:</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Код цвета:</label>
+              <input
+                type="text"
+                value={colorCode}
+                onChange={(e) => setColorCode(e.target.value)}
+              />
+            </div>
+            <div className={styles.buttons}>
+              <Button type="submit" theme={ThemeButton.LIGHT}>
+                Добавить
+              </Button>
+              <Button
+                type="button"
+                onClick={() => setIsModalActive(false)}
+                theme={ThemeButton.DARK}
+              >
+                Закрыть
+              </Button>
+            </div>
+          </form>
+        </div>
       </ModalWindow>
     </div>
   );

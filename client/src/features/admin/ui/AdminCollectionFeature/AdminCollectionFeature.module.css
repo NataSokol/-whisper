@@ -2,17 +2,18 @@
   padding: 20px;
 }
 
-form {
+.modalContent {
   display: flex;
   flex-direction: column;
+  width: 835px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .modalTitle {
   margin-bottom: 20px;
-}
-
-label {
-  margin-bottom: 10px;
 }
 
 .formGroup {
@@ -22,11 +23,11 @@ label {
 }
 
 .formGroup label {
-  flex: 0 0 120px;
+  flex: 0 0 140px;
   margin-right: 10px;
 }
 
-.formGroup input {
+.input {
   flex: 1;
   padding: 8px;
   border: 1px solid #ccc;

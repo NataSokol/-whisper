@@ -1,54 +1,65 @@
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 500px;
-  background-color: var(--primary-basic-white);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgb(0 0 0 / 30%);
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  z-index: var( --z-index-modal);
+  background-color: #f9f9f9; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  max-width: 600px;
+  margin: auto; 
 }
 
-.modal h2 {
-  margin-bottom: 20px;
-  text-align: center;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+  padding: 20px;
+  background-color: #fff; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 }
 
-.modal label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
+.modal {
+  height: auto;
+  width: 100%; 
+  max-width: 900px; 
+  max-height: 70vh; 
+  padding: 20px; 
+  background-color: #fff;
+  border-radius: 8px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+  overflow-y: auto; 
 }
 
-.modal input[type="text"],
-.modal select {
-  width: 100%;
+.modalTitle {
+  font-size: 1.0em; 
+  font-weight: bold; 
+  margin-bottom: 10px; 
+  color: #333;
+  text-align: center; 
+}
+
+.inputGroup {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 5px; 
+}
+
+.modalInput {
   padding: 10px;
-  margin-top: 5px;
-  border: 1px solid var(--primary-light-gray);
-  border-radius: var(--border-radius-small);
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 14px; 
+  width: 60%; 
+  max-width: 500px; 
 }
 
-.modal input[type="text"]:focus,
-.modal select:focus {
-  border-color: var(--primary-dark-gray);
-  outline: none;
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-.modal button {
-  background-color: var(--primary-dark-gray);
-  color: var(--primary-basic-white);
-  border: none;
-  border-radius: var( --border-radius-small);
-  padding: 10px 15px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.modal button:hover {
-  background-color: var(--primary-dark-gray);
-
-}

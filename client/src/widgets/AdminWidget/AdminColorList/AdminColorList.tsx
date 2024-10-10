@@ -17,9 +17,6 @@ export const AdminColorList: React.FC<Props> = ({ colors }) => {
         </div>
       ))}
       <AdminFormColor />
-      {/* <Button theme={ThemeButton.LIGHT} onClick={() => onEditSize(colors[0])}>
-        Изменить цвет
-      </Button> */}
     </div>
   );
 };

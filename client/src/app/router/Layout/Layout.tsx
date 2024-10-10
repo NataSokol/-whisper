@@ -13,7 +13,7 @@ import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 interface LayoutProps {
   isAdmin?: boolean;
 }
-
+  
 const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
