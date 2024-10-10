@@ -174,7 +174,7 @@ export const AdminFormProductSize: React.FC = () => {
             />
           </div>
           <div className={styles.modelButton}>
-            <Button theme={ThemeButton.DARK} type="submit">
+            <Button theme={ThemeButton.LIGHT} type="submit">
               Создать
             </Button>
           </div>
