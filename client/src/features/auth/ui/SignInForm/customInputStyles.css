@@ -2,49 +2,86 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Увеличиваем отступ между элементами формы */
+  gap: 40px;
+}
+.header {
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+  color: black; 
+}
+
+.description {
+  color:#222222; 
+  width: 100%;
+  text-align: center;
+  font-weight: normal; 
+  font-size: 14px; 
+
 }
 
 .input-group {
   width: 100%;
-  height: 6vh;
   position: relative;
-  /* margin: 20px 0; */
+  text-align: center; 
 }
 
 .custom-input {
-  
   width: 100%;
-  height: 100%;
-  /* padding: 10px; */
+  height: 40px; 
+  padding: 10px 5px;
   border: none;
-  border-bottom: 2px solid #ccc; 
+  border-bottom: 2px solid #ccc;
   font-size: 16px;
   transition: border-color 0.3s ease;
 }
 
 .custom-input:focus {
   outline: none;
-  border-color: #363636; 
+  border-color: #363636;
 }
 
 .floating-label {
   position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
+  top: 10px;
+  left: 50%; 
+  transform: translateX(-50%);
   background-color: white;
   padding: 0 4px;
   transition: all 0.2s ease;
-  
+  font-size: 14px; 
+  color: gray; 
+  pointer-events: none; 
 }
 
 .custom-input:focus + .floating-label,
 .custom-input:not(:placeholder-shown) + .floating-label {
-  top: 0;
-  left: 10px;
+  top: -12px; 
   font-size: 12px; 
-  color: #363636; 
+  color: #363636;
+}
+
+.error-messages {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7px;
+  height: 20px; /* Можно оставить фиксированной высоты */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-message {
+  color: red; /* Цвет сообщения об ошибке */
+  font-size: 11px; /* Размер шрифта */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .submit-button {
@@ -54,21 +91,33 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px; /* Добавляем отступ сверху */
+ 
   margin-bottom: 20px;
 }
 
 .submit-button:hover {
-  background-color: #8a8a8a; 
-
+  background-color: #8a8a8a;
 }
 
-.forgot-password {
-  text-decoration: underline; 
-  color: #060606; 
-  margin-top: 10px; 
-  cursor: pointer; 
+.submit-buttonFog {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-.last-input-group {
-  margin-bottom: 20px; /* Отступ между последним полем и кнопкой */
+
+.submit-buttonFog:hover {
+  background-color: #8a8a8a;
+}
+.success-message{
+  color:#222222; 
+  width: 100%;
+  text-align: center;
+  font-weight: normal; 
+  font-size: 16px;
+
 }

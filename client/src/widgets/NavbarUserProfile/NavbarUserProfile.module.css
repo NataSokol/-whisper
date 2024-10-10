@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  position: fixed;
+  padding-top: 0px;
+
+}
+
+.left-content {
+  display: flex;
+
+}
+
+.left-content ul {
+  display: flex;
+  list-style-type: none;
+  padding: 50px;
+  margin: 50px;
+}
+
+.lii {
+  padding: 14px;
+  font-size: 16px;
+
+}
+
+.left-content li {
+  margin-right: 60px;
+
+}
+
+.button {
+  margin-top: 10px;
+  margin-left: 13px;
+  background-color: rgb(255, 169, 169);
+  border: none;
+  color: rgb(58, 57, 57);
+  padding: 5px 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+
+  background-color: rgb(69, 69, 69);
+  color: white;
+}

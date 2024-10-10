@@ -91,20 +91,3 @@ const productSizeSlice = createSlice({
 
 export default productSizeSlice.reducer;
 
-// Получение одного размера
-// .addCase(getOneProductSize.pending, (state) => {
-//   state.loading = true;
-//   state.error = null;
-// })
-// .addCase(
-//   getOneProductSize.fulfilled,
-//   (state, action: { payload: ProductSize }) => {
-//     state.loading = false;
-//     console.log(action.payload, 'action');
-//     state.productSize = action.payload;
-//   }
-// )
-// .addCase(getOneProductSize.rejected, (state, action) => {
-//   state.loading = false;
-//   state.error = action.error.message || "Что-то пошло не так";
-// })

@@ -184,7 +184,7 @@ export const Navbar: React.FC = () => {
             <button className={styles.button}>
 
               {user ? (
-                <Link to={ROUTES.PROFILE}>
+                <Link to={ROUTES.INFO}>
                   <img src="../../public/img/user.svg" alt="" />
                 </Link>
               ) : (

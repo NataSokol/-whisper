@@ -14,9 +14,11 @@ exports.getUserInfo = async (req, res) => {
 };
 
 exports.updateUserInfo = async (req, res) => {
+  
   try {
     const userId = res.locals.user.id;
     const { phone, email, name, surname, birthday, address } = req.body;
+
 
 
     const updatedUser = await UserInfoServices.updateUserInfo(

@@ -71,7 +71,7 @@ export const Sidebar: React.FC = () => {
       {isOpen && (
         <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>
       )}
-      {/* Основной сайдбар */}
+     
       <div
         className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}
         ref={sidebarRef}

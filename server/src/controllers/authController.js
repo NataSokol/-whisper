@@ -33,7 +33,7 @@ async function signUp(req, res) {
   if (!(email && password)) {
     return res.status(400).json({
       data: null,
-      message: 'All fields are required',
+      message: 'Заполнитe все пустые поля',
     });
   }
 
@@ -66,7 +66,7 @@ async function signIn(req, res) {
   if (!(email && password)) {
     return res.status(400).json({
       data: null,
-      message: 'All fields are required',
+      message: 'Заполните все пустые поля',
     });
   }
 
@@ -101,9 +101,7 @@ async function logout(req, res) {
 
 async function sendLetter(req, res) {
   const { email } = req.body;
-  console.log(email);
-
-  if (email.trim() === '') {
+   if (email.trim() === '') {
     return res.status(400).json({
       data: null,
       message: 'All fields are required',

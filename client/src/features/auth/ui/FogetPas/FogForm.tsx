@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "../SignInForm/customInputStyles.css";
 import axios from "axios";
 
+
 export const FogForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(false);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,15 +26,18 @@ export const FogForm: React.FC = () => {
 
   return (
     <div className="form-container">
-      {isSuccessMessageVisible ? ( // Условный рендеринг
-        <p className="success-message">
-          На вашу почту отправлена ссылка для изменения пароля
-        </p>
+      <h2 className="header">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
+      {isSuccessMessageVisible ? (
+        <>
+          <p className="success-message">
+            На вашу почту {email} отправлено письмо. Пройдите по ссылке в
+            письме, чтобы сменить пароль.
+          </p>
+        </>
       ) : (
         <>
-          <h2>Восстановление пароля</h2>
-          <p>
-            Укажите адрес почты, мы вышлем письмо с инструкцией по
+          <p className="description">
+            Укажите адрес электронной почты, мы вышлем письмо с инструкцией по
             восстановлению пароля.
           </p>
           <form onSubmit={handleSubmit}>
@@ -47,7 +52,7 @@ export const FogForm: React.FC = () => {
               />
               <div className="floating-label">Введите ваш email</div>
             </div>
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-buttonFog">
               ВОССТАНОВИТЬ
             </button>
           </form>

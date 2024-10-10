@@ -52,7 +52,7 @@ export class CollectionService {
       formData.append("image", image);
     }
 
-    console.log(formData);
+
     const response = await axiosInstance.put<CollectionResponse>(
       `/collections/${id}`,
       formData,

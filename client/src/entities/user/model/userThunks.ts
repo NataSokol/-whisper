@@ -67,7 +67,7 @@ export const foget = createAsyncThunk<
 });
 
 export const infoUpdate = createAsyncThunk<
-UserInfoResponse ,
+  UserInfoResponse,
   {
     email: string;
     phone: string;
@@ -84,9 +84,6 @@ UserInfoResponse ,
     { rejectWithValue }
   ) => {
     try {
-      console.log( { email, phone, name, surname, birthday, address });
-      
-      
       return await UserService.updateInfo(
         email,
         phone,

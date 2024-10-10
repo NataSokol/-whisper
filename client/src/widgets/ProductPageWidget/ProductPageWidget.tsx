@@ -37,7 +37,7 @@ export const ProductPageWidget: React.FC = () => {
             quantity: currCartItem.quantity + 1,
           })
         );
-        console.log(resultAction);
+        
       } else {
         const resultAction = await dispatch(
           createCartItem({
@@ -48,7 +48,7 @@ export const ProductPageWidget: React.FC = () => {
             productSizeId: selectedSize,
           })
         );
-        console.log(resultAction);
+        
       }
     } else {
       alert("Выберите цвет и размер");
