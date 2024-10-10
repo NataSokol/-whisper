@@ -35,30 +35,28 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.ADMIN,
         element: <AdminPage />,
-        children: [
-          {
-            path: ROUTES.ADMIN_CATEGORIES,
-            element: <AdminCategoryPage />,
-          },
-          {
-            path: ROUTES.ADMIN_COLLECTIONS,
-            element: <AdminCollectionPage />,
-          },
+      },
+      {
+        path: ROUTES.ADMIN_CATEGORIES,
+        element: <AdminCategoryPage />,
+      },
+      {
+        path: ROUTES.ADMIN_COLLECTIONS,
+        element: <AdminCollectionPage />,
+      },
 
-          {
-            path: ROUTES.ADMIN_SUBCATEGORY,
-            element: <AdminSubCategoryPage />,
-          },
+      {
+        path: ROUTES.ADMIN_SUBCATEGORY,
+        element: <AdminSubCategoryPage />,
+      },
 
-          {
-            path: ROUTES.ADMIN_PRODUCTS,
-            element: <AdminProductPage />,
-          },
-          {
-            path: ROUTES.ADMIN_PRODUCT,
-            element: <AdminOneProductPage />,
-          },
-        ],
+      {
+        path: ROUTES.ADMIN_PRODUCTS,
+        element: <AdminProductPage />,
+      },
+      {
+        path: ROUTES.ADMIN_PRODUCT,
+        element: <AdminOneProductPage />,
       },
 
       {
@@ -106,12 +104,11 @@ export const router = createBrowserRouter([
             path: ROUTES.HISTORY,
             element: <HistoryPage />,
           },
-
           {
             path: ROUTES.DISCOUNT,
             element: <DiscountPage />,
           },
-
+          
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
@@ -126,11 +123,6 @@ export const router = createBrowserRouter([
         path: ROUTES.CHANGE,
         element: <ResetPassword />,
       },
-
-      // {
-      //   path: `${ROUTES.CATALOG}/:productId`,
-      //   element: < />,
-      // },
 
       {
         path: `${ROUTES.CATALOG}/:productId`,

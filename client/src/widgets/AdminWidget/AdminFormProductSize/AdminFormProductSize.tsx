@@ -47,6 +47,20 @@ export const AdminFormProductSize: React.FC = () => {
       sleeveLength,
       quantity,
     });
+
+    setSizeTitle("");
+    setLength(0);
+    setWidth(0);
+    setChestGirth(0);
+    setChestUnderGirth(0);
+    setExternalSeamLength(0);
+    setFrontLength(0);
+    setHipGirth(0);
+    setInnerSeamLength(0);
+    setWaistGirth(0);
+    setSleeveLength(0);
+    setQuantity(0);
+
     getProduct(Number(productId));
     setIsModalActive(false);
   };
@@ -174,7 +188,7 @@ export const AdminFormProductSize: React.FC = () => {
             />
           </div>
           <div className={styles.modelButton}>
-            <Button theme={ThemeButton.DARK} type="submit">
+            <Button theme={ThemeButton.LIGHT} type="submit">
               Создать
             </Button>
           </div>

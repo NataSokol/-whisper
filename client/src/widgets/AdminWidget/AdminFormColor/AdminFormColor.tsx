@@ -74,7 +74,7 @@ export const AdminFormColor: React.FC = () => {
               <Button
                 type="button"
                 onClick={() => setIsModalActive(false)}
-                theme={ThemeButton.DARK}
+                theme={ThemeButton.LIGHT}
               >
                 Закрыть
               </Button>
