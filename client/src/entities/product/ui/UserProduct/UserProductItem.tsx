@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./UserProductItem.module.css";
 import { Product } from "../../model";
 import { Link } from "react-router-dom";
@@ -9,17 +9,25 @@ type ProductProps = {
   product: Product;
 };
 
-export const UserProductItem: React.FC<ProductProps> = ({ product }) => {
+export const UserProductItem: React.FC<ProductProps> = ({ product}) => {
+  const [isLoading, setIsLoading] = useState(true);
 
-  console.log(product);
-  
+  useEffect(() => {
+    if (product) {
+      setIsLoading(false);
+    }
+  }, [product]);
+
+  if (isLoading) {
+    return <div>Пошла вода горячая...</div>;
+  }
 
   return (
     <div className={styles.container}>
       <div>
         <Link to={`${ROUTES.CATALOG}/${product.id}`}>
           <img
-            src={product?.Images[0]?.url}
+            src={product?.Images?.[0]?.url}
             alt="photo"
             className={styles.image}
           />

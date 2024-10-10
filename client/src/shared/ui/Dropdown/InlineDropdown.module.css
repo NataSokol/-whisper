@@ -35,7 +35,7 @@
 
 .dropdownMenu {
   list-style: none;
-  margin: 8px 0 0 0;
+  margin: 8px 0 0;
   padding: 0;
   border-radius: 4px;
   background-color: var(--primary-basic-white);
@@ -61,7 +61,7 @@
 }
 
 .dropdownItem {
-  padding: 12px 0px;
+  padding: 12px 0;
 }
 
 .checkboxLabel {
@@ -94,7 +94,7 @@
   content: "";
   position: absolute;
   left: 4px;
-  top: 0px;
+  top: 0;
   width: 4px;
   height: 8px;
   border: solid var(--primary-basic-white); 

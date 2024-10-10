@@ -14,7 +14,9 @@ class UserService {
     const plainUser = (
       await User.findOne({
         where: { email },
-        include: [{ model: Product, as: "LikedProducts", include: [{ model: Image }] }],
+        include: [
+          { model: Product, as: "LikedProducts", include: [{ model: Image }] },
+        ],
       })
     ).get();
 
@@ -45,7 +47,9 @@ class UserService {
   async check(email) {
     const user = await User.findOne({
       where: { email },
-      include: [{ model: Product, as: "LikedProducts", include: [{ model: Image }] }],
+      include: [
+        { model: Product, as: "LikedProducts", include: [{ model: Image }] },
+      ],
     });
     if (!user) throw new Error("User not");
 
@@ -55,7 +59,9 @@ class UserService {
   async check1(email, password) {
     const user = await User.findOne({
       where: { email },
-      include: [{ model: Product, as: "LikedProducts", include: [{ model: Image }] }],
+      include: [
+        { model: Product, as: "LikedProducts", include: [{ model: Image }] },
+      ],
     });
     if (user) throw new Error("User already exists");
 
@@ -68,7 +74,9 @@ class UserService {
     try {
       const user = await User.findOne({
         where: { email },
-        include: [{ model: Product, as: "LikedProducts", include: [{ model: Image }] }],
+        include: [
+          { model: Product, as: "LikedProducts", include: [{ model: Image }] },
+        ],
       });
 
       if (user) {
@@ -87,12 +95,16 @@ class UserService {
   async likeProduct(userId, productId) {
     const user = await User.findOne({
       where: { id: userId },
-      include: [{ model: Product, as: "LikedProducts", include: [{ model: Image }] }],
+      include: [
+        { model: Product, as: "LikedProducts", include: [{ model: Image }] },
+      ],
     });
 
     if (!user) throw new Error("Пользователь не найден");
 
-    const product = await Product.findByPk(productId);
+    const product = await Product.findByPk(productId, {
+      include: [{ model: Image }],
+    });
     if (!product) throw new Error("Продукт не найден");
 
     await user.addLikedProduct(product);
@@ -102,12 +114,15 @@ class UserService {
   async unlikeProduct(userId, productId) {
     const user = await User.findOne({
       where: { id: userId },
-      include: [{ model: Product, as: "LikedProducts", include: [{ model: Image }] }],
+      include: [
+        { model: Product, as: "LikedProducts", include: [{ model: Image }] },
+      ],
     });
-    console.log(user);
     if (!user) throw new Error("Пользователь не найден");
 
-    const product = await Product.findByPk(productId);
+    const product = await Product.findByPk(productId, {
+      include: [{ model: Image }],
+    });
     if (!product) throw new Error("Продукт не найден");
 
     await user.removeLikedProduct(product);
@@ -116,7 +131,13 @@ class UserService {
 
   async getLikedProducts(userId) {
     const user = await User.findByPk(userId, {
-      include: [{ model: Product, as: "LikedProducts", include: [{ model: Image }] }],
+      include: [
+        {
+          model: Product,
+          as: "LikedProducts",
+          include: [{ model: Image }],
+        },
+      ],
     });
 
     if (!user) throw new Error("Пользователь не найден");

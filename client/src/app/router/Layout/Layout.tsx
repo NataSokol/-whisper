@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
   }, [dispatch, user?.id]);
 
   return (
-    <>
+    <div className={styles.container}>
       <Navbar />
       {isAdmin && <NavbarAdmin />}
       <main className={styles.root}>
@@ -34,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
       </main>
       <Footer />
       <SocialMediaButton />
-    </>
+    </div>
   );
 };
 
