@@ -1,7 +1,14 @@
 import productReducer from "./model/productSlice";
 
 export { ProductServices } from "./api";
-export type { Product, ProductList, OneProductResponse } from "./model";
+export type {
+  Product,
+  ProductList,
+  OneProductResponse,
+  ProductDetails,
+  CreateProductRequest,
+  ProductResponse,
+} from "./model";
 export {
   getAllProducts,
   getOneProduct,

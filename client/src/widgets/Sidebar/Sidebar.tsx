@@ -119,6 +119,7 @@ export const Sidebar: React.FC = () => {
           </li>
         </ul>
       </div>
+
       <div
         className={`${styles.subSidebar} ${
           isOpen && activeSubMenu ? styles.subSidebarVisible : ""
@@ -128,37 +129,59 @@ export const Sidebar: React.FC = () => {
       >
         {activeSubMenu === "homeWear" && (
           <ul className={styles.sidebarList}>
-            <li className={styles.sidebarItem}>
-              <Link to={ROUTES.CATALOG}>СМОТРЕТЬ ВСЁ</Link>
+            <li>
+              <div>
+                <Link to={ROUTES.CATALOG}>
+                  <div className={styles.sidebarItem}>СМОТРЕТЬ ВСЁ</div>
+                </Link>
+              </div>
             </li>
             {subcategories.map((subcategory) => (
-              <li className={styles.sidebarItem} key={subcategory.id}>
+              <li key={subcategory.id}>
                 <Link to={ROUTES.CATALOG}>
-                  {subcategory.title.toUpperCase()}
+                  <div className={styles.sidebarItem}>
+                    {subcategory.title.toUpperCase()}
+                  </div>
                 </Link>
               </li>
             ))}
           </ul>
         )}
+
         {activeSubMenu === "sportsWear" && (
           <ul className={styles.sidebarList}>
-            <li className={styles.sidebarItem}>
-              <Link to={ROUTES.CATALOG}>СМОТРЕТЬ ВСЁ</Link>
+            <li>
+              <div>
+                <Link to={ROUTES.CATALOG}>
+                  <div className={styles.sidebarItem}>СМОТРЕТЬ ВСЁ</div>
+                </Link>
+              </div>
             </li>
-            <li className={styles.sidebarItem}>ЛЕГГИНСЫ</li>
-            <li className={styles.sidebarItem}>ФУТБОЛКИ</li>
-            <li className={styles.sidebarItem}>КРОССОВКИ</li>
+            <li>
+              <div className={styles.sidebarItem}>ЛЕГГИНСЫ</div>
+            </li>
+            <li>
+              <div className={styles.sidebarItem}>ФУТБОЛКИ</div>
+            </li>
+            <li>
+              <div className={styles.sidebarItem}>КРОССОВКИ</div>
+            </li>
           </ul>
         )}
         {activeSubMenu === "collections" && (
           <ul className={styles.sidebarList}>
-            <li className={styles.sidebarItem}>
-              <Link to={ROUTES.CATALOG}>СМОТРЕТЬ ВСЁ</Link>
+            <li>
+              <Link to={ROUTES.CATALOG}>
+                {" "}
+                <div className={styles.sidebarItem}>СМОТРЕТЬ ВСЁ</div>
+              </Link>
             </li>
             {collections.map((collection) => (
-              <li className={styles.sidebarItem} key={collection.id}>
+              <li key={collection.id}>
                 <Link to={ROUTES.CATALOG}>
-                  {collection.title.toUpperCase()}
+                  <div className={styles.sidebarItem}>
+                    {collection.title.toUpperCase()}
+                  </div>
                 </Link>
               </li>
             ))}

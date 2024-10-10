@@ -5,7 +5,7 @@ import {
   signIn,
   signUp,
   logout,
-  foget,
+  forget,
   infoUpdate,
   fetchLikedProducts,
   likeProduct,
@@ -89,15 +89,15 @@ const userSlice = createSlice({
         message.error(action.payload?.message || "Failed to logout");
       })
       //!----------------------------------------------------------------
-      .addCase(foget.pending, (state) => {
+      .addCase(forget.pending, (state) => {
         state.loading = true;
       })
-      .addCase(foget.fulfilled, (state, action) => {
+      .addCase(forget.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.user;
         state.error = null;
       })
-      .addCase(foget.rejected, (state, action) => {
+      .addCase(forget.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Failed to sign in";
         message.warning(action.payload?.message || "Failed to sign in");

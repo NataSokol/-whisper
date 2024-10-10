@@ -5,8 +5,16 @@ export type {
   ProductSize,
   ProductSizeList,
   ProductSizeResponse,
+  CreateProductSizeRequest,
+  ProductSizeListResponse,
 } from "./model";
-export { updateProductSize, deleteProductSize } from "./model/productSizeThunk";
+export {
+  updateProductSize,
+  deleteProductSize,
+  createProductSize,
+  getAllProductSizes,
+  getOneProductSize,
+} from "./model/productSizeThunk";
 export { AdminProductSizeItem } from "./ui/AdminProductSizeItem";
 
 export { productSizeReducer };

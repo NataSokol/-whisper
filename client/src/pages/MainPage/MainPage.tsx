@@ -3,6 +3,7 @@ import styles from "./MainPage.module.css";
 import { ROUTES } from "@/app/router/routes";
 import { Link } from "react-router-dom";
 import { CollectionList } from "@/widgets/CollectionList";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const MainPage: React.FC = () => {
   
@@ -18,7 +19,9 @@ export const MainPage: React.FC = () => {
           Ваш браузер не поддерживает тег видео.
         </video>
         <Link className={styles.linkOnVideo} to={ROUTES.CATALOG}>
-          <button className={styles.button}>к покупкам</button>
+          <Button theme={ThemeButton.LIGHT} className={styles.buttonLink}>
+            к покупкам
+          </Button>
         </Link>
       </div>
       <div className={styles.collections}>
@@ -36,7 +39,7 @@ export const MainPage: React.FC = () => {
           <p>ПОЛУЧИТЕ СКИДКУ</p>
           <p>от 3-х позиций в корзине</p>
           <Link className={styles.link} to={ROUTES.CATALOG}>
-            <button>к покупкам</button>
+            <Button theme={ThemeButton.LIGHT} className={styles.buttonLink}>к покупкам</Button>
           </Link>
         </div>
       </div>

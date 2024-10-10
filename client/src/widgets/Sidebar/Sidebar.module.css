@@ -9,7 +9,7 @@
   left: 0;
   width: 360px;
   height: 100vh;
-  background-color: #fff;
+  background-color: var(--primary-basic-white);
   overflow-x: hidden;
   transform: translateX(-360px);
   transition: transform 0.3s;
@@ -28,17 +28,19 @@
   margin-top: 30px;
 }
 
+
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0006;
+  background-color: var( --secondary-gray-56);
   z-index: 999;
 }
 
 ul {
+  color: var(--primary-light-gray);
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -46,25 +48,25 @@ ul {
 
 li {
   padding: 8px 16px;
-  color: rgb(0 0 0);
+  color: var(--primary-light-gray);
   position: relative;
 }
 
 .sidebarItem {
-  color: rgb(0 0 0 / 50%);
+  color: var(--primary-light-gray);
   margin-bottom: 14px;
   transition: color 0.3s;
   padding: 14px 16px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--font-size-base);
 }
 
 .sidebarItem:hover {
-  color: black;
+  color: var(--secondary-black) ;
 }
 
 .active {
-  color: black;
+  color: var(--secondary-black);
 }
 
 .arrow {
@@ -91,7 +93,7 @@ li {
   position: absolute;
   height: 2px;
   width: 100%;
-  background: black;
+  background: var(--secondary-black);
   left: 0;
   transition: all 0.3s ease-in-out;
 }
@@ -130,8 +132,8 @@ li {
   left: 360px;
   width: 360px;
   height: 100vh;
-  background-color: #fff;
-  border-left: 1px solid rgb(0 0 0);
+  background-color: var(--primary-basic-white);
+  border-left: 1px solid var(--secondary-black);
   padding: 50px 16px;
   opacity: 0;
   transform: translateX(-360px);
@@ -147,20 +149,25 @@ li {
 }
 
 .subSidebar ul {
+  color: var(--primary-light-gray);
   padding: 0;
   margin: 0;
 }
 
-.subSidebar li {
-  color: rgb(0 0 0);
+.subSidebar li  {
+  color: var(--primary-light-gray);
+}
+
+.subSidebar li:hover {
+  color: var(--secondary-black);
 }
 
 .sidebarItemSale {
-  background-color: #dd6060;
-  color: white;
+  background-color: var(--primary-light-red);
+  color: var(--primary-basic-white);
 }
 
 .sidebarItemSale:hover,
 .sidebarItemSale:visited {
-  color: white;
+  color: var(--primary-basic-white);
 }

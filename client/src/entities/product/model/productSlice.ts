@@ -7,6 +7,7 @@ import {
   getOneProduct,
   updateProduct,
 } from "./productThunk";
+import { Color } from "@/entities/color";
 
 type ProductState = {
   products: ProductList;
@@ -34,6 +35,14 @@ const productSlice = createSlice({
   reducers: {
     setCategoryFilter(state, action: PayloadAction<number | null>) {
       state.filter.categoryId = action.payload;
+    },
+    addColorToProduct(state, action: PayloadAction<Color>) {
+      if (state.currProduct) {
+        if (!state.currProduct.Colors) {
+          state.currProduct.Colors = [];
+        }
+        state.currProduct.Colors.push(action.payload);
+      }
     },
   },
   extraReducers: (builder) => {
@@ -112,5 +121,6 @@ const productSlice = createSlice({
   },
 });
 
+export const { addColorToProduct } = productSlice.actions;
 export const { setCategoryFilter } = productSlice.actions;
 export default productSlice.reducer;

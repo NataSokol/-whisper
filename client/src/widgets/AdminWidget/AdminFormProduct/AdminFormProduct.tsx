@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-import { useProductAction } from "@/shared/hooks/useProductAction";
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import { useCollectionAction } from "@/shared/hooks/useCollectionAction";
+import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import { useProductAction } from "@/shared/hooks/useProductAction";
 import ModalWindow from "@/shared/ui/Modal/Modal";
 import styles from "./AdminFormProduct.module.css";
-import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
 
 export const AdminFormProduct: React.FC = () => {
   const categories = useAppSelector((state) => state.adminCategory.categories);
@@ -69,10 +69,7 @@ export const AdminFormProduct: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Button
-        theme={ThemeButton.PRIMARY}
-        onClick={() => setIsModalActive(true)}
-      >
+      <Button theme={ThemeButton.LIGHT} onClick={() => setIsModalActive(true)}>
         Добавить продукт
       </Button>
       <ModalWindow active={isModalActive} setActive={setIsModalActive}>
@@ -153,7 +150,7 @@ export const AdminFormProduct: React.FC = () => {
               Подкатегория:
               <select
                 value={subcategoryId || ""}
-                onChange={(e) => setSubcategoryId(  +e.target.value)}
+                onChange={(e) => setSubcategoryId(+e.target.value)}
               >
                 {subcategories &&
                   subcategories.map((subcategory) => (
@@ -164,7 +161,7 @@ export const AdminFormProduct: React.FC = () => {
               </select>
             </label>
           </label>
-          <Button type="submit" theme={ThemeButton.PRIMARY}>
+          <Button type="submit" theme={ThemeButton.LIGHT}>
             Добавить
           </Button>
         </form>

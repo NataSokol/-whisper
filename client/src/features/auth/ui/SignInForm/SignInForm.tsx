@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import styles from './SignInForm.module.css';
 import "./customInputStyles.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
 import {
   selectUserLoading,
@@ -10,6 +10,7 @@ import {
 } from "@/shared/hooks/reduxHooks";
 import { signIn } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -52,9 +53,9 @@ export const SignInForm: React.FC = () => {
           />
           <div className="floating-label">Password:</div>
         </div>
-        <button type="submit" disabled={loading} className="submit-button">
+        <Button theme={ThemeButton.DARK} type="submit" disabled={loading} className="submit-button">
           {loading ? "ВОЙТИ..." : "ВОЙТИ"}
-        </button>
+        </Button>
       </div>
     </form>
   );

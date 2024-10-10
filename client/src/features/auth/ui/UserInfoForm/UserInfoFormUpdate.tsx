@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 // import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
-import { AdminCategoryList, AdminFormCategory } from "@/widgets/AdminWidget";
-import ModalWindow from "@/shared/ui/Modal/Modal";
 import { infoUpdate } from "@/entities/user/model/userThunks";
 import { unwrapResult } from "@reduxjs/toolkit";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const UserInfoFormUpdate: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
@@ -19,11 +18,11 @@ export const UserInfoFormUpdate: React.FC = () => {
   const handleUpdateUserInfo = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      if (user) {
+      //!!!!!! ПОПРАВИТЬ
+      if (user && email && phone && name && surname && birthday && address) {
         const resultAction = await dispatch(
           infoUpdate({ email, phone, name, surname, birthday, address })
         );
-
         unwrapResult(resultAction);
       }
     } catch (error) {
@@ -65,7 +64,7 @@ export const UserInfoFormUpdate: React.FC = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
-          <button type="submit">Сохранить</button>
+          <Button theme={ThemeButton.DARK} type="submit">Сохранить</Button>
         </form>
       </div>
     </div>

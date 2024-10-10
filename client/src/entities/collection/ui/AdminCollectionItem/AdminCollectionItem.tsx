@@ -29,13 +29,13 @@ export const AdminCollectionItem: React.FC<Props> = ({
       />
       <div>
         <Button
-          theme={ThemeButton.PRIMARY}
+          theme={ThemeButton.LIGHT}
           onClick={() => onCollectionUpdate(collection.id)}
         >
           Изменить
         </Button>
         <Button
-          theme={ThemeButton.DANGER}
+          theme={ThemeButton.LIGHT}
           onClick={() => {
             onCollectionDelete(collection.id);
           }}

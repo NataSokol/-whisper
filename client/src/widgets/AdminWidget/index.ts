@@ -9,3 +9,4 @@ export { AdminFormProduct } from "./AdminFormProduct";
 export { AdminSubCategoryList } from "./AdminSubCategoryList";
 export { AdminFormSubCategory } from "./AdminFormSubCategory";
 export { AdminFormProductSize } from "./AdminFormProductSize";
+export { AdminOneProductImageList } from "./AdminOneProductImageList";

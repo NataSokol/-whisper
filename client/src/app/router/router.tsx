@@ -6,21 +6,21 @@ import {
   AdminPage,
   AdminProductPage,
   AdminSubCategoryPage,
+  AllProductsPage,
+  CartPage,
   MainPage,
+  ProductPage,
   SignInPage,
   SignUpPage,
 } from "@/pages";
 import { ROUTES } from "./routes";
 import { PublicRoute } from "@/shared/ui/PublicRoute";
-import { FogForm } from "@/features/auth/ui/FogetPas/FogForm";
+import { FogForm } from "@/features/auth/ui/ForgetPas/FogForm";
 import ResetPassword from "@/pages/ResetPasswordPage/ResetPassword";
 import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
 import { AddressPage } from "@/pages/AddressPage/AddressPage";
-import { CardPage } from "@/pages/CardPage/CardPage";
 import Layout from "./Layout/Layout";
-import ProductPage from "@/pages/ProductPage/ProductPage";
-import { AllProductsPage } from "@/pages/AllProductsPage";
 import { FavoritePage } from "@/pages/FavoritePage";
 
 export const router = createBrowserRouter([
@@ -65,12 +65,10 @@ export const router = createBrowserRouter([
       //     ),
       //   },
 
-      //   {
-      //     path: ROUTES.CART,
-      //     element: (
-      //         <CartPage />
-      //     ),
-      //   },
+      {
+        path: ROUTES.CART,
+        element: <CartPage />,
+      },
       {
         path: ROUTES.HOME,
         element: <MainPage />,
@@ -93,12 +91,10 @@ export const router = createBrowserRouter([
         path: ROUTES.SIGNIN,
         element: <SignInPage />,
       },
-
       {
         path: ROUTES.FAVORITES,
         element: <FavoritePage />,
       },
-
       {
         path: ROUTES.PROFILE,
         element: <UserPage />,
@@ -114,10 +110,6 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.ADRESS,
             element: <AddressPage />,
-          },
-          {
-            path: ROUTES.CARD,
-            element: <CardPage />,
           },
         ],
       },
