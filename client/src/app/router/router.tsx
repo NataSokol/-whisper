@@ -32,30 +32,28 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.ADMIN,
         element: <AdminPage />,
-        children: [
-          {
-            path: ROUTES.ADMIN_CATEGORIES,
-            element: <AdminCategoryPage />,
-          },
-          {
-            path: ROUTES.ADMIN_COLLECTIONS,
-            element: <AdminCollectionPage />,
-          },
+      },
+      {
+        path: ROUTES.ADMIN_CATEGORIES,
+        element: <AdminCategoryPage />,
+      },
+      {
+        path: ROUTES.ADMIN_COLLECTIONS,
+        element: <AdminCollectionPage />,
+      },
 
-          {
-            path: ROUTES.ADMIN_SUBCATEGORY,
-            element: <AdminSubCategoryPage />,
-          },
+      {
+        path: ROUTES.ADMIN_SUBCATEGORY,
+        element: <AdminSubCategoryPage />,
+      },
 
-          {
-            path: ROUTES.ADMIN_PRODUCTS,
-            element: <AdminProductPage />,
-          },
-          {
-            path: ROUTES.ADMIN_PRODUCT,
-            element: <AdminOneProductPage />,
-          },
-        ],
+      {
+        path: ROUTES.ADMIN_PRODUCTS,
+        element: <AdminProductPage />,
+      },
+      {
+        path: ROUTES.ADMIN_PRODUCT,
+        element: <AdminOneProductPage />,
       },
 
       {
@@ -104,10 +102,10 @@ export const router = createBrowserRouter([
             element: <HistoryPage />,
           },
 
-          // {
-          //   path: ROUTES.CARD,
-          //   element: <CartPage />,
-          // },
+          {
+            path: ROUTES.CARD,
+            element: <CartPage />,
+          },
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
