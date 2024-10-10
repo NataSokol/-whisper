@@ -1,5 +1,5 @@
 import { axiosInstance, setAccessToken } from "@/shared/lib/axiosInstance";
-import { AuthResponse, User, UserInfoResponse } from "../model";
+import { AuthResponse, User } from "../model";
 import { Product, ProductList } from "@/entities/product";
 
 interface ApiResponse<T> {

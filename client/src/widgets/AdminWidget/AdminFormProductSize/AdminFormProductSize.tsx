@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProductSizeActions } from "@/shared/hooks/useProductSizeActions";
 import { useProductAction } from "@/shared/hooks/useProductAction";
-import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import ModalWindow from "@/shared/ui/Modal/Modal";
 import styles from "./AdminFormProductSize.module.css";
@@ -24,9 +23,6 @@ export const AdminFormProductSize: React.FC = () => {
   const [sleeveLength, setSleeveLength] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [isModalActive, setIsModalActive] = useState(false);
-
-  const productSizes =
-    useAppSelector((state) => state.product.currProduct?.ProductSizes) || [];
 
   useEffect(() => {
     if (productId) {
