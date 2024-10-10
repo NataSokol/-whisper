@@ -69,6 +69,10 @@ export const router = createBrowserRouter([
         element: <CartPage />,
       },
       {
+        path: ROUTES.ORDER,
+        // element: < />,
+      },
+      {
         path: ROUTES.HOME,
         element: <MainPage />,
       },

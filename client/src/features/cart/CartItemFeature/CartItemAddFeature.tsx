@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CartItemAddFeature.module.css";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import ModalWindow from "@/shared/ui/Modal/Modal";
-import { ProductSize } from "@/entities/productsize";
+import { ProductSize, updateProductSize } from "@/entities/productsize";
 import { Color } from "@/entities/color";
 import SizesMeasures from "@/shared/ui/SizesMeasures/SizesMeasures";
 import { createCartItem, updateCartItem } from "@/entities/cartitem";
@@ -14,21 +14,28 @@ export const CartItemAddFeature: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
   const [active, setActives] = useState(false);
   const navigate = useNavigate();
-
+ 
   const [selectedColor, setSelectedColor] = useState<Color["id"]>();
-  const [selectedSize, setSelectedSize] = useState<ProductSize["id"]>();
+  const [selectedSize, setSelectedSize] = useState<ProductSize>();
 
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cart);
 
+  // useEffect(() => {
+  //   getProductList();
+  // }, [getProductList]);
+
   const currCartItem = cart?.CartItems?.find(
     (cartItem) =>
       cartItem.productColorId === selectedColor &&
-      cartItem.productSizeId === selectedSize
+      cartItem.productSizeId === selectedSize?.id
   );
 
+   console.log(selectedSize);
+   console.log(currCartItem?.productId, '123123');
+   
 
-
+    
   const onHandleCrateCartItem = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
@@ -44,6 +51,15 @@ export const CartItemAddFeature: React.FC = () => {
             quantity: currCartItem.quantity + 1,
           })
         );
+        await dispatch(
+          updateProductSize([
+            currCartItem.productSizeId,
+            {
+              ...currCartItem.ProductSize,
+              quantity: currCartItem.ProductSize.quantity - 1,
+            },
+          ])
+        );
         unwrapResult(resultAction);
       } else {
         const resultAction = await dispatch(
@@ -52,9 +68,21 @@ export const CartItemAddFeature: React.FC = () => {
             productId: currProduct?.id,
             quantity: 1,
             productColorId: selectedColor,
-            productSizeId: selectedSize,
+            productSizeId: selectedSize.id,
           })
         );
+        if (selectedSize) {
+          await dispatch(
+            updateProductSize([
+              selectedSize.id,
+              {
+                ...selectedSize,
+                quantity: selectedSize.quantity - 1,
+              },
+            ])
+          );
+        }
+
         unwrapResult(resultAction);
       }
     } else {
@@ -112,14 +140,14 @@ export const CartItemAddFeature: React.FC = () => {
             <input
               type="radio"
               value={size.id}
-              checked={selectedSize === size.id}
-              onChange={() => setSelectedSize(size.id)}
+              checked={selectedSize?.id === size.id}
+              onChange={() => setSelectedSize(size)}
             />
             <div
               className={styles.size}
               style={{
-                backgroundColor: selectedSize === size.id ? "black" : "white",
-                color: selectedSize === size.id ? "white" : "black",
+                backgroundColor: selectedSize?.id === size.id ? "black" : "white",
+                color: selectedSize?.id === size.id ? "white" : "black",
               }}
             >
               {size.sizeTitle}
@@ -144,8 +172,6 @@ export const CartItemAddFeature: React.FC = () => {
           type="submit"
           className={styles.cartButton}
           disabled={!currProduct || !cart}
-
-          
           style={{
             backgroundColor: !currProduct || !cart ? "lightgray" : "black",
           }}

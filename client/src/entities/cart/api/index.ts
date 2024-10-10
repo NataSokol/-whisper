@@ -26,7 +26,9 @@ export class CartService {
     static async updateCart(cartId: number, total: number, salePrice: number) {
         const response = await axiosInstance.put<CartResponse>(`/cart/${cartId}`, {total, salePrice});
         if (response.status === 200) {
+            console.log(response);
             return response.data;
+            
         } else {
             throw new Error("Failed to update cart");
         }

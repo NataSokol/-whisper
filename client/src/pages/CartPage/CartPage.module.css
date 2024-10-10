@@ -6,16 +6,36 @@
 }
 
 .title {
-  font-size: 32px;
+  font-size: var(--font-size-heading-1);
   margin-top: 140px;
   margin-left: 34px;
-  font-weight: bold;
-  color: #333;
+  text-transform: uppercase;
+  line-height: var(--line-height-heading-1);
+  font-weight: lighter;
+  color: var(--secondary-black);
   margin-bottom: 20px; 
 }
 
 .items {
   display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
+  flex-direction: row; 
+  align-items: flex-start;
+  justify-content: space-between; 
 }
+
+.emptyCart{
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 40px;
+}
+
+.text {
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+  color: var(--secondary-black);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+

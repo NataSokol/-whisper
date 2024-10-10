@@ -43,7 +43,8 @@ export const updateCart = createAsyncThunk<
   { rejectValue: RejectValue }
 >("/updateCart", async ({ id, total, salePrice }, { rejectWithValue }) => {
   try {
-    return await CartService.updateCart( id, total, salePrice );
+    const result = await CartService.updateCart( id, total, salePrice );
+    return result;
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({

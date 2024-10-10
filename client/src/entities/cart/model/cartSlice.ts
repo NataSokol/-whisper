@@ -131,7 +131,7 @@ const cartSlice = createSlice({
       //   state.loading = false;
       //   state.error = action.error.message || "Something went wrong";
       // })
-      // -------------------create cartItem
+      //TODO -------------------create cartItem
       .addCase(createCartItem.pending, (state) => {
         state.loading = true;
       })
@@ -139,12 +139,13 @@ const cartSlice = createSlice({
         state.loading = false;
         state.cart?.CartItems.push(action.payload.cartItem);
         state.cartCount += 1;
+        // state.cart?.CartItems.find((item) => item.id === action.payload.cartItem.id)?.quantity -= 1
       })
       .addCase(createCartItem.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Something went wrong";
       })
-      // -------------------update cartItem
+      //TODO -------------------update cartItem
       .addCase(updateCartItem.pending, (state) => {
         state.loading = true;
       })
@@ -168,7 +169,7 @@ const cartSlice = createSlice({
         state.loading = false;
         state.error = action.error.message || "Something went wrong";
       })
-      // -------------------delete cartItem
+      //TODO -------------------delete cartItem
       .addCase(deleteCartItem.pending, (state) => {
         state.loading = true;
       })

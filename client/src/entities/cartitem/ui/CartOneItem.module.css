@@ -1,11 +1,18 @@
 .cartItemContainer {
+  width: 686px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   gap: 10px; 
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
+}
+
+.cartItemImage{
+  width: 121px;
+  height: 172px;
+  
 }
 
 .cartItemTitle {
