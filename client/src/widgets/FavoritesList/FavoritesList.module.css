@@ -16,3 +16,11 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+
+.emptyMessage {
+  font-size: 18px;
+  color: #888;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}

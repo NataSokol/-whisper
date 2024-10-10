@@ -10,7 +10,7 @@
 }
 
 .containerLinks {
-  border-bottom: 1px solid var(--secondary-black);
+  border-top: 1px solid var(--primary-light-gray);
 }
 
 .containerPolicy,
@@ -19,6 +19,10 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 40px 0;
+}
+
+.containerPolicy {
+  padding-top: 0;
 }
 
 .footerMenuLinks {
@@ -33,8 +37,12 @@
 
 .footerLinkPolicy {
   margin-right: 25px;
+  font-size: 14px;
 }
 
-.footerLink {
+.footerLink,
+.footerLink:visited {
+  color: var(--primary-basic-gray);
   margin-bottom: 8px;
+  font-size: 12px;
 }

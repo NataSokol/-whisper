@@ -7,7 +7,7 @@
   max-width: 500px;
   background-color: var(--primary-basic-white);
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgb(0 0 0 / 30%);
   padding: 20px;
   z-index: var( --z-index-modal);
 }

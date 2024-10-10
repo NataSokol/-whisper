@@ -4,6 +4,8 @@ import { ProductSize } from "@/entities/productsize";
 import { createCartItem, updateCartItem } from "@/entities/cartitem";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import styles from "./ProductPageWidget.module.css";
+import { useNavigate } from "react-router-dom";
+import { CartItemAddFeature } from "@/features/cart/CartItemFeature";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);

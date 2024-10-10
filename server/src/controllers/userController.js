@@ -77,10 +77,7 @@ exports.deleteFavorite = async (req, res) => {
 };
 
 exports.getAllFavorites = async (req, res) => {
-  console.log('попали в ручку');
   const userId = res.locals.user.id;
-  
-  
   try {
     const likedProducts = await UserService.getLikedProducts(userId);
     res.status(200).json({ likedProducts });

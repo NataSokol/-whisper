@@ -187,8 +187,8 @@
   z-index: 1000;
   list-style: none;
   padding: 12px;
-  margin: 5px 0 0 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin: 5px 0 0;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
   border-radius: 4px;
   transform: translateY(11px);
 }
@@ -212,7 +212,7 @@
   padding: 10px 15px;
   background-color: white;
   z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   color: #555;
   border-radius: 4px;
 }
