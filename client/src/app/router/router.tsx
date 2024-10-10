@@ -23,9 +23,10 @@ import OrderPage from "@/pages/OrderPage/OrderPage";
 import Layout from "./Layout/Layout";
 import { FavoritePage } from "@/pages/FavoritePage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
-
 import DiscountPage from "@/pages/DiscountPage/DiscountPage";
+import { AdminRoute } from "@/shared/ui/AdminRoute";
 import { NotFoundPage } from "@/pages/NotFoundPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -34,29 +35,65 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.ADMIN,
-        element: <AdminPage />,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminPage />,
+            </>
+          </AdminRoute>
+        ),
       },
       {
         path: ROUTES.ADMIN_CATEGORIES,
-        element: <AdminCategoryPage />,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminCategoryPage />,
+            </>
+          </AdminRoute>
+        ),
       },
       {
         path: ROUTES.ADMIN_COLLECTIONS,
-        element: <AdminCollectionPage />,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminCollectionPage />,
+            </>
+          </AdminRoute>
+        ),
       },
 
       {
         path: ROUTES.ADMIN_SUBCATEGORY,
-        element: <AdminSubCategoryPage />,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminSubCategoryPage />,
+            </>
+          </AdminRoute>
+        ),
       },
 
       {
         path: ROUTES.ADMIN_PRODUCTS,
-        element: <AdminProductPage />,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminProductPage />,
+            </>
+          </AdminRoute>
+        ),
       },
       {
         path: ROUTES.ADMIN_PRODUCT,
-        element: <AdminOneProductPage />,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminOneProductPage />,
+            </>
+          </AdminRoute>
+        ),
       },
 
       {
@@ -104,11 +141,12 @@ export const router = createBrowserRouter([
             path: ROUTES.HISTORY,
             element: <HistoryPage />,
           },
+
           {
             path: ROUTES.DISCOUNT,
             element: <DiscountPage />,
           },
-          
+
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
