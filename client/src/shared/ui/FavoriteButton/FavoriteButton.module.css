@@ -1,0 +1,34 @@
+.button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* .button:active {
+  transform: scale(0.95);
+} */
+
+.heart {
+  width: 24px;
+  height: 24px;
+  fill: black;
+  fill-opacity: 0;
+  stroke: black;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: fill-opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.filled {
+  fill-opacity: 1;
+}
+
+.outlined {
+  fill-opacity: 0;
+}

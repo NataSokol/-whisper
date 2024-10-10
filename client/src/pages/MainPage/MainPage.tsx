@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./MainPage.module.css";
 import { ROUTES } from "@/app/router/routes";
 import { Link } from "react-router-dom";
@@ -11,9 +11,7 @@ export const MainPage: React.FC = () => {
   const collectionImages = collections?.map((collection) => collection.image) || [];
   const collectionTitles = collections?.map((collection) => collection.title) || [];
   const collectionIds = collections?.map((collection) => collection.id) || [];
-
   
-
   return (
     <div className={styles.container}>
       <div className={styles.videoContainer}>

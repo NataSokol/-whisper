@@ -7,6 +7,9 @@ import {
   logout,
   forget,
   infoUpdate,
+  fetchLikedProducts,
+  likeProduct,
+  unlikeProduct,
 } from "./userThunks";
 import { message } from "antd";
 
@@ -112,10 +115,58 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload?.message || "Failed to sign in";
         message.warning(action.payload?.message || "Failed to sign in");
+      })
+      //!----------------------------------------------------------------
+      .addCase(likeProduct.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(likeProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        if (state.user) {
+          state.user.LikedProducts.push(action.payload.product);
+        }
+        message.success(action.payload.message);
+      })
+      .addCase(likeProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload?.message || "Не удалось поставить лайк";
+        message.error(action.payload?.message || "Не удалось поставить лайк");
+      })
+
+      .addCase(unlikeProduct.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(unlikeProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        if (state.user) {
+          state.user.LikedProducts = state.user.LikedProducts.filter(
+            (product) => product.id !== action.meta.arg.productId
+          );
+        }
+        message.success(action.payload.message);
+      })
+      .addCase(unlikeProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload?.message || "Не удалось убрать лайк";
+        message.error(action.payload?.message || "Не удалось убрать лайк");
+      })
+
+      .addCase(fetchLikedProducts.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchLikedProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        if (state.user) {
+          state.user.LikedProducts = action.payload.likedProducts;
+        }
+        state.error = null;
+      })
+      .addCase(fetchLikedProducts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload?.message || "Не удалось загрузить лайки";
+        message.error(action.payload?.message || "Не удалось загрузить лайки");
       });
   },
-
-
 });
 
 export default userSlice.reducer;

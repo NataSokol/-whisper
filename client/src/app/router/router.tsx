@@ -21,6 +21,7 @@ import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
 import { AddressPage } from "@/pages/AddressPage/AddressPage";
 import Layout from "./Layout/Layout";
+import { FavoritePage } from "@/pages/FavoritePage";
 
 export const router = createBrowserRouter([
   {
@@ -90,12 +91,10 @@ export const router = createBrowserRouter([
         path: ROUTES.SIGNIN,
         element: <SignInPage />,
       },
-
-      //   {
-      //     path: ROUTES.FAVORITES,
-      //     element: <FavoritesPage />,
-      //   },
-
+      {
+        path: ROUTES.FAVORITES,
+        element: <FavoritePage />,
+      },
       {
         path: ROUTES.PROFILE,
         element: <UserPage />,
