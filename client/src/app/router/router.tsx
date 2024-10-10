@@ -19,14 +19,11 @@ import { FogForm } from "@/features/auth/ui/ForgetPas/FogForm";
 import ResetPassword from "@/pages/ResetPasswordPage/ResetPassword";
 import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
-import { CardPage } from "@/pages/CardPage/CardPage";
-import ProductPage from "@/pages/ProductPage/ProductPage";
-import { AllProductsPage } from "@/pages/AllProductsPage";
 import OrderPage from "@/pages/OrderPage/OrderPage";
 import Layout from "./Layout/Layout";
 import { FavoritePage } from "@/pages/FavoritePage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
-
+import DiscountPage from "@/pages/DiscountPage/DiscountPage";
 
 export const router = createBrowserRouter([
   {
@@ -62,7 +59,6 @@ export const router = createBrowserRouter([
         ],
       },
 
-
       {
         path: ROUTES.CART,
         element: <CartPage />,
@@ -91,8 +87,6 @@ export const router = createBrowserRouter([
         element: <SignInPage />,
       },
 
-
-
       {
         path: ROUTES.FAVORITES,
         element: <FavoritePage />,
@@ -111,15 +105,14 @@ export const router = createBrowserRouter([
             element: <HistoryPage />,
           },
 
-
           {
-            path: ROUTES.CARD,
-            element: <CardPage />,
+            path: ROUTES.DISCOUNT,
+            element: <DiscountPage />,
           },
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
-             },
+          },
         ],
       },
       {
@@ -131,12 +124,10 @@ export const router = createBrowserRouter([
         element: <ResetPassword />,
       },
 
-
       // {
       //   path: `${ROUTES.CATALOG}/:productId`,
       //   element: < />,
       // },
-
 
       {
         path: `${ROUTES.CATALOG}/:productId`,
@@ -147,7 +138,6 @@ export const router = createBrowserRouter([
         path: ROUTES.CATALOG,
         element: <AllProductsPage />,
       },
-
 
       {
         path: ROUTES.DELPAY,
@@ -198,7 +188,6 @@ export const router = createBrowserRouter([
       //     path: ROUTES.ERROR,
       //     element: <ErrorPage />,
       //   },
-
     ],
   },
 ]);
