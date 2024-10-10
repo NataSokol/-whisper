@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import styles from './SignInForm.module.css';
 import "./customInputStyles.css";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
@@ -16,47 +15,55 @@ export const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const loading = useAppSelector(selectUserLoading);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setError(null); 
     try {
       const resultAction = await dispatch(signIn({ email, password }));
       unwrapResult(resultAction);
       navigate(ROUTES.HOME);
     } catch (error) {
-      console.error("Sign in failed:", error);
+      setError(error.message || "Неизвестная ошибка при входе.");
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-container">
-        <div className="input-group">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder=" "
-            className="custom-input"
-          />
-          <div className="floating-label">Email:</div>
+    <div className="form-container">
+      <div className="input-group">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder=" "
+          className="custom-input"
+        />
+        <label className="floating-label">Email:</label>
+      </div>
+      <div className="input-group">
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder=" "
+          className="custom-input"
+        />
+        <label className="floating-label">Password:</label>
+        <div className="error-messages">
+          {error && (
+            <p className="error-message">{error}</p>
+          )}
         </div>
-        <div className="input-group">
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder=" "
-            className="custom-input"
-          />
-          <div className="floating-label">Password:</div>
-        </div>
-        <Button theme={ThemeButton.DARK} type="submit" disabled={loading} className="submit-button">
+      </div>
+    
+      <Button theme={ThemeButton.DARK} type="submit" disabled={loading} className="submit-button">
           {loading ? "ВОЙТИ..." : "ВОЙТИ"}
         </Button>
-      </div>
-    </form>
-  );
+    </div>
+  </form>
+);
 };

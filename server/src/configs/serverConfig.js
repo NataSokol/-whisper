@@ -9,11 +9,10 @@ const { PORT } = process.env;
 
 const corsConfig = {
 
-//   origin: 'http://localhost:5173',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  //   origin: 'http://localhost:5173',
+  //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 
-   origin: ["http://localhost:5173"],
-
+  origin: ["http://localhost:5173"],
   credentials: true,
 };
 
@@ -23,7 +22,7 @@ const configureApp = () => {
   app.use(cookieParser());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  
+
   app.use('/img', express.static(path.join(__dirname, '..', 'public', 'img')));
 
   return app;

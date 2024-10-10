@@ -77,8 +77,6 @@ export class UserService {
     birthday: Date,
     address: string
   ): Promise<{ user: User }> {
-    console.log(555, phone, email, name, surname, birthday, address);
-
     const response = await axiosInstance.put("/user", {
       phone,
       email,
@@ -87,6 +85,7 @@ export class UserService {
       birthday,
       address,
     });
+
     setAccessToken(response.data.accessToken);
     return response.data;
   }

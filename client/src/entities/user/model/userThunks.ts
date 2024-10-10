@@ -86,7 +86,6 @@ export const infoUpdate = createAsyncThunk<
     { rejectWithValue }
   ) => {
     try {
-      console.log({ email, phone, name, surname, birthday, address });
 
       return await UserService.updateInfo(
         email,

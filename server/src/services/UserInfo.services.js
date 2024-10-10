@@ -9,31 +9,30 @@ class UserInfoServices {
     return plainUser ? { user: plainUser } : null;
   };
   static updateUserInfo = async (
-    
     userId,
-      {phone,
-      email,
-      name,
-      surname,
-      birthday }
+    phone,
+    email,
+    name,
+    surname,
+    birthday,
+    address
   ) => {
-    const userInfo = await User.findByPk(userId);
+
+    const userInfo = await User.findOne({ where: { id: userId } });;
+
     if (userInfo) {
-      await userInfo.update({
+      userInfo.phone = phone;
+      userInfo.email = email;
+      userInfo.name = name;
+      userInfo.surname = surname;
+      userInfo.birthday = birthday;
+      userInfo.address = address;
+      await userInfo.save();
+      return userInfo;
 
-        phone,
-        email,
-        name,
-        surname,
-        birthday
-      });
-      return userInfo.get();
-    }
-    return null;
-  };
+    } return null;
 
-
-
+  }
 
 }
 

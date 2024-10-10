@@ -9,7 +9,7 @@ class UserService {
     });
 
     if (!isCreated) {
-      throw new Error("User already exists");
+      throw new Error('Такой пользователь уже существует');
     }
     const plainUser = (
       await User.findOne({
@@ -33,10 +33,16 @@ class UserService {
       ],
     });
 
-    if (!user) throw new Error("User not found");
+
+
+    const user = await User.findOne({ where: { email } });
+
+
+    if (!user) throw new Error('Неверный email или пароль');
 
     const isCorrectPassword = await bcrypt.compare(password, user.password);
-    if (!isCorrectPassword) throw new Error("Incorrect email or password");
+    if (!isCorrectPassword) throw new Error('Неверный email или пароль');
+
 
     const plainUser = user.get();
     delete plainUser.password;
@@ -63,7 +69,9 @@ class UserService {
         { model: Product, as: "LikedProducts", include: [{ model: Image }] },
       ],
     });
-    if (user) throw new Error("User already exists");
+
+    if (user) throw new Error('Такой пользователь уже существует');
+
 
     const hashPassword = await bcrypt.hash(password, 10);
 
@@ -80,8 +88,9 @@ class UserService {
       });
 
       if (user) {
-        user.password = await bcrypt.hash(password, 10);
-        //user.password = password;
+
+        user.password = await bcrypt.hash(password, 10)
+
         await user.save();
         return user;
       } else {

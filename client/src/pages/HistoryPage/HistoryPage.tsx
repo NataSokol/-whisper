@@ -1,3 +1,9 @@
+import { OrderList } from "@/widgets/OrderList/OrderList";
+
 export function HistoryPage() {
-  return <div></div>;
+  return (
+    <>
+      <OrderList />
+    </>
+  );
 }

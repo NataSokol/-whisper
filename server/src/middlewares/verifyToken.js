@@ -14,13 +14,13 @@ const verifyRefreshToken = (req, res, next) => {
 };
 
 const verifyAccessToken = (req, res, next) => {
-  console.log(11111111);
+ 
   
   try {
-    console.log(req.headers);
+  
     
     const accessToken = req.headers.authorization.split(' ')[1];
-    //console.log(req.headers.authorization);
+   
 
     const { user } = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
     

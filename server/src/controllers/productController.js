@@ -36,7 +36,7 @@ exports.createProduct = async (req, res) => {
 
     // Создаем массив путей к изображениям
     const imagePaths = req.files.map((file) => `/img/${file.filename}`);
-    console.log(imagePaths, "photos");
+   
 
     const product = await ProductServices.createProduct(
       title,

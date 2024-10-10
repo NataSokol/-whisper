@@ -1,37 +1,53 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// import { CategoryList } from ".";
-// import { getAllCategory } from "./categoryThunk";
+import { createSlice } from "@reduxjs/toolkit";
+import { Order, OrderList } from ".";
 
-// type CategoryState = {
-//   categories: CategoryList;
-//   loading: boolean;
-//   error: string | null;
-// };
+import { getAllOrders, getOneOrder } from "./orderThunk";
 
-// const initialState: CategoryState = {
-//   categories: [],
-//   loading: false,
-//   error: null,
-// };
+type OrderState = {
+  orders: OrderList;
+  currOrder: Order | null;
+  loading: boolean;
+  error: string | null;
+};
 
-// const UserCategorySlice = createSlice({
-//   name: "category",
-//   initialState,
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(getAllCategory.pending, (state) => {
-//         state.loading = true;
-//       })
-//       .addCase(getAllCategory.fulfilled, (state, action) => {
-//         state.loading = false;
-//         state.categories = action.payload.categories;
-//       })
-//       .addCase(getAllCategory.rejected, (state, action) => {
-//         state.loading = false;
-//         state.error = action.error.message || "Something went wrong";
-//       });
-//   },
-// });
+const initialState: OrderState = {
+  orders: [],
+  currOrder: null,
+  loading: false,
+  error: null,
+};
 
-// export default UserCategorySlice.reducer;
+const orderSlice = createSlice({
+  name: "order",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      //! ------------------- get
+      .addCase(getAllOrders.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllOrders.fulfilled, (state, action) => {
+        state.loading = false;
+        state.orders = action.payload.orders;
+      })
+      .addCase(getAllOrders.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || "Something went wrong";
+      })
+      //! ------------------- getOne
+      .addCase(getOneOrder.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getOneOrder.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currOrder = action.payload.order;
+      })
+      .addCase(getOneOrder.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || "Something went wrong";
+      });
+  },
+});
+
+export default orderSlice.reducer;

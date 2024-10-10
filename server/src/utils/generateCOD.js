@@ -14,13 +14,4 @@ async function generateToken() {
   }
 }
 
-
-// generateToken().then(token => {
-//     if (token) {
-//         console.log('Токен успешно сгенерирован: ', token);
-//     } else {
-//         console.log('Токен не был сгенерирован из-за ошибки.');
-//     }
-// });
-
 module.exports = generateToken

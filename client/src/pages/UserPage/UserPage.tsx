@@ -5,31 +5,12 @@ import styles from "./User.module.css";
 export function UserPage() {
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <div className={styles.navbar1}>
-       
         <NavbarUserProfile />
-        <Outlet />
+        <div className={styles.profileContainer2}>
+          <Outlet />
+        </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 }

@@ -1,0 +1,63 @@
+.card {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px auto;
+  width: 500px;
+}
+
+.image {
+  width: 30%;
+
+  min-width: 150px;
+ 
+  height: auto;
+  
+  overflow: hidden;
+  border-radius: 8px;
+ 
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-left: 16px;
+  width: 70%;
+}
+
+.details2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-left: 70px;
+  width: 70%;
+}
+
+.price {
+  padding-top: 22.5px;
+  padding-bottom: 15px;
+  font-size: small;
+  font-weight: bold;
+
+}
+
+.status {
+  font-size: 1em;
+}
+
+.orderNumber {
+  padding-top: 10px;
+
+  font-size: 1.5em;
+  margin: 4px 0;
+}
+
+.deliveryDetails {
+  padding-top: 15px;
+  font-size: 0.9em;
+  /* Уменьшенный шрифт для деталей доставки */
+  color: #555;
+  /* Цвет для деталей доставки */
+}

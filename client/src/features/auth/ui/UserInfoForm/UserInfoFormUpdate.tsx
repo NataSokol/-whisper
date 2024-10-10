@@ -1,71 +1,133 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
-// import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import { infoUpdate } from "@/entities/user/model/userThunks";
+
+import styles from "../../../../pages/UserPage/User.module.css";
+
 import { unwrapResult } from "@reduxjs/toolkit";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
+
 export const UserInfoFormUpdate: React.FC = () => {
   const user = useAppSelector((state) => state.user.user);
+
+  const dateFromDatabase = user?.birthday;
+  const dateObject = new Date(dateFromDatabase);
+  const year = dateObject.getFullYear();
+  const month = String(dateObject.getMonth() + 1).padStart(2, "0");
+  const day = String(dateObject.getDate()).padStart(2, "0");
+
+  const formattedDate = `${year}-${month}-${day}`;
+
   const dispatch = useAppDispatch();
   const [phone, setPhone] = useState(user?.phone);
   const [email, setEmail] = useState(user?.email);
   const [name, setName] = useState(user?.name);
   const [surname, setSurname] = useState(user?.surname);
-  const [birthday, setBirthday] = useState(user?.birthday);
+  const [birthday, setBirthday] = useState(formattedDate);
   const [address, setAddress] = useState(user?.address);
+  const [message, setMessage] = useState("");
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
+  useEffect(() => {
+    setEmail(user?.email);
+    setPhone(user?.phone);
+    setName(user?.name);
+    setSurname(user?.surname);
+    setBirthday(formattedDate);
+    setAddress(user?.address);
+  }, [user]);
+ 
 
   const handleUpdateUserInfo = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      //!!!!!! ПОПРАВИТЬ
-      if (user && email && phone && name && surname && birthday && address) {
-        const resultAction = await dispatch(
-          infoUpdate({ email, phone, name, surname, birthday, address })
-        );
-        unwrapResult(resultAction);
+    
+      const isoBirthday = birthday ? birthday : null;
+      const resultAction = await dispatch(
+        infoUpdate({
+          email,
+          phone,
+          name,
+          surname,
+          birthday: isoBirthday,
+          address,
+        })
+      );
+
+      if (resultAction.meta.requestStatus === "fulfilled") {
+        setMessage("Изменения сохранены");
+        setIsMessageVisible(true);
+
+        setTimeout(() => {
+          setIsMessageVisible(false);
+        }, 3000);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
-    <div>
-      <div>
-        <h2>Редактировать категорию</h2>
-        <form onSubmit={handleUpdateUserInfo}>
+    <div className={styles.container}>
+      <h2 className={styles.h2}>Редактировать информацию</h2>
+      <form className={styles.form} onSubmit={handleUpdateUserInfo}>
+        <div className={styles.inputGroup}>
           <input
+            className={styles.input}
             type="text"
+            placeholder="Имя"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
+            className={styles.input}
             type="text"
+            placeholder="Фамилия"
             value={surname}
             onChange={(e) => setSurname(e.target.value)}
           />
+        </div>
+        <div className={styles.inputGroup}>
           <input
+            className={styles.input}
+            type="date"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+          />
+          <input
+            className={styles.input}
             type="text"
+            placeholder="+7 (___) ___-__-__"
+            maxLength={16}
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="date"
-            value={birthday?.toString()}
-            onChange={(e) => setBirthday(new Date(e.target.value))}
-          />
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <Button theme={ThemeButton.DARK} type="submit">Сохранить</Button>
-        </form>
+        </div>
+
+        <input
+          className={styles.inputadress}
+          type="text"
+          placeholder="Адрес"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+
+        <input
+          className={styles.inputemail}
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Button theme={ThemeButton.DARK} type="submit">Сохранить</Button>
+      </form>
+
+      <div
+        className={`${styles.message} ${
+          isMessageVisible ? styles.visible : ""
+        }`}
+      >
+        {message}
       </div>
     </div>
   );

@@ -8,13 +8,15 @@ const voucherRouter = require("./voucher.routes");
 const productRouter = require("./product.routes");
 const subcategoryRouter = require("./subcategory.routes");
 const productSizeRouter = require("./productSize.routes");
-const cartRouter = require("./cart.routes");
-const cartItemRouter = require("./cartItem.routes");
+const cartRouter = require('./cart.routes');
+const cartItemRouter = require('./cartItem.routes')
+const orderRouter = require('./order.routes')
 const colorRouter = require("./color.routes");
 
 router.use("/tokens", tokenRouter);
 router.use("/auth", authRouter);
 router.use("/user", userInfoRouter);
+router.use("/orders", orderRouter);
 router.use("/categories", categoryRouter);
 router.use("/collections", collectionRouter);
 router.use("/vouchers", voucherRouter);
