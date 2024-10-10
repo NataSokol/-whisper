@@ -74,7 +74,7 @@ export class UserService {
     phone: string,
     name: string,
     surname: string,
-    birthday: Date,
+    birthday: string | null,
     address: string
   ): Promise<{ user: User }> {
     const response = await axiosInstance.put("/user", {

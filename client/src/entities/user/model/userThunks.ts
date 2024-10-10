@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import { AuthResponse, UserInfoResponse } from ".";
+import { AuthResponse, InfoUser, UserInfoResponse } from ".";
 import { FavoriteResponse, UserService } from "../api";
 
 import { ProductList } from "@/entities/product";
@@ -70,23 +70,15 @@ export const forget = createAsyncThunk<
 
 export const infoUpdate = createAsyncThunk<
   UserInfoResponse,
-  {
-    email: string;
-    phone: string;
-    name: string;
-    surname: string;
-    birthday: Date;
-    address: string;
-  },
+  InfoUser,
   { rejectValue: RejectValue }
->(
+>(  
   "user/infoUpdate",
   async (
     { email, phone, name, surname, birthday, address },
     { rejectWithValue }
   ) => {
     try {
-
       return await UserService.updateInfo(
         email,
         phone,

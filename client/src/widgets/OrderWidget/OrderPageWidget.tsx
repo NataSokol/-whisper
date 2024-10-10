@@ -1,5 +1,5 @@
 import { OrderItemProducts } from "@/entities/order/ui/OrderItem/OrderItemProduct/OrderItemProducts";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
+import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 
 export const OrderPageWidget: React.FC = () => {
   const { currOrder } = useAppSelector((state) => state.order);
