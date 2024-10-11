@@ -99,11 +99,6 @@ export const router = createBrowserRouter([
         path: ROUTES.CART,
         element: <CartPage />,
       },
-
-      {
-        path: ROUTES.ORDER,
-        // element: < />,
-      },
       {
         path: ROUTES.HOME,
         element: <MainPage />,

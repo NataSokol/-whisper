@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
   const handleSearchInputFocus = () => {
     setIsInputFocused(true);
   };
-  };
+  
 
   const debouncedSetSearchValue = useMemo(
     () =>
