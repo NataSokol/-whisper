@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { useCategoryActions } from "@/shared/hooks/useCategoryActions";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import { message } from "antd";
 import styles from "./AdminFormCategory.module.css";
 
 export const AdminFormCategory: React.FC = () => {
-  const { handleCreate } = useCategoryActions(); 
+  const { handleCreate } = useCategoryActions();
   const [title, setTitle] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await handleCreate(title); 
-    setTitle(""); 
+
+    if (title === "") {
+      message.error("Заполните название категории");
+    }
+
+    await handleCreate(title);
+    setTitle("");
   };
 
   return (

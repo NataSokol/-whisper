@@ -28,6 +28,11 @@ exports.createCategory = async (req, res) => {
   try {
     const { title, image } = req.body;
 
+    if(title === '') {
+      res.status(400).json({ message: 'Title is required' });
+      return;
+    }
+
     const category = await CategoryServices.createCategory(title, image);
     if (category) {
       res.status(201).json({ message: 'success', category });
