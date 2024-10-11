@@ -1,19 +1,19 @@
 import React from "react";
 import styles from "./DiscountPage.module.css";
-import { ROUTES } from "@/app/router/routes";
-import { Link } from "react-router-dom";
 
 export const DiscountPage: React.FC = () => {
+  const discount = 0;
+  const maxDiscount = 10;
+  const amountToSpend = 200000;
+
   return (
     <div className={styles.container}>
-      <h1>Собаня!</h1>
-      <p>
-        Этот раздел находится в разработке. Мы работаем над улучшениями и скоро
-        представим его вам. Спасибо за понимание!
+      <p className={styles.title}>ВАША ТЕКУЩАЯ СКИДКА</p>
+      <h1 className={styles.discount}>{discount}%</h1>
+      <p className={styles.description}>ДО СКИДКИ {maxDiscount}%</p>
+      <p className={styles.description}>
+        ОСТАЛОСЬ ПОТРАТИТЬ {amountToSpend.toLocaleString()} РУБ.
       </p>
-      <Link to={ROUTES.HOME} className={styles.link}>
-        Вернуться на главную
-      </Link>
     </div>
   );
 };

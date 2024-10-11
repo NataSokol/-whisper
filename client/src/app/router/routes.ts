@@ -35,6 +35,7 @@ export enum ROUTES {
   SIZECHART = "/size-chart",
   CARD = '/card',
   SALES = '/sales',
+  PLUG = "/plug",
   TG = "https://t.me/shepothome",
   VK = "https://vk.com/shepot.home",
   ERROR = "*",
