@@ -1,15 +1,16 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import styles from "./Navbar.module.css";
 import { Link, useLocation } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import { getAllProducts } from "@/entities/product";
 import { SidebarUser } from "../SidebarUser";
 import { Sidebar } from "../Sidebar";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
-import { getAllProducts } from "@/entities/product";
 import debounce from "lodash.debounce";
+import styles from "./Navbar.module.css";
 
 export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
+  const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const { cart, cartCount } = useAppSelector((state) => state.cart);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -17,13 +18,13 @@ export const Navbar: React.FC = () => {
   const [searchValue, setSearchValue] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [favorites, setFavorites] = useState<number>(1);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
-
-  const { user } = useAppSelector((state) => state.user);
-
   const location = useLocation();
 
+  const handleToggleNavbarVisibility = () => {
+    setIsNavbarVisible((prev) => !prev);
+  };
   const handleSearchClick = () => {
     setIsSearchActive(true);
     setTimeout(() => {
@@ -35,9 +36,6 @@ export const Navbar: React.FC = () => {
   const handleSearchInputFocus = () => {
     setIsInputFocused(true);
   };
-
-  const toggleFavorite = () => {
-    setFavorites((prev) => (prev > 0 ? prev - 1 : 1)); // Пример логики
   };
 
   const debouncedSetSearchValue = useMemo(
@@ -127,6 +125,20 @@ export const Navbar: React.FC = () => {
           isSearchActive ? styles.hideButtons : ""
         }`}
       >
+        {user?.isAdmin && (
+          <Link
+            to={ROUTES.ADMIN}
+            className={`${styles.toggleButton} ${styles.adminButton}`}
+          >
+            <button
+              onClick={handleToggleNavbarVisibility}
+              className={styles.toggleButton}
+            >
+              <img src="../../public/img/admin.svg" alt="admin" />
+            </button>
+          </Link>
+        )}
+        <div className={isNavbarVisible ? "visible" : "hidden"}></div>
         <div
           className={`${styles.searchContainer} ${
             isSearchActive ? styles.active : ""
@@ -167,18 +179,22 @@ export const Navbar: React.FC = () => {
         </div>
         {!isSearchActive && (
           <>
-            <button className={styles.button} onClick={toggleFavorite}>
+            <button className={styles.button}>
               <Link to={ROUTES.FAVORITES} className={styles.favoritesLink}>
                 <img src="../../public/img/favorites.svg" alt="Favorites" />
-                {favorites > 0 && (
-                  <span className={styles.notificationDot}></span>
-                )}
+                <span
+                  className={`${styles.notificationDot} ${
+                    (user?.LikedProducts ?? []).length > 0
+                      ? styles.notificationDotActive
+                      : ""
+                  }`}
+                ></span>
               </Link>
             </button>
 
             <button className={styles.button}>
               {user ? (
-                <Link to={ROUTES.PROFILE}>
+                <Link to={ROUTES.INFO}>
                   <img src="../../public/img/user.svg" alt="" />
                 </Link>
               ) : (

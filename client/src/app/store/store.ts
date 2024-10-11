@@ -6,7 +6,9 @@ import { subCategoryReducer } from "@/entities/subcategory";
 import { productReducer } from "@/entities/product";
 import { cartReducer } from "@/entities/cart";
 import { productSizeReducer } from "@/entities/productsize";
+import { orderReducer } from "@/entities/order";
 import { colorReducer } from '@/entities/color';
+
 
 const store = configureStore({
   reducer: {
@@ -18,7 +20,10 @@ const store = configureStore({
     product: productReducer,
     cart: cartReducer,
     productSize: productSizeReducer,
+    order: orderReducer,
+
     color: colorReducer
+
   },
 });
 

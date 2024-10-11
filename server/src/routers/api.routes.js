@@ -10,11 +10,14 @@ const subcategoryRouter = require("./subcategory.routes");
 const productSizeRouter = require("./productSize.routes");
 const cartRouter = require("./cart.routes");
 const cartItemRouter = require("./cartItem.routes");
+const orderRouter = require("./order.routes");
 const colorRouter = require("./color.routes");
+const errorRouter = require("./error.routes");
 
 router.use("/tokens", tokenRouter);
 router.use("/auth", authRouter);
 router.use("/user", userInfoRouter);
+router.use("/orders", orderRouter);
 router.use("/categories", categoryRouter);
 router.use("/collections", collectionRouter);
 router.use("/vouchers", voucherRouter);
@@ -24,5 +27,7 @@ router.use("/productsizes", productSizeRouter);
 router.use("/cart", cartRouter);
 router.use("/cartItems", cartItemRouter);
 router.use("/colors", colorRouter);
+
+router.use("*", errorRouter);
 
 module.exports = router;

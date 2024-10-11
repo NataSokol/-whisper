@@ -15,17 +15,14 @@ const verifyRefreshToken = (req, res, next) => {
 
 const verifyAccessToken = (req, res, next) => {
   try {
-    // console.log(11111111);
-    // console.log(req.headers);
-    
     const accessToken = req.headers.authorization.split(' ')[1];
-
     const { user } = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
     
     res.locals.user = user;
     next();
   } catch (error) {
     console.error('Invalid access token');
+    
     res.sendStatus(400);
   }
 };

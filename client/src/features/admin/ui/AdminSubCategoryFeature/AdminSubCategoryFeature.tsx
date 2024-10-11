@@ -1,12 +1,13 @@
+import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-import ModalWindow from "@/shared/ui/Modal/Modal";
 import {
   AdminFormSubCategory,
   AdminSubCategoryList,
 } from "@/widgets/AdminWidget";
-import React, { useEffect, useState } from "react";
+import ModalWindow from "@/shared/ui/Modal/Modal";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import styles from "./AdminSubCategoryFeature.module.css";
 
 export const AdminSubCategoryFeature: React.FC = () => {
   const {
@@ -37,7 +38,7 @@ export const AdminSubCategoryFeature: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <AdminFormSubCategory />
       <AdminSubCategoryList
         subcategories={subcategories}
@@ -46,20 +47,33 @@ export const AdminSubCategoryFeature: React.FC = () => {
           setEditingSubCategoryId(id);
           setTitle(subcategories.find((sub) => sub.id === id)?.title ?? "");
           setModalActive(true);
+          setTitle("");
         }}
       />
       <ModalWindow active={modalActive} setActive={setModalActive}>
-        <div>
-          <h2>Редактировать подкатегорию</h2>
+        <div className={styles.modalContent}>
+          <h2 className={styles.modalTitle}>Редактировать подкатегорию</h2>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className={styles.input}
+            placeholder="Введите название подкатегории"
           />
-          <Button theme={ThemeButton.LIGHT} onClick={() => handleUpdate(editingSubCategoryId!)}>
-            Сохранить
-          </Button>
-          <Button theme={ThemeButton.DARK} onClick={() => setModalActive(false)}>Закрыть</Button>
+          <div className={styles.buttons}>
+            <Button
+              theme={ThemeButton.LIGHT}
+              onClick={() => handleUpdate(editingSubCategoryId!)}
+            >
+              Сохранить
+            </Button>
+            <Button
+              theme={ThemeButton.LIGHT}
+              onClick={() => setModalActive(false)}
+            >
+              Закрыть
+            </Button>
+          </div>
         </div>
       </ModalWindow>
     </div>

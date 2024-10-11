@@ -15,8 +15,15 @@
   align-items: center;
 }
 
+.image {
+  width: 40%;
+  transform: scale(1.25);
+  z-index: 1;
+}
+
 .video {
-  width: 100%;
+  width: 60%;
+  z-index: 2;
 }
 
 .catalogLink {
@@ -32,7 +39,7 @@
   bottom: 160px;
 }
 
-.linkOnVideo Button {
+.linkOnVideo button {
   width: 200px;
   height: 50px;
   font-size: 20px;
@@ -42,7 +49,7 @@
   border-radius: var(--border-radius-small);
 }
 
-.linkOnVideo Button:hover {
+.linkOnVideo button:hover {
   background-color: transparent;
   color: var(--secondary-black);
 }
@@ -67,6 +74,7 @@
   font-weight: 400;
   font-size: 20px;
 }
+
 .discountLink {
   width: 100%;
   display: flex;
@@ -106,12 +114,11 @@
 }
 
 .discount p {
-  color: var(--secondary-black);
   color: var(--primary-basic-white);
   font-size: var(--font-size-heading-1);
 }
 
-.discount Button {
+.discount button {
   width: 200px;
   height: 50px;
   font-size: 20px;
@@ -121,7 +128,7 @@
   border-radius: var(--border-radius-small);
 }
 
-.discount Button:hover {
+.discount button:hover {
   background-color: transparent;
   color: var(--secondary-black);
 }

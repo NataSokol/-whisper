@@ -19,8 +19,14 @@ import { FogForm } from "@/features/auth/ui/ForgetPas/FogForm";
 import ResetPassword from "@/pages/ResetPasswordPage/ResetPassword";
 import { UserInfoPage, UserPage } from "@/pages/UserPage";
 import { HistoryPage } from "@/pages/HistoryPage/HistoryPage";
-import { AddressPage } from "@/pages/AddressPage/AddressPage";
+import OrderPage from "@/pages/OrderPage/OrderPage";
 import Layout from "./Layout/Layout";
+import { FavoritePage } from "@/pages/FavoritePage";
+import { ComingSoonPage } from "@/pages/ComingSoonPage";
+import DiscountPage from "@/pages/DiscountPage/DiscountPage";
+import { AdminRoute } from "@/shared/ui/AdminRoute";
+import { NotFoundPage } from "@/pages/NotFoundPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -29,45 +35,72 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.ADMIN,
-        element: <AdminPage />,
-        children: [
-          {
-            path: ROUTES.ADMIN_CATEGORIES,
-            element: <AdminCategoryPage />,
-          },
-          {
-            path: ROUTES.ADMIN_COLLECTIONS,
-            element: <AdminCollectionPage />,
-          },
-
-          {
-            path: ROUTES.ADMIN_SUBCATEGORY,
-            element: <AdminSubCategoryPage />,
-          },
-
-          {
-            path: ROUTES.ADMIN_PRODUCTS,
-            element: <AdminProductPage />,
-          },
-          {
-            path: ROUTES.ADMIN_PRODUCT,
-            element: <AdminOneProductPage />,
-          },
-        ],
+        element: (
+          <AdminRoute>
+            <>
+              <AdminPage />,
+            </>
+          </AdminRoute>
+        ),
       },
-      //   {
-      //     path: ROUTES.AUTH,
-      //     element: (
-      //       <PublicRoute>
-      //         <LoginPage />
-      //       </PublicRoute>
-      //     ),
-      //   },
+      {
+        path: ROUTES.ADMIN_CATEGORIES,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminCategoryPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: ROUTES.ADMIN_COLLECTIONS,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminCollectionPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: ROUTES.ADMIN_SUBCATEGORY,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminSubCategoryPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: ROUTES.ADMIN_PRODUCTS,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminProductPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: ROUTES.ADMIN_PRODUCT,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminOneProductPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
 
       {
         path: ROUTES.CART,
         element: <CartPage />,
       },
+
       {
         path: ROUTES.ORDER,
         // element: < />,
@@ -95,10 +128,10 @@ export const router = createBrowserRouter([
         element: <SignInPage />,
       },
 
-      //   {
-      //     path: ROUTES.FAVORITES,
-      //     element: <FavoritesPage />,
-      //   },
+      {
+        path: ROUTES.FAVORITES,
+        element: <FavoritePage />,
+      },
 
       {
         path: ROUTES.PROFILE,
@@ -112,9 +145,15 @@ export const router = createBrowserRouter([
             path: ROUTES.HISTORY,
             element: <HistoryPage />,
           },
+
           {
-            path: ROUTES.ADRESS,
-            element: <AddressPage />,
+            path: ROUTES.DISCOUNT,
+            element: <DiscountPage />,
+          },
+
+          {
+            path: ROUTES.ORDER,
+            element: <OrderPage />,
           },
         ],
       },
@@ -127,34 +166,69 @@ export const router = createBrowserRouter([
         element: <ResetPassword />,
       },
 
-      // {
-      //   path: `${ROUTES.CATALOG}/:productId`,
-      //   element: < />,
-      // },
-
       {
         path: `${ROUTES.CATALOG}/:productId`,
         element: <ProductPage />,
       },
 
-      //   {
-      //     path: ROUTES.FAVORITES,
-      //     element: <FavoritesPage />,
-      //   },
-
-      //   {
-      //     path: ROUTES.PROFILE,
-      //     element: <ProfilePage />,
-      //   },
       {
         path: ROUTES.CATALOG,
         element: <AllProductsPage />,
       },
 
-      //   {
-      //     path: ROUTES.ERROR,
-      //     element: <ErrorPage />,
-      //   },
+      {
+        path: ROUTES.DELPAY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.REFUND,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.QUESTANSW,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.GIFTCARD,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.LOYALTY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.ABOUT,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.CONTACTS,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.FEEDBACK,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.POLICY,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.OFERTA,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.SIZECHART,
+        element: <ComingSoonPage />,
+      },
+      {
+        path: ROUTES.SALES,
+        element: <ComingSoonPage />,
+      },
+
+      {
+        path: ROUTES.ERROR,
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);

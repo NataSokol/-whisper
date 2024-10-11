@@ -1,0 +1,25 @@
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.adminFormLabel {
+  flex: 1;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.adminFormInput {
+  flex: 2;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.modelButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

@@ -1,11 +1,4 @@
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
 .container {
- 
   position: fixed;
   top: 0;
   width: 100%;
@@ -129,7 +122,7 @@
 }
 
 .favoritesLink {
-  position: relative; 
+  position: relative;
   display: inline-block;
 }
 
@@ -143,11 +136,15 @@
   border-radius: 50%;
   opacity: 0;
   transform: translateX(-16px);
-  animation: fadeIn 0.3s forwards;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notificationDotActive {
+  opacity: 1;
 }
 
 .cartLink {
-  position: relative; 
+  position: relative;
   display: inline-block;
 }
 
@@ -172,7 +169,7 @@
 }
 
 .searchContainer {
-  position: relative; 
+  position: relative;
   width: 0;
   transition: width 0.3s ease;
   margin-right: 25px;
@@ -190,8 +187,8 @@
   z-index: 1000;
   list-style: none;
   padding: 12px;
-  margin: 5px 0 0 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin: 5px 0 0;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
   border-radius: 4px;
   transform: translateY(11px);
 }
@@ -215,7 +212,25 @@
   padding: 10px 15px;
   background-color: white;
   z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   color: #555;
   border-radius: 4px;
+}
+
+.adminButton {
+  text-decoration: none;
+  margin-top: 2.2px;
+}
+
+.toggleButton {
+  background: transparent; 
+  border: none;
+  cursor: pointer; 
+  padding: 0.5rem; 
+  transition: transform 0.3s;
+}
+
+.adminButton img {
+  width: 25px; 
+  height: 40px; 
 }

@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   gap: 100px;
-  padding: 0px 48px;
+  padding: 0 48px;
 }
 
 .linkBack {
@@ -70,7 +70,7 @@
 .accordionItem {
   border-bottom: 0.5px solid var(--secondary-black);
   border-top: 0.5px solid var(--secondary-black);
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 .accordionTitle {

@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  width: 835px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modalTitle {
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  flex: 0 0 140px;
+  margin-right: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.buttons Button {
+  margin-left: 10px;
+}

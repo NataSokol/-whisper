@@ -17,7 +17,7 @@ export const AdminCollectionItem: React.FC<Props> = ({
   
   // const imagePath = `http://localhost:3000${collection.image}`
   const imagePath = `${window.location.origin}${collection.image}`;
-  // console.log(imagePath);
+
 
   return (
     <div className={styles.container}>

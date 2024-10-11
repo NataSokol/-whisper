@@ -1,10 +1,16 @@
 import { axiosInstance, setAccessToken } from "@/shared/lib/axiosInstance";
 import { AuthResponse, User } from "../model";
+import { Product, ProductList } from "@/entities/product";
 
 interface ApiResponse<T> {
   data: T;
   message: string;
 }
+
+export type FavoriteResponse = {
+  message: string;
+  product: Product;
+};
 
 export class UserService {
   static async refreshAccessToken(): Promise<AuthResponse> {
@@ -68,11 +74,9 @@ export class UserService {
     phone: string,
     name: string,
     surname: string,
-    birthday: Date,
+    birthday: string | null,
     address: string
   ): Promise<{ user: User }> {
-    console.log(555, phone, email, name, surname, birthday, address);
-
     const response = await axiosInstance.put("/user", {
       phone,
       email,
@@ -81,6 +85,7 @@ export class UserService {
       birthday,
       address,
     });
+
     setAccessToken(response.data.accessToken);
     return response.data;
   }
@@ -93,6 +98,43 @@ export class UserService {
       setAccessToken("");
     } else {
       throw new Error(data.message);
+    }
+  }
+
+  static async addFavorite(productId: number): Promise<FavoriteResponse> {
+    try {
+      const response = await axiosInstance.post("/user/favorites", {
+        productId,
+      });
+      return response.data;
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.message || error.message || "Неизвестная ошибка";
+      throw new Error(errorMessage);
+    }
+  }
+
+  static async deleteFavorite(productId: number): Promise<FavoriteResponse> {
+    try {
+      const response = await axiosInstance.delete(
+        `/user/favorites/${productId}`
+      );
+      return response.data;
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.message || error.message || "Неизвестная ошибка";
+      throw new Error(errorMessage);
+    }
+  }
+
+  static async getAllFavorites(): Promise<{ likedProducts: ProductList }> {
+    try {
+      const response = await axiosInstance.get("/user/favorites");
+      return response.data;
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.message || error.message || "Неизвестная ошибка";
+      throw new Error(errorMessage);
     }
   }
 }

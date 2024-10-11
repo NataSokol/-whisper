@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import {  useAppSelector } from "@/shared/hooks/useReduxHooks";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "@/shared/hooks/useReduxHooks";
+import { CartItemAddFeature } from "@/features/cart/CartItemFeature";
+import { SliderProduct } from "../SliderProduct";
 import styles from "./ProductPageWidget.module.css";
 import { useNavigate } from "react-router-dom";
 import { CartItemAddFeature } from "@/features/cart/CartItemFeature";
@@ -10,7 +13,7 @@ export const ProductPageWidget: React.FC = () => {
 
   const [descriptionActive, setDescriptionActive] = useState(false);
   const [compositionActive, setCompositionActive] = useState(false);
-  
+
   return (
     <>
       <div className={styles.linkBack} onClick={() => navigate(-1)}>
@@ -18,11 +21,9 @@ export const ProductPageWidget: React.FC = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.imagesContainer}>
-          <img
-            className={styles.imageContainer}
-            src={currProduct?.Images[0]?.url}
-            alt="фото товара"
-          />
+          {currProduct?.Images && (
+            <SliderProduct productImages={currProduct.Images} />
+          )}
           <div className={styles.imgCarousel}></div>
         </div>
 

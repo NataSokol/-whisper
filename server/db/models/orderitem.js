@@ -2,11 +2,11 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class OrderItem extends Model {
-    static associate({ Order,  Product , ProductSize, ColorProduct}) {
-        this.belongsTo(Order, { foreignKey: "orederId" });
-        this.belongsTo(Product, { foreignKey: "productId" });
-        this.belongsTo(ProductSize, { foreignKey: "productSizeId" });
-        this.belongsTo(ColorProduct, { foreignKey: "productColorId" });
+    static associate({ Order, Product, ProductSize, ColorProduct }) {
+      this.belongsTo(Order, { foreignKey: "orderId" });
+      this.belongsTo(Product, { foreignKey: "productId" });
+      this.belongsTo(ProductSize, { foreignKey: "productSizeId" });
+      this.belongsTo(ColorProduct, { foreignKey: "productColorId" });
     }
   }
   OrderItem.init(
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         references: {
           model: "Products",
-          key: "id",    
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",

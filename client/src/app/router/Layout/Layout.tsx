@@ -1,43 +1,44 @@
 import React, { useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import { Footer } from "@/widgets/Footer";
 import { Navbar } from "@/widgets/Navbar";
-import { Outlet } from "react-router-dom";
 import { useAppDispatch } from "@/shared/hooks/reduxHooks";
 import { SocialMediaButton } from "@/shared/ui/SocialMediaButton";
 import { refreshAccessToken } from "@/entities/user";
-import { NavbarAdmin } from "@/widgets/NavbarAdmin";
+import { fetchLikedProducts } from "@/entities/user/model/userThunks";
+import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import styles from "./Layout.module.css";
 import { getCart } from "@/entities/cart";
-import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 
-interface LayoutProps {
-  isAdmin?: boolean;
-}
-const Layout: React.FC<LayoutProps> = ({ isAdmin = false }) => {
+const Layout: React.FC = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
   const {cartCount} = useAppSelector((state) => state.cart);
-
-  useEffect(() => {
+  
+    useEffect(() => {
     if (user?.id){
       dispatch(getCart());
     }
   }, [dispatch, user?.id, cartCount]);
 
+  
   useEffect(() => {
     dispatch(refreshAccessToken());
-  }, [dispatch]);  
+    if (user?.id) {
+      dispatch(fetchLikedProducts());
+    }
+  }, [dispatch, user?.id]);
+
 
   return (
-    <>
+    <div className={styles.container}>
       <Navbar />
-      {isAdmin && <NavbarAdmin />}
       <main className={styles.root}>
         <Outlet />
       </main>
       <Footer />
       <SocialMediaButton />
-    </>
+    </div>
   );
 };
 

@@ -72,7 +72,7 @@ export const SidebarUser: React.FC = () => {
         className={`${styles.sidebarButtonUser} ${isOpen ? styles.opened : ""}`}
         ref={buttonRef}
       >
-        <img  src="../../public/img/user.svg" alt="user" />
+        <img src="../../public/img/user.svg" alt="user" />
       </button>
       {isOpen && <div className={styles.overlay} onClick={toggleSidebar}></div>}
 
@@ -83,9 +83,7 @@ export const SidebarUser: React.FC = () => {
         <div className={styles.conteinerRegist}>
           <div className={styles.conteinerRegistSenter}>
             {!isFogActive && (
-              <h2 style={{ width: "100%", textAlign: "center" }}>
-                ВХОД ИЛИ РЕГИСТРАЦИЯ
-              </h2>
+              <h2 className={styles.header}>ВХОД ИЛИ РЕГИСТРАЦИЯ</h2>
             )}
 
             {!isFogActive && (
@@ -120,11 +118,7 @@ export const SidebarUser: React.FC = () => {
             </div>
 
             {!isFogActive && isForgotPasswordVisible && (
-              <div
-                className={styles.fogPassword}
-                onClick={handleFogClick}
-                style={{ cursor: "pointer", color: "gray" }}
-              >
+              <div className={styles.fogPassword} onClick={handleFogClick}>
                 Забыли пароль?
               </div>
             )}

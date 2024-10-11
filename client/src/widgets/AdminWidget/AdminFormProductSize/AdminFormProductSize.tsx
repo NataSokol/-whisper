@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProductSizeActions } from "@/shared/hooks/useProductSizeActions";
 import { useProductAction } from "@/shared/hooks/useProductAction";
-import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import ModalWindow from "@/shared/ui/Modal/Modal";
 import styles from "./AdminFormProductSize.module.css";
@@ -24,10 +23,6 @@ export const AdminFormProductSize: React.FC = () => {
   const [sleeveLength, setSleeveLength] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [isModalActive, setIsModalActive] = useState(false);
-
-  //!!! ПОПРОБОВАТЬ ПО ДРУГОМУ
-  const productSizes =
-    useAppSelector((state) => state.product.currProduct?.ProductSizes) || [];
 
   useEffect(() => {
     if (productId) {
@@ -52,144 +47,153 @@ export const AdminFormProductSize: React.FC = () => {
       sleeveLength,
       quantity,
     });
+
+    setSizeTitle("");
+    setLength(0);
+    setWidth(0);
+    setChestGirth(0);
+    setChestUnderGirth(0);
+    setExternalSeamLength(0);
+    setFrontLength(0);
+    setHipGirth(0);
+    setInnerSeamLength(0);
+    setWaistGirth(0);
+    setSleeveLength(0);
+    setQuantity(0);
+
     getProduct(Number(productId));
     setIsModalActive(false);
   };
 
   return (
-    <div className={styles.container}>
-      {productSizes.length === 0 && (
+    <div className={styles.adminFormContainer}>
+      {
         <Button
           theme={ThemeButton.LIGHT}
           onClick={() => setIsModalActive(true)}
         >
           Добавить размеры
         </Button>
-      )}
+      }
       <ModalWindow active={isModalActive} setActive={setIsModalActive}>
         <form onSubmit={handleSubmit}>
-          <label>
-            Доступные размеры:
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Доступные размеры:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="text"
               value={sizeTitle}
               onChange={(e) => setSizeTitle(e.target.value)}
             />
-          </label>
-          <label>
-            Длина:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Длина:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={length}
               onChange={(e) => setLength(+e.target.value)}
             />
-          </label>
-          <label>
-            Ширина:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Ширина:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={width}
               onChange={(e) => setWidth(+e.target.value)}
             />
-          </label>
-          <label>
-            Грудная обхват:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Грудная обхват:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={chestGirth}
               onChange={(e) => setChestGirth(+e.target.value)}
             />
-          </label>
-          <label>
-            Обхват под грудью:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Обхват под грудью:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={chestUnderGirth}
               onChange={(e) => setChestUnderGirth(+e.target.value)}
             />
-          </label>
-          <label>
-            Длина внешнего шва:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Длина внешнего шва:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={externalSeamLength}
               onChange={(e) => setExternalSeamLength(+e.target.value)}
             />
-          </label>
-          <label>
-            Передняя длина:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Передняя длина:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={frontLength}
               onChange={(e) => setFrontLength(+e.target.value)}
             />
-          </label>
-          <label>
-            Обхват бедер:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Обхват бедер:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={hipGirth}
               onChange={(e) => setHipGirth(+e.target.value)}
             />
-          </label>
-          <label>
-            Длина внутреннего шва:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>
+              Длина внутреннего шва:
+            </label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={innerSeamLength}
               onChange={(e) => setInnerSeamLength(+e.target.value)}
             />
-          </label>
-          <label>
-            Обхват талии:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Обхват талии:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={waistGirth}
               onChange={(e) => setWaistGirth(+e.target.value)}
             />
-          </label>
-          <label>
-            Длина рукава:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Длина рукава:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={sleeveLength}
               onChange={(e) => setSleeveLength(+e.target.value)}
             />
-          </label>
-          <label>
-            Количество:
+          </div>
+          <div className={styles.formGroup}>
+            <label className={styles.adminFormLabel}>Количество:</label>
             <input
-              className={styles.input}
+              className={styles.adminFormInput}
               type="number"
               value={quantity}
               onChange={(e) => setQuantity(+e.target.value)}
             />
-          </label>
-          <Button type="submit" theme={ThemeButton.LIGHT}>
-            Добавить
-          </Button>
-          <Button
-            type="button"
-            theme={ThemeButton.DARK}
-            onClick={() => setIsModalActive(false)}
-          >
-            Закрыть
-          </Button>
+          </div>
+          <div className={styles.modelButton}>
+            <Button theme={ThemeButton.LIGHT} type="submit">
+              Создать
+            </Button>
+          </div>
         </form>
       </ModalWindow>
     </div>
   );
 };
-
-export default AdminFormProductSize;
