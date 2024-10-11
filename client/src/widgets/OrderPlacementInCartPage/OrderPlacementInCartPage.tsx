@@ -58,7 +58,7 @@ export const OrderPlacementInCartPage: React.FC<
         <p>{cart?.salePrice}₽</p>
       </div>
       </div>
-      <Link to={ROUTES.ORDER}>
+      <Link to={ROUTES.PLUG}>
         <Button theme={ThemeButton.DARK}>перейти к оформлению</Button>
       </Link>
     </div>

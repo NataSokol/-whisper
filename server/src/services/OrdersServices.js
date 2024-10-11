@@ -4,7 +4,8 @@ const {
   Product,
   ProductSize,
   ColorProduct,
-  Color
+  Color,
+  Image
 } = require("../../db/models");
 
 class OrdersServices {
@@ -39,6 +40,11 @@ class OrdersServices {
               {
                 model: Product,
                 attributes: ["title", "description", "price"],
+                include: [
+                  {
+                    model: Image,
+                  }
+                ]
               },
               {
                 model: ProductSize,
