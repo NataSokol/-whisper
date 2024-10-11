@@ -9,7 +9,7 @@
 }
 
 .button {
-  background-color: var(--primary-light-gray);
+  background-color: var(--primary-basic-white);
   border: none;
   padding: 12px;
   font-size: 1rem;
