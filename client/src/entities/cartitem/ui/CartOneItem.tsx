@@ -62,9 +62,9 @@ export const CartOneItem: React.FC<Props> = ({
           )}
         </div>
         <div className={styles.cartItemCounter}>
-          <button onClick={() => onHandleDecreaseQuantity(cartItem)}>-</button>
-          <p className={styles.cartItemDetails}>{cartItem.quantity}</p>
-          <button onClick={() => onHandleIncreaseQuantity(cartItem)}>+</button>
+          <button className={styles.counterButton} onClick={() => onHandleDecreaseQuantity(cartItem)}>-</button>
+          <p className={styles.counter}>{cartItem.quantity}</p>
+          <button className={styles.counterButton} onClick={() => onHandleIncreaseQuantity(cartItem)}>+</button>
         </div>
       </div>
     </div>

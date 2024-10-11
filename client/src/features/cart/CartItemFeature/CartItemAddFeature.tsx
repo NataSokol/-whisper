@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./CartItemAddFeature.module.css";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import ModalWindow from "@/shared/ui/Modal/Modal";
@@ -9,6 +9,7 @@ import { createCartItem, updateCartItem } from "@/entities/cartitem";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "@/app/router/routes";
+import { message } from "antd";
 
 export const CartItemAddFeature: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
@@ -21,24 +22,16 @@ export const CartItemAddFeature: React.FC = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cart);
 
-  // useEffect(() => {
-  //   getProductList();
-  // }, [getProductList]);
-
   const currCartItem = cart?.CartItems?.find(
     (cartItem) =>
       cartItem.productColorId === selectedColor &&
       cartItem.productSizeId === selectedSize?.id
   );
 
-   console.log(selectedSize);
-   console.log(currCartItem?.productId, '123123');
-   
-
     
   const onHandleCrateCartItem = async (
     e: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  ): Promise< void> => {
     e.preventDefault();
     if (!currProduct || !cart) {
       return;
@@ -60,6 +53,7 @@ export const CartItemAddFeature: React.FC = () => {
             },
           ])
         );
+        message.success("Товар добавлен в корзину");
         unwrapResult(resultAction);
       } else {
         const resultAction = await dispatch(
@@ -82,11 +76,11 @@ export const CartItemAddFeature: React.FC = () => {
             ])
           );
         }
-
+        message.success("Товар добавлен в корзину");
         unwrapResult(resultAction);
       }
     } else {
-      alert("Выберите цвет и размер");
+      message.error("Выберите размер и цвет");
     }
   };
 
