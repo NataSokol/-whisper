@@ -16,6 +16,7 @@ type ProductState = {
   error: string | null;
   filter: {
     categoryId: number | null;
+    subcategoryId: number | null;
   };
 };
 
@@ -26,6 +27,7 @@ const initialState: ProductState = {
   error: null,
   filter: {
     categoryId: null,
+    subcategoryId: null,
   },
 };
 
@@ -43,6 +45,9 @@ const productSlice = createSlice({
         }
         state.currProduct.Colors.push(action.payload);
       }
+    },
+    setSubcategoryFilter(state, action: PayloadAction<number | null>) {
+      state.filter.subcategoryId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -123,4 +128,5 @@ const productSlice = createSlice({
 
 export const { addColorToProduct } = productSlice.actions;
 export const { setCategoryFilter } = productSlice.actions;
+export const { setSubcategoryFilter } = productSlice.actions;
 export default productSlice.reducer;

@@ -29,9 +29,9 @@ export const UserProductList: React.FC = () => {
     { value: "expensiveFirst", label: "СНАЧАЛА ДОРОЖЕ" },
   ];
 
-  const filteredProducts = filter.categoryId
+  const filteredProducts = filter.subcategoryId
     ? sortedProducts.filter(
-        (product) => product.categoryId === filter.categoryId
+        (product) => product.subcategoryId === filter.subcategoryId
       )
     : sortedProducts;
 
@@ -52,7 +52,7 @@ export const UserProductList: React.FC = () => {
       </div>
       <div className={styles.productList}>
         {filteredProducts.map((product) => (
-          <UserProductItem key={product.id} product={product}  />
+          <UserProductItem key={product.id} product={product}/>
         ))}
       </div>
     </div>

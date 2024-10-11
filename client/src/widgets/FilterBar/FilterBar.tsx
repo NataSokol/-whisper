@@ -2,18 +2,26 @@ import React, { useEffect, useState } from "react";
 import styles from "./FilterBar.module.css";
 import { InlineDropdown } from "@/shared/ui/Dropdown";
 import { Link, useLocation } from "react-router-dom";
-import { useAppDispatch } from "@/shared/hooks/useReduxHooks";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { getAllProducts } from "@/entities/product";
-import { setCategoryFilter } from "@/entities/product/model/productSlice";
+import { setSubcategoryFilter } from "@/entities/product/model/productSlice";
 import { ROUTES } from "@/app/router/routes";
+import { Subcategory } from "@/entities/subcategory";
 
 export const FilterBar: React.FC = () => {
   const [size, setSize] = useState<string[]>([]);
   const [color, setColor] = useState<string[]>([]);
   const [material, setMaterial] = useState<string[]>([]);
   const [inStock, setInStock] = useState<boolean>(false);
+  const { products } = useAppSelector((state) => state.product);
   const location = useLocation();
   const dispatch = useAppDispatch();
+
+  const uniqueSubcategories: Subcategory[] = Array.from(
+    new Map(
+      products.map((product) => [product.Subcategory.id, product.Subcategory])
+    ).values()
+  );
 
   const sizeOptions = [
     { value: "oneSize", label: "ONE SIZE" },
@@ -36,11 +44,11 @@ export const FilterBar: React.FC = () => {
     setColor([]);
     setMaterial([]);
     setInStock(false);
-    dispatch(setCategoryFilter(null));
+    dispatch(setSubcategoryFilter(null));
   };
 
-  const handleCategoryClick = (categoryId: number | null) => {
-    dispatch(setCategoryFilter(categoryId));
+  const handleSubCategoryClick = (subcategoryId: number | null) => {
+    dispatch(setSubcategoryFilter(subcategoryId));
   };
 
   useEffect(() => {
@@ -48,7 +56,7 @@ export const FilterBar: React.FC = () => {
     setColor([]);
     setMaterial([]);
     setInStock(false);
-    dispatch(setCategoryFilter(null));
+    dispatch(setSubcategoryFilter(null));
   }, [location, dispatch]);
 
   useEffect(() => {
@@ -60,40 +68,26 @@ export const FilterBar: React.FC = () => {
       <ul className={styles.categoryList}>
         <li className={styles.categoryItem}>
           <button
-            onClick={() => handleCategoryClick(null)}
+            onClick={() => handleSubCategoryClick(null)}
             className={styles.categoryButton}
           >
             ВСЕ ТОВАРЫ
           </button>
         </li>
-        <li className={styles.categoryItem}>
-          <button
-            onClick={() => handleCategoryClick(1)}
-            className={styles.categoryButton}
-          >
-            КОСТЮМЫ
-          </button>
-        </li>
-        <li className={styles.categoryItem}>
-          <button
-            onClick={() => handleCategoryClick(2)}
-            className={styles.categoryButton}
-          >
-            ФУТБОЛКИ
-          </button>
-        </li>
-        <li className={styles.categoryItem}>
-          <button
-            onClick={() => handleCategoryClick(3)}
-            className={styles.categoryButton}
-          >
-            ДЛЯ СПОРТА
-          </button>
-        </li>
+        {uniqueSubcategories.map((subcategory) => (
+          <li key={subcategory.id} className={styles.categoryItem}>
+            <button
+              onClick={() => handleSubCategoryClick(subcategory.id)}
+              className={styles.categoryButton}
+            >
+              {subcategory.title.toUpperCase()}
+            </button>
+          </li>
+        ))}
         <li className={`${styles.categoryItem} `}>
           <Link to={ROUTES.SALES}>
             <button
-              onClick={() => handleCategoryClick(null)}
+              onClick={() => handleSubCategoryClick(null)}
               className={`${styles.categoryButton} ${styles.saleButton}`}
             >
               SALE

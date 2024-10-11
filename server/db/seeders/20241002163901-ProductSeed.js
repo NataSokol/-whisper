@@ -68,7 +68,7 @@ module.exports = {
           composition: "100% хлопок",
           collectionId: 1,
           categoryId: 2,
-          subcategoryId: 3,
+          subcategoryId: 2,
         },
         {
           title: "Легкая рубашка для сна с узором звезд",
@@ -77,7 +77,7 @@ module.exports = {
           composition: "95% вискоза, 5% эластан",
           collectionId: 1,
           categoryId: 2,
-          subcategoryId: 3,
+          subcategoryId: 2,
         },
         {
           title: "Теплая рубашка для сна с длинным рукавом",
@@ -86,7 +86,7 @@ module.exports = {
           composition: "80% акрил, 20% шерсть",
           collectionId: 2,
           categoryId: 2,
-          subcategoryId: 3,
+          subcategoryId: 2,
         },
         {
           title: "Шелковая рубашка для сна с кружевным украшением",
@@ -95,7 +95,7 @@ module.exports = {
           composition: "100% шелк",
           collectionId: 2,
           categoryId: 2,
-          subcategoryId: 3,
+          subcategoryId: 2,
         },
         {
           title: "Рубашка-пижама с принтом цветов",
@@ -107,7 +107,7 @@ module.exports = {
           subcategoryId: 3,
         },
         {
-          title: "Спортивная рубашка для сна с капюшоном",
+          title: "Пижама для сна с капюшоном",
           price: 1699,
           description: "Современная спортивная рубашка для сна с капюшоном, отлично подойдет для активного отдыха дома.",
           composition: "70% хлопок, 30% полиэстер",
@@ -123,9 +123,6 @@ module.exports = {
           collectionId: 1,
           categoryId: 2,
           subcategoryId: 4,
-
-        
-
         },
         {
           title: "Летние шорты ",
@@ -170,7 +167,7 @@ module.exports = {
           composition: "100% лен",
           collectionId: 3,
           categoryId: 2,
-          subcategoryId: 3,
+          subcategoryId: 4,
         },
         {
           title: "Легинсы для фитнеса с высокой талией",
@@ -280,8 +277,6 @@ module.exports = {
           categoryId: 3,
           subcategoryId: 6,
         },
-
-
       ],
       {}
     );
