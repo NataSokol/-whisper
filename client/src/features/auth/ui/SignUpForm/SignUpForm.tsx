@@ -15,9 +15,6 @@ import { checkEmailExists } from "@/shared/utils/checkEmailExists";
 
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
-
-
-
 export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -74,7 +71,7 @@ export const SignUpForm: React.FC = () => {
 
       if (typeof error === "string") {
         setErrors((prev) => [...prev, error]);
-      } else if (error.message && error.message) {
+      } else if (error instanceof Error && error.message) {
         setErrors((prev) => [
           ...prev,
           error.message ||
@@ -91,40 +88,47 @@ export const SignUpForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-    <div className="form-container">
-      <div className="input-group">
-        <input
-          className="input-group2 custom-input"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder=" "
-        />
-        <label className="floating-label">Email:</label>
-      </div>
-
-      <div className="input-group">
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder=" "
-          className="custom-input"
-        />
-        <label className="floating-label">Password:</label>
-        <div className={`error-messages ${errors.length > 0 ? 'active' : ''}`}>
-          {errors.map((error, index) => (
-            <p key={index} className="error-message">
-              {error}
-            </p>
-          ))}
+      <div className="form-container">
+        <div className="input-group">
+          <input
+            className="input-group2 custom-input"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder=" "
+          />
+          <label className="floating-label">Email:</label>
         </div>
-      </div>
 
-      <Button theme={ThemeButton.DARK} type="submit" disabled={loading} className="submit-button">
+        <div className="input-group">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder=" "
+            className="custom-input"
+          />
+          <label className="floating-label">Password:</label>
+          <div
+            className={`error-messages ${errors.length > 0 ? "active" : ""}`}
+          >
+            {errors.map((error, index) => (
+              <p key={index} className="error-message">
+                {error}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        <Button
+          theme={ThemeButton.DARK}
+          type="submit"
+          disabled={loading}
+          className="submit-button"
+        >
           {loading ? "ЗАРЕГИСТРИРОВАТЬСЯ..." : "ЗАРЕГИСТРИРОВАТЬСЯ"}
         </Button>
-    </div>
-  </form>
+      </div>
+    </form>
   );
 };

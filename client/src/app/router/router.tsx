@@ -24,6 +24,9 @@ import Layout from "./Layout/Layout";
 import { FavoritePage } from "@/pages/FavoritePage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
 import DiscountPage from "@/pages/DiscountPage/DiscountPage";
+import { AdminRoute } from "@/shared/ui/AdminRoute";
+import { NotFoundPage } from "@/pages/NotFoundPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -32,31 +35,65 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.ADMIN,
-        element: <AdminPage />,
-        children: [
-          {
-            path: ROUTES.ADMIN_CATEGORIES,
-            element: <AdminCategoryPage />,
-          },
-          {
-            path: ROUTES.ADMIN_COLLECTIONS,
-            element: <AdminCollectionPage />,
-          },
+        element: (
+          <AdminRoute>
+            <>
+              <AdminPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: ROUTES.ADMIN_CATEGORIES,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminCategoryPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: ROUTES.ADMIN_COLLECTIONS,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminCollectionPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
 
-          {
-            path: ROUTES.ADMIN_SUBCATEGORY,
-            element: <AdminSubCategoryPage />,
-          },
+      {
+        path: ROUTES.ADMIN_SUBCATEGORY,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminSubCategoryPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
 
-          {
-            path: ROUTES.ADMIN_PRODUCTS,
-            element: <AdminProductPage />,
-          },
-          {
-            path: ROUTES.ADMIN_PRODUCT,
-            element: <AdminOneProductPage />,
-          },
-        ],
+      {
+        path: ROUTES.ADMIN_PRODUCTS,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminProductPage />,
+            </>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: ROUTES.ADMIN_PRODUCT,
+        element: (
+          <AdminRoute>
+            <>
+              <AdminOneProductPage />,
+            </>
+          </AdminRoute>
+        ),
       },
 
       {
@@ -109,6 +146,7 @@ export const router = createBrowserRouter([
             path: ROUTES.DISCOUNT,
             element: <DiscountPage />,
           },
+
           {
             path: ROUTES.ORDER,
             element: <OrderPage />,
@@ -123,11 +161,6 @@ export const router = createBrowserRouter([
         path: ROUTES.CHANGE,
         element: <ResetPassword />,
       },
-
-      // {
-      //   path: `${ROUTES.CATALOG}/:productId`,
-      //   element: < />,
-      // },
 
       {
         path: `${ROUTES.CATALOG}/:productId`,
@@ -183,11 +216,15 @@ export const router = createBrowserRouter([
         path: ROUTES.SIZECHART,
         element: <ComingSoonPage />,
       },
+      {
+        path: ROUTES.SALES,
+        element: <ComingSoonPage />,
+      },
 
-      //   {
-      //     path: ROUTES.ERROR,
-      //     element: <ErrorPage />,
-      //   },
+      {
+        path: ROUTES.ERROR,
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);

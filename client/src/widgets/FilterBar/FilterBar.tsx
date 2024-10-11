@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./FilterBar.module.css";
 import { InlineDropdown } from "@/shared/ui/Dropdown";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAppDispatch } from "@/shared/hooks/useReduxHooks";
 import { getAllProducts } from "@/entities/product";
 import { setCategoryFilter } from "@/entities/product/model/productSlice";
+import { ROUTES } from "@/app/router/routes";
 
 export const FilterBar: React.FC = () => {
   const [size, setSize] = useState<string[]>([]);
@@ -83,14 +84,6 @@ export const FilterBar: React.FC = () => {
         </li>
         <li className={styles.categoryItem}>
           <button
-            onClick={() => handleCategoryClick(4)}
-            className={styles.categoryButton}
-          >
-            ПИЖАМЫ
-          </button>
-        </li>
-        <li className={styles.categoryItem}>
-          <button
             onClick={() => handleCategoryClick(3)}
             className={styles.categoryButton}
           >
@@ -98,12 +91,14 @@ export const FilterBar: React.FC = () => {
           </button>
         </li>
         <li className={`${styles.categoryItem} `}>
-          <button
-            onClick={() => handleCategoryClick(null)}
-            className={`${styles.categoryButton} ${styles.saleButton}`}
-          >
-            SALE
-          </button>
+          <Link to={ROUTES.SALES}>
+            <button
+              onClick={() => handleCategoryClick(null)}
+              className={`${styles.categoryButton} ${styles.saleButton}`}
+            >
+              SALE
+            </button>
+          </Link>
         </li>
       </ul>
 

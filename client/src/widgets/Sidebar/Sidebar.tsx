@@ -163,9 +163,6 @@ export const Sidebar: React.FC = () => {
             <li>
               <div className={styles.sidebarItem}>ФУТБОЛКИ</div>
             </li>
-            <li>
-              <div className={styles.sidebarItem}>КРОССОВКИ</div>
-            </li>
           </ul>
         )}
         {activeSubMenu === "collections" && (

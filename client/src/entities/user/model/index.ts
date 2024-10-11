@@ -23,3 +23,12 @@ export type UserInfoResponse = {
   user: User;
   // message: string;
 };
+
+export type InfoUser = {
+  email: string;
+  phone: string;
+  name: string;
+  surname: string;
+  birthday: string;
+  address: string;
+}

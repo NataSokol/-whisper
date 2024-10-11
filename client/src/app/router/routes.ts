@@ -33,6 +33,8 @@ export enum ROUTES {
   POLICY = "/policy",
   OFERTA = "/oferta",
   SIZECHART = "/size-chart",
+  CARD = '/card',
+  SALES = '/sales',
   TG = "https://t.me/shepothome",
   VK = "https://vk.com/shepot.home",
   ERROR = "*",

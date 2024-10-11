@@ -123,6 +123,9 @@ module.exports = {
           collectionId: 1,
           categoryId: 2,
           subcategoryId: 4,
+
+        
+
         },
         {
           title: "Летние шорты ",
@@ -167,7 +170,7 @@ module.exports = {
           composition: "100% лен",
           collectionId: 3,
           categoryId: 2,
-          subcategoryId: 4,
+          subcategoryId: 3,
         },
         {
           title: "Легинсы для фитнеса с высокой талией",
