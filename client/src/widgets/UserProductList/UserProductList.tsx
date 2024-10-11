@@ -4,11 +4,16 @@ import { useAppDispatch, useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { getAllProducts } from "@/entities/product";
 import { UserProductItem } from "@/entities/product/ui";
 import { CustomSelect } from "@/shared/ui/Select";
+import { useSearchParams } from "react-router-dom";
 
 export const UserProductList: React.FC = () => {
   const dispatch = useAppDispatch();
+  let [searchParams] = useSearchParams();
   const { products, filter } = useAppSelector((state) => state.product);
   const [sortOption, setSortOption] = useState("");
+
+  console.log(products);
+  
 
   const handleSortChange = (value: string) => {
     setSortOption(value);
@@ -36,7 +41,11 @@ export const UserProductList: React.FC = () => {
     : sortedProducts;
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    console.log(searchParams);
+    const collectionId = searchParams.get("collection");
+    if (collectionId) {
+      dispatch(getAllProducts({collectionId: Number(collectionId)}));
+    }
   }, [dispatch]);
 
   return (

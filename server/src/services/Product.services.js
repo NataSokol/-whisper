@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const {
   Product,
   Collection,
@@ -10,8 +11,24 @@ const {
 
 class ProductServices {
   // получить все продукты
-  static getAllProducts = async () => {
+  static getAllProducts = async (query) => {
+    console.log(11111111111111, query);
+    if (Object.keys(query).length === 0) {
+      const products = await Product.findAll({
+        include: [
+          { model: Collection },
+          { model: Category },
+          { model: Subcategory },
+          { model: Color },
+          { model: Image },
+          { model: ProductSize },
+        ],
+        
+      });
+      return products.map((product) => product.get());
+    }
     const products = await Product.findAll({
+      where: {collectionId: +query.collectionId},
       include: [
         { model: Collection },
         { model: Category },
@@ -20,7 +37,9 @@ class ProductServices {
         { model: Image },
         { model: ProductSize },
       ],
+      
     });
+    console.log(products);
     return products.map((product) => product.get());
   };
 

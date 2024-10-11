@@ -53,7 +53,9 @@ export const Slider: React.FC<Props> = ({
               <div className={styles.collectionInfo}>
                 <h2 className={styles.collectionTitle}>{collectionTitle[i]}</h2>
                 <Link
-                  to={`${ROUTES.COLLECTION}/${collectionId[i]}`}
+                  // to={`${ROUTES.COLLECTION}/${collectionId[i]}`}
+
+                  to={`${ROUTES.CATALOG}/?collection=${collectionId[i]}`}
                   className={styles.collectionLink}
                 >
                   Посмотреть
