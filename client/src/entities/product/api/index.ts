@@ -2,8 +2,10 @@ import { axiosInstance } from "@/shared/lib/axiosInstance";
 import { OneProductResponse, Product } from "../model";
 
 export class ProductServices {
-  static async getAllProducts() {
-    const response = await axiosInstance.get("/products");
+  static async getAllProducts(params={}) {
+    const response = await axiosInstance.get("/products", {
+      params
+    });
     if (response.status === 200) {
       return response.data;
     } else {
