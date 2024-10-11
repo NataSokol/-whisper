@@ -5,6 +5,7 @@ const {
   ProductSize,
   ColorProduct,
   Color,
+  Image
 } = require("../../db/models");
 
 class CartServices {
@@ -19,7 +20,8 @@ class CartServices {
                   include: [
                     {
                       model: Product,
-                      attributes: ["title", "description", "price"],
+                      attributes: ["title", "description", "price", "salePrice"],
+                      include: {model: Image, attributes: ["url"]},
                     },
                     {
                       model: ProductSize,
@@ -61,17 +63,18 @@ class CartServices {
       console.log(error);
     }
   };
-    static createCart = async (userId) => {
-      let cart = await Cart.create({ userId, total: 0, salePrice: 0});
-      cart = await Cart.findOne({  id: cart.id, where: { userId } })
-      return cart ? cart.get() : null;
-    };
+    // static createCart = async (userId) => {
+    //   let cart = await Cart.create({ userId, total: 0, salePrice: 0});
+    //   // cart = await Cart.findOne({  id: cart.id, where: { userId } })
+    //   cart = await this.getCartByUserId(userId)
+    //   return cart ? cart.get() : null;
+    // };
 
     static updateCart = async (id, userId,  total, salePrice ) => {
       const cart = await Cart.findOne({ where: { id , userId} });
       if (cart) {
         await cart.update({ total, salePrice });
-        return cart.get();
+        return this.getCartByUserId(userId)
       }
       return null;
     };

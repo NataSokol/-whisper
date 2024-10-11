@@ -1,4 +1,6 @@
+import { Cart } from "@/entities/cart";
 import { ProductList } from "@/entities/product";
+
 
 export type User = {
   id: number ;
@@ -17,6 +19,7 @@ export type User = {
 export type AuthResponse = {
   accessToken: string;
   user: User;
+  cart: Cart | null
 };
 
 export type UserInfoResponse = {

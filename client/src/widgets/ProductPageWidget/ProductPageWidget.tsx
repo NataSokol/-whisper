@@ -4,6 +4,8 @@ import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import { CartItemAddFeature } from "@/features/cart/CartItemFeature";
 import { SliderProduct } from "../SliderProduct";
 import styles from "./ProductPageWidget.module.css";
+import { useNavigate } from "react-router-dom";
+import { CartItemAddFeature } from "@/features/cart/CartItemFeature";
 
 export const ProductPageWidget: React.FC = () => {
   const { currProduct } = useAppSelector((state) => state.product);
@@ -29,8 +31,8 @@ export const ProductPageWidget: React.FC = () => {
           <div className={styles.mainInfo}>
             <div>{currProduct?.title}</div>
             <div className={styles.price}>
-              <div>{currProduct?.price}</div>
-              <div>{currProduct?.salePrice}</div>
+              <div className={styles.basePrice} style={{ textDecoration: currProduct?.salePrice ? "line-through" : 'none'}}>{currProduct?.price} ₽</div>
+              {currProduct?.salePrice && <div className={styles.salePrice}>{currProduct?.salePrice} ₽</div>}
             </div>
           </div>
           <CartItemAddFeature />

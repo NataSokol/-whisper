@@ -10,6 +10,7 @@ import {
 import { signIn } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import { getCart } from "@/entities/cart";
 
 export const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ export const SignInForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const loading = useAppSelector(selectUserLoading);
+  const {user} = useAppSelector((state) => state.user);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -25,6 +27,10 @@ export const SignInForm: React.FC = () => {
     try {
       const resultAction = await dispatch(signIn({ email, password }));
       unwrapResult(resultAction);
+      if (user) {
+        const userCart = await dispatch(getCart())
+        unwrapResult(userCart)
+      }
       navigate(ROUTES.HOME);
     } catch (error) {
       setError((error as Error).message || "Неизвестная ошибка при входе.");

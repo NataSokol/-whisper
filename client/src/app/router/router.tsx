@@ -102,6 +102,10 @@ export const router = createBrowserRouter([
       },
 
       {
+        path: ROUTES.ORDER,
+        // element: < />,
+      },
+      {
         path: ROUTES.HOME,
         element: <MainPage />,
       },

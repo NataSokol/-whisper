@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../SignInForm/customInputStyles.css";
-
 import { ROUTES } from "@/app/router/routes";
 import { useNavigate } from "react-router-dom";
 import {
@@ -10,16 +9,14 @@ import {
 } from "@/shared/hooks/reduxHooks";
 import { signUp } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
-
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { checkEmailExists } from "@/shared/utils/checkEmailExists";
-
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectUserLoading);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<string[]>([]);

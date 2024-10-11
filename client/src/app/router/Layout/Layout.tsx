@@ -8,17 +8,27 @@ import { refreshAccessToken } from "@/entities/user";
 import { fetchLikedProducts } from "@/entities/user/model/userThunks";
 import { useAppSelector } from "@/shared/hooks/useReduxHooks";
 import styles from "./Layout.module.css";
-  
+import { getCart } from "@/entities/cart";
+
 const Layout: React.FC = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
+  const {cartCount} = useAppSelector((state) => state.cart);
+  
+    useEffect(() => {
+    if (user?.id){
+      dispatch(getCart());
+    }
+  }, [dispatch, user?.id, cartCount]);
 
+  
   useEffect(() => {
     dispatch(refreshAccessToken());
     if (user?.id) {
       dispatch(fetchLikedProducts());
     }
   }, [dispatch, user?.id]);
+
 
   return (
     <div className={styles.container}>

@@ -40,7 +40,7 @@
   gap: 40px;
 }
 
-.mainInfo div {
+.mainInfo {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -51,7 +51,10 @@
 }
 
 .price {
+  display: flex;
+  flex-direction: row;
   padding-top: 20px;
+  gap: 20px;
 }
 
 

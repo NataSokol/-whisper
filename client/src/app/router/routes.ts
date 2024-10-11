@@ -22,6 +22,7 @@ export enum ROUTES {
   COLLECTION = "/collection",
   AUTH = "/auth",
   CART = "/cart",
+  ORDER = "/order",
   DELPAY = "/delivery-pay",
   REFUND = "/refund",
   QUESTANSW = "/question-answer",

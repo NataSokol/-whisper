@@ -4,7 +4,6 @@ import { collectionReducer } from "@/entities/collection";
 import { configureStore } from "@reduxjs/toolkit";
 import { subCategoryReducer } from "@/entities/subcategory";
 import { productReducer } from "@/entities/product";
-import { cartItemReducer } from "@/entities/cartitem";
 import { cartReducer } from "@/entities/cart";
 import { productSizeReducer } from "@/entities/productsize";
 import { orderReducer } from "@/entities/order";
@@ -19,7 +18,6 @@ const store = configureStore({
     collection: collectionReducer,
     subcategory: subCategoryReducer,
     product: productReducer,
-    cartItem: cartItemReducer,
     cart: cartReducer,
     productSize: productSizeReducer,
     order: orderReducer,

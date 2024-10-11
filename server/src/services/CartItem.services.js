@@ -75,7 +75,8 @@ class CartItemService {
   static async deleteCartItem(id) {
     const cartItem = await CartItem.findOne({ where: { id } });
     if (cartItem) {
-      return cartItem.destroy();
+       cartItem.destroy();
+       return cartItem.get();
     }
     return "CartItem not found";
   }

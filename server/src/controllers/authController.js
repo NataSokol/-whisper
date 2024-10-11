@@ -3,9 +3,11 @@ const userService = require("../services/userService");
 const emailExistence = require("email-existence");
 const generateTokens = require("../utils/generateToken");
 const nodemailer = require("nodemailer");
-const { transporter } = require("../utils/mailer");
-const jwt = require("jsonwebtoken");
-const jwtConfig = require("../configs/jwtConfig");
+const { transporter } = require('../utils/mailer');
+const jwt = require('jsonwebtoken');
+const jwtConfig = require('../configs/jwtConfig');
+const CartServices = require('../services/Cart.services');
+
 
 async function checkEmailExistence(req, res) {
   const { email } = req.body;
@@ -40,12 +42,13 @@ async function signUp(req, res) {
     const { user } = await userService.signUp(email, password);
     const { accessToken, refreshToken } = generateTokens({ user });
 
+    const cart = await CartServices.createCart(user.id)
     res
       .cookie("refreshToken", refreshToken, cookiesConfig.refresh)
       .status(201)
       .json({
-        data: { user, accessToken },
-        message: "User registered successfully",
+        data: { user, accessToken , cart},
+        message: 'User registered successfully',
       });
   } catch (error) {
     console.error(error);
@@ -68,14 +71,26 @@ async function signIn(req, res) {
   try {
     const { user } = await userService.signIn(email, password);
     const { accessToken, refreshToken } = generateTokens({ user });
-
-    res
-      .cookie("refreshToken", refreshToken, cookiesConfig.refresh)
+    let cart = await CartServices.getCartByUserId(user.id)
+    if (user && cart) {
+      res
+      .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
       .status(200)
       .json({
-        data: { user, accessToken },
-        message: "User signed in successfully",
+        data: { user, accessToken, cart},
+        message: 'User signed in successfully',
       });
+    } else {
+      cart = await CartServices.createCart(user.id)
+      res
+      .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
+      .status(200)
+      .json({
+        data: { user, accessToken, cart },
+        message: 'User signed in successfully',
+      });
+    }
+
   } catch (error) {
     console.error(error);
     res.status(400).json({ data: null, message: error.message });

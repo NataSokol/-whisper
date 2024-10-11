@@ -12,21 +12,19 @@ export const Navbar: React.FC = () => {
   const { products } = useAppSelector((state) => state.product);
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+  const { cart, cartCount } = useAppSelector((state) => state.cart);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [cartCount, setCartCount] = useState<number>(9);
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
-
   const location = useLocation();
 
   const handleToggleNavbarVisibility = () => {
     setIsNavbarVisible((prev) => !prev);
   };
-
   const handleSearchClick = () => {
     setIsSearchActive(true);
     setTimeout(() => {
@@ -38,9 +36,6 @@ export const Navbar: React.FC = () => {
   const handleSearchInputFocus = () => {
     setIsInputFocused(true);
   };
-
-  const toggleCart = () => {
-    setCartCount((prev) => (prev > 0 ? prev - 1 : 1));
   };
 
   const debouncedSetSearchValue = useMemo(
@@ -88,6 +83,7 @@ export const Navbar: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isSearchActive, dispatch]);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -207,10 +203,10 @@ export const Navbar: React.FC = () => {
             </button>
           </>
         )}
-        <button className={styles.button} onClick={toggleCart}>
+        <button className={styles.button}>
           <Link to={ROUTES.CART} className={styles.cartLink}>
             <img src="../../public/img/cart.svg" alt="Cart" />
-            {cartCount > 0 && (
+            {cart && cart?.CartItems?.length > 0 && (
               <span className={styles.cartCount}>{cartCount}</span>
             )}
           </Link>

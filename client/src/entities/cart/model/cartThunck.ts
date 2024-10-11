@@ -22,20 +22,20 @@ export const getCart = createAsyncThunk<
   }
 });
 
-export const createCart = createAsyncThunk<
-  CartResponse,
-  void,
-  { rejectValue: RejectValue }
->("/createCart", async (_, { rejectWithValue }) => {
-  try {
-    return await CartService.createCart();
-  } catch (error) {
-    const err = error as AxiosError<{ message: string }>;
-    return rejectWithValue({
-      message: err.response?.data.message || err.message,
-    });
-  }
-});
+// export const createCart = createAsyncThunk<
+//   CartResponse,
+//   void,
+//   { rejectValue: RejectValue }
+// >("/createCart", async (_, { rejectWithValue }) => {
+//   try {
+//     return await CartService.createCart();
+//   } catch (error) {
+//     const err = error as AxiosError<{ message: string }>;
+//     return rejectWithValue({
+//       message: err.response?.data.message || err.message,
+//     });
+//   }
+// });
 
 export const updateCart = createAsyncThunk<
   CartResponse,
@@ -43,7 +43,8 @@ export const updateCart = createAsyncThunk<
   { rejectValue: RejectValue }
 >("/updateCart", async ({ id, total, salePrice }, { rejectWithValue }) => {
   try {
-    return await CartService.updateCart( id, total, salePrice );
+    const result = await CartService.updateCart( id, total, salePrice );
+    return result;
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({
