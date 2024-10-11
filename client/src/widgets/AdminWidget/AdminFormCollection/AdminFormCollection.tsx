@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCollectionAction } from "@/shared/hooks/useCollectionAction";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import { message } from "antd";
 import styles from "./AdminFormCollection.module.css";
 
 export const AdminFormCollection: React.FC = () => {
@@ -10,12 +11,17 @@ export const AdminFormCollection: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (title === "") {
+      message.error("Заполните название коллекции");
+    }
+
     if (image) {
       await handleCreateCollection({ title, image });
       setTitle("");
       setImage(null);
     } else {
-      alert("Загрузите изображение");
+      message.error("Загрузите изображение");
     }
   };
 

@@ -5,6 +5,7 @@ import { useCollectionAction } from "@/shared/hooks/useCollectionAction";
 import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { useProductAction } from "@/shared/hooks/useProductAction";
+import { message } from "antd";
 import ModalWindow from "@/shared/ui/Modal/Modal";
 import styles from "./AdminFormProduct.module.css";
 
@@ -23,9 +24,9 @@ export const AdminFormProduct: React.FC = () => {
   const [description, setDescription] = useState("");
   const [composition, setComposition] = useState("");
   const [price, setPrice] = useState<number | "">("");
-  const [collectionId, setCollectionId] = useState<number | "">("");
-  const [categoryId, setCategoryId] = useState<number | "">("");
-  const [subcategoryId, setSubcategoryId] = useState<number | "">("");
+  const [collectionId, setCollectionId] = useState<number | "">(1);
+  const [categoryId, setCategoryId] = useState<number | "">(1);
+  const [subcategoryId, setSubcategoryId] = useState<number | "">(1);
   const [isModalActive, setIsModalActive] = useState(false);
 
   useEffect(() => {
@@ -36,6 +37,19 @@ export const AdminFormProduct: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (
+      title === "" ||
+      description === "" ||
+      composition === "" ||
+      price === "" ||
+      collectionId === "" ||
+      categoryId === "" ||
+      subcategoryId === ""
+    ) {
+      message.error("Заполните все поля");
+    }
+
     if (images.length > 0) {
       await handleCreateProduct({
         title,
@@ -47,6 +61,8 @@ export const AdminFormProduct: React.FC = () => {
         categoryId: Number(categoryId),
         subcategoryId: Number(subcategoryId),
       });
+      console.log(collectionId, categoryId, subcategoryId);
+
       setTitle("");
       setDescription("");
       setComposition("");
@@ -171,7 +187,9 @@ export const AdminFormProduct: React.FC = () => {
             </select>
           </div>
           <div className={styles["button-container"]}>
-            <Button theme={ThemeButton.LIGHT} type="submit">Добавить</Button>
+            <Button theme={ThemeButton.LIGHT} type="submit">
+              Добавить
+            </Button>
           </div>
         </form>
       </ModalWindow>

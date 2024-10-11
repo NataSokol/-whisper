@@ -28,7 +28,12 @@ exports.createSubcategory = async (req, res) => {
   try {
     const { title } = req.body;
 
-    const subcategory = await SubcategoryServices.createSubcategory({title});
+    if (title === "") {
+      res.status(400).json({ message: "Title is required" });
+      return;
+    }
+
+    const subcategory = await SubcategoryServices.createSubcategory({ title });
     if (subcategory) {
       res.status(201).json({ message: "success", subcategory });
     } else {
@@ -46,10 +51,9 @@ exports.updateSubcategory = async (req, res) => {
 
     const subcategory = await SubcategoryServices.getSubcategoryById(+id);
     if (subcategory) {
-      const subcategory = await SubcategoryServices.updateSubcategory(
-        id,
-        {title}
-      );
+      const subcategory = await SubcategoryServices.updateSubcategory(id, {
+        title,
+      });
       res.status(200).json({ message: "success", subcategory });
     } else {
       res.status(404).json({ message: "Subcategory not found" });

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSubCategoryAction } from "@/shared/hooks/useSubCategoryAction";
+import { message } from "antd";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import styles from "./AdminFormSubCategory.module.css";
 
@@ -9,6 +10,11 @@ export const AdminFormSubCategory: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (title === "") {
+      message.error("Заполните название подкатегории");
+    }
+
     await handleCreateSubCategory({ title });
     setTitle("");
   };

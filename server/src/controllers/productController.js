@@ -36,7 +36,19 @@ exports.createProduct = async (req, res) => {
 
     // Создаем массив путей к изображениям
     const imagePaths = req.files.map((file) => `/img/${file.filename}`);
-   
+
+    if (
+      title === "" ||
+      price === "" ||
+      description === "" ||
+      composition === "" ||
+      collectionId === "" ||
+      categoryId === "" ||
+      subcategoryId === ""
+    ) {
+      res.status(400).json({ message: "All fields are required" });
+      return;
+    }
 
     const product = await ProductServices.createProduct(
       title,
@@ -55,7 +67,7 @@ exports.createProduct = async (req, res) => {
 
       // Запись изображений в таблице Image
       const images = imagePaths.map((path) => ({
-        productId: product.id, 
+        productId: product.id,
         url: path,
       }));
 
