@@ -10,8 +10,6 @@ import {
 import { signUp } from "@/entities/user";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
-import { checkEmailExists } from "@/shared/utils/checkEmailExists";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 export const SignUpForm: React.FC = () => {
   const navigate = useNavigate();

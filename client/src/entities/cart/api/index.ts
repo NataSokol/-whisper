@@ -29,7 +29,6 @@ export class CartService {
             throw new Error("Failed to update cart");
         }
     }
-  }
 
   static async deleteCart(cartId: number) {
     const response = await axiosInstance.delete<CartResponse>(
