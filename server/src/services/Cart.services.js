@@ -61,12 +61,12 @@ class CartServices {
       console.log(error);
     }
   };
-  static createCart = async (userId) => {
-    let cart = await Cart.create({ userId, total: 0, salePrice: 0 });
-    // cart = await Cart.findOne({  id: cart.id, where: { userId } })
-    cart = await this.getCartByUserId(userId);
-    return cart ? cart : null;
-  };
+    static createCart = async (userId) => {
+      let cart = await Cart.create({ userId, total: 0, salePrice: 0});
+      // cart = await Cart.findOne({  id: cart.id, where: { userId } })
+      cart = await this.getCartByUserId(userId)
+      return cart ? cart : null;
+    };
 
   static updateCart = async (id, userId, total, salePrice) => {
     const cart = await Cart.findOne({ where: { id, userId } });

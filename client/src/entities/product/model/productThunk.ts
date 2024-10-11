@@ -14,11 +14,11 @@ type RejectValue = {
 
 export const getAllProducts = createAsyncThunk<
   ProductResponse,
-  void,
+  {collectionId: number}| undefined,
   { rejectValue: RejectValue }
->("/getAllProducts", async (_, { rejectWithValue }) => {
+>("/getAllProducts", async (params , { rejectWithValue }) => {
   try {
-    return await ProductServices.getAllProducts();
+    return await ProductServices.getAllProducts(params);
   } catch (error) {
     const err = error as AxiosError<{ message: string }>;
     return rejectWithValue({

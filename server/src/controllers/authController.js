@@ -100,6 +100,7 @@ async function signIn(req, res) {
 async function logout(req, res) {
   try {
     res.clearCookie("refreshToken").status(200).json({
+      cart: null,
       data: null,
       message: "User logged out successfully",
     });
