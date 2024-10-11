@@ -27,7 +27,6 @@ import DiscountPage from "@/pages/DiscountPage/DiscountPage";
 import { AdminRoute } from "@/shared/ui/AdminRoute";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
-
 export const router = createBrowserRouter([
   {
     path: ROUTES.HOME,

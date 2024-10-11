@@ -29,7 +29,7 @@ export const NavbarUserProfile: React.FC = () => {
 
           <li>
             <div className={styles.lii}>
-              <Link to={ROUTES.CARD}>Программа лояльности</Link>
+              <Link to={ROUTES.DISCOUNT}>Программа лояльности</Link>
             </div>
           </li>
           <li>

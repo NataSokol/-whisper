@@ -54,14 +54,14 @@ export const SignUpForm: React.FC = () => {
     }
 
     try {
-      const isTrueEmail = await checkEmailExists(email); // Проверка существования email
-      if (isTrueEmail) {
-        setErrors((prev) => [
-          ...prev,
-          "Этот адрес электронной почты уже зарегистрирован.",
-        ]);
-        return;
-      }
+      // const isTrueEmail = await checkEmailExists(email); // Проверка существования email
+      // if (isTrueEmail) {
+      //   setErrors((prev) => [
+      //     ...prev,
+      //     "Этот адрес электронной почты уже зарегистрирован.",
+      //   ]);
+      //   return;
+      // }
 
       const resultAction = await dispatch(signUp({ email, password }));
       unwrapResult(resultAction);

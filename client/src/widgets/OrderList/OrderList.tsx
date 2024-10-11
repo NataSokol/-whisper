@@ -12,9 +12,11 @@ export const OrderList: React.FC = () => {
 
   return (
     <div>
-      {state.orders.map((order) => (
-        <OrderItem key={order.id} order={order} />
-      ))}
+      {state.orders.length > 0 ? (
+        state.orders.map((order) => <OrderItem key={order.id} order={order} />)
+      ) : (
+        <p>Нет заказов</p>
+      )}
     </div>
   );
 };

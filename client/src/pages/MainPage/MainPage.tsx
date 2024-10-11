@@ -17,7 +17,8 @@ export const MainPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.videoContainer}>
-        <img className={styles.image}
+        <img
+          className={styles.image}
           src="https://image.hm.com/assets/hm/7b/60/7b60e153849ff4b0cb451ba131068d7f3934bfd0.jpg?imwidth=1260"
           alt=""
         />
@@ -50,7 +51,10 @@ export const MainPage: React.FC = () => {
         </div>
       </div>
       <div className={styles.discountLink}>
-        <img src="../../public/img/whisper2.jpg" alt="к покупкам" />
+        <img
+          src="https://backend-web.storage.yandexcloud.net/resize_cache/121175/414954e5afb22ab105216c5c3b5b2656/iblock/4de/4de99f52d0c3b082aed2e8de54ea2458/31833ab4a635d0143c4a88696d1aeaa2.jpg"
+          alt="к покупкам"
+        />
         <div className={styles.discount}>
           <p>ПОЛУЧИТЕ СКИДКУ</p>
           <p>от 3-х позиций в корзине</p>
