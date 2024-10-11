@@ -18,6 +18,8 @@ class UserInfoServices {
     name,
     surname,
     birthday,
+
+    
     address
   ) => {
     const userInfo = await User.findOne({
